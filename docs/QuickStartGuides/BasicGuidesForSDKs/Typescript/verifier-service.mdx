@@ -1,0 +1,124 @@
+---
+title: Verifier Service
+---
+
+# Verifier Service
+
+## Overview
+
+When users create an account or add a guardian, verifier services are needed to verify the account. Verifier services encompass functions such as recording, sending, and verifying verification codes as well as validating signatures.
+
+### Frontend - Proxy Guardian Verifier Service Relationships in Interface Calling
+
+1. Users initiate guardian account requests through the frontend to the proxy Guardian Verifier service, such as emails or phone numbers.
+2. The proxy Guardian Verifier service handles this request:
+   - If the request is successfully sent, it returns to the frontend with a success confirmation and VerifierSessionId.
+   - If the request fails, it returns with an error code and error message.
+
+### Frontend - Backend Proxy Guardian Verifier Service Relationships in Interface Calling
+
+1.  Users send the received verification code to the backend proxy Guardian Verifier service through the frontend.
+2.  The backend proxy Guardian Verifier service forwards the verification code:
+    - If the verification succeeds, it returns the verification file and signature file to the frontend.
+    - If the verification fails, it returns an error code and error message to the frontend.
+
+## Signing up Using Google Account
+
+### Obtain automatically assigned verifier service data
+
+#### Request
+
+```typescript
+// fetch the verifier service to AELF
+
+const verifierInfo: VerifierItem = did.didWallet.getRecommendationVerifier('AELF')
+```
+
+### Example response
+
+```typescript
+{
+  id: 'verifier01',
+  imageUrl: 'https://x/Gauss.png',
+  name: 'verifier01',
+}
+```
+
+### Supplemental Code
+
+```typescript
+interface VerifierItem {
+  id: string;
+  name: string;
+  imageUrl: string;
+  endPoints: string[];
+  verifierAddresses: string[];
+}
+
+getRecommendationVerifier(chainId: ChainId): Promise<VerifierItem>;
+```
+
+## Determine if reCAPTCHA test is needed
+
+Use [Google's reCAPTCHA](https://cloud.google.com/recaptcha-enterprise) and get verification code.
+
+## Assigned verifier and Google account conduct the verification
+
+### Request
+
+Prerequisite: the verification code from reCAPTCHA needs to be put in the API request.
+
+```typescript
+reCaptchaToken: 'reCaptchaTokenCode'
+```
+
+Initiate a request
+
+```typescript
+const verifyGoogleToken = await did.services.verifyGoogleToken({
+  verifierId: 'verifierId',
+  chainId: 'chainIn',
+  accessToken, // Token returned when the Google account
+  operationType: 1, // The type id OperationTypeEnum
+});
+```
+
+### Example response
+
+```typescript
+{
+  verificationDoc: 'verificationDoc',
+  signature: 'signature',
+}
+```
+
+### Supplemental Code
+
+```typescript
+enum OperationTypeEnum {
+  unknown = 0,
+  register = 1,
+  communityRecovery = 2,
+  addGuardian = 3,
+  deleteGuardian = 4,
+  editGuardian = 5,
+  removeOtherManager = 6,
+  setLoginAccount = 7,
+  managerApprove = 8,
+  modifyTransferLimit = 9
+}
+
+type VerifyGoogleTokenParams = {
+  accessToken: string;
+  verifierId: string;
+  chainId: ChainId;
+  operationType: OperationTypeEnum;
+};
+
+type VerifyVerificationCodeResult = {
+  verificationDoc: string;
+  signature: string;
+};
+
+verifyGoogleToken(params: VerifyGoogleTokenParams): Promise<VerifyVerificationCodeResult>;
+```

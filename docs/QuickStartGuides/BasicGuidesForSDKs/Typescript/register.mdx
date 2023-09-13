@@ -1,0 +1,39 @@
+---
+title: Register
+---
+
+# Register
+
+## Overview
+
+Developers can swiftly enable user account creation through Portkey SDK
+
+## Core SDK
+
+### type: did.register
+
+```typescript
+register(params: Omit<RegisterParams, 'manager'>): Promise<RegisterResult>;
+```
+
+### Usage
+
+```typescript
+did.register({
+  type: 'Email',
+  loginGuardianIdentifier: 'loginGuardianIdentifier',
+  extraData: 'extraData',
+  chainId: 'chainId',
+  verifierId: 'verifierId',
+  verificationDoc: 'verificationDoc',
+  signature: 'signature',
+  context: {
+    requestId: 'requestId',
+    clientId: 'clientId',
+  },
+});
+```
+
+## UI SDK
+
+[SignIn](docs/SDKs/UISDK/TypeScript/Document/SignIn.mdx)

@@ -14,7 +14,8 @@ export default function Home() {
         pageData && pageData.description
           ? pageData.description
           : siteConfig.tagline
-      }>
+      }
+    >
       {pageData && pageData.blocks ? <Blocks blocks={pageData.blocks} /> : null}
     </Layout>
   );

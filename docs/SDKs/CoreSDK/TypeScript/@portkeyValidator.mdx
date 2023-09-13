@@ -1,0 +1,34 @@
+---
+title: portkey/validator
+---
+
+# @portkey/validator
+
+## Introduction
+
+-   [click here to view it in npm](https://www.npmjs.com/package/@portkey/validator)
+-   [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/validator/README.md)
+
+## Installation
+
+```shell
+## use NPM
+npm install @portkey/validator
+
+## use Yarn
+yarn add @portkey/validator
+```
+
+## Usage
+
+```typescript
+import { isNullish } from '@portkey/validator';
+
+const res = isNullish(index)
+```
+
+### Supplemental Code
+
+```typescript
+const isNullish = (item: unknown): item is undefined | null => item === undefined || item === null;
+```

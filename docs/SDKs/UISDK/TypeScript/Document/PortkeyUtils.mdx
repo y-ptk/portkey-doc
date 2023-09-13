@@ -1,0 +1,38 @@
+---
+title: Portkey's utils
+---
+
+# Portkey's utils
+
+## googleAuthAccessToken
+
+Method of obtaining Google authorization for accessToken, encapsulated as a promise.
+
+## Usage
+
+```typescript
+import { googleAuthAccessToken } from '@portkey/did-ui-react';
+import { useCallback } from 'react';
+
+const App: React.FC = () => {
+  const getGoogleAuthAccessToken = useCallback(async () => {
+    try {
+      const res = await googleAuthAccessToken({
+        clientId: 'your clientId',
+        scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
+      });
+      console.log(res, 'res==GoogleAuth1');
+    } catch (error) {
+      console.log(error, 'GoogleAuth===error');
+    }
+  }, []);
+
+  return <button onClick={getGoogleAuthAccessToken}>GoogleAuthAccessToken</button>;
+};
+
+export default App;
+```
+
+## API
+
+Based on [sign in with Apple JS](https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_js)

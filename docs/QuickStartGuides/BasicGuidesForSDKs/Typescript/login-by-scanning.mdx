@@ -1,0 +1,30 @@
+---
+title: Login by Scanning Code
+---
+
+# Login by Scanning Code
+
+Users can scan the code on logged-in devices to log in on new devices
+
+## Core SDK
+
+### type: scan
+
+Logged in management to add management.
+
+```typescript
+login(type: 'scan', params: ScanLoginParams): Promise<true>;
+```
+
+### Usage
+
+```typescript
+did.login('scan',{
+  chainId: 'chainId',
+  caHash: 'caHash',
+  managerInfo: {
+    address: 'address',
+    extraData: 'extraData'
+  };
+})
+```

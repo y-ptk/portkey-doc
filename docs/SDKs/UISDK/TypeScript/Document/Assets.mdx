@@ -1,0 +1,75 @@
+---
+title: Assets
+---
+
+import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
+
+# Assets
+
+On the asset dashboard, you can see the balance of your tokens and NFTs. You can also configure faucet info for test token claiming or do ramp on the Mainnet environment.
+
+<HighlightBlock>
+Before using this component, please make sure you are <a href="/docs/SDKs/UISDK/TypeScript/Document/SignIn">logged-in</a> or you know the caHash of user's Portkey account and the management of Portkey. 
+<br/><br/>
+Before using this component, we assume that you are already familiar with the <a href="/docs/SDKs/UISDK/TypeScript/Document/Configuration">basic configuration</a> of Portkey.
+</HighlightBlock>
+
+## Feature
+
+### Functions covered in the Mainnet environment
+-   Wallet name (e.g., Wallet 01)
+-   Asset quantity (e.g. $0)
+-   Buy and sell shortcuts (i.e., Buy), clicking opens the buying and selling process
+-   Transfer shortcut (i.e., Send), clicking enters the transfer process
+-   View personal wallet address entry (i.e., Receive), clicking shows the address and QR code
+-   View tokens (i.e., Tokens), clicking shows details
+-   View NFTs (i.e., NFTs), clicking shows details
+-   View transaction records (i.e., Activity), clicking shows details
+
+<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
+  <img src='/img/ui-sdk/asset-token-mainnet.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+  <img src='/img/ui-sdk/asset-nft-mainnet.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+</div>
+
+### Functions covered in the Testnet environment
+-   Wallet name (e.g., Wallet 01)
+-   Environment information (Dev Mode)
+-   Transfer shortcut (i.e., Send), clicking enters the transfer process
+-   View personal wallet address entry (i.e., Receive), clicking shows the address and QR code
+-   Faucet entry to claim test tokens (i.e., Faucet), clicking allows claiming
+-   View tokens (i.e., Tokens), clicking shows details
+-   View NFTs (i.e., NFTs), clicking shows details
+-   View transaction records (i.e., Activity), clicking shows details
+
+<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
+  <img src='/img/ui-sdk/asset-token-testnet.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+  <img src='/img/ui-sdk/asset-nft-testnet.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+</div>
+
+## Usage
+
+```typescript
+import { PortkeyAssetProvider } from '@portkey/did-ui-react';
+
+const App: React.FC = () => {
+  return (
+    <PortkeyAssetProvider pin="your pin" originChainId="AELF">
+      <Asset />
+    </PortkeyAssetProvider>
+  );
+};
+
+export default App;
+```
+
+## API
+| Parameter         | Description                                                                                                                                                                         | Class                                                                                                                 | Default value | Version |
+| :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :------------ | :------ |
+| backIcon          | Back icon to asset dashboard                                                                                                                                                        | ReactNode                                                                                                             | <></>         |         |
+| faucet            | The configuration of faucet when the current network is Testnet.When faucetUrl exists, adjust external link;When faucetContractAddress exists, call the CA contract to claim tokens | IFaucetConfig                                                                                                         | -             |         |
+| isShowRamp        | If ramp is shown                                                                                                                                                                    | boolean                                                                                                               | true          |         |
+| className         | Class name of the top level container                                                                                                                                               | string                                                                                                                | -             |         |
+| onOverviewBack    | Callback when clicking the back button on asset dashboard                                                                                                                           | ()=>void;                                                                                                             | -             |         |
+| rampState         | Initialized ramp page data. You can define the default fiat currency and token information.                                                                                         | IRampInitState                                                                                                        | -             |         |
+| overrideAchConfig | Override ACH configuration options in ramp                                                                                                                                          | IAchConfig                                                                                                            | -             |         |
+| onLifeCycleChange | Callback triggered when there are changes in the internal functionality of the module                                                                                               | (liftCycle: `${AssetStep}`): void;AssetStep enumeration values are "receive" \| "overview" \| "ramp" \| "rampPreview" | -             |         |

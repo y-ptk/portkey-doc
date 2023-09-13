@@ -1,0 +1,191 @@
+---
+title: portkey/contracts
+---
+
+# @portkey/contracts
+
+## Introduction
+
+-   [click here to view it in npm](https://www.npmjs.com/package/@portkey/contracts)
+-   [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/contracts/README.md)
+
+Enable contract deployment.
+
+## Installation
+
+```shell
+## use NPM
+npm install @portkey/contracts
+
+## use Yarn
+yarn add @portkey/contracts
+```
+
+## Usage
+
+```typescript
+import { IPortkeyContract, getContractBasic } from '@portkey/contracts';
+
+const contract: IPortkeyContract = await getContractBasic({
+    contractAddress: 'contractAddress',
+    account: aelf.getWallet(privateKey),
+    rpcUrl: 'rpcUrl',
+});
+```
+
+## Initiate a transaction and send one ELF to the target account
+
+### request
+
+```typescript
+const res: SendResult = await contract.callSendMethod({
+    rpcUrl: 'chainInfo.endPoint',
+    chainType 'aelf',
+    address: 'chainInfo.caContractAddress',
+    privateKey: 'privateKey',
+    paramsOption: {
+      caHash: 'caHash',
+      contractAddress: 'tokenInfo.contractAddress',
+      methodName: 'Transfer',
+      args: {
+        symbol: 'ELF',
+        to: 'to address',
+        amount: '100000000',
+      },
+    },
+})
+```
+
+### Example response
+
+```typescript
+{
+  data: {
+    transactionId: 'transactionId'
+  }
+}
+```
+
+You can request the result with transactionId in browser
+
+### Supplemental Code
+
+```typescript
+import { IAElfRPCMethods } from '@portkey/types';
+type ChainId = 'AELF' | 'tDVV' | 'tDVW';
+type ChainType = 'ethereum' | 'aelf';
+
+interface BaseContractOptions {
+  chainId?: ChainId;
+  contractAddress: string;
+  type: ChainType;
+  rpcUrl: string;
+}
+
+interface ContractProps extends BaseContractOptions {
+  aelfContract?: any;
+  aelfInstance?: { chain: IAElfRPCMethods };
+}
+
+interface ErrorMsg {
+  name?: string;
+  code?: number;
+  message?: string;
+}
+
+interface ViewResult<T = any> {
+  data?: T;
+  error?: ErrorMsg;
+}
+
+type SendOptions = {
+  from?: string;
+  gasPrice?: string;
+  gas?: number;
+  value?: number | string;
+  nonce?: number;
+  onMethod: 'transactionHash' | 'receipt' | 'confirmation';
+};
+
+interface SendResult<T = any> extends ViewResult<T> {
+  transactionId?: string;
+}
+
+callSendMethod<T = any>(
+    functionName: string,
+    account: string,
+    paramsOption?: any,
+    sendOptions?: SendOptions,
+  ): Promise<SendResult<T>>;
+```
+
+## Obtain the balance of the account
+
+### request
+
+```typescript
+const res: SendResult = await contract.callViewMethod({
+  rpcUrl: 'currentChain.endPoint',
+  address: 'token.address',
+  chainType: 'aelf',
+  functionName: 'GetBalance',
+  paramsOption: {
+    owner: 'fromAccount.address',
+    symbol: 'ELF',
+  },
+})
+
+type ChainType = 'ethereum' | 'aelf';
+```
+
+### Example response
+
+```typescript
+{
+  data: {
+    balance: 1000000000,
+    symbol: 'ELF',
+  }
+}
+```
+
+You can request the result with transactionId in browser
+
+### Supplemental Code
+
+```typescript
+import { IAElfRPCMethods } from '@portkey/types';
+type ChainId = 'AELF' | 'tDVV' | 'tDVW';
+type ChainType = 'ethereum' | 'aelf';
+
+interface BaseContractOptions {
+  chainId?: ChainId;
+  contractAddress: string;
+  type: ChainType;
+  rpcUrl: string;
+}
+
+interface ContractProps extends BaseContractOptions {
+  aelfContract?: any;
+  aelfInstance?: { chain: IAElfRPCMethods };
+}
+
+interface ErrorMsg {
+  name?: string;
+  code?: number;
+  message?: string;
+}
+
+interface ViewResult<T = any> {
+  data?: T;
+  error?: ErrorMsg;
+}
+
+type CallOptions = {
+  defaultBlock: number | string;
+  options?: any;
+  callback?: any;
+};
+
+callViewMethod<T = any>(functionName: string, paramsOption?: any, callOptions?: CallOptions): Promise<ViewResult<T>>;
+```

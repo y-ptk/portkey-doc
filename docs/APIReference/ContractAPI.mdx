@@ -1,0 +1,844 @@
+---
+title: Contract API
+---
+
+# Contract API
+
+
+## Terms
+
+1. CAHolder: 
+CA address, each user corresponds to one CAHolder (the same user's different accounts, for example, his "Apple" and "Google" will correspond to 2 CAHolders).
+2. Guardian: 
+The method through which users authenticate, including email, phone number, or a specific verifier.
+3. Manager: 
+An externally owned account (EOA) address used by a wallet to initiate transactions (often referring to a device). A single CAHolder can correspond to multiple Managers.
+4. Strategy:
+An authentication strategy that considers conditions (e.g., the number of guardians) to determine if the authentication is successful.
+
+## API documentation
+
+### Initialize contract
+
+-   **API definition**
+
+```typescript
+rpc Initialize(InitializeInput) returns (google.protobuf.Empty){}
+
+message InitializeInput{
+    aelf.Address contract_admin = 1;
+}
+```
+
+-   **API function**
+
+    -   Initialize the CA contract
+
+-   **Time to call**
+
+     -   When a contract is deployed on aelf blockchain
+
+-   **Conditions that need to be met**
+
+    -   contract_admin should be zero contract address
+    -   The contract is initialized for the first time
+
+### Create CAHolder
+
+-   **API definition**
+
+```typescript
+rpc CreateCAHolder (CreateCAHolderInput) returns (google.protobuf.Empty) {}
+
+message CreateCAHolderInput {
+    GuardianInfo guardian_approved = 1;
+    ManagerInfo manager_info = 2;
+    StrategyNode judgement_strategy = 3;
+}
+
+message GuardianInfo {
+    GuardianType type = 1;
+    aelf.Hash identifier_hash = 2;
+    VerificationInfo verification_info = 3;
+}
+
+message ManagerInfo {
+    aelf.Address address = 1;
+    string extra_data = 2;
+}
+
+message StrategyNode {
+    StrategyName name = 1;
+    repeated StrategyValueType type = 2;
+    repeated bytes value = 3;
+}
+```
+
+-   **API function**
+
+  Create user's CA wallet
+
+-   **Time to call**
+
+  When user registers
+
+-   **Conditions that need to be met**
+
+    -   The caller needs the address's controllers
+    -   The number of guardians meet the StrategyNode
+    -   Verifier address is legal
+    -   Manager info is legal
+
+### Add Guardian
+
+-   **API definition**
+
+```typescript
+rpc CreateCAHolder (CreateCAHolderInput) returns (google.protobuf.Empty) {}
+
+message AddGuardianInput {
+    aelf.Hash ca_hash = 1;
+    GuardianInfo guardian_to_add = 2;
+    repeated GuardianInfo guardians_approved = 3;
+}
+```
+
+-   **API function**
+
+    Add Guardian to the designated wallet address
+
+-   **Time to call**
+
+    Omitted
+
+-   **Conditions that need to be met**
+
+    -   The Guardian to be added does not exist in CAHolder
+    -   Verifier address is legal
+    -   The caller is one of the Managers configured in the CAHolder
+    -   The number of guardians_approved should meet what's set in the CAHolder strategy
+
+### Delete Guardian
+
+-   **API definition**
+
+```typescript
+rpc RemoveGuardian (RemoveGuardianInput) returns (google.protobuf.Empty) {}
+
+message RemoveGuardianInput {
+    aelf.Hash ca_hash = 1;
+    GuardianInfo guardian_to_remove = 2;
+    repeated GuardianInfo guardians_approved = 3;
+}
+```
+
+-   **API function**
+
+    Guardian Delete Guardian
+
+-   **Time to call**
+
+    Omitted
+
+-   **Conditions that need to be met**
+
+    -   The caller is one of the Managers configured in the CAHolder
+    -   The Guardian to be deleted should not exist in Approved Guardian
+    -   The Guardian to be deleted should meet what's set in the CAHolder strategy
+    -   The Guardian to be deleted must not be a login Guardian
+
+### Update Guardian
+
+-   **API definition**
+
+```typescript
+rpc UpdateGuardian (UpdateGuardianInput) returns (google.protobuf.Empty) {}
+
+message UpdateGuardianInput{
+    aelf.Hash ca_hash = 1;
+    GuardianInfo guardian_to_update_pre = 2;
+    GuardianInfo guardian_to_update_new = 3;
+    repeated GuardianInfo guardians_approved = 4;
+}
+```
+
+-   **API function**
+
+    Update Guardian
+
+-   **Time to call**
+
+    Omitted
+
+-   **Conditions that need to be met**
+
+    -   The caller is one of the Managers configured in the CAHolder
+    -   Verifier is legal
+    -   The Guardian to be updated should not exist in Approved Guardian
+    -   The Guardians not updated in this CAHolder should meet what's set in the CAHolder strategy
+
+### Set login Guardian
+
+-   **API definition**
+
+```typescript
+rpc SetGuardianForLogin (SetGuardianForLoginInput) returns (google.protobuf.Empty) {}
+
+message SetGuardianForLoginInput {
+    aelf.Hash ca_hash = 1;
+    Guardian guardian = 2;
+}
+```
+
+-   **API function**
+
+    Set the Guardian for login
+
+-   **Time to call**
+
+    Before the user logs in
+
+-   **Conditions that need to be met**
+
+    -   Guardian (email/phone numer)+verifier ID has not been used before
+    -   The caller is one of the Managers configured in the CAHolder
+
+### Unset login Guardian
+
+-   **API definition**
+
+```typescript
+rpc UnsetGuardianForLogin (UnsetGuardianForLoginInput) returns (google.protobuf.Empty) {}
+
+message UnsetGuardianForLoginInput {
+    aelf.Hash ca_hash = 1;
+    Guardian guardian = 2;
+}
+```
+
+-   **API function**
+
+    -   Unset the Guardian for login
+
+-   **Conditions that need to be met**
+
+    -   The caller is one of the Managers configured in the CAHolder
+    -   The Guardian was set by calling SetGuardianForLogin
+
+### Manager excecutes the CA contract
+
+-   **API definition**
+
+```typescript
+rpc ManagerForwardCall (ManagerForwardCallInput) returns (google.protobuf.Empty) {}
+
+message ManagerForwardCallInput {
+    aelf.Hash ca_hash = 1;
+    aelf.Address contract_address = 2;
+    string method_name = 3;
+    bytes args = 4;
+}
+```
+
+-   **API function**
+
+    -   Execute CA contract method and send an inline transaction to the contract address
+
+-   **Conditions that need to be met**
+
+    -   The caller is one of the Managers configured in the CAHolder
+
+### Execute Transfer/TransferFrom
+
+-   **API definition**
+
+```typescript
+// Manager send transfer transaction.
+rpc ManagerTransfer (ManagerTransferInput) returns (google.protobuf.Empty){}
+
+// Manager send transfer from transaction.
+rpc ManagerTransferFrom (ManagerTransferFromInput) returns (google.protobuf.Empty){}
+
+message ManagerTransferInput{
+    aelf.Hash ca_hash = 1;
+    // The receiver of the token.
+    aelf.Address to = 2;
+    // The token symbol to transfer.
+    string symbol = 3;
+    // The amount to to transfer.
+    int64 amount = 4;
+    // The memo.
+    string memo = 5;
+}
+
+message ManagerTransferFromInput{
+    aelf.Hash ca_hash = 1;
+    // The source address of the token.
+    aelf.Address from = 2;
+    // The destination address of the token.
+    aelf.Address to = 3;
+    // The symbol of the token to transfer.
+    string symbol = 4;
+    // The amount to transfer.
+    int64 amount = 5;
+    // The memo.
+    string memo = 6;
+}
+```
+
+-   **API function**
+
+    Equivalent to Transfer and TransferFrom
+
+-   **Conditions that need to be met**
+
+    -   The caller is one of the Managers configured in the CAHolder
+
+### Social recovery
+
+-   **API definition**
+
+```typescript
+rpc SocialRecovery (SocialRecoveryInput) returns (google.protobuf.Empty) {}
+
+message SocialRecoveryInput {
+    aelf.Hash login_guardian_identifier_hash = 1;
+    repeated GuardianInfo guardians_approved = 2;
+    ManagerInfo manager_info = 3;
+}
+
+// Trigger LogEvent upon calling:
+message ManagerInfoSocialRecovered {
+    option (aelf.is_event) = true;
+    aelf.Hash ca_hash = 1 [(aelf.is_indexed) = true];
+    aelf.Address ca_address = 2 [(aelf.is_indexed) = true];
+    aelf.Address manager = 3 [(aelf.is_indexed) = true];
+    string extra_data = 4;
+}
+```
+
+-   **API function**
+
+    -   When users log in on new devices
+
+-   **Conditions that need to be met**
+
+    -   The number of guardian approval should meet what's set in the strategy
+    -   Manager is a new Manager
+    -   The number of Managers doesn't exceed limit
+
+### Add Manager
+
+-   **API definition**
+
+```typescript
+rpc AddManagerInfo (AddManagerInfoInput) returns (google.protobuf.Empty) {}
+
+message AddManagerInfoInput {
+    aelf.Hash ca_hash = 1;
+    ManagerInfo manager_info = 2;
+}
+```
+
+-   **API function**
+
+    Add Manager
+
+-   **Time to call**
+
+    -   When users log in on new devices by scaning code and a new Manager needs to be generated on the device
+
+-   **Conditions that need to be met**
+
+    -   The caller is one of the Managers configured in the CAHolder
+
+### Remove Manager
+
+-   **API definition**
+
+```typescript
+rpc RemoveManagerInfo (RemoveManagerInfoInput) returns (google.protobuf.Empty) {}
+
+message RemoveManagerInfoInput {
+    aelf.Hash ca_hash = 1;
+}
+```
+
+-   **API function**
+
+    approve Remove the current Manager, not approval from Guardians needed
+
+-   **Conditions that need to be met**
+
+    -   The caller is one of the Managers configured in the CAHolder
+
+### Remove other Manager
+
+-   **API definition**
+
+```typescript
+rpc RemoveOtherManagerInfo (RemoveOtherManagerInfoInput) returns (google.protobuf.Empty) {}
+
+message RemoveOtherManagerInfoInput {
+    aelf.Hash ca_hash = 1;
+    ManagerInfo manager_info = 2;
+    repeated GuardianInfo guardians_approved = 3;
+}
+```
+
+-   **API function**
+
+    Remove other Manager, approval from Guardians needed
+
+-   **Conditions that need to be met**
+
+    -   The caller is one of the Managers configured in the CAHolder
+    -   Cannot remove the current Manager
+
+### Update Manager
+
+-   **API definition**
+
+```typescript
+rpc UpdateManagerInfos (UpdateManagerInfosInput) returns (google.protobuf.Empty) {}
+
+message UpdateManagerInfosInput {
+    aelf.Hash ca_hash = 1;
+    repeated ManagerInfo manager_infos = 2;
+}
+```
+
+-   **API function**
+
+    -   Update Manager
+
+-   **Conditions that need to be met**
+
+    -   The caller is one of the Managers configured in the CAHolder
+    -   The Manager's extra_data is not empty
+
+### Add verifier node
+
+-   **API definition**
+
+```typescript
+rpc AddVerifierServerEndPoints (AddVerifierServerEndPointsInput) returns (google.protobuf.Empty) {}
+
+message AddVerifierServerEndPointsInput {
+    // If not exists, add; If does, insert
+    string name = 1;
+    string image_url = 2;
+    // Add all, ignore if has duplicates
+    repeated string end_points = 3;
+    repeated aelf.Address verifier_address_list = 4;
+}
+```
+
+-   **API function**
+
+    Add verifier node
+
+-   **Conditions that need to be met**
+
+    -   The caller is the node admin
+    -   The number of EndPoints is greater than 0
+    -   The image URL is not empty
+
+### Remove verifier node
+
+-   **API definition**
+
+```typescript
+rpc RemoveVerifierServerEndPoints (RemoveVerifierServerEndPointsInput) returns (google.protobuf.Empty) {}
+
+message RemoveVerifierServerEndPointsInput {
+    // If not exists, ignore
+    aelf.Hash id = 1;
+    // Remove all, ignore if do not exist
+    repeated string end_points = 2;
+}
+```
+
+-   **API function**
+
+    -   Remove verifier
+
+-   **Conditions that need to be met**
+
+    -   The caller is the node admin
+    -   The number of EndPoints is greater than 0
+
+### Add CA Server
+
+-   **API definition**
+
+```typescript
+rpc AddCAServer (AddCAServerInput) returns (google.protobuf.Empty){}
+
+message AddCAServerInput{
+    string name = 1;
+    string end_points = 2;
+}
+```
+
+-   **API function**
+
+    Add CA server
+
+-   **Conditions that need to be met**
+
+    -   The caller is the contract admin
+    -   The Name is not empty
+    -   The end_points is not empty
+
+### Delete CA Server
+
+-   **API definition**
+
+```typescript
+rpc RemoveCAServer (RemoveCAServerInput) returns (google.protobuf.Empty){}
+
+message RemoveCAServerInput {
+    string name = 1;
+}
+```
+
+-   **API function**
+
+    CA Delete CA
+
+-   **Conditions that need to be met**
+
+    -   The caller is the contract admin
+    -   The Name is not empty
+
+### Obtain account info
+
+-   **API definition**
+
+```typescript
+rpc GetHolderInfo(GetHolderInfoInput) returns (GetHolderInfoOutput) {option (aelf.is_view) = true;}
+
+message GetHolderInfoInput {
+    aelf.Hash ca_hash = 1;
+    aelf.Hash login_guardian_identifier_hash = 2;
+}
+
+message GetHolderInfoOutput{
+    aelf.Hash ca_hash = 1;
+    aelf.Address ca_address = 2;
+    GuardianList guardian_list = 3;
+    repeated ManagerInfo manager_infos = 4;
+}
+```
+
+-   **API function**
+
+    Obtain account info
+
+-   **Conditions that need to be met**
+
+    -   The login_guardian_identifier_hash is not empty
+    -   The Guardian corresponding to loginGuardianIdentifierHash should exist
+    -   The account should exist
+
+### Obtain verifier
+
+-   **API definition**
+
+```typescript
+rpc GetVerifierServers (google.protobuf.Empty) returns (GetVerifierServersOutput) {option (aelf.is_view) = true;}
+
+message GetCAServersOutput {
+    repeated CAServer ca_servers = 1;
+}
+```
+
+-   **API function**
+
+    Servers Obtain verifier servers
+
+-   **Conditions that need to be met**
+
+    -   None
+
+### Obtain CA server
+
+-   **API definition**
+
+```typescript
+rpc GetCAServers (google.protobuf.Empty) returns (GetCAServersOutput) {option (aelf.is_view) = true;}
+
+message GetCAServersOutput {
+    repeated CAServer ca_servers = 1;
+}
+```
+
+-   **API function**
+
+    -   Obtain CA server
+
+-   **Conditions that need to be met**
+
+    -   None
+
+### Validate account info
+
+-   **API definition**
+
+```typescript
+rpc ValidateCAHolderInfoWithManagerInfosExists (ValidateCAHolderInfoWithManagerInfosExistsInput) returns (google.protobuf.Empty) {}
+
+message ValidateCAHolderInfoWithManagerInfosExistsInput {
+    aelf.Hash ca_hash = 1;
+    repeated ManagerInfo manager_infos = 2;
+    repeated aelf.Hash login_guardians = 3;
+    repeated aelf.Hash not_login_guardians = 4;
+}
+```
+
+-   **API function**
+
+    -   Validate if the account has the login_guardians and not_login_guardians provided in the parameter
+
+-   **Conditions that need to be met**
+
+    -   The number of login_guardians and manager_infos provided in the parameter equals the existing number in the account
+
+### Validate strategy
+
+-   **API definition**
+
+```typescript
+rpc ValidateStrategy (ValidateStrategyInput) returns (ValidateStrategyOutput) {option (aelf.is_view) = true;}
+
+message ValidateStrategyInput {
+    StrategyNode strategy_node = 1;
+    map<string, int64> variables = 2;
+}
+
+message ValidateStrategyOutput {
+    bool bool_result = 1;
+    int64 int64_result = 2;
+    StrategyNode strategy_output = 3;
+}
+
+message StrategyNode {
+    StrategyName name = 1;
+    repeated StrategyValueType type = 2;
+    repeated bytes value = 3;
+}
+```
+
+-   **API function**
+
+    Call the Validate method in the contract to check if the strategy is legal
+
+-   **Conditions that need to be met**
+
+    None
+
+### Set contract delegation fee
+
+-   **API definition**
+
+```typescript
+rpc SetContractDelegationFee (SetContractDelegationFeeInput) returns (google.protobuf.Empty) {}
+
+message SetContractDelegationFeeInput {
+    ContractDelegationFee delegation_fee = 1;
+}
+
+message ContractDelegationFee {
+    int64 amount = 1;
+}
+```
+
+-   **API function**
+
+    -   Set contract delegation fee
+
+-   **Conditions that need to be met**
+
+    -   The caller is the contract admin
+    -   The management fee should be greater than 0
+
+### Get contract delegation fee
+
+-   **API definition**
+
+```typescript
+rpc GetContractDelegationFee (google.protobuf.Empty) returns (GetContractDelegationFeeOutput) {}
+
+message GetContractDelegationFeeOutput {
+    ContractDelegationFee delegation_fee = 1;
+}
+
+message ContractDelegationFee {
+    int64 amount = 1;
+}
+```
+
+-   **API function**
+
+    Get contract delegation fee
+
+-   **Conditions that need to be met**
+
+    None
+
+### Add controller (controller can be used to create CAHolder)
+
+-   **API definition**
+
+```typescript
+rpc AddCreatorController (ControllerInput) returns (google.protobuf.Empty) {}
+
+message ControllerInput{
+    aelf.Address address = 1;
+}
+```
+
+-   **API function**
+
+    -   Add controller
+
+-   **Conditions that need to be met**
+
+    -   The caller is the contract admin
+
+### Remove controller
+
+-   **API definition**
+
+```typescript
+rpc RemoveCreatorController (ControllerInput) returns (google.protobuf.Empty) {}
+
+message ControllerInput{
+    aelf.Address address = 1;
+}
+```
+
+-   **API function**
+
+    Remove controller
+
+-   **Conditions that need to be met**
+
+    -   The caller is the contract admin
+
+### Get controller
+
+-   **API definition**
+
+```typescript
+rpc GetCreatorControllers (google.protobuf.Empty) returns (ControllerOutput) {option (aelf.is_view) = true;}
+
+message ControllerOutput{
+    repeated aelf.Address addresses = 1;
+}
+```
+
+-   **API function**
+
+    Get controller
+
+-   **Conditions that need to be met**
+
+    -   None
+
+### Change admin
+
+-   **API definition**
+
+```typescript
+rpc ChangeAdmin (AdminInput) returns (google.protobuf.Empty) {}
+
+message AdminInput{
+    aelf.Address address = 1;
+}
+```
+
+-   **API function**
+
+    -   Change node admin
+
+-   **Conditions that need to be met**
+
+    -   The caller is the contract admin
+
+### Get admin
+
+-   **API definition**
+
+```typescript
+rpc GetAdmin (google.protobuf.Empty) returns (AdminOutput) {option (aelf.is_view) = true;}
+
+message AdminOutput{
+    aelf.Address address = 1;
+}
+```
+
+-   **API function**
+
+    -   Get admin
+
+-   **Conditions that need to be met**
+
+    -   The caller is the contract admin
+
+### Change the switch of
+
+-   **API definition**
+
+```typescript
+rpc ChangeOperationTypeInSignatureEnabled (OperationTypeInSignatureEnabledInput) returns (google.protobuf.Empty) {}
+
+message OperationTypeInSignatureEnabledInput {
+    bool operation_type_in_signature_enabled = 1;
+}
+```
+
+-   **API function**
+
+    -   If enabled, when interacting with a guardian, it will validate whether that guardian supports the specific operation. The known operation enumerations are as follows:
+```typescript
+enum OperationType {
+    Unknown = 0;
+    CreateCAHolder = 1;
+    SocialRecovery = 2;
+    AddGuardian = 3;
+    RemoveGuardian = 4;
+    UpdateGuardian = 5;
+    RemoveOtherManagerInfo = 6;
+}
+```
+
+-   **Conditions that need to be met**
+
+    -   The caller is the contract admin
+    -   The current status should not be the same as the updated status
+
+### Set CA contract addresses
+
+-   **API definition**
+
+```typescript
+rpc SetCAContractAddresses (SetCAContractAddressesInput) returns (google.protobuf.Empty) {}
+message SetCAContractAddressesInput {
+    repeated CAContractAddress ca_contract_addresses = 1;
+}
+
+message CAContractAddress {
+    aelf.Address address = 1;
+    int32 chain_id = 2;
+}
+```
+
+-   **API function**
+
+    -   Change the CA contract address of the corresponding chain
+
+-   **Conditions that need to be met**
+
+    -   The caller is the contract admin

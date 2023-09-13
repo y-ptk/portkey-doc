@@ -1,0 +1,38 @@
+---
+title: Configuration
+---
+
+import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
+
+# Configuration
+
+<HighlightBlock>
+If you wish to support Apple and Google authorization, you'll need to configure your clientId. For instructions on how to configure this, you can refer to the official documentations:  
+<ul>
+<li>Sign in with Apple JS: <a href="https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_js">https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_js</a></li>
+<li>Google: <a href="https://developers.google.com/identity/protocols/oauth2">https://developers.google.com/identity/protocols/oauth2</a></li>
+</ul>
+</HighlightBlock>
+
+## Usage
+```typescript
+import {ConfigProvider} from '@portkey/did-ui-react';
+
+ConfigProvider.setGlobalConfig({
+    graphQLUrl: 'https://dapp-portkey-test.portkey.finance/Portkey_DID/PortKeyIndexerCASchema/graphql',
+    requestDefaults: {
+        baseUrl: '/portkey'
+    },
+});
+```
+
+## API
+| Parameter | Description | Class | Default value | Version |
+| :-------- | :---------  | :-----| :------------ | :------ |
+| network  | Network information configuration. If you scan QR code to log in, it's essential to set up the defaultNetwork. For web clients, you'll need to configure a proxy service yourself as we do not handle cross-origin requests. | NetworkInfo | - |
+| socialLogin  | When you log in via Apple and Google, you'll need to configure info like your clientId. | ISocialLoginConfig | Portkey config |
+| requestDefaults | API request configuration. Cross-origin issues will be handled separately. | IRequestDefaults | - |
+| graphQLUrl | Indexer address. Cross-origin issues need to be handled separately. | string | - |
+| storageMethod | Storage method. You can configure where data should be stored yourself, and the default setting is in localstorage. | IStorageSuite | - |
+| reCaptchaConfig | Human-computer interaction configuration. The default setting is to use Portkey's reCaptcha configuration. | BaseReCaptcha | Portkey config |
+| serviceUrl | You must configure this if you want to enable on/off ramp services. | string | [https://did-portkey.portkey.finance](https://did-portkey.portkey.finance) |

@@ -1,0 +1,27 @@
+---
+title: PortkeyLoading
+---
+
+# PortkeyLoading
+
+Used for the loading status of pages and blocks.
+
+## Usage
+
+```typescript
+import { PortkeyLoading } from '@portkey/did-ui-react';
+import React from 'react';
+
+const App: React.FC = () => <PortkeyLoading loading={true} />;
+export default App;
+```
+
+## API
+
+| Parameter   | Description                                            | Class                  | Default Value | Version |
+| :---------- | :----------------------------------------------------- | :--------------------- | :------------ | :------ |
+| loading     | Controls if the loading status is displayed            | boolean \| OpacityType | false         |         |
+| loadingText | Prompt for loading                                     | string                 | 'Loading...'  |         |
+| className   | Class name of the top level container                  | string                 | -             |         |
+| cancelable  | Is the close button displayed during loading           | boolean                | -             |         |
+| onCancel    | Callback for the close button displayed during loading | () => void             | -             |         |

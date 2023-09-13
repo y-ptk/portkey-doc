@@ -1,0 +1,45 @@
+---
+title: GuardianApproval
+---
+
+# GuardianApproval
+
+Usage scenario: social recovery during login where verification from other guardians is needed.
+
+### Usage
+
+```javascript
+ <GuardianApproval
+  chainId="AELF"
+  guardianList={[
+    {
+      isLoginAccount: true,
+      verifier: {
+        endPoints: ['your endPoints'],
+        verifierAddresses: ['your verifierAddresses'],
+        id: 'your verifier id',
+        name: 'your verifier name',
+        imageUrl: 'your verifier imageUrl',
+      },
+      identifier: 'identifier',
+      guardianType: 'Phone',
+      key: '',
+    },
+  ]}
+/>
+```
+
+### API
+
+| Parameter            | Description                                                          | Class                                              | Default Value | Version |
+| :------------------- | :------------------------------------------------------------------- | :------------------------------------------------- | :------------ | :------ |
+| className            | Customized class name                                                | string                                             | -             |         |
+| chainId              | Chain ID where user account is registered                            | ChainId                                            | AELF          |         |
+| header               | Header of guardian list display                                      | ReactNode                                          | -             |         |
+| guardianList         | Identifier information (email, phone, Google ID, Apple ID)           | BaseGuardianItem[]                                 | -             |         |
+| isErrorTip           | Is error tip set as default                                          | boolean                                            | true          |         |
+| wrapperStyle         | Customized inline styles                                             | React.CSSProperties                                | -             |         |
+| operationType        | Operation type                                                       | OperationTypeEnum                                  | -             |         |
+| onError              | Callback of error                                                    | (error: {errorFields:string, error: any}) => void; | -             |         |
+| onConfirm            | Callback when guardian approval is completed                         | (guardianList: GuardiansApproved[]) => void;       | -             |         |
+| onGuardianListChange | Callback when guardian verification starts and guardian list changes | (guardianList: GuardiansApproved[]) => void;       | -             |         |

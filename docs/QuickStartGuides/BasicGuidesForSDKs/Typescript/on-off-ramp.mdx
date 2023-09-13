@@ -1,0 +1,115 @@
+---
+title: On/Off Ramp
+---
+
+# On/Off Ramp
+
+## Overview
+
+To complete on/off-ramp operations through the Portkey SDK, Portkey currently partners with service provider ACH and we will gradually add more ramp service providers.
+
+What can be done using ACH's on/off-ramp services:
+
+Users can directly use fiat currency to purchase cryptos or sell cryptos directly for fiat.
+
+- Cryptocurrencies: Currently, only the ELF token is supported.
+
+- Fiat currencies:
+
+  - Deposit supports 33 types of fiat currency: AED, AUD, BGN, BRL, CAD, CHF, COP, DKK, EUR, GBP, HKD, IDR, ILS, JPY, KRW, KZT, MDL, MKD, MXN, MYR, NGN, NOK, NZD, PHP, PLN, RON, SEK, SGD, THB, TRY, TWD, USD, VND.
+  - Withdrawal supports 5 types of fiat currency: USD, EUR, GBP, HKD, CAD.
+
+## UI SDK
+
+### Ramp Page
+
+> Please refer to [Ramp](docs/SDKs/UISDK/TypeScript/Document/Ramp.mdx) for detailed instructions
+
+#### Reference Example
+
+```typescript
+import {
+  ConfigProvider,
+  PortkeyAssetProvider,
+  Ramp,
+} from "@portkey/did-ui-react";
+import router from "next/router";
+import { Store } from "../../utils";
+
+const myStore = new Store();
+
+ConfigProvider.setGlobalConfig({
+  storageMethod: myStore,
+});
+
+export default function RampPage() {
+  return (
+    <div>
+      <PortkeyAssetProvider originChainId="AELF" pin="111111">
+        <Ramp
+          onBack={function (): void {
+            // do something to show the last page
+          }}
+          onShowPreview={function ({ initState, chainId }): void {
+            // do something to jump to the preview transaction details page
+          }}
+          tokenInfo={{
+            decimals: 8,
+            chainId: "AELF",
+            symbol: "ELF",
+            tokenContractAddress:
+              "JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE",
+          }}
+          isMainnet={true}
+        />
+      </PortkeyAssetProvider>
+    </div>
+  );
+}
+```
+
+#### UI Example
+
+<div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+  <img src='/img/ui-sdk/ui-for-buying.png'  width={'30%'} style={{border: '1px solid #dee2e8'}} />
+</div>
+
+### Ramp Preview Page
+
+> Please refer to [RampPreview](docs/SDKs/UISDK/TypeScript/Document/RampPreview.mdx) for detailed instructions
+
+#### Reference Example
+
+```typescript
+import { ConfigProvider, IRampPreviewInitState, PortkeyAssetProvider, RampPreview } from '@portkey/did-ui-react';
+import { useEffect, useState } from 'react';
+
+function RampPreviewPage() {
+  return (
+    <div>
+      <PortkeyAssetProvider originChainId="AELF" pin="111111">
+          <RampPreview
+            initState={{
+              crypto: string;
+              network: string;
+              fiat: string;
+              country: string;
+              amount: string;
+              side: 'BUY' | 'SELL';
+            }}
+            chainId={chainId}
+            portkeyServiceUrl="https://localtest-applesign.portkey.finance"
+            goBack={function (): void {
+              // do something to show the last page
+            }}
+          />
+      </PortkeyAssetProvider>
+    </div>
+  );
+}
+```
+
+#### UI Example
+<div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+  <img src='/img/ui-sdk/buy-preview-ui.png'  width={'30%'} style={{border: '1px solid #dee2e8'}} />
+</div>

@@ -1,0 +1,24 @@
+---
+title: SetPinBase
+---
+
+# SetPinBase
+
+Pure UI component for PIN setting.
+
+## Usage
+
+```typescript
+import { SetPinBase } from '@portkey/did-ui-react';
+
+const App: React.FC = () => <SetPinBase />;
+export default App;
+```
+
+## API
+
+| Parameter      | Description                           | Class                       | Default Value | Version |
+| :------------- | :------------------------------------ | :-------------------------- | :------------ | :------ |
+| className      | Class name of the top level container | string                      | -             |         |
+| onFinish       | Callback of finishing                 | (val: string) => void;      | -             |         |
+| onFinishFailed | Callback when the form fails          | FormProps['onFinishFailed'] | -             |         |

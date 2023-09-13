@@ -1,0 +1,73 @@
+---
+title: Contract Basic
+---
+
+# Contract Basic
+
+Developers can instantiate a new ContractBasic object to interface with any deployed contracts on-chain.
+
+## CallTransactionAsync<T\>(BlockchainWallet wallet, string methodName, IMessage param, SuccessCallback<T\> successCallback, ErrorCallback errorCallback)
+
+**Description:** *CallTransactionAsync is a generic method that can be used to call a contract Get method and execute the transaction.*
+
+**Parameters:**
+
+-   wallet (BlockchainWallet): *EOA Wallet to sign the transaction with.*
+-   *methodName (string): Name of the method to call from the contract.*
+-   *param (IMessage): Parameters for calling the method from the contract.*
+-   *successCallback (SuccessCallback<T\>): The callback function when user is successful in calling the method on the contract.*
+-   errorCallback (ErrorCallback): *The callback function when there is an error.*
+
+**Generic:**
+
+-   T: *Protobuf IMessage inherited classes corresponding to the called contract method.*
+
+**Example:**
+
+```c#
+//create a contract object referencing a contract deployed on AELF chain
+var tokenContract = new ContractBasic(did.GetChain("AELF"), tokenAddress);
+
+var balanceInput = new GetBalanceInput()
+{
+    Owner = caAddress.ToAddress(), //contract address corresponding to the chain
+    Symbol = "ELF"
+};
+//get balance on the contract
+StartCoroutine(tokenContract.CallTransactionAsync<GetBalanceOutput\>(wallet, "GetBalance", balanceInput, output =>
+{
+    var tokenBalance = output.Balance;
+}, OnError););
+```
+
+## SendTransactionAsync(BlockchainWallet wallet, string methodName, IMessage param, SuccessCallback<TransactionInfoDto\> successCallback, ErrorCallback errorCallback)
+
+**Description:** *SendTransactionAsync is a generic method that can be used to call a contract Set method and execute the transaction.*
+
+**Parameters:**
+
+-   wallet (BlockchainWallet): *EOA Wallet to sign the transaction with.*
+-   *methodName (string): Name of the method to call from the contract.*
+-   *param (IMessage): Parameters for calling the method from the contract.*
+-   *successCallback (SuccessCallback<T\>): The callback function when user is successful in transaction for the method on the contract.*
+-   errorCallback (ErrorCallback): *The callback function when there is an error.*
+
+**Generic:**
+
+-   T: *Protobuf IMessage inherited classes corresponding to the called contract method.*
+
+**Example:**
+
+```c#
+var addManagerInfoInput = new AddManagerInfoInput
+{
+    ManagerInfo = editManagerParams.managerInfo,
+    CaHash = Hash.LoadFromHex(caHash)
+};
+
+StartCoroutine(contract.SendTransactionAsync(wallet, "AddManagerInfo", addManagerInfoInput, result =>
+{
+    //check if we have successfully add manager info on the contract
+    var successful = result.transactionResult.Status == TransactionResultStatus.Mined.ToString();
+}, errorCallback));
+```

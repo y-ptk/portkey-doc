@@ -1,0 +1,90 @@
+---
+title: portkey/utils
+---
+
+# @portkey/utils
+
+## Introduction
+
+-   [click here to view it in npm](https://www.npmjs.com/package/@portkey/utils)
+-   [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/utils/README.md)
+
+## Installation
+
+```shell
+## use NPM
+npm install @portkey/utils
+
+## use Yarn
+yarn add @portkey/utils
+```
+
+## encodedTx
+
+Get transaction raw
+
+### Usage
+
+```typescript
+import { aelf } from '@portkey/utils';
+
+const raw = await aelf.encodedTx(params as EncodedParams)
+```
+
+### Supplemental Code
+
+```typescript
+type EncodedParams = {
+  instance: any;
+  functionName: string;
+  paramsOption: any;
+  contract: any;
+};
+```
+
+## getELFContract
+
+Get elf contract
+
+### Usage
+
+```typescript
+import { aelf } from '@portkey/utils';
+
+const contract = await aelf.getELFContract(rpcUrl, tokenAddress, privateKey)
+```
+
+### Supplemental Code
+
+```typescript
+parmas: {
+  rpcUrl: string; 
+  tokenAddress: string;
+  privateKey: string;
+}
+```
+
+## handleVerificationDoc
+
+Get guardian detail by verificationDoc
+
+### Usage
+
+```typescript
+import { aelf } from '@portkey/utils';
+
+const detail = await aelf.handleVerificationDoc(verificationDoc)
+```
+
+### Supplemental Code
+
+```typescript
+detail
+{
+  type, // guardian type
+  guardianIdentifier, 
+  verificationTime, 
+  verifierAddress, 
+  salt,
+}
+```

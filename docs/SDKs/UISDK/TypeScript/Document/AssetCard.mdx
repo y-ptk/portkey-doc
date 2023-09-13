@@ -1,0 +1,75 @@
+---
+title: AssetCard
+---
+
+import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
+
+# AssetCard
+
+View some asset information and provide shortcuts for ramp, transfers, and faucet.
+
+<HighlightBlock>
+Before using this component, please make sure you are <a href="/docs/SDKs/UISDK/TypeScript/Document/SignIn">logged-in</a>. 
+<br/><br/>
+Before using this component, we assume that you are already familiar with the <a href="/docs/SDKs/UISDK/TypeScript/Document/Configuration">basic configuration</a> of Portkey.
+</HighlightBlock>
+
+## Feature
+
+### Functions enabled in the Mainnet environment
+-   Wallet name (e.g., Wallet 01)
+-   Asset quantity (e.g. $215.08)
+-   Ramp entry (i.e., Buy)
+-   Transfer entry (i.e., Send)
+-   View personal wallet address and QR code entry (i.e., Receive)
+
+![asset card testnet](/img/ui-sdk/asset-card-mainnet.png)
+
+### Functions enabled in the Testnet environment
+-   Wallet name (e.g., Wallet 01)
+-   Environment information (Dev Mode)
+-   Transfer entry (i.e., Send)
+-   View personal wallet address and QR code entry (i.e., Receive)
+-   Faucet entry to claim test tokens (i.e., Faucet)
+
+![asset card testnet](/img/ui-sdk/asset-card-testnet.png)
+
+## Usage
+
+```typescript
+import { AssetCard } from '@portkey/did-ui-react';
+
+const App: React.FC = () => {
+  return (
+    <AssetCard
+      isShowRamp={true}
+      isShowFaucet={true}
+      networkType={'MAIN'}
+      backIcon={<></>} // bind react node
+      nickName={'Wallet Name'}
+      accountBalanceUSD={'$100.00'}
+      onBack={} // bind function
+      onBuy={} // bind function
+      onReceive={} // bind function
+      onFaucet={} // bind function
+    />;
+  );
+};
+
+export default App;
+```
+
+## TypeScript
+
+| Parameter         | <div style={{width: 350}}>Description</div>          | <div style={{width: 100}}>Class</div> | Mandatory | <div style={{width: 100}}>Default value</div> |
+| :---------------- | :--------------------------------------------------- | :------------------------------------ | :-------- | :------------ |
+| backIcon          | Back button that controls the display of page header | ReactNode                             | false     | —             |
+| networkType       | Control network type                                 | NetworkType, 'MAIN' \| 'TESTNET'      | false     | —             |
+| nickName          | Display wallet name                                  | string                                | false     | —             |
+| accountBalanceUSD | Display asset quantity                               | string                                | false     | —             |
+| isShowRamp        | Is ramp shown                                        | boolean                               | false     | —             |
+| isShowFaucet      | Is faucet shown                                      | boolean                               | false     | —             |
+| onBuy             | The event of clicking the buy button                 | () => void                            | false     | —             |
+| onBack            | The event of clicking the back button on header      | () => void                            | false     | —             |
+| onFaucet          | The event of clicking the faucet button              | () => void                            | false     | —             |
+| onReceive         | The event of clicking the view address button        | () => void                            | false     | —             |

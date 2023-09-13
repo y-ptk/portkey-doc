@@ -1,0 +1,46 @@
+---
+title: Login/Social Recovery
+---
+
+# Login/Social Recovery
+
+## Overview
+
+Developers can enable social recovery through Portkey SDK
+
+## Core SDK
+
+### type: loginAccount
+
+Email or mobile phone number or Google or Apple login.
+
+```typescript
+did.login(type: 'loginAccount', params: AccountLoginParams): Promise<LoginResult>;
+```
+
+### Usage
+
+```typescript
+did.login('loginAccount', {
+  chainId: 'chainId',
+  loginGuardianIdentifier: 'loginGuardianIdentifier',
+  guardiansApproved: [
+    {
+      type: 'Email',
+      identifier: 'identifier',
+      verifierId: 'verifierId',
+      verificationDoc: 'verificationDoc',
+      signature: 'signature',
+    },
+  ],
+  extraData: 'extraData',
+  context: {
+    requestId: 'requestId',
+    clientId: 'clientId',
+  },
+});
+```
+
+## UI SDK
+
+[SignIn](docs/SDKs/UISDK/TypeScript/Document/SignIn.mdx)

@@ -1,0 +1,41 @@
+---
+title: Provider ( PortkeyProvider )
+---
+
+# Provider ( PortkeyProvider )
+
+When using the component, you need to use a provider at the top level; otherwise, you won't be able to locate loading.
+
+## Usage
+```typescript
+// page.tsx
+import '@portkey/did-ui-react/dist/assets/index.css';
+import { PortkeyProvider, SignIn} from '@portkey/did-ui-react';
+
+export default function APP() {
+  return (
+    <PortkeyProvider networkType={"TESTNET"} theme={'dark'}>
+      <SignIn />
+    </PortkeyProvider>
+  );
+}
+
+// rewrites.js
+module.exports = [
+  {
+    source: '/api/:path*',
+    destination: 'https://did-portkey-test.portkey.finance/api/:path*'
+  },
+  {
+    source: '/graphql/:path*',
+    destination: 'https://dapp-portkey-test.portkey.finance/Portkey_DID/PortKeyIndexerCASchema/graphql/:path*',
+  },
+];
+```
+
+## API
+
+| Parameter | Description | Class | Default Value | Version |
+| :-------- | :---------- | :---- | :------------ | :------ |
+| networkType | Network type | string | - |  |
+| theme | Theme control. We currently use theme to manage icons with prominent differences in the light/dark themes. If you wish to adjust the theme color, we expose CSS variables and you can control the theme color through CSS variables. | 'dark' , 'light' | 'light' |  |

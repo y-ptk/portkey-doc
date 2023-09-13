@@ -1,0 +1,46 @@
+---
+title: VerifierSelect
+---
+
+# VerifierSelect
+
+Usage scenario: you need to select a verifier for verification during registration.
+
+Operations:
+
+1.  Select from the dropdown menu or click an icon to choose.
+1.  Click Confirm and return the selection result.
+
+## Usage
+
+```typescript
+<VerifierSelect
+  guardianIdentifier={'105383420233267798964'}
+  accountType={'Google'}
+  onError={(error: any) => {
+    console.log('onError:', error);
+  }}
+  onConfirm={result => {
+    console.log('onConfirm:', result);
+  }}
+/>
+```
+
+## API
+
+| Parameter          | Description                                                | Class                                              | Default value              | Version       |
+| :----------------- | :--------------------------------------------------------- | :------------------------------------------------- | :------------------------- | :------------ |
+| chainId            | Chain ID where user account is registered                  | ChainId                                            | AELF                       |               |
+| sandboxId          | Only required when used in a Chrome extension.             | string                                             | -                          |               |
+| verifierList       | Default verifier list                                      | VerifierItem[]                                     | -                          |               |
+| defaultVerifier    | Default verifier service ID (VerifierItem['id'])           | string                                             | The first verifier         |               |
+| guardianIdentifier | Identifier information (email, phone, Google ID, Apple ID) | string                                             | -                          |               |
+| className          | Class name of the top level container                      | string                                             | -                          |               |
+| accountType        | Identifier type                                            | AccountType                                        | Email                      |               |
+| isErrorTip         | Is error tip set as default                                | boolean                                            | true                       |               |
+| operationType      | Operation type                                             | OperationTypeEnum                                  | OperationTypeEnum.register |               |
+| chainType          |                                                            | ChainType                                          | aelf                       |               |
+| googleAccessToken  | asses_token obtained when Google signs up or logs in       | string                                             | -                          |               |
+| appleIdToken       | id_token obtained when Apple signs up or logs in           | string                                             | -                          |               |
+| onError            | Callback of error                                          | (error: {errorFields:string, error: any}) => void; | -                          |               |
+| onConfirm          | Callback of finishing                                      | (result: VerifierSelectConfirmResult) => void;     | -                          |               |

@@ -1,0 +1,27 @@
+---
+title: VerifierPair
+---
+
+# VerifierPair
+
+Component that displays the guardian icon and verifier icon pair.
+
+## Usage
+
+```javascript
+<VerifierPair
+  guardianType={accountType}
+  verifierSrc={verifier.imageUrl}
+  verifierName={verifier.name}
+/>
+```
+
+## API
+
+| Parameter        | Description                                                             | Class       | Default Value | Version |
+| :--------------- | :---------------------------------------------------------------------- | :---------- | :------------ | :------ |
+| guardianType     | User type                                                               | AccountType | 'Email'       |         |
+| verifierSrc      | Address of the verifier image                                           | string      | -             |         |
+| verifierName     | Verifier name, displaying the initial letter if the image fails to load | string      | -             |         |
+| wrapperClassName | Class name of the top level container                                   | string      | -             |         |
+| size             | Size of the guardian image                                              | number      | 32            |         |

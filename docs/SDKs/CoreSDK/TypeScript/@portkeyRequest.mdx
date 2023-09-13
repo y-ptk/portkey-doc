@@ -1,0 +1,48 @@
+---
+title: portkey/request
+---
+
+# @portkey/request
+
+## Introduction
+
+-   [click here to view it in npm](https://www.npmjs.com/package/@portkey/request)
+-   [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/request/README.md)
+
+## Installation
+
+```shell
+## use NPM
+npm install @portkey/request
+
+## use Yarn
+yarn add @portkey/request
+```
+
+## Usage
+
+```typescript
+import { IRequestDefaults } from '@portkey/types';
+import { FetchRequest } from '@portkey/request';
+
+const config: IRequestDefaults = {
+  // Your custom implementation here
+}
+
+const fetchRequest = new FetchRequest(config);
+
+// send get request
+fetchRequest.send({
+  method: 'GET',
+  url: 'your api',
+})
+
+// send post request
+fetchRequest.send({
+  method: 'POST',
+  url: 'your api',
+  params: {
+    // your params
+  },
+});
+```

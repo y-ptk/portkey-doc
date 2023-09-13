@@ -1,0 +1,46 @@
+---
+title: ReceiveCard
+---
+
+# ReceiveCard
+
+Usage scenario: display the QR code for receiving tokens.
+
+## Usage
+
+```typescript
+import { ReceiveCard } from '@portkey/did-ui-react';
+
+const App = () => (
+  <ReceiveCard
+    receiveInfo={{
+      address: 'NRMRvewuaidMJMtfz1sHb8XGXWqMhxiBuork1wTYKk9zeSuS6',
+      name: '',
+    }}
+    assetInfo={{
+      symbol: 'ELF',
+      tokenContractAddress: 'JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE',
+      chainId: 'tDVV',
+      decimals: 8,
+    }}
+    networkType={'TESTNET'}
+    chainId={'tDVV'}
+  />
+);
+
+export default App;
+```
+
+## API
+
+| Parameter   | Description                           | Class                                                                               | Default value | Version |
+| ----------- | ------------------------------------- | ----------------------------------------------------------------------------------- | ------------- | ------- |
+| receiveInfo | Receiver's info                       | `{address:string; name?: string;}`                                                  | -             |         |
+| assetInfo   | The close button element              | `{symbol: string;tokenContractAddress: string; chainId: ChainId; decimals: number}` | -             |         |
+| networkType | The current network type              | 'TESTNET' | 'MAIN'                                                                  | -             |         |
+| title       | Title name                            | string                                                                              | -             |         |
+| className   | Class name of the top level container | string                                                                              | -             |         |
+| closeIcon   | The close button                      | ReactNode                                                                           | -             |         |
+| backIcon    | Icon of the back button               | ReactNode                                                                           | -             |         |
+| chainId     | The chain where the receiver is on    | ChainId                                                                             | -             |         |
+| onCancel    | Callback of cancelling                | () => void;                                                                         | -             |         |

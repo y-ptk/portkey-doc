@@ -1,0 +1,62 @@
+---
+title: GraphQL
+---
+
+# GraphQL
+
+## API
+
+### Query account information
+
+1. **Description:** the API is used to query details about the CAHolder
+2. **URI:** /AElfIndexer_DApp/PortKeyIndexerCASchema/graphql
+3. **Request type:** POST
+4. **Request parameter**
+
+Users can focus on parameters only as the operationName and query are fixed
+
+```typescript
+{
+    "operationName":"caHolderManagerInfo", // method name
+    "variables":{                          // parameter
+        "dto":{
+            "caHash":"f1fba7d5344f1b80f4cb11dc3c278b98468e4255c69c0a4ab3d8b931e7a3d9c4", // CA address
+            "maxResultCount":1,
+            "skipCount":0,
+            "chainId":"AELF" // chain name
+        }
+    },
+    "query":"query caHolderManagerInfo($dto: GetCAHolderManagerInfoDto) {\n  caHolderManagerInfo(dto: $dto) {\n    id\n    chainId\n    caHash\n    caAddress\n    managerInfos {\n      address\n      extraData\n      __typename\n    }\n    originChainId\n    __typename\n  }\n}"
+}
+```
+
+5. **Response**
+
+```typescript
+{
+    "data":{
+        "caHolderManagerInfo":[
+            {
+                "id":"AELF-asCJrq7Evhq3KMyCxYkaUsvAkKZLuXjKn5mWiX1fnQKWWRHvR",
+                "chainId":"AELF",
+                "caHash":"f1fba7d5344f1b80f4cb11dc3c278b98468e4255c69c0a4ab3d8b931e7a3d9c4",
+                "caAddress":"asCJrq7Evhq3KMyCxYkaUsvAkKZLuXjKn5mWiX1fnQKWWRHvR",
+                "managerInfos":[ // manager info corresponds to login device and it will be deleted once logging out
+                    {
+                        "address":"2PswRxKkm8r2XCMcmHrr3TSQYHvjWs715wVfAZKagyaAr9JYYo",
+                        "extraData":"{\u0022transactionTime\u0022:1691481168836,\u0022deviceInfo\u0022:\u0022q/N3XKX1eANTKO3HX2oJmrHVwyc/O35tlJysFY7qX0rV7MjVPsSoapYNQT16PdOT\u0022,\u0022version\u0022:\u00222.0.0\u0022}",
+                        "__typename":"ManagerInfo"
+                    },
+                    {
+                        "address":"e44woTKwjDKNPxKBKwfTJWpR7EbF5mb2ek5xiorn1BNtR3XTb",
+                        "extraData":"{\u0022transactionTime\u0022:1691482959836,\u0022deviceInfo\u0022:\u0022q/N3XKX1eANTKO3HX2oJmrHVwyc/O35tlJysFY7qX0rV7MjVPsSoapYNQT16PdOT\u0022,\u0022version\u0022:\u00222.0.0\u0022}",
+                        "__typename":"ManagerInfo"
+                    }
+                ],
+                "originChainId":"AELF",
+                "__typename":"CAHolderManagerDto"
+            }
+        ]
+    }
+}
+```

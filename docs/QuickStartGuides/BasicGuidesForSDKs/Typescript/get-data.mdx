@@ -1,0 +1,100 @@
+---
+title: Get Data
+---
+
+# Get Data
+
+Methods for obtaining data that may be used with Portkey SDK:  
+Data include chainId/chainName/defaultToken/caContractAddress
+
+## ChainList
+
+Getting the currently synchronized chainList
+
+Request
+
+```typescript
+await did.services.getChainsInfo();
+```
+
+## RegisterInfo
+
+Get the originChainId of the account
+
+Request
+
+```typescript
+await did.services.getRegisterInfo()
+```
+
+## guardianIdentifiers
+
+Get holderInfo
+Request
+
+```typescript
+await did.services.getHolderInfo();
+```
+
+## Assets
+
+Get the assets of the account
+
+Request Token
+
+```typescript
+await did.services.assets.fetchAccountTokenList({
+    skipCount: number;
+    maxResultCount: number;
+    caAddresses: string[];
+    caAddressInfos: CaAddressInfosType;
+})
+```
+
+Request NFT CollectionList
+
+```typescript
+await did.services.assets.fetchAccountNftCollectionList({
+    skipCount: number;
+    maxResultCount: number;
+    caAddressInfos: CaAddressInfosType;
+    width: number;
+    height: number;
+})
+
+```
+
+Request NFT Collection item list
+
+```typescript
+await did.services.assets.fetchAccountNftCollectionItemList({
+    symbol: string;
+    caAddressInfos: CaAddressInfosType;
+    skipCount: number;
+    maxResultCount: number;
+    width: number;
+    height: number;
+})
+```
+
+## Activities
+
+Request
+
+```typescript
+await did.services.activity.getActivityList({
+  maxResultCount: number;
+  skipCount: number;
+  caAddresses?: string[];
+  caAddressInfos?: {
+      chainId: string;
+      caAddress: string;
+  }[];
+  managerAddresses?: string[];
+  transactionTypes?: TransactionTypes[];
+  chainId?: string;
+  symbol?: string;
+  width?: number;
+  height?: number;
+})
+```

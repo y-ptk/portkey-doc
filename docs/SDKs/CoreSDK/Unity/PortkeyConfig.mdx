@@ -1,0 +1,31 @@
+---
+title: Portkey Config
+---
+
+# Portkey Config
+
+You may create a PortkeyConfig by doing: Assets -> Create -> Portkey -> PortkeyConfig
+
+![portkey config](/img/core-sdk/portkey-config.png)
+
+## Google API Setup
+
+1.  Go to <https://console.cloud.google.com/apis/credentials>
+
+1.  Create a new app if needed
+
+1.  Create Create Credentials -> OAuth client ID
+
+    1.  For **Android**: select `Web application`
+        ![portkey config web app](/img/core-sdk/portkey-config-webapp.png)
+    1.  For **iOS**: select `iOS`
+        ![portkey config ios](/img/core-sdk/portkey-config-ios.jpeg)
+
+-   For **Editor and Standalone**: Select `Desktop app`
+    ![portkey config desktop](/img/core-sdk/portkey-config-desktop.jpeg)
+
+-   For **WebGL** you may ignore the fields. We have provided a simplified way for developers to login through our Next.js application.
+
+## Apple API Setup
+
+Apple sign in has also been taken care of and you do not need extra configuration to start using.

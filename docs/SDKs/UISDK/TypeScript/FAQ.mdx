@@ -1,0 +1,76 @@
+---
+title: FAQ
+---
+
+# FAQ
+
+## Nextjs
+
+### 1. Cross-origin
+
+```typescript
+{
+  source: '/api/:path*',
+  destination: 'http://localhost/api/:path*',
+},
+```
+
+### 2. If error appears, please
+
+<div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'start', width: '100%'}}>
+  <div style={{width: '49%'}}> 
+    <div style={{textAlign: 'center', color: '#999'}}> css error </div>
+    <img src='/img/ui-sdk/FAQ-error1.jpeg' width={'100%'} style={{border: '1px solid #dee2e8'}} />
+  </div>
+  <div style={{width: '49%'}}> 
+    <div style={{textAlign: 'center', color: '#999'}}> export error </div>
+     <img src='/img/ui-sdk/FAQ-error2.png' width={'100%'} style={{border: '1px solid #dee2e8'}} />
+  </div>
+</div>
+
+```typescript
+// https://mobile.ant.design/zh/guide/ssr
+
+// next.config.js
+
+// Next.js V12
+const withTM = require('next-transpile-modules')(['antd-mobile', '@portkey/did-ui-react']);
+module.exports = withTM({
+  // Other Next.js configuration in your project
+});
+
+
+// Next.js V13
+const nextConfig = {
+  experimental: {
+    transpilePackages: ['antd-mobile', '@portkey/did-ui-react']);Ï
+  },
+};
+
+module.exports = nextConfig;
+```
+
+## Chrome extension
+
+### 1. Configure sandbox separately
+
+Use our encapsulated HTML file from GitHub and add it to your popup.html.
+
+### 2. Extension (probably because the origin is strict EcmaScript Module, e. g. a module with javascript mimetype, a ' *.mjs' file, or a '* .js' file where the package.json contains '"type": "module"'). error
+
+```typescript
+// webpack.config.js
+
+const config = {
+  module:{
+    rules: [
+      {
+        test: /.m?js$/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
+    ]
+  }
+}
+```

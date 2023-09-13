@@ -1,0 +1,31 @@
+---
+title: Unlock
+---
+
+# Unlock
+
+UI component that unlocks the page
+
+## Usage
+
+```javascript
+<UnLock 
+  isWrongPassword
+  value={'password'}
+  onChange={(value:string)=>{}}
+  onUnlock={()=>{}}
+/>
+```
+
+## API
+
+| Parameter       | Description                                               | Class                 | Default Value | Version |
+| :-------------- | :-------------------------------------------------------- | :-------------------- | :------------ | :------ |
+| className       | Customized class name                                     | string                | -             |         |
+| isWrongPassword | Is the password entered wrong                             | boolean               | false         |         |
+| uiType          | Is UI displayed as Modal or as a page component           | 'Modal' \| 'Full'     | Modal         |         |
+| open            | Controls if it's displayed or hidden when uiType is Modal | boolean               | -             |         |
+| value           | Input field content                                       | string                | -             |         |
+| onCancel        | Callback of cancelling                                    | () => void;           | -             |         |
+| onChange        | Callback when the input field content changes             | (value:string) =>void | -             |         |
+| onUnlock        | Callback when onUnlock is clicked                         | () => void;           | -             |         |

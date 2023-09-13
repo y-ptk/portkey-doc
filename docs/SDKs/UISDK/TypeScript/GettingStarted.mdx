@@ -1,0 +1,114 @@
+---
+title: Getting started
+---
+
+import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
+
+# Getting started
+
+## Introduction
+
+<HighlightBlock>
+  Please ensure that your development environment has{" "}
+  <a href="https://nodejs.org/en">Node.js v14</a> or above installed and
+  configured. <a href="https://yarnpkg.com">Yarn</a> /{" "}
+  <a href="https://lerna.js.org">Lerna</a>
+</HighlightBlock>
+
+You can start quickly with the steps below
+
+### Start here
+
+- Can quickly access, realize login or registration function
+- According to your own needs, select components that provide corresponding functions for quick access
+- Something else: Get started with our document
+
+### Introduction to Portkey
+
+[Portkey](https://portkey.finance) is a secure and recoverable tool to
+manage Web3 identities and digital assets. It not only provides a reliable means
+of asset management for senior Web3 users, but also facilitates the smooth entrance
+of Web2 users into the Web3 world.
+
+## Your First Example
+
+<HighlightBlock>
+  According to the following steps, you can quickly implement the login or
+  registration function
+</HighlightBlock>
+
+### 1. Installation
+
+```shell
+npm install @portkey/did-ui-react@latest
+
+# or
+
+yarn add @portkey/did-ui-react@latest
+```
+
+### 2. Configuration
+
+[Environmental configuration](docs/EnvironmentalConfiguration.mdx)
+
+```javascript
+import { ConfigProvider } from "@portkey/did-ui-react";
+
+ConfigProvider.setGlobalConfig({
+  requestDefaults: {
+    baseUrl: "https://did-portkey-test.portkey.finance",
+  },
+  graphQLUrl:
+    "https://dapp-portkey-test.portkey.finance/Portkey_DID/PortKeyIndexerCASchema/graphql",
+});
+```
+
+### 3. Use SignIn components
+
+Testnet token faucet: https://testnet-faucet.aelf.io/
+
+```typescript
+import { SignIn, PortkeyProvider } from "@portkey/did-ui-react";
+import "@portkey/did-ui-react/dist/assets/index.css";
+
+const App: React.FC = () => {
+  const ref = useRef();
+  ref.current.setOpen(boolean);
+  const onFinish = (result) => {
+    // Modify the value corresponding to the following fields
+  };
+
+  return (
+    <PortkeyProvider networkType={"TESTNET"}>
+      <SignIn ref={ref} onFinish={onFinish} />
+    </PortkeyProvider>
+  );
+};
+
+export default App;
+```
+
+Now, you have accessed the registration and login function. Next, you can go to register or log in
+
+### 4. Cross-origin configuration
+
+<HighlightBlock>
+  Tip: If your project is on the web, you'll need to configure a cross-origin
+  proxy yourself, including GraphQL and APIs. Currently, we do not offer
+  cross-origin support.
+</HighlightBlock>
+
+```typescript
+// Use nextjs as an example
+module.exports = [
+  {
+    source: "/api/:path*",
+    destination: "https://did-portkey-test.portkey.finance/api/:path*",
+  },
+  {
+    source: "/graphql/:path*",
+    destination:
+      "https://dapp-portkey-test.portkey.finance/Portkey_DID/PortKeyIndexerCASchema/graphql/:path*",
+  },
+];
+```

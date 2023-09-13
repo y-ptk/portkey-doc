@@ -8,57 +8,56 @@
       "title": "Basic Guides for SDKs",
       "link": "doc",
       "_template": "category",
-      "docLink": "docs/QuickStartGuides/quick-start-sdks.mdx",
-
+      "docLink": "docs/QuickStartGuides/BasicGuidesForSDKs/quick-start-sdks.mdx",
       "items": [
         {
           "title": "TypeScript",
           "link": "doc",
           "_template": "category",
-          "docLink": "docs/QuickStartGuides/Typescript/typescript.mdx",
+          "docLink": "docs/QuickStartGuides/BasicGuidesForSDKs/Typescript/typescript.mdx",
           "items": [
             {
-              "document": "docs/QuickStartGuides/Typescript/install-initialize.mdx",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Typescript/install-initialize.mdx",
               "label": "Install and Initialize",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/Typescript/get-data.mdx",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Typescript/get-data.mdx",
               "label": "Get Data",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/Typescript/register.mdx",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Typescript/register.mdx",
               "label": "Register",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/Typescript/social-recovery.mdx",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Typescript/social-recovery.mdx",
               "label": "Login/Social Recovery",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/Typescript/login-by-scanning.mdx",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Typescript/login-by-scanning.mdx",
               "label": "Login by Scanning Code",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/Typescript/logout.mdx",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Typescript/logout.mdx",
               "label": "Logout",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/Typescript/verifier-service.mdx",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Typescript/verifier-service.mdx",
               "label": "Verifier Service",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/Typescript/assets.mdx",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Typescript/assets.mdx",
               "label": "Assets",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/Typescript/on-off-ramp.mdx",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Typescript/on-off-ramp.mdx",
               "label": "On/Off Ramp",
               "_template": "doc"
             }

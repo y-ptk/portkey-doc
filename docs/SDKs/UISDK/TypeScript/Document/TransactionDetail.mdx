@@ -1,0 +1,38 @@
+---
+title: Transaction Detail
+---
+
+# Transaction Detail
+
+Usage scenario: display transaction details
+
+## Usage
+
+```typescript
+import { Transaction } from '@portkey/did-ui-react';
+
+const App = () => (
+  <Transaction
+    transactionDetail={transactionDetail}
+    caAddressInfos={[
+      {
+        chainId: 'AELF',
+        caAddress: 'xxxxx',
+     },
+    ]}
+    onClose={() => {}}
+  />
+);
+
+export default App;
+```
+
+## API
+
+| Parameter         | Description                               | Class              | Default value | Version |
+| :---------------- | :---------------------------------------- | :----------------- | :------------ | :------ |
+| transactionDetail | Transaction details                       | ActivityItemType   | -             |         |
+| caAddressInfos    | User's caAddressInfo list                 | CaAddressInfosType | -             |         |
+| chainId           | The chain where the transaction happens   | ChainId            | -             |         |
+| className         | Class name of the top level container     | string             | -             |         |
+| onClose           | Callback when the close button is clicked | () => void         | -             |         |

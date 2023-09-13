@@ -1,0 +1,39 @@
+---
+title: SetPinAndManager
+---
+
+# SetPinAndManager
+
+Generate manager, set PIN, and add manager to the account
+
+## Usage
+
+```javascript
+<SetPinAndAddManager
+  guardianApprovedList={[]}
+  verificationType={0}
+  guardianIdentifier={'105383420233267798964'}
+  onError={(error: any) => {
+    console.log(error, 'onError SetPinAndAddManager===');
+  }}
+  onFinish={result => {
+    console.log(result, 'onConfirm SetPinAndAddManager===');
+  }}
+/>
+```
+
+## API
+
+| Parameter            | Description                                                | Class                                              | Default Value | Version |
+| :------------------- | :--------------------------------------------------------- | :------------------------------------------------- | :------------ | :------ |
+| type                 | Judge if it's "register" or "recovery" or "addManager"     | AddManagerType                                     | -             |         |
+| chainId              | Chain ID where user account is registered                  | ChainId                                            | AELF          |         |
+| className            | Customized class name                                      | string                                             | -             |         |
+| onlyGetPin           | Judges if only PIN is being retrieved                      | boolean                                            | -             |         |
+| accountType          | Identifier type                                            | AccountType                                        | Email         |         |
+| guardianIdentifier   | Identifier information (email, phone, Google ID, Apple ID) | string                                             | -             |         |
+| guardianApprovedList | List of completed signature information                    | GuardiansApproved[]                                | -             |         |
+| isErrorTip           | Is error tip set as default                                | boolean                                            | true          |         |
+| onError              | Callback of error                                          | (error: {errorFields:string, error: any}) => void; | -             |         |
+| onFinish             | Callback when sign-up or login is completed                | (values: DIDWalletInfo | string) => void;          | -             |         |
+| onCreatePending      | Triggered when the creation/login initiated succeeds       | (pendingInfo: CreatePendingInfo) => void;          | -             |         |

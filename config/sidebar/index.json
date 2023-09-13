@@ -73,13 +73,103 @@
       "link": "generated",
       "items": [
         {
-          "title": "CoreSDK",
+          "title": "Core SDK",
           "link": "none",
           "items": [
             {
-              "document": "docs/CoreSDK.mdx",
-              "label": "Guides",
-              "_template": "doc"
+              "title": "TypeScript",
+              "link": "none",
+              "_template": "category",
+              "items": [
+                {
+                  "document": "docs/SDKs/CoreSDK/TypeScript/@portkeyServices.mdx",
+                  "label": "@portkey/services",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/CoreSDK/TypeScript/@portkeyContracts.mdx",
+                  "label": "@portkey/contracts",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/CoreSDK/TypeScript/@portkeyDid.mdx",
+                  "label": "@portkey/did",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/CoreSDK/TypeScript/@portkeyRequest.mdx",
+                  "label": "@portkey/request",
+                  "_template": "doc"
+                }
+              ]
+            },
+            {
+              "title": "Unity",
+              "link": "none",
+              "_template": "category",
+              "items": [
+                {
+                  "document": "docs/SDKs/CoreSDK/Unity/DID.mdx",
+                  "label": "DID",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/CoreSDK/Unity/ContractBasic.mdx",
+                  "label": "Contract Basic",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/CoreSDK/Unity/GraphQL.mdx",
+                  "label": "GraphQL",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/CoreSDK/Unity/PortkeyConfig.mdx",
+                  "label": "PortkeyConfig",
+                  "_template": "doc"
+                }
+              ]
+            }
+          ],
+          "_template": "category"
+        },
+        {
+          "title": "UI SDK",
+          "link": "none",
+          "items": [
+            {
+              "title": "TypeScript",
+              "link": "none",
+              "_template": "category",
+              "items": [
+                {
+                  "document": "docs/SDKs/UISDK/TypeScript/GettingStarted.mdx",
+                  "label": "Guides",
+                  "_template": "doc"
+                },
+                {
+                  "title": "Document",
+                  "link": "none",
+                  "_template": "category",
+                  "items": [
+                    {
+                      "document": "docs/SDKs/UISDK/TypeScript/Document/Configuration.mdx",
+                      "label": "Configuration",
+                      "_template": "doc"
+                    },
+                    {
+                      "document": "docs/SDKs/UISDK/TypeScript/Document/Multi-themeConfiguration.mdx",
+                      "label": "Multi-theme Configuration",
+                      "_template": "doc"
+                    },
+                    {
+                      "document": "docs/SDKs/UISDK/TypeScript/Document/PortkeyProvider.mdx",
+                      "label": "Provider ( PortkeyProvider )",
+                      "_template": "doc"
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "_template": "category"
@@ -105,7 +195,7 @@
       "_template": "category"
     },
     {
-      "document": "docs/environmentalConfiguration.mdx",
+      "document": "docs/EnvironmentalConfiguration.mdx",
       "label": "Environmental Configuration",
       "_template": "doc"
     }

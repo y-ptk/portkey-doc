@@ -1,0 +1,36 @@
+---
+title: Assets
+---
+
+# Assets
+
+Developers can utilize this component to swiftly construct an asset dashboard page, incorporating functions such as ramp services, transfer capabilities, and the ability to view wallet balances, tokens, NFTs, transaction history, etc.
+
+> Please refer to [Assets](docs/SDKs/UISDK/TypeScript/Document/Assets.mdx) for detailed instructions
+
+## UI SDK
+
+### Reference Example
+
+```typescript
+import { ConfigProvider, Asset, PortkeyAssetProvider } from '@portkey/did-ui-react';
+import React from 'react';
+
+ConfigProvider.setGlobalConfig({
+  requestDefaults: {
+    timeout: 30000,
+  },
+});
+
+export default function Assets() {
+  return (
+    <PortkeyAssetProvider pin="111111" originChainId="AELF">
+      <Asset
+        onLifeCycleChange={lifeCycle => {
+          console.log(lifeCycle, 'onLifeCycleChange');
+        }}
+      />
+    </PortkeyAssetProvider>
+  );
+}
+```

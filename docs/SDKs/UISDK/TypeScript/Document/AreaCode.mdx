@@ -1,0 +1,32 @@
+---
+title: AreaCode
+---
+
+# AreaCode
+
+List of country code.
+
+## Usage
+
+```typescript
+import { AreaCode } from '@portkey/did-ui-react';
+
+const App: React.FC = () => (
+  <AreaCode
+    open={true}
+    value={'United Kingdom'}
+    areaList={[{ country: 'United Kingdom', code: '44', iso: 'GB' }]} 
+  />
+);
+export default App;
+```
+
+## API
+
+| Parameter   | Description                                | Class                        | Default value | Version |
+| :---------- | :----------------------------------------- | :--------------------------- | :------------ | :------ |
+| open        | Control if the list is displayed or hidden | boolean                      | -             |         |
+| areaList    | List of country code                       | CountryItem[];               | -             |         |
+| value       | Selected country code                      | CountryItem['country']       | -             |         |
+| onCancel    | Callback of cancelling                     | () => void;                  | -             |         |
+| onChange    | Callback of selecting                      | (item: CountryItem) => void; | -             |         |

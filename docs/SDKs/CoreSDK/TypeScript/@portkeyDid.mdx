@@ -1,0 +1,208 @@
+---
+title: portkey/did
+---
+
+# @portkey/did
+
+## Introduction
+
+-   [click here to view it in npm](https://www.npmjs.com/package/@portkey/did)
+-   [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/did/README.md)
+
+Provide DID services
+
+## Installation
+
+```shell
+## use NPM
+npm install @portkey/did
+
+## use Yarn
+yarn add @portkey/did
+```
+
+## did.setConfig
+
+Where you configure did server node, graphQL node, storage suite.
+
+### Usage
+
+```typescript
+did.setConfig({
+  requestDefaults: {
+    baseURL: 'your did server node',
+    timeout: 'timeout', // optional default 8000ms
+  },
+  graphQLUrl: 'your graphQL node',
+  storageMethod: 'your storage suite',
+});
+```
+
+## did.login
+
+### type: loginAccount
+
+Email or mobile phone number or Google or Apple login.
+
+```typescript
+did.login(type: 'loginAccount', params: AccountLoginParams): Promise<LoginResult>;
+```
+
+#### Usage
+
+```typescript
+did.login('loginAccount', {
+  chainId: 'chainId',
+  loginGuardianIdentifier: 'loginGuardianIdentifier',
+  guardiansApproved: [
+    {
+      type: 'Email',
+      identifier: 'identifier',
+      verifierId: 'verifierId',
+      verificationDoc: 'verificationDoc',
+      signature: 'signature',
+    },
+  ],
+  extraData: 'extraData',
+  context: {
+    requestId: 'requestId',
+    clientId: 'clientId',
+  },
+});
+```
+
+### type: scan
+
+Logged in management to add management.
+
+```typescript
+login(type: 'scan', params: ScanLoginParams): Promise<true>;
+```
+
+#### Usage
+
+```typescript
+did.login('scan',{
+  chainId: 'chainId',
+  caHash: 'caHash',
+  managerInfo: {
+    address: 'address',
+    extraData: 'extraData'
+  };
+})
+```
+
+## did.getLoginStatus
+
+```typescript
+getLoginStatus(params: { chainId: ChainId; sessionId: string }): Promise<RecoverStatusResult>;
+```
+
+### Usage
+
+```typescript
+did.getLoginStatus({
+  chainId: 'chainId',
+  sessionId: 'sessionId',
+});
+```
+
+## did.logout
+
+```typescript
+logout(params: EditManagerParams): Promise<boolean>;
+```
+
+### Usage
+
+```typescript
+did.logout({ chainId: 'chainId' });
+```
+
+## did.register
+
+```typescript
+register(params: Omit<RegisterParams, 'manager'>): Promise<RegisterResult>;
+```
+
+### Usage
+
+```typescript
+did.register({
+  type: 'Email',
+  loginGuardianIdentifier: 'loginGuardianIdentifier',
+  extraData: 'extraData',
+  chainId: 'chainId',
+  verifierId: 'verifierId',
+  verificationDoc: 'verificationDoc',
+  signature: 'signature',
+  context: {
+    requestId: 'requestId',
+    clientId: 'clientId',
+  },
+});
+```
+
+## did.getRegisterStatus
+
+```typescript
+getRegisterStatus(params: { chainId: ChainId; sessionId: string }): Promise<RegisterStatusResult>;
+```
+
+### Usage
+
+```typescript
+did.getRegisterStatus({
+  chainId: 'chainId',
+  sessionId: 'sessionId',
+});
+```
+
+## did.getHolderInfo
+
+### getHolderInfo by graphQL
+
+```typescript
+getHolderInfo(params: Pick<GetHolderInfoParams, 'manager' | 'chainId'>): Promise<GetCAHolderByManagerResult>;
+```
+
+#### Usage
+
+```typescript
+did.getHolderInfo({
+  manager: 'manager', // optional
+  chainId: 'chainId',
+});
+```
+
+### getHolderInfo by server
+
+```typescript
+getHolderInfo(params: Omit<GetHolderInfoParams, 'manager'>): Promise<IHolderInfo>;
+```
+
+### Usage
+
+```typescript
+did.getHolderInfo({
+  caHash: 'caHash', // loginGuardianIdentifier and caHash choose one
+  loginGuardianIdentifier: 'loginGuardianIdentifier', // loginGuardianIdentifier and caHash choose one
+  chainId: 'chainId',
+});
+```
+
+## did.getVerifierServers
+
+Get the VerifierServer information of the corresponding chain.
+
+```typescript
+getVerifierServers(chainId: ChainId): Promise<VerifierItem[]>;
+```
+
+### Usage
+
+```typescript
+did.getVerifierServers({
+  chainId: 'chainId',
+});
+```

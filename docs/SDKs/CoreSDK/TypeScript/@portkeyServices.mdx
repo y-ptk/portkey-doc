@@ -1,0 +1,121 @@
+---
+title: portkey/services
+---
+
+# @portkey/services
+
+## Introduction
+
+- [click here to view it in npm](https://www.npmjs.com/package/@portkey/services)
+- [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/services/README.md)
+
+Provide verification services
+
+## Installation
+
+```bash
+## use NPM
+npm install @portkey/services
+
+## use Yarn
+yarn add @portkey/services
+```
+
+### services.getVerificationCode
+
+send verification code.
+
+```typescript
+getVerificationCode(params: SendVerificationCodeRequestParams): Promise<SendVerificationCodeResult>;
+```
+
+#### Usage
+```typescript
+did.services.getVerificationCode({
+  params:{
+    chainId: 'chainId',
+    guardianIdentifier: 'guardianIdentifier',
+    type: 'Email',
+    verifierId: 'verifierId',
+  },
+  headers: {
+    reCaptchaToken: 'reCaptchaToken'
+  }
+});
+```
+
+### services.verifyVerificationCode
+
+verify verification code.
+
+```typescript
+verifyVerificationCode(params: VerifyVerificationCodeParams): Promise<VerifyVerificationCodeResult>;
+```
+
+#### Usage
+
+```typescript
+did.services.verifyVerificationCode({
+  verifierSessionId: 'verifierSessionId',
+  chainId: 'chainId',
+  guardianIdentifier: 'guardianIdentifier',
+  verifierId: 'verifierId',
+  verificationCode: 'verificationCode',
+});
+```
+
+### services.verifyGoogleToken
+verify Google token.
+
+```typescript
+verifyGoogleToken(params: VerifyGoogleTokenParams): Promise<VerifyVerificationCodeResult>;
+```
+
+#### Usage
+```typescript
+did.services.verifyVerificationCode({
+  accessToken: 'accessToken',
+  verifierId: 'verifierId',
+  chainId: 'chainId',
+});
+```
+
+### services.verifyAppleToken
+
+verify Apple token.
+
+```typescript
+verifyAppleToken(params: VerifyAppleTokenParams): Promise<VerifyVerificationCodeResult>;
+```
+
+#### Usage
+
+```typescript
+did.services.verifyAppleToken({
+  identityToken: 'identityToken',
+  verifierId: 'verifierId',
+  chainId: 'chainId',
+});
+```
+
+### services.sendAppleUserExtraInfo
+
+send Apple user extra info.
+
+```typescript
+sendAppleUserExtraInfo(params: SendAppleUserExtraInfoParams): Promise<SendAppleUserExtraInfoResult>;
+```
+
+#### Usage
+```typescript
+did.services.sendAppleUserExtraInfo({
+  identityToken: 'identityToken',
+  userInfo: {
+    name: {
+      firstName: 'firstName',
+      lastName: 'lastName',
+    },
+    email: 'email',
+  },
+});
+```

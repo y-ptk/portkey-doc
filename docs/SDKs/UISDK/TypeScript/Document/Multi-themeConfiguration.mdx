@@ -1,0 +1,114 @@
+---
+title: Multi-theme Configuration
+---
+
+# Multi-theme Configuration
+
+
+## Login theme configuration
+
+Currently, we offer three login themes: ("SocialDesign" | "CryptoDesign" | "Web2Design")
+
+### Usage
+```typescript
+<SignIn 
+  design={'SocialDesign'}
+/>
+```
+
+## Global theme configuration
+
+We also provide several CSS variables to facilitate more convenient theme customization. 
+It includes variables for font colors, border colors, and more.
+
+### Usage
+
+#### Font color
+```css
+html {
+  --portkey-ui-font-1: #262626;
+  --portkey-ui-font-2: #464b53;
+  --portkey-ui-font-3: #faad14;
+  --portkey-ui-font-4: #5b8ef4;
+  --portkey-ui-font-5:  #252525;
+  --portkey-ui-font-6: #25272a;
+  --portkey-ui-font-7: #b6babf;
+  --portkey-ui-font-8: #515a62;
+  --portkey-ui-font-9: #e7383a;
+  --portkey-ui-font-10: #00ab34;
+  --portkey-ui-font-11: #87b3ff;
+  --portkey-ui-font-12: #fff;
+  --portkey-ui-font-13: #5685ff;
+
+  --portkey-ui-text-error: #e7383a;
+  --portkey-ui-text-primary: #25272a;
+  --portkey-ui-text-primary1: #5685ff;
+  --portkey-ui-text-success: #00ab34;
+  --portkey-ui-text-secondary: #515a62;
+  --portkey-ui-text-hover: #87b3ff;
+  --portkey-ui-text-hover1: #25272a;
+  --portkey-ui-text-disabled:#b6babf;
+  --portkey-ui-input-text: #262626;
+  --portkey-ui-form-label:#464b53;
+  --portkey-ui-input-placeholder: #b6babf;
+
+  --portkey-ui-dark-icon-line: #e5e8ef;
+  --portkey-ui-icon-fill: #515a62;
+
+  --portkey-ui-text-tip: #b6babf;
+}
+```
+
+#### Border color
+```css
+html {
+  --portkey-ui-border-1: #c5cbd5;
+  --portkey-ui-border-2: #dee2e8;
+  --portkey-ui-border-3: #68aafd;
+  --portkey-ui-border-4: #e7383a;
+  --portkey-ui-border-5: #515a62;
+  --portkey-ui-border-6: #e6e7e9;
+  --portkey-ui-border-7: #5b8ef4;
+
+  --portkey-ui-scan-border: 0px solid #fff;
+
+  --portkey-ui-default-border: #dee2e8;
+  --portkey-ui-primary-border: #68aafd;
+  --portkey-ui-default-btn-border: #dee2e8;
+  --portkey-ui-input-border: #c5cbd5;
+  --portkey-ui-segmented-input-border: #c5cbd5;
+}
+```
+
+#### Border radius
+```css
+html {
+  --portkey-ui-border-radius-0: 2px;
+  --portkey-ui-border-radius-1: 6px;
+  --portkey-ui-border-radius-2: 8px;
+  --portkey-ui-border-radius-3: 12px;
+  --portkey-ui-border-radius-4: 4px;
+  --portkey-ui-icon-b-r-1: 8px;
+  --portkey-ui-rounded-full: 9999px;
+}
+```
+
+#### Background color
+```css
+html {
+  --portkey-ui-scan-bg: #f7f7f9;
+  --portkey-ui-segmented-bg: #f7f7f9;
+  --portkey-ui-input-bg: #fff;
+  --portkey-ui-segmented-selected-bg: #fff;
+  --portkey-ui-select-bg: #fff;
+  --portkey-ui-select-dropdown-bg: #fff;
+  --portkey-ui-dark-icon-bg: #131620;
+
+  --portkey-ui-default-btn-bg: #fff;
+  --portkey-ui-primary-btn-bg: #5b8ef4;
+  --portkey-ui-primary-bg: #5b8ef4;
+  --portkey-ui-default-bg: #fff;
+
+  --portkey-ui-btn-bg: #f3f3f6;
+}
+```

@@ -1,0 +1,76 @@
+---
+title: SignUpAndLogin
+---
+
+# SignUpAndLogin
+
+Login panel: Includes login, QR code login, and registration functions, can invoke UI corresponding registration and login interfaces.
+
+Registration page corresponds to --> SDK.signup, login page --> SDK.socialRecovery, QR code --> QR code that provides data.
+
+1.  Use the following instances as input parameters
+
+1.  After entering user information, click the confirm button to validate the input
+
+1.  Return the obtained information
+
+    1.  For registration and login, return the input content of the input fields
+    1.  For successful QR code login, return the DID wallet information
+
+## Usage
+
+```typescript
+ <SignUpAndLogin
+  phoneCountry={{ country: 'any', countryList: [{ code: '65', country: 'any' }] }}
+  termsOfServiceUrl={'your terms of servicer url'}
+  onError={(error: any) => {
+    console.log(error, 'onError');
+  }}
+  onSuccess={(value: any) => {
+    console.log(value, 'onSuccess');
+  }}
+/>
+```
+
+## API
+
+### BaseProps
+
+| Parameter               | Description                                                                                                                | Class                                              | <div style={{width: 100}}>Default value</div> | Version |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------- | :------------ | :------ |
+| defaultChainId          | Default chain ID                                                                                                           | ChainId                                            | AELF          |         |
+| className               | Class name of the top level container                                                                                      | string                                             | -             |         |
+| style                   | Style                                                                                                                      | CSSProperties                                      |               |         |
+| isErrorTip              | Is the error prompt set default                                                                                            | boolean                                            | true          |         |
+| isShowScan              | Is scan code to log in shown                                                                                               | boolean                                            | true          |         |
+| termsOfService          | Address of the terms, won't be displayed if not configured                                                                 | ReactNode                                          | -             |         |
+| phoneCountry            | List of countries that support sending SMS verification codes                                                              | IPhoneCountry                                      | -             |         |
+| extraElement            | Customized content                                                                                                         | ReactNode                                          | -             |         |
+| onError                 | Callback of error                                                                                                          | (error: {errorFields:string, error: any}) => void; | -             |         |
+| validateEmail           | Customized rules for email verification                                                                                    | (v:string)=>Promise<any\>                          | -             |         |
+| validatePhone           | Customized rules for phone number verification                                                                             | (v:string)=>Promise<any\>                          | -             |         |
+| onSuccess               | Callback when data is entered and successfully verified                                                                    | (value: IGuardianIdentifierInfo) => void;          | -             |         |
+| onSuccess               | Callback when data is entered and successfully verified                                                                    | (value: SignInSuccess) => void;                    | -             |         |
+| onLoginFinishWithoutPin | Callback when login is completed yet PIN is not entered, triggered when scanning the code or when Portkey App is activated | LoginFinishWithoutPin                              | -             |         |
+| onChainIdChange         | Triggered when the chain where the user registers address does not match the default chain ID                              | (chainId?: ChainId) => void;                       | -             |         |
+
+### SocialDesignProps
+
+| Parameter | Description                  | Class                                                            | <div style={{width: 100}}>Default value</div> | Version |
+| :-------- | :--------------------------- | :--------------------------------------------------------------- | :------------ | :------ |
+| type      | Default class for user login | "Email" \| "Phone" \| "Google" \| "Apple" \| "Scan" \| null      | null          |         |
+
+### CryptoDesignProps
+
+| Parameter        | Description                                    | Class                                | <div style={{width: 100}}>Default value</div> | Version |
+| :--------------- | :--------------------------------------------- | :----------------------------------- | :------------ | :------ |
+| type             | Default class for user login                   | "SignUp" \| "Login" \| "LoginByScan" | "Login"       |         |
+| onSignTypeChange | Callback triggered when user operation changes | (type: CreateWalletType) => void;    | -             |         |
+
+### Web2DesignProps
+
+| Parameter        | Description                                    | Class                                | <div style={{width: 100}}>Default value</div> | Version |
+| :--------------- | :--------------------------------------------- | :----------------------------------- | :------------ | :------ |
+| type             | Default class for user login                   | "SignUp" \| "Login" \| "LoginByScan" | "Login"       |         |
+| size             | Default size                                   | "L" \| "S"                           | -             |         |
+| onSignTypeChange | Callback triggered when user operation changes | (type: CreateWalletType) => void;    | -             |         |

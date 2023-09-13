@@ -1,0 +1,64 @@
+---
+title: GraphQL
+---
+
+# GraphQL
+
+## GetQueryByName(string queryName)
+
+**Description:** *For getting a query by name.*
+
+**Parameters:**
+
+-   *queryName* (string): *The name of the query.*
+
+**Returns:** GraphQLQuery object corresponding to the queryName.
+
+**Example:**
+
+```c#
+//getting the query object by name
+GraphQLQuery query = GetQueryByName("GetCAHolderInfo");
+```
+
+## Query<T\>(string query, SuccessCallback<T\> successCallback, ErrorCallback errorCallback)
+
+**Description:** *For making a GraphQL query.*
+
+**Parameters:**
+
+-   *query* (string): *The query to call.*
+-   *successCallback (SuccessCallback<T\>): Callback function when post of query is successful.*
+-   errorCallback (ErrorCallback): *Callback function when error occurs.*
+
+**Generic:**
+
+-   T: *The GraphQL return query type.*
+
+**Example:**
+
+```c#
+StartCoroutine(Query<GraphQLCodeGen.Types.Query\>("GetCAHolderInfo", SuccessCallback, ErrorCallback));
+```
+
+## Query<T\>(GraphQLQuery query, SuccessCallback<T\> successCallback, ErrorCallback errorCallback)
+
+**Description:** *For making a GraphQL query.*
+
+**Parameters:**
+
+-   *query* (GraphQLQuery): *The query to call in object form.*
+-   *successCallback (SuccessCallback<T\>): Callback function when post of query is successful.*
+-   errorCallback (ErrorCallback): *Callback function when error occurs.*
+
+**Generic:**
+
+-   T: *The GraphQL return query type.*
+
+**Example:**
+
+```c#
+var query = GetQueryByName("GetCAHolderInfo");
+
+StartCoroutine(Query<GraphQLCodeGen.Types.Query\>(query, SuccessCallback, ErrorCallback));
+```

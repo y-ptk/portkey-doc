@@ -1,0 +1,82 @@
+---
+title: Install and Initialize
+---
+
+# Install and Initialize
+
+Before integrating Portkey SDK, you need to install and initialize.
+
+## Core SDK
+
+[Core SDK](docs/SDKs/CoreSDK/CoreSDK.mdx) serves as a wrapper for our API, encompassing most of Portkey's functionalities. Before you start using the Core SDK, it's essential to configure the API service.
+
+Initialize the Core SDK client with the network on which you want your application to run:
+
+| Network | Description  |
+| ------- | ------------ |
+| Testnet | aelf test    |
+| Mainnet | aelf mainnet |
+
+### Installation
+
+```bash
+# use NPM
+$ npm install @portkey/did
+
+# use YARN
+$ yarn add @portkey/did
+```
+
+### Initialize
+
+New a `did ` object globally and configure it, use our function with `did`
+Please refer to [Environmental configuration](docs/EnvironmentalConfiguration.mdx)
+
+```typescript
+import { DID } from '@portkey/did';
+
+export const did = new DID();
+
+did.setConfig({
+  // Modify the value corresponding to the following fields
+  requestDefaults: {
+    baseURL: 'your did server node',
+    timeout: 30000, // optional default 8000ms
+  },
+  graphQLUrl: 'your graphQL node',
+  storageMethod: 'your store',
+  network: {
+    defaultNetwork: 'TESTNET',
+  },
+});
+
+```
+
+## UI SDK
+
+[UI SDK](docs/SDKs/UISDK/UISDK.mdx) enables swift integration for projects, eliminating the need for an in-depth understanding of Portkey's underlying mechanisms. This facilitates the seamless incorporation of core functionalities without delving into Portkey's tech details.
+
+### Installation
+
+```bash
+$ npm install @portkey/did-ui-react@latest
+
+# or
+
+$ yarn add @portkey/did-ui-react@latest
+```
+
+### Configuration
+
+```typescript
+import { ConfigProvider } from '@portkey/did-ui-react';
+
+ConfigProvider.setGlobalConfig({
+  requestDefaults: {
+    baseUrl: 'https://did-portkey-test.portkey.finance'
+  },
+  graphQLUrl:
+    "https://dapp-portkey-test.portkey.finance/Portkey_DID/PortKeyIndexerCASchema/graphql",
+});
+
+```

@@ -4,11 +4,6 @@
   "description": "Portkey Docs",
   "blocks": [
     {
-      "document": "docs/Introduction.mdx",
-      "documentLabel": "Portkey Docs - 5min ⏱️",
-      "_template": "hero"
-    },
-    {
       "items": [
         {
           "title": "Easy to Use",

@@ -1,0 +1,91 @@
+---
+title: RampPreview
+---
+
+import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
+
+# RampPreview
+
+Host Ramp transaction details for users to review inputted buying and selling information, as well as navigate to ACH payment.
+
+<HighlightBlock>
+Before using this component, please make sure you are <a href="/docs/SDKs/UISDK/TypeScript/Document/SignIn">logged-in</a>. 
+<br/><br/>
+Before using this component, we assume that you are already familiar with the <a href="/docs/SDKs/UISDK/TypeScript/Document/Configuration">basic configuration</a> of Portkey.
+</HighlightBlock>
+
+## Feature
+
+RampPreview's functions and UIs are as follows:
+
+-   Display the basic information for buy, including fiat currency, types of tokens, quantity, and exchange rate
+-   Exchange rate is renewed every 15 seconds
+-   Provide a shortcut to navigate to [Alchemy Pay](https://alchemypay.org/) to complete the transaction
+
+<div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'start', width: '100%'}}>
+  <div style={{width: '30%'}}> 
+    <div style={{textAlign: 'center', color: '#999'}}> buy-preview </div>
+    <img src='/img/ui-sdk/buy-preview-ui.png' width={'100%'} style={{border: '1px solid #dee2e8'}} />
+  </div>
+  <div style={{width: '30%'}}> 
+    <div style={{textAlign: 'center', color: '#999'}}> sell-preview </div>
+     <img src='/img/ui-sdk/sell-preview-ui.png' width={'100%'} style={{border: '1px solid #dee2e8'}} />
+  </div>
+</div>
+
+## Usage
+
+```typescript
+import { RampPreview, RampTypeEnum } from '@portkey/did-ui-react';
+
+const App: React.FC = () => (
+  <RampPreview
+    initState={{
+      amount: '200',
+      country: 'US',
+      crypto: 'ELF',
+      fiat: 'USD',
+      network: 'ELF',
+      side: RampTypeEnum.BUY,
+    }}
+    chainId={'AELF'}
+    portkeyServiceUrl="https://localtest-applesign.portkey.finance"
+    overrideAchConfig={{
+      appId: 'f83Is2y7L425rxl8',
+      baseUrl: 'https://ramptest.alchemypay.org',
+      updateAchOrder: '/api/app/thirdPart/order/alchemy',
+    }}
+    onBack={function (): void {}}
+  />
+);
+export default App;
+```
+
+## API
+
+| Parameter           | Description                                                                              | Class                 | Mandatory | Default value                        |
+| :------------------ | :--------------------------------------------------------------------------------------- | :-------------------- | :-------- | :----------------------------------- |
+| className           | Class name of the top level container                                                    | string                | false     | —                                    |
+| initState           | Data that controls the initial page display                                              | IRampPreviewInitState | true      | —                                    |
+| portkeyServiceUrl   | Portkey server domain. Can be sent to ACH so ACH can interact with Portkey server domain | string                | true      | —                                    |
+| chainId             | Chain ID where it happens                                                                | ChainId               | false     | 'AELF'                               |
+| overrideAchConfig   | ACH configuration                                                                        | IAchConfig            | false     | Default is the Mainnet configuration |
+| isBuySectionShow    | Control if on-ramp is enabled                                                            | boolean               | false     | true                                 |
+| isSellSectionShow   | Control if off-ramp is enabled                                                           | boolean               | false     | true                                 |
+| onBack              | Control the event to go back to the previous route                                       | () => void            | true      | —                                    |
+
+| Interface             | Property                                                     | Description                          | Class            | Mandatory |
+| :-------------------- | :----------------------------------------------------------- | :----------------------------------- | :--------------- | :-------- |
+| IRampPreviewInitState | crypto                                                       | Crypto name, eg: ELF                 | string           | true      |
+| network               | Crypto network eg: AELF                                      | string                               | true             |           |
+| fiat                  | Fait code, eg: USD                                           | string                               | true             |           |
+| country               | Country code, eg: US                                         | string                               | true             |           |
+| amount                | Account number                                               | string                               | false            |           |
+| side                  | Business type                                                | RampTypeEnum, <br/>"BUY" \| "SELL"   | true             |           |
+| IAchConfig            | appId                                                        | Merchant App Id eg: P0e0l39jipsNYT46 | number \| string | true      |
+| baseUrl               | Redirect to ACH url, eg: 'https://ramp.alchemypay.org'       | string                               | true             |           |
+| updateAchOrder        | Redirect to ACH path, eg: '/api/app/thirdPart/order/alchemy' | string                               | true             |           |
+
+| Fixed configuration | Testnet                                                                                                                                  | Mainnet                                                                                                                            |
+| :------------------ | :--------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| IAchConfig          | `appId: 'f83Is2y7L425rxl8'`,<br/>`baseUrl: 'https://ramptest.alchemypay.org'`,<br/>`updateAchOrder: '/api/app/thirdPart/order/alchemy'`, | `appId: 'P0e0l39jipsNYT46'`,<br/>`baseUrl: 'https://ramp.alchemypay.org'`,<br/>`updateAchOrder: '/api/app/thirdPart/order/alchemy'`|

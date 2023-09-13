@@ -3,7 +3,12 @@
   "link": "generated",
   "items": [
     {
-      "document": "docs/GraphQL.mdx",
+      "document": "docs/APIReference/ContractAPI.mdx",
+      "label": "Contract API",
+      "_template": "doc"
+    },
+    {
+      "document": "docs/APIReference/GraphQL.mdx",
       "label": "GraphQL",
       "_template": "doc"
     },

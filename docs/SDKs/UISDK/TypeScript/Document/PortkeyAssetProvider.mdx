@@ -1,0 +1,40 @@
+---
+title: PortkeyAssetProvider
+---
+
+import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
+
+# PortkeyAssetProvider
+
+User asset provider, used for initializing user information and data management.
+<HighlightBlock>
+Before using this component, please make sure you are <a href="/docs/SDKs/UISDK/TypeScript/Document/SignIn">logged-in</a> or you know the caHash of user's Portkey account and the management of Portkey. 
+<br/><br/>
+Before using this component, we assume that you are already familiar with the <a href="/docs/SDKs/UISDK/TypeScript/Document/Configuration">basic configuration</a> of Portkey.
+</HighlightBlock>
+
+### Usage
+
+```typescript
+import { PortkeyAssetProvider, Asset } from '@portkey/did-ui-react';
+
+const App: React.FC = () => {
+  return (
+    <PortkeyAssetProvider pin="your pin" originChainId="AELF">
+      <Asset />
+    </PortkeyAssetProvider>
+  );
+};
+
+export default App;
+```
+
+## API
+
+| Parameter         | Description                                                                                                                                    | Class   | Default value | Version |
+| :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- | :------ | :------------ | :------ |
+| pin               | User's password for unlocking. If using Portkey login or using `did.save` after logging in, user information can be retrieved through the PIN. | string  | -             |         |
+| originChainId     | Chain ID where Portkey account is registered                                                                                                   | ChainId | -             |         |
+| managerPrivateKey | Private key of delegate management                                                                                                             | string  | -             |         |
+| caHash            | Portkey account's caHash                                                                                                                       | string  | -             |         |
+| didStorageKeyName | storageName used in `did.save`                                                                                                                 | string  | -             |         |

@@ -1,0 +1,33 @@
+---
+title: Graphql Visual Example Links
+---
+
+import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
+
+# Graphql Visual Example Links
+
+## Overview
+
+<HighlightBlock>
+You can visit here and copy the code below to query the corresponding result
+</HighlightBlock>
+
+## Code Example
+
+```typescript
+query{
+  caHolderInfo(dto:{skipCount:0,maxResultCount:100}){
+    chainId
+    caAddress
+    caHash
+    originChainId
+     managerInfos {
+        address
+        extraData
+      }
+  }
+}
+```
+
+## Expected Result
+![Graphql Expected Result](/img/core-sdk/graphql-expected-result.png)
