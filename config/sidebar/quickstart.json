@@ -65,9 +65,121 @@
         },
         {
           "title": "Unity",
-          "link": "generated",
+          "link": "doc",
           "_template": "category",
-          "items": []
+          "docLink": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/Unity.mdx",
+          "items": [
+            {
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/InstallAndInitialize.mdx",
+              "label": "Install and Initialize",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/GetData.mdx",
+              "label": "Get Data",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/Register.mdx",
+              "label": "Register",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/LoginSocialRecovery.mdx",
+              "label": "Login/Social Recovery",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/Logout.mdx",
+              "label": "Logout",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/VerifierService.mdx",
+              "label": "Verifier Service",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/GettingBalance.mdx",
+              "label": "Getting Balance",
+              "_template": "doc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Launch Token and NFT collection",
+      "link": "doc",
+      "_template": "category",
+      "docLink": "docs/QuickStartGuides/LaunchTokenAndNFTCollection/LaunchTokenAndNFTCollection.mdx",
+      "items": [
+        {
+          "document": "docs/QuickStartGuides/LaunchTokenAndNFTCollection/ObtainSEED.mdx",
+          "label": "Obtain SEED",
+          "_template": "doc"
+        },
+        {
+          "title": "Create Tokens",
+          "_template": "category",
+          "link": "doc",
+          "docLink": "docs/QuickStartGuides/LaunchTokenAndNFTCollection/CreateTokens.mdx",
+          "items": [
+            {
+              "document": "docs/QuickStartGuides/LaunchTokenAndNFTCollection/CreateTokensViaEOAAddress.mdx",
+              "label": "Create Tokens via EOA Address",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/QuickStartGuides/LaunchTokenAndNFTCollection/CreateTokensViaPortkeyCAAddress.mdx",
+              "label": "Create Tokens via Portkey CA Address",
+              "_template": "doc"
+            }
+          ]
+        },
+        {
+          "title": "Create NFTs",
+          "_template": "category",
+          "link": "doc",
+          "docLink": "docs/QuickStartGuides/LaunchTokenAndNFTCollection/CreateNFTs.mdx",
+          "items": [
+            {
+              "document": "docs/QuickStartGuides/LaunchTokenAndNFTCollection/CreateNFTsViaEOAAddress.mdx",
+              "label": "Create NFTs via EOA Address",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/QuickStartGuides/LaunchTokenAndNFTCollection/CreateNFTsViaPortkeyAccount.mdx",
+              "label": "Create NFTs via Portkey Account",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/QuickStartGuides/LaunchTokenAndNFTCollection/CreateNFTsOnForest.mdx",
+              "label": "Create NFTs on Forest",
+              "_template": "doc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Portkey Wallet Provider Guides",
+      "link": "doc",
+      "_template": "category",
+      "docLink": "docs/QuickStartGuides/PortkeyWalletProviderGuides/PortkeyWalletProviderGuides.mdx",
+      "items": [
+        {
+          "title": "Install and Initialize",
+          "_template": "category",
+          "link": "doc",
+          "docLink": "docs/QuickStartGuides/PortkeyWalletProviderGuides/InstallAndInitialize.mdx",
+          "items": [
+            {
+              "document": "docs/QuickStartGuides/PortkeyWalletProviderGuides/APIReferences.mdx",
+              "label": "*API references",
+              "_template": "doc"
+            }
+          ]
         }
       ]
     }

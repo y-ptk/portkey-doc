@@ -1,0 +1,28 @@
+---
+title: Getting Balance
+---
+
+# Getting Balance
+
+## Overview
+
+Here is an example of getting balance:
+
+## Core SDK
+
+### Usage
+
+```typescript
+var tokenContract = new ContractBasic(did.GetChain("AELF"), tokenAddress);
+
+var balanceInput = new GetBalanceInput()
+{
+    Owner = caAddress,
+    Symbol = "ELF"
+};
+
+yield return tokenContract.CallTransactionAsync<GetBalanceOutput>(DID.GetWallet(), "GetBalance", balanceInput, output =>
+{
+    //output.Balance
+}, OnError);
+```

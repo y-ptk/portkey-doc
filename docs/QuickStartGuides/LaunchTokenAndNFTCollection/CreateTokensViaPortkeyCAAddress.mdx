@@ -1,0 +1,91 @@
+---
+title: Create Tokens via Portkey CA Address
+---
+
+# Create Tokens via Portkey CA Address
+
+## 1. Obtain SEED
+
+Refer to [Obtain SEED](docs/QuickStartGuides/LaunchTokenAndNFTCollection/ObtainSEED.mdx)
+
+## 2. Create token
+
+Create by using ManagerForwardCall in the **CA contract** and calling the **Token contract**.
+
+Please note: the contract called is on the MainChain but you can decide to create tokens whether on the MainChain or SideChains via the parameter **issue_chain_id (issueChainId in the below demo).**
+
+### Obtain chain information
+
+You can use the methods below to query each chain's info and the info about the CA contract or Token contract. Select MainChain AELF as the token creation chain.
+
+```typescript
+import { did } from '@portkey/did';
+const chainList = await did.services.getChainsInfo();
+```
+
+### Obtain wallet information
+
+Please note: the Portkey account should be logged in.
+
+```typescript
+import { did } from '@portkey/did';
+
+const { wallet } = did.didWallet.managementAccount;
+```
+
+### Initialize contract
+
+```typescript
+import { getContractBasic } from '@portkey/contracts';
+
+const contract = await getContractBasic({
+  contractAddress: TOKEN_CONTRACT_ADDRESS, // MultiToken contract address
+  account: wallet, // Provide the wallet info from the last step
+  callType: 'ca', // Set the initialising contract type as CA contract
+  caContractAddress: 'CA contract address',
+  caHash:  did.didWallet.caInfo.AELF.caHash, // CaHash of the account
+  rpcUrl: 'aelf blockchain node address'
+});  
+```
+
+### Create by calling contract methods
+
+For parameter details, refer to contract documentation: https://docs.aelf.io/en/v1.5.0/reference/smart-contract-api/multi-token.html#token.CreateInput
+
+Create by using the `callSendMethod` method in the **CA contract** and calling the **Token contract**.
+
+```typescript
+const { data: { TransactionId } } = await contract.callSendMethod('Create', wallet.address, {
+    symbol: 'TEST TOKEN',
+    tokenName: 'TEST TOKEN NAME',
+    totalSupply: 'Total amount of tokens can be created',
+    decimals: 'token decimals',
+    issuer: 'Target issuer address',
+    isBurnable: 'Set the token to be burnable or not',
+    issueChainId: 'ID of the chain where the token will be issued',
+});
+```
+
+## 3. Issue
+
+Issue by using the `callSendMethod` method in the **CA contract** and calling the **Token contract**.
+
+```typescript
+const result = await contract.callSendMethod('Issue', wallet.address, {
+  symbol: 'TEST TOKEN',
+  to: 'Target issuer' ,
+  amount: 'Total amount of tokens can be issued'
+});
+```
+
+## Process of Portkey account creating tokens
+
+### CA operation --- set MainChain as issue_chain_id
+
+![set-side-chain](/img/quick-start/ca-operation-set-main-chain-for-token.jpg)
+
+### CA operation --- set SideChain as issue_chain_id
+
+Operations on the SideChain can only take effect when the MainChain and SideChain are synchronized.
+
+![set-side-chain](/img/quick-start/ca-operation-set-side-chain-for-token.jpg)

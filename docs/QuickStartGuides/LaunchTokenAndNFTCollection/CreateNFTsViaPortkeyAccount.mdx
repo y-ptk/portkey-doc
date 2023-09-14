@@ -1,0 +1,292 @@
+---
+title: Create NFTs via Portkey Account
+---
+
+# Create NFTs via Portkey Account
+
+## Create collection
+
+### 1. Obtain SEED
+
+Refer to [Obtain SEED](docs/QuickStartGuides/LaunchTokenAndNFTCollection/ObtainSEED.mdx)
+
+### 2. Create
+
+Create by using ManagerForwardCall in the **CA contract** and calling the CreateToken method in the **argent contract**.
+
+Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or SideChains via the parameter **issue_chain_id.**
+
+```typescript
+var Client = new AElf.Client.AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Construct parameter
+var createTokenInput = new AElf.Contracts.AgentInterface.ManagerCreateTokenInput()
+{
+    Symbol = "NFTSYMBOL-0",
+    SeedSymbol = "SEED-1",
+    Memo = "MEMO_DATA",
+    TokenName = "NFT_COLLECTION_NAME",
+    TotalSupply = 1,
+    Decimals = 0,
+    Issuer = Address.FromBase58(ISSUER_ADDRESS),
+    IsBurnable = false,
+    LockWhiteList = {  },
+    IssueChainId = ISSUE_CHAIN_ID,
+    ExternalInfo = {  }
+};
+
+// Construct the ManagerForwardCall parameter of the CA contract
+var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
+{
+    CaHash = Hash.LoadFromHex(CA_HASH),
+    ContractAddress = Address.FromBase58(AGENT_INTERFACE_CONTRACT_ADDRESS),
+    MethodName = "CreateToken",
+    Args = createTokenInput.ToByteString()
+};
+
+// Construct transaction
+var transaction = new AElf.Types.Transaction()
+{
+    From = Address.FromBase58(YOUR_CA_MANAGER_ADDRESS),
+    To = Address.FromBase58(PORTKEY_CA_CONTRACT_ADDRESS),
+    MethodName = "ManagerForwardCall",
+    Params = managerForwardCallParam.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+await Client.SendRawTransactionAsync(new AElf.Client.Dto.SendRawTransactionInput()
+{
+    Transaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+    ReturnTransaction = true
+});
+```
+
+### 3. Obtain ProxyAccountHash
+
+**Obtain the** **`ProxyAccountAddress`** **of the** **`Issuer`** **or** **`owner`** **:**
+
+Call the `GetTokenInfo` method in the `Token contract` to obtain details about the `collection`
+
+```typescript
+// Create AELF-client and obtain the current block info
+var Client = new AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Construct parameter
+var getTokenInfoParam = new AElf.Contracts.MultiToken.GetTokenInfoInput()
+{
+    Symbol = "NFTSYMBOL-0"
+};
+
+// Construct transaction
+var transaction = new AElf.Types.Transaction()
+{
+    From = Address.FromBase58(YOUR_AELF_ADDRESS),
+    To = Address.FromBase58(TOKEN_CONTRACT_ADDRESS),
+    MethodName = "GetTokenInfo",
+    Params = getTokenInfoParam.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(USER_PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+var callResult = await Client.ExecuteRawTransactionAsync(new ExecuteRawTransactionDto()
+{
+    RawTransaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+});
+```
+
+**Obtain** **`ProxyAccountHash`**
+
+Check the `ProxyAccountHash` corresponding to `ProxyAccountAddress` by calling the `ProxyAccount` contract
+
+```typescript
+// Create AELF-client and obtain the current block info
+var Client = new AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Construct parameter
+var getAddressParam = Address.FromBase58("PROXY_ACCOUNT_ADDRESS");
+
+// Construct transaction
+var transaction = new AElf.Types.Transaction()
+{
+    From = Address.FromBase58(YOUR_AELF_ADDRESS),
+    To = Address.FromBase58(PROXY_ACCOUNT_CONTRACT_ADDRESS),
+    MethodName = "GetProxyAccountByProxyAccountAddress",
+    Params = getAddressParam.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(USER_PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+var callResult = await Client.ExecuteRawTransactionAsync(new ExecuteRawTransactionDto()
+{
+    RawTransaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+});
+```
+
+## Create NFT item
+
+### 1. Create item
+
+Create by using ManagerForwardCall in the **CA contract,** calling the ForwardCall method in the **ProxyAccount contract**, and calling the **Token contract** via the ProxyAccount contract.
+
+Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or SideChains via the parameter **issue_chain_id.**
+
+```typescript
+var Client = new AElf.Client.AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Construct the Create parameter of the Token contract
+var createInput = new AElf.Contracts.MultiToken.CreateInput()
+{
+    Symbol = "NFTSYMBOL-1",
+    TokenName = "NFT_TOKEN_NAME",
+    TotalSupply = 1,
+    Decimals = 0,
+    Issuer = Address.FromBase58("ISSUER_ADDRESS"),
+    IsBurnable = false,
+    LockWhiteList = {  },
+    IssueChainId = ISSUE_CHAIN_ID,
+};
+
+// Construct the ForwardCall parameter of the ProxyAccount contract
+var forwardCallParam = new AElf.Contracts.ProxyAccountContract.ForwardCallInput()
+{
+    ProxyAccountHash = Hash.LoadFromHex(PROXY_ACCOUNT_ADDRESS),
+    ContractAddress = Address.FromBase58(TOKEN_CONTRACT_ADDRESS),
+    MethodName = "Create",
+    Args = createInput.ToByteString()
+};
+
+// Construct the ManagerForwardCall parameter of the CA contract
+var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
+{
+    CaHash = Hash.LoadFromHex(CA_HASH),
+    ContractAddress = Address.FromBase58(AGENT_INTERFACE_CONTRACT_ADDRESS),
+    MethodName = "ForwardCall",
+    Args = forwardCallParam.ToByteString()
+};
+
+// Construct transaction
+var transaction = new AElf.Types.Transaction()
+{
+    From = Address.FromBase58(YOUR_CA_MANAGER_ADDRESS),
+    To = Address.FromBase58(PORTKEY_CA_CONTRACT_ADDRESS),
+    MethodName = "ManagerForwardCall",
+    Params = managerForwardCallParam.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+await Client.SendRawTransactionAsync(new AElf.Client.Dto.SendRawTransactionInput()
+{
+    Transaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+    ReturnTransaction = true
+});
+```
+
+### 2. Issue
+
+Issue by using ManagerForwardCall in the **CA contract,** calling the ForwardCall method in the **ProxyAccount contract**, and calling the **Token contract** via the ProxyAccount contract.
+
+```typescript
+var Client = new AElf.Client.AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Construct the Create parameter of the Token contract
+var issueParam = new IssueInput()
+{
+    Symbol = "NFTSYMBOL-1",
+    Amount = 1,
+    To = Address.FromBase58(ISSUE_TO_ADDRESS)
+};
+
+// Construct the ForwardCall parameter of the ProxyAccount contract
+var forwardCallParam = new AElf.Contracts.ProxyAccountContract.ForwardCallInput()
+{
+    ProxyAccountHash = Hash.LoadFromHex(PROXY_ACCOUNT_ADDRESS),
+    ContractAddress = Address.FromBase58(TOKEN_CONTRACT_ADDRESS),
+    MethodName = "Issue",
+    Args = issueParam.ToByteString()
+};
+
+// Construct the ManagerForwardCall parameter of the CA contract
+var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
+{
+    CaHash = Hash.LoadFromHex(CA_HASH),
+    ContractAddress = Address.FromBase58(AGENT_INTERFACE_CONTRACT_ADDRESS),
+    MethodName = "ForwardCall",
+    Args = forwardCallParam.ToByteString()
+};
+
+// Construct transaction
+var transaction = new AElf.Types.Transaction()
+{
+    From = Address.FromBase58(YOUR_CA_MANAGER_ADDRESS),
+    To = Address.FromBase58(PORTKEY_CA_CONTRACT_ADDRESS),
+    MethodName = "ManagerForwardCall",
+    Params = managerForwardCallParam.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+await Client.SendRawTransactionAsync(new AElf.Client.Dto.SendRawTransactionInput()
+{
+    Transaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+    ReturnTransaction = true
+});
+```
+
+## Process of Portkey account creating collections and NFTs
+
+### CA operation --- set MainChain as issue_chain_id
+
+![create-collections-use-portkey-mainchain](/img/quick-start/create-collections-use-portkey-mainchain.jpg)
+
+### CA operation --- set SideChain as issue_chain_id
+
+Operations on the SideChain can only take effect when the MainChain and SideChain are synchronized.
+
+![create-collections-use-portkey-sidechain](/img/quick-start/create-collections-use-portkey-sidechain.jpg)

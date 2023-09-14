@@ -1,0 +1,13 @@
+{
+  "title": "Troubleshooting",
+  "link": "doc",
+  "docLink": "docs/Troubleshooting/Troubleshooting.mdx",
+  "items": [
+    {
+      "document": "docs/Troubleshooting/FAQ.mdx",
+      "label": "FAQ",
+      "_template": "doc"
+    }
+  ],
+  "_template": "category"
+}

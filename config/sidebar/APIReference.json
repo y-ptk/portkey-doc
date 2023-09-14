@@ -1,6 +1,7 @@
 {
   "title": "API Reference",
-  "link": "generated",
+  "link": "doc",
+  "docLink": "docs/APIReference/APIReference.mdx",
   "items": [
     {
       "document": "docs/APIReference/ContractAPI.mdx",

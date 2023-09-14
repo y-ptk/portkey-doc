@@ -1,0 +1,40 @@
+---
+title: Verifier Service
+---
+
+# Verifier Service
+
+## Overview
+
+When users create an account or add a guardian, verifier services are needed to verify the account. 
+
+Verifier services encompass functions such as recording, sending, and verifying verification codes as well as validating signatures.
+
+### ** Frontend - Proxy Guardian Verifier Service Relationships in Interface Calling **
+
+![frontend proxy guardian verifier](/img/quick-start/frontend-proxy-guardian-verifier.jpg)
+
+1.  Users initiate guardian account requests through the frontend to the proxy Guardian Verifier service, such as emails or phone numbers.
+
+1.  The proxy Guardian Verifier service handles this request:
+
+    1.  If the request is successfully sent, it returns to the frontend with a success confirmation and VerifierSessionId.
+    1.  If the request fails, it returns with an error code and error message.
+
+
+### **Frontend - Backend Proxy Guardian Verifier Service Relationships in Interface Calling**
+
+![backend proxy guardian verifier](/img/quick-start/backend-proxy-guardian-verifier.jpg)
+
+1.  Users send the received verification code to the backend proxy Guardian Verifier service through the frontend.
+
+1.  The backend proxy Guardian Verifier service forwards the verification code:
+
+    1.  If the verification succeeds, it returns the verification file and signature file to the frontend.
+    1.  If the verification fails, it returns an error code and error message to the frontend.  
+
+## Signing up Using Google Account
+
+![sign up using google account](/img/quick-start/sign-up-using-google-account.jpg)
+
+This is automatically done in code and developers do not need to worry about implementing.

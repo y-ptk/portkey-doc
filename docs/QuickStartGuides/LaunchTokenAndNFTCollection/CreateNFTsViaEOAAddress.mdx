@@ -1,0 +1,435 @@
+---
+title: Create NFTs via EOA Address
+---
+
+# Create NFTs via EOA Address
+
+## Create using Agent contract
+
+### Create collection
+
+#### 1. Obtain SEED
+
+Refer to [Obtain SEED](docs/QuickStartGuides/LaunchTokenAndNFTCollection/ObtainSEED.mdx)
+
+#### 2. Create
+
+Create by calling the CreateToken in the token_adapter **contract**.
+
+Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or SideChains via the parameter **issue_chain_id.**
+
+
+```typescript
+// Create AELF-client and obtain the current block info
+var Client = new AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Construct parameter
+var createTokenInput = new AElf.Contracts.AgentInterface.ManagerCreateTokenInput()
+{
+    Symbol = "NFTSYMBOL-0",
+    SeedSymbol = "SEED-1",
+    Memo = "MEMO_DATA",
+    TokenName = "NFT_COLLECTION_NAME",
+    TotalSupply = 1,
+    Decimals = 0,
+    Issuer = Address.FromBase58("ISSUER_ADDRESS"),
+    IsBurnable = false,
+    LockWhiteList = {  },
+    IssueChainId = ISSUE_CHAIN_ID,
+    ExternalInfo = { }
+};
+
+// Construct transaction
+var transaction = new AElf.Types.Transaction()
+{
+    From = Address.FromBase58(YOUR_AELF_ADDRESS),
+    To = Address.FromBase58(AGENT_INTERFACE_CONTRACT_ADDRESS),
+    MethodName = "CreateToken",
+    Params = createTokenInput.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(USER_PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+await Client.SendRawTransactionAsync(new SendRawTransactionInput()
+{
+    Transaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+    ReturnTransaction = true
+});
+```
+
+#### 3. Obtain ProxyAccountHash
+
+**Obtain the** **`ProxyAccountAddress`** **of the** **`Issuer`** **or** **`owner`** **:**
+
+Call the `GetTokenInfo` method in the `Token contract` to obtain details about the `collection`
+
+```typescript
+// Create AELF-client and obtain the current block info
+var Client = new AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Construct parameter
+var getTokenInfoParam = new GetTokenInfoInput()
+{
+    Symbol = "NFTSYMBOL-0"
+};
+
+// Construct transaction
+var transaction = new AElf.Types.Transaction()
+{
+    From = Address.FromBase58(YOUR_AELF_ADDRESS),
+    To = Address.FromBase58(TOKEN_CONTRACT_ADDRESS),
+    MethodName = "GetTokenInfo",
+    Params = getTokenInfoParam.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(USER_PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+var callResult = await Client.ExecuteRawTransactionAsync(new ExecuteRawTransactionDto()
+{
+    RawTransaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+});
+```
+
+**Obtain** **`ProxyAccountHash`**
+
+Check the `ProxyAccountHash` corresponding to `ProxyAccountAddress` by calling the `ProxyAccount` contract
+
+```typescript
+// Create AELF-client and obtain the current block info
+var Client = new AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Construct parameter
+var getAddressParam = Address.FromBase58("PROXY_ACCOUNT_ADDRESS");
+
+// Construct transaction
+var transaction = new AElf.Types.Transaction()
+{
+    From = Address.FromBase58(YOUR_AELF_ADDRESS),
+    To = Address.FromBase58(PROXY_ACCOUNT_CONTRACT_ADDRESS),
+    MethodName = "GetProxyAccountByProxyAccountAddress",
+    Params = getAddressParam.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(USER_PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+var callResult = await Client.ExecuteRawTransactionAsync(new ExecuteRawTransactionDto()
+{
+    RawTransaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+});
+```
+
+### Create NFT item
+
+#### create Item
+
+##### 1. Create item
+
+Create by calling the ForwardCall method in the **ProxyAccount contract** on the MainChain and calling the **Token contract** via the ProxyAccount contract.
+
+Please note: the issue_chain_id has been determined when the collections is created and can not be changed when creating items
+
+```typescript
+// Create AELF-client and obtain the current block info
+var Client = new AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Step1: Generate the transaction parameter for calling Create in the Token contract
+var createInput = new AElf.Contracts.MultiToken.CreateInput()
+{
+    Symbol = "NFTSYMBOL-1",
+    TokenName = "NFT_TOKEN_NAME",
+    TotalSupply = 1,
+    Decimals = 0,
+    Issuer = Address.FromBase58("ISSUER_ADDRESS"),
+    IsBurnable = false,
+    LockWhiteList = {  },
+    IssueChainId = ISSUE_CHAIN_ID,
+};
+
+// Step2: Construct ForwardCall transaction parameter
+var forwardCallParam = new AElf.Contracts.ProxyAccountContract.ForwardCallInput()
+{
+    ProxyAccountHash = Hash.LoadFromHex(PROXY_ACCOUNT_ADDRESS),
+    ContractAddress = Address.FromBase58(TOKEN_CONTRACT_ADDRESS),
+    MethodName = "Create",
+    Args = createInput.ToByteString()
+};
+
+// Step3: Construct transaction
+var transaction = new AElf.Types.Transaction()
+{
+    From = Address.FromBase58(YOUR_AELF_ADDRESS),
+    To = Address.FromBase58(PROXY_ACCOUNT_CONTRACT_ADDRESS),
+    MethodName = "ForwardCall",
+    Params = forwardCallParam.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Generate transaction ID and Sign
+var transactionId = HashHelper.ComputeFrom(ByteArrayHelper.HexStringToByteArray(createRaw.RawTransaction));        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(USER_PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+await Client.SendRawTransactionAsync(new SendRawTransactionInput()
+{
+    Transaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+    ReturnTransaction = true
+});
+```
+
+##### 2. Issue
+
+Issue by calling the ForwardCall method in the **ProxyAccount contract** on the issue_chain_id and calling the **Token contract** via the ProxyAccount contract.
+
+```typescript
+// Create AELF-client and obtain the current block info
+var Client = new AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Step1: Generate the transaction for calling Create in the Token contract
+var issueParam = new AElf.Contracts.MultiToken.IssueInput()
+{
+    Symbol = "NFTSYMBOL-1",
+    Amount = 1,
+    To = Address.FromBase58(ISSUE_TO_ADDRESS)
+};
+
+// Step2: Construct ForwardCall parameter
+var forwardCallParam = new AElf.Contracts.ProxyAccountContract.ForwardCallInput()
+{
+    ProxyAccountHash = Hash.LoadFromHex(PROXY_ACCOUNT_ADDRESS),
+    ContractAddress = Address.FromBase58(TOKEN_CONTRACT_ADDRESS),
+    MethodName = "Issue",
+    Args = issueParam.ToByteString()
+};
+
+// Step3: Construct transaction
+var transaction = new AElf.Types.Transaction()
+{
+    From = Address.FromBase58(YOUR_AELF_ADDRESS),
+    To = Address.FromBase58(PROXY_ACCOUNT_CONTRACT_ADDRESS),
+    MethodName = "ForwardCall",
+    Params = forwardCallParam.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Step4: Sign transaction
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(USER_PRIVATE_KEY), transactionId.ToByteArray());
+
+// Step5: Send transaction
+await Client.SendRawTransactionAsync(new SendRawTransactionInput()
+{
+    Transaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+    ReturnTransaction = true
+});
+```
+
+### Creation process using EOA address
+
+#### EOA operation --- set MainChain as issue_chain_id
+
+![eoa-operation-set-main-chain-for-nft](/img/quick-start/eoa-operation-set-main-chain-for-nft.jpg)
+
+#### EOA operation --- set SideChain as issue_chain_id
+
+![eoa-operation-set-side-chain-for-nft](/img/quick-start/eoa-operation-set-side-chain-for-nft.jpg)
+
+## Create by directly calling the token contract
+
+### Create collection
+
+#### 1. Obtain SEED
+
+1.  Acquire through trading on Symbol Market (Feature).
+1.  Contact aelf personnel to apply for SEED.
+
+#### 2. Create
+
+Create by directly calling the Create method in the token contract.
+
+```typescript
+// Create AELF-client and obtain the current block info
+var Client = new AElfClient("http://node:port");
+var Client = new AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Construct parameter
+var createInput = new AElf.Contracts.MultiToken.CreateInput()
+{
+    Symbol = "NFTSYMBOL-1",
+    TokenName = "NFT_TOKEN_NAME",
+    TotalSupply = 1,
+    Decimals = 0,
+    Issuer = Address.FromBase58("ISSUER_ADDRESS"),
+    IsBurnable = false,
+    LockWhiteList = {  },
+    IssueChainId = ISSUE_CHAIN_ID,
+};
+
+// Construct transaction
+var transaction = new Transaction()
+{
+    From = Address.FromBase58(YOUR_AELF_ADDRESS),
+    To = Address.FromBase58(TOKEN_CONTRACT_ADDRESS),
+    MethodName = "Create",
+    Params = createInput.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(USER_PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+await Client.SendRawTransactionAsync(new SendRawTransactionInput()
+{
+    Transaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+    ReturnTransaction = true
+});
+```
+
+### Create NFT item
+
+#### 1.Create item
+
+Create by directly calling the Create method in the token contract.
+
+```typescript
+// Create AELF-client and obtain the current block info
+var Client = new AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Create NFT parameter
+var createTokenInput = new ManagerCreateTokenInput()
+{
+    Symbol = "NFTSYMBOL-1",
+    SeedSymbol = "NFTSYMBOL-1",
+    Memo = "MEMO_DATA",
+    TokenName = "NFT_TOKEN_NAME",
+    TotalSupply = 1,
+    Decimals = 0,
+    Issuer = Address.FromBase58("ISSUER_ADDRESS"),
+    IsBurnable = false,
+    LockWhiteList = {  },
+    IssueChainId = ISSUE_CHAIN_ID,
+    ExternalInfo = {  }
+};
+
+// Construct transaction
+var transaction = new Transaction()
+{
+    From = Address.FromBase58(YOUR_AELF_ADDRESS),
+    To = Address.FromBase58(TOKEN_CONTRACT_ADDRESS),
+    MethodName = "Create",
+    Params = createTokenInput.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(USER_PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+await Client.SendRawTransactionAsync(new SendRawTransactionInput()
+{
+    Transaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+    ReturnTransaction = true
+});
+```
+
+#### 2. Issue
+
+Create by directly calling the Create method in the token contract.
+
+```typescript
+// Create AELF-client and obtain the current block info
+var Client = new AElfClient("http://node:port");
+var status = Client.GetChainStatusAsync().GetAwaiter().GetResult();
+var height = status.BestChainHeight;
+var blockHash = status.BestChainHash;
+
+// Construct transaction parameter
+var issueParam = new IssueInput()
+{
+    Symbol = "NFTSYMBOL-1",
+    Amount = 1,
+    To = Address.FromBase58(ISSUE_TO_ADDRESS)
+};
+
+// Construct transaction
+var transaction = new Transaction()
+{
+    From = Address.FromBase58(YOUR_AELF_ADDRESS),
+    To = Address.FromBase58(TOKEN_CONTRACT_ADDRESS),
+    MethodName = "Create",
+    Params = createTokenInput.ToByteString(),
+    RefBlockNumber = height,
+    RefBlockPrefix = ByteString.CopyFrom(Hash.LoadFromHex(blockHash).Value.Take(4).ToArray()),
+};
+
+// Sign
+var transactionId = HashHelper.ComputeFrom(transaction.ToByteArray());        
+var signature = CryptoHelper.SignWithPrivateKey(ByteArrayHelper.HexStringToByteArray(USER_PRIVATE_KEY), transactionId.ToByteArray());
+
+// Send transaction
+await Client.SendRawTransactionAsync(new SendRawTransactionInput()
+{
+    Transaction = transaction.ToByteArray().ToHex(),
+    Signature = signature.ToHex(),
+    ReturnTransaction = true
+});
+```
+
+### Creation process using EOA address
+
+#### EOA operation --- set MainChain as issue_chain_id
+
+![eoa-operation-set-main-chain-for-nft-use-eoa-address](/img/quick-start/eoa-operation-set-main-chain-for-nft-use-eoa-address.jpg)
+
+#### EOA operation --- set SideChain as issue_chain_id
+
+![eoa-operation-set-side-chain-for-nft-use-eoa-address](/img/quick-start/eoa-operation-set-side-chain-for-nft-use-eoa-address.jpg)

@@ -1,0 +1,72 @@
+---
+title: Create Tokens via EOA Address
+---
+
+# Create Tokens via EOA Address
+
+## How to create tokens
+
+Regular users can only create tokens/NFT collections through the sales contract.
+
+Users enter the desired symbol, and the sales contract first mints a 721-type NFT containing this symbol's information. Subsequently, the MultiToken contract is called through this NFT to create the symbol.
+
+### 1. Obtain SEED
+
+> Refer to [Obtain SEED](docs/QuickStartGuides/LaunchTokenAndNFTCollection/ObtainSEED.mdx)
+
+### 2. Create Token
+
+#### 
+
+#### Create Using aelf SDK
+
+Refer to contract documentation: https://docs.aelf.io/en/v1.5.0/reference/smart-contract-api/multi-token.html#token.CreateInput
+
+For instance: The token corresponding to TEST-SEED is TEST TOKEN.
+
+1.  Initialize chain information
+
+`const aelf = new AElf(new AElf.providers.HttpProvider('``https://aelf-public-node.aelf.io``'));`
+
+2.  Initialize wallet
+
+`const wallet = AElf.wallet.getWalletByPrivateKey('your privateKey');`
+
+3.  Initialize contract
+
+```typescript
+const tokenContract = await aelf.chain.contractAt(
+  "tokenContract address", // MultiToken contract address
+  wallet
+);
+```
+
+4.  Call the contract method for creation, with parameter details outlined in the MultiToken contract documentation
+
+```typescript
+const { TransactionId } = await tokenContract.Create({
+    symbol: 'TEST TOKEN',
+    tokenName: "TEST TOKEN NAME",
+    totalSupply: 1000000000_00000000,
+    decimals: 8,
+    issuer: 'target issuer',
+    isBurnable: true,
+    issueChainId: 'the chain of the issuer (data type)',
+});
+```
+
+5.  Check the transaction result
+
+```typescript
+const txResult = await aelf.chain.getTxResult(TransactionId)
+```
+
+6.  Issue token
+
+```typescript
+ const issueResult = await tokenContract.Issue({
+  symbol: 'TEST TOKEN',
+  to: '5MjQGbZysnE9ivbFkM1z1T7KCRpo7PorisdL7mSjcgxewyu3N',
+  amount: 1000000000_00000000
+})
+```

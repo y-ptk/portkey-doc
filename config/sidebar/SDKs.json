@@ -252,6 +252,12 @@
               "_template": "doc"
             }
           ]
+        },
+        {
+          "title": "Unity",
+          "link": "doc",
+          "docLink": "docs/SDKs/UISDK/Unity/Unity.mdx",
+          "_template": "doc"
         }
       ],
       "_template": "category"

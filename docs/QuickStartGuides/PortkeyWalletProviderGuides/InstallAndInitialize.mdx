@@ -1,0 +1,71 @@
+---
+title: Install and Initialize
+---
+
+# Install and Initialize
+
+## Overview
+
+> Portkey injects a global JavaScript API into websites visited by its users using the window.portkey provider object. This API allows websites to request users' ca accounts, read data from blockchains the user is connected to, and suggest that the user sign messages and transactions.
+
+## Installation
+
+```shell
+# for npm user
+npm install @portkey/detect-provider
+
+# for yarn user
+yarn add @portkey/detect-provider
+```
+
+## Basic Usage
+
+```typescript
+import detectProvider from '@portkey/detect-provider';
+
+// ES6 Async/Await syntax
+const provider:IPortkeyProvider = await detectProvider();
+
+// ES6 Promise syntax
+detectProvider().then((provider:IPortkeyProvider) => {
+  // do something with provider
+  provider.request({method: ... })
+}).catch((error:Error) => {
+  // Handle error
+});
+```
+
+## Get Started
+
+### Quick Start
+
+```typescript
+import detectProvider from 'detect-provider';
+
+const provider = await detectProvider();
+
+if (provider) {
+  // From now on, this should always be true:
+  startApp(provider); // initialize your app
+} else {
+  console.log('Please install Portkey!');
+}
+// get accounts
+const accounts = await provider.request({method:"requestAccounts"})
+// {AELF:["AELF_Address"],tDVV:["tDVV_Address"]}
+
+// get chain
+const chain = await provider.getChain('AELF');
+
+// status
+const status =  await chain.getChainStatus();
+
+// get contract
+const tokenC = await chain.getContract('token contract address');
+
+// Transfer
+const req = await tokenC.callSendMethod('Transfer',accounts.AELF[0],{amount:100000,symbol:"ELF",to:'xxx'})
+
+// GetBalance
+const req = await tokenC.callViewMethod('GetBalance',{symbol: 'ELF',owner: "owner"})
+```

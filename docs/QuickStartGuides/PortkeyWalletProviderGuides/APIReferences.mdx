@@ -1,0 +1,400 @@
+---
+title: API references
+---
+
+# \*API references
+
+## detectProvider(options)
+
+```typescript
+interface DetectProviderOptions {
+  timeout?: number; // default is 3000 ms
+}
+
+function detectProvider<T extends IPortkeyProvider = IPortkeyProvider>(
+  options?: DetectProviderOptions
+): Promise<T | null>;
+
+Promise<IPortkeyProvider | null>;
+```
+
+## isPortkeyProvider(provider)
+
+```typescript
+function isPortkeyProvider<T extends IPortkeyProvider = IPortkeyProvider>(
+  provider: unknown
+): provider is T;
+```
+
+## Basic Type Definition
+
+### Provider
+
+```typescript
+interface Provider {
+  isPortkey: boolean;
+  isConnected(): boolean;
+  on(event: DappEvents, callback: (...data: any) => void): this;
+  once(event: DappEvents, callback: (...data: any) => void): this;
+  removeListener(event: DappEvents, callback: (...data: any) => void): this;
+  request<T extends MethodResponse = any>(params: RequestOption): Promise<T>;
+  getChain(chainId: ChainId): Promise<IChain>;
+}
+```
+
+#### 1. isPortkey : boolean
+
+Determines whether the current environment is Portkey, if everything works well, it is `true`.
+
+#### 2. isConnected()
+
+Use it to detect if the current Portkey APP's wallet is connected.
+
+```typescript
+if (!provider.isConnected()) {
+  // Portkey APP's wallet is not connected
+  alert("it seems that we have lost the APP's wallet connection");
+  throw new Error("wallet disconnected...");
+}
+```
+
+#### 3. on(event,callback) / once(event,callback)
+
+on(event,callback) is used to listen to the events triggered by Portkey APP.
+
+once(event,callback) works in a similar way, but it will only be triggered once.
+
+```typescript
+provider.on('connected',()=>{
+  // Portkey APP's wallet is connected
+  ...
+});
+provider.once('accountsChanged',(accounts)=>{
+  // Portkey APP's wallet's accounts have changed
+  ...
+});
+```
+
+#### 4. removeListener(event,callback)
+
+Use this method to remove the listener you added before.
+
+If you wish your listener to be removed after it is triggered, use `once(event,callback)` will be more efficient.
+
+Since you need to process the function object as the parameter, you need to keep a reference to the function object.
+
+```typescript
+const listener = ()=> {
+  // Portkey APP's wallet is connected
+  ...
+};
+provider.on('connected',listener);
+provider.removeListener('connected',listener);
+```
+
+#### 5. request<T\>(params)
+
+See [Request Method & Generic Type](#request-method--generic-types) for more details.
+
+```typescript
+provider.request({ method: "42" }).then((result: any) => {
+  // Do something with the result
+});
+// When using typescript, you can see type definition if you call particular method name
+provider.request({ method: "chainIds" }).then((result: ChainId[]) => {
+  // result is ChainIds = ChainId[]
+  console.log("chainIds:", result);
+});
+```
+
+#### 6. getChain(chainId)
+
+This method provides a way to get the `chain` ( type of `IChain` ) object, which handles the on-chain operations.
+
+```typescript
+provider.getChain("AELF").then((chain: IChain) => {
+  // Do something with the chain object
+  console.log("chainId:", chain.chainId);
+});
+```
+
+### DappEvents
+
+`DappEvents` will be triggered when the corresponding event occurs.
+
+```typescript
+type DappEvents =
+  | "connected"
+  | "message"
+  | "disconnected"
+  | "accountsChanged"
+  | "networkChanged"
+  | "chainChanged"
+  | "error";
+```
+
+Use `provider.on(event,callback)` to listen to those events.
+
+You can see the detailed type definition in `@portkey/provider-types__` project.
+
+### IChain
+
+```typescript
+interface IChain {
+  rpcUrl: string;
+  type: ChainType;
+  chainId: ChainId;
+  getContract(contractAddress: string): IContract;
+}
+
+interface IAElfChain extends IAElfRPCMethods, IChain {
+  /** @deprecated use getContract */
+  contractAt<T = any>(
+    address: string,
+    wallet: AElfWallet
+  ): Promise<ChainMethodResult<T>>;
+}
+```
+
+### #1. rpcUrl: string
+
+`rpcUrl` is the url of the chain's rpc server.
+
+You can use it to send rpc requests to the chain directly.
+
+#### 2. type: ChainType
+
+`type` describes the type of the chain, for now it is either `'aelf'` or `'ethereum'`.
+
+You can use it to determine which chain the APP are using.
+
+#### 3. chainId: ChainId
+
+If `type` is `'aelf'` , `chainId` shows which chain type the APP is on.
+
+For example, `'AELF'` means mainchain, `'tDVV'` means sidechain.
+
+#### 4. getContract(contractAddress)
+
+`getContract` creates a way to get the `contract` ( type of `IContract` ) object, which handles the contract operations.
+
+```typescript
+try {
+  const chain = await provider.getChain("AELF");
+  const contract = chain.getContract("mockContractAddress");
+  // Do something with the contract object
+  const result = await contract.callViewMethod(
+    "how-much-token-do-i-have",
+    "aelf0x12345678"
+  );
+  console.log("result:", result);
+} catch (e) {
+  console.error("getContract error:", e);
+}
+```
+
+You can see detailed type definition in source code.
+
+## Request Method & Generic Types
+
+```
+  request<T = Accounts>(params: { method: 'accounts' }): Promise<T>;
+  request<T = ChainIds>(params: { method: 'chainId' }): Promise<T>;
+  request<T = ChainIds>(params: { method: 'chainIds' }): Promise<T>;
+  request<T = NetworkType>(params: { method:'network' }): Promise<T>;
+  request<T = ChainsInfo>(params: { method: 'chainsInfo' }): Promise<T>;
+  request<T = Accounts>(params: { method: 'requestAccounts' }): Promise<T>;
+  request<T = WalletState>(params: { method: 'wallet_getWalletState' }): Promise<T>;
+  request<T = WalletName>(params: { method: 'wallet_getWalletName' }): Promise<T>;
+  request<T = Transaction>(params: {
+    method: 'sendTransaction';
+    payload: SendTransactionParams;
+  }): Promise<T>;
+  request<T = Signature>(params: {
+    method: 'wallet_getSignature';
+    payload: GetSignatureParams;
+  }): Promise<T>;
+  request<T extends MethodResponse = any>(params: RequestOption): Promise<T>;
+```
+
+You can find the complete type definition like `Accounts` in source code.
+
+#### 1. method:'chainId' / method:'chainIds'
+
+Returns the current chainId of the Portkey APP's wallet.
+
+Need to know that `'chainId'` gets the current chainId, while `'chainIds'` gets all the supported chainIds.
+
+```typescript
+provider.request({ method: "chainId" }).then((chainId: ChainId[]) => {
+  console.log("current chainId is:", chainId);
+});
+provider.request({ method: "chainIds" }).then((chainIds: ChainId[]) => {
+  console.log("current APP supports:", chainIds);
+});
+```
+
+#### 2. method:'chainsInfo'
+
+Gets all the supported chains' information.
+
+```typescript
+provider.request({ method: "chainsInfo" }).then((chainsInfo: ChainsInfo) => {
+  console.log("mainchain info", chainsInfo.AELF);
+});
+```
+
+#### 3. method:'network'
+
+Returns the current network type of the Portkey APP's wallet.
+
+For now it's either `'MAIN'` or `'TESTNET'` .
+
+```typescript
+provider.request({ method: "network" }).then((network: NetworkType) => {
+  console.log("current network type is:", network);
+});
+```
+
+#### 4. method:'requestAccounts'
+
+Request the Portkey APP's wallet to connect to your dapp, this method is the bridge to get the permission required by the following methods below.
+
+If the user has not connected to your dapp, the Portkey APP's wallet will pop up a window to ask the user to connect to your dapp.
+
+If the user has connected to your dapp and hasn't removed the permission, this method returns info without a second confirmation.
+
+```typescript
+provider
+  .request({ method: "requestAccounts" })
+  .then((accounts: Accounts) => {
+    // User confirmed
+    console.log("your current mainchain address is:", accounts.AELF[0]);
+  })
+  .catch((e) => {
+    // User denied your request or other issues
+  });
+```
+
+#### 5. method:'accounts'
+
+Returns the current account addresses of the Portkey APP's wallet.
+
+\***\*NOTICE\*\*** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+
+```typescript
+provider.request({ method: "accounts" }).then((accounts: Accounts) => {
+  console.log("the aelf mainchain account:", accounts.AELF);
+});
+```
+
+#### 6. method:'wallet_getWalletState'
+
+Returns the current wallet state of the Portkey APP's wallet.
+
+\***\*NOTICE\*\*** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+
+```typescript
+provider
+  .request({ method: "wallet_getWalletState" })
+  .then((walletState: WalletState) => {
+    console.log("the current wallet state:", walletState);
+  });
+```
+
+#### 7. method:'wallet_getWalletName'
+
+Returns the current wallet name of the Portkey APP's wallet.
+
+\***\*NOTICE\*\*** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+
+```typescript
+provider
+  .request({ method: "wallet_getWalletName" })
+  .then((walletName: WalletName) => {
+    console.log("the current wallet name:", walletName);
+  });
+```
+
+#### 8. {method:'sendTransaction',payload:SendTransactionParams}
+
+Send a transaction to the Portkey APP's wallet.
+
+\***\*NOTICE\*\*** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+
+```typescript
+ const txParams: SendTransactionParams = {
+    ...
+    // You can see the detailed type definition in @portkey/provider-types
+  };
+  provider.request({ method: "sendTransaction", payload: txParams }).then((transaction: Transaction) => {
+    console.log('the transaction:',transaction);
+    if(!transaction?.transactionId){
+      console.error('transaction failed!');
+    }
+  }).catch( e => {
+    // User denied your request or other issues
+  });
+```
+
+#### 9. {method:'wallet_getSignature',payload: GetSignatureParams;}
+
+Get a signature from the Portkey APP's wallet.
+
+\***\*NOTICE\*\*** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+
+```typescript
+  const signatureParams: GetSignatureParams = {
+    ...
+    // You can see the detailed type definition in @portkey/provider-types
+  };
+  provider.request({ method: "wallet_getSignature", payload: signatureParams }).then((signature: Signature) => {
+    console.log('the signature:',signature);
+  }).catch( e => {
+    // User denied your request or other issues
+  });
+```
+
+## Error Code Enumeration
+
+### 1. SUCCESS(0)
+
+It means nothing wrong happened, and the result is exactly what you want.
+
+### 2. USER_DENIED(4001)
+
+It means the user denied the permission request, when you call methods like
+
+`request({ method: 'requestAccounts' })` that needs the user's permission. The Wallet will show a dialog that asks the user to make a decision, if the user clicks the "cancel" button, this error will be thrown away. It is recommended to catch this error when you call those methods(for now):
+
+1.  requestAccounts ;
+1.  sendTransaction ;
+1.  wallet_getSignature .
+
+### 3. ERROR_IN_PARAMS(4002)
+
+It means the parameters you passed in are invalid. You should check them again. If you think your params may cause this trouble, you should catch this error and handle it. If you are using a method that doesn't need any params, you can ignore this error.
+
+### 4. UNKNOWN_METHOD(4003)
+
+It means the method you call is not supported by the wallet, check it again.
+
+### 5. UNIMPLEMENTED(4004)
+
+You are using a method that is not implemented yet, or removed in current version because it is deprecated. Check the Wallet's version before calling those methods.
+
+### 6. UNAUTHENTICATED(4005)
+
+It means the user has not connected to your dapp, you should call `request({ method: 'requestAccounts' })` first to get the permission.
+
+### 7. TIMEOUT(4006)
+
+The wallet can not provide your expected result in time. You should try again later.
+
+### 8. CONTRACT_ERROR(4007)
+
+There are some issues that happen when the wallet is calling the contract. You should check your params and try again.
+
+### 9. INTERNAL_ERROR(5001)
+
+The wallet is facing some internal issues which result in the failure of your request. You should try again later or refresh your page.
