@@ -63,7 +63,7 @@ export default App;
 
 ## API
 
-| Parameter           | Description                                                                              | Class                 | Mandatory | Default value                        |
+| Property            | Description                                                                              | Type                  | Required  | Default                              |
 | :------------------ | :--------------------------------------------------------------------------------------- | :-------------------- | :-------- | :----------------------------------- |
 | className           | Class name of the top level container                                                    | string                | false     | —                                    |
 | initState           | Data that controls the initial page display                                              | IRampPreviewInitState | true      | —                                    |
@@ -74,7 +74,7 @@ export default App;
 | isSellSectionShow   | Control if off-ramp is enabled                                                           | boolean               | false     | true                                 |
 | onBack              | Control the event to go back to the previous route                                       | () => void            | true      | —                                    |
 
-| Interface             | Property                                                     | Description                          | Class            | Mandatory |
+| Interface             | Property                                                     | Description                          | Type             | Required  |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------- | :--------------- | :-------- |
 | IRampPreviewInitState | crypto                                                       | Crypto name, eg: ELF                 | string           | true      |
 | network               | Crypto network eg: AELF                                      | string                               | true             |           |
