@@ -33,9 +33,11 @@ Component for verifying codes when registering and logging in using phone number
 
 ### API
 
-| Parameter          | Description                                                | Class                                                                                  | Default Value | Version |
+| Property           | Description                                                | Type                                                                                   | Default Value | Version |
 | :----------------- | :--------------------------------------------------------- | :------------------------------------------------------------------------------------- | :------------ | :------ |
-| chainId            | Chain ID where user account is registered                  | ChainId                                                                                | -             |         |
+| ~~chainId~~        | ~~Chain ID where user account is registered~~              | ~~ChainId~~                                                                            | -             | V1.5.0  |
+| originChainId      | ID of the chain where user account is registered           | ChainId                                                                                | AELF          | V1.5.0  |
+| targetChainId      | ID of the chain which the current operation targets        | ChainId                                                                                | -             | V1.5.0  |
 | verifier           | Verifier service                                           | VerifierItem                                                                           | -             |         |
 | className          | Customized class name                                      | string                                                                                 | -             |         |
 | accountType        | Identifier type                                            | AccountType                                                                            | Email         |         |

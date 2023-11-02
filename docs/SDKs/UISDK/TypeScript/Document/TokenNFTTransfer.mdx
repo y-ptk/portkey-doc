@@ -6,12 +6,87 @@ title: TokenNFTTransfer
 
 Usage scenario: transfer token/NFT.
 
-Operations:
+## Detailed functions
+
+- Types of currencies supported: token and NFT.
+- Types of transactions supported: transaction and cross-chain transaction.
+- Examine account security during transactions and require the addition of guardians to enhance security when needed.
+- Check the transfer limit settings, including limit per transaction and daily limit, during transactions and require the modification of limits when needed.
+
+
+## Operations
 
 1.  Select the receiver's address. You can select from recent contracts and your other addresses or enter the address manually.
 2.  Enter the value to be transferred.
 3.  Preview the transaction details before it's sent.
 4.  Send the transaction.
+
+## UI
+
+#### Enter address
+    
+1. The asset to be transferred is ELF
+2. Select or enter the recipient's address
+
+#### Cross-chain transaction prompt
+
+1. A prompt that notifies it's a cross-chain transaction
+2. Users will directly jump to the next step if it's not a cross-chain transaction
+
+#### Enter amount
+
+1. Enter the amount of ELF to transfer
+
+#### Transfer NFT
+
+1. Enter the amount of NFT to transfer
+
+<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
+  <img src='/img/ui-sdk/send-enter-address.png' width={'24%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+  <img src='/img/ui-sdk/send-cross-chain-transfer-tip.png' width={'24%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+  <img src='/img/ui-sdk/send-enter-amount.png' width={'24%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+  <img src='/img/ui-sdk/send-nft-amount.png' width={'24%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+</div>
+
+#### Security detection
+
+1. This account needs to add more guardians to enhance security before proceeding
+
+#### Check if the transaction meets the rules
+
+1. If the transaction exceeds the limit, prompt the user to modify it first
+2. Click "Modify" to set limits
+
+#### Set transfer limits
+
+1. Set limit per transaction and daily limit for the token
+2. Click "Send Request" and wait for enough approval from guardians to complete the settings
+
+<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
+  <img src='/img/ui-sdk/send-check-security.png' width={'32%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+  <img src='/img/ui-sdk/send-check-payment-security.png' width={'32%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+  <img src='/img/ui-sdk/send-set-limit.png' width={'32%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+</div>
+
+#### Cross-chain ELF transfer
+
+1. The token is ELF
+2. Display transfer amount, transaction fee, cross-chain transaction fee, and estimated amount received
+
+#### ELF transfer
+1. The token is ELF
+2. Display transfer amount and transaction fee
+
+#### NFT transfer
+
+1. The token is an NFT
+2. Display transaction fee
+
+<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
+  <img src='/img/ui-sdk/send-cross-chain-transfer-elf.png' width={'32%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+  <img src='/img/ui-sdk/send-transfer-elf.png' width={'32%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+  <img src='/img/ui-sdk/send-transfer-nft.png' width={'32%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+</div>
 
 ## Usage
 
@@ -35,7 +110,7 @@ const assetItem = {
 
 ## API
 
-| Parameter    | Description                                                                                                   | Class               | Default value | Version |
+| Property     | Description                                                                                                   | Type                | Default value | Version |
 | :----------- | :------------------------------------------------------------------------------------------------------------ | :------------------ | :------------ | :------ |
 | assetItem    | Details of the token to be sent                                                                               | IAssetItemType      | -             |         |
 | closeIcon    | The close button element                                                                                      | ReactNode           | -             |         |

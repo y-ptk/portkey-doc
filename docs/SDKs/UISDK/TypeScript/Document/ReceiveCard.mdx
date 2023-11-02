@@ -6,6 +6,20 @@ title: ReceiveCard
 
 Usage scenario: display the QR code for receiving tokens.
 
+## UI
+
+### Recipient's QR code of ELF, MainChain AELF
+
+- Scan the code with the Portkey App to transfer ELF token on MainChain AELF
+
+<img src='/img/ui-sdk/receive-main.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+
+### Recipient's QR code of ELF, SideChain tDVV
+
+- Scan the code with the Portkey App to transfer ELF token on SideChain tDVV
+
+<img src='/img/ui-sdk/receive-side.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+
 ## Usage
 
 ```typescript
@@ -33,7 +47,7 @@ export default App;
 
 ## API
 
-| Parameter   | Description                           | Class                                                                               | Default value | Version |
+| Property    | Description                           | Type                                                                                | Default value | Version |
 | ----------- | ------------------------------------- | ----------------------------------------------------------------------------------- | ------------- | ------- |
 | receiveInfo | Receiver's info                       | `{address:string; name?: string;}`                                                  | -             |         |
 | assetInfo   | The close button element              | `{symbol: string;tokenContractAddress: string; chainId: ChainId; decimals: number}` | -             |         |
