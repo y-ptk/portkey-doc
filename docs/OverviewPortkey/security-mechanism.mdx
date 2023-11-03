@@ -7,14 +7,18 @@ title: Security Mechanism
 ![Security Mechanism](/img/security-mechanism.png)
 
 In the past, the primary security concerns of Web3 wallets focused on two aspects: the management of users' wallet private keys and the possibility of recovering a lost wallet. Smart contract wallets, or AA wallets, have made significant breakthroughs in these areas. The core technologies behind this breakthrough are the Virtual Address technology employed by the Portkey AA wallet and the decentralized identity (DID) solution developed based on this technology, along with the advanced social recovery mechanism.  
+
 Firstly, regarding the management of private keys, unlike exchange wallets where users' private keys are passively hosted on exchange platforms, or non-custodial EOA wallets like Metamask where users' private keys are stored directly on their local devices and require complex mnemonic phrases for memorization, the Portkey AA wallet decouples users' accounts and private keys through the Portkey DID design. After users undergo identity verification, they are assigned a Manager Address through the Portkey smart contract. This Manager Address is responsible for managing users' private keys. Additionally, user identity verification is conducted through decentralized guardians, which act as protectors of users' private keys.  
+
 After users register accounts using their mobile phones, email, or other social accounts, if they attempt to log into the wallet on a new device, they need to undergo identity verification by the pre-set guardians. The identity verification rules consist of two parts:
 
 1. Users' creation or login of the Portkey AA wallet needs to be approved by guardians. When users request approval from guardians, they first send verification code requests to decentralized verifiers. After the verifiers successfully verify the user's verification code, they provide signatures to the guardians. Once a sufficient number of signatures have been collected, user's identity will be verified and their creation or login of the wallet will be approved.
 2. If the number of guardians does not exceed 3, all guardians' approvals are required for account login. When the number of guardians surpasses 3, it requires approvals from more than (3/5 \*N) guardians, rounded down and plus 1, to gain control over the wallet account.
 
 These steps allow users to log into the AA wallet without needing mnemonic phrases, using Web2 social information. This naturally eliminates the single point of failure associated with losing mnemonic phrases. Furthermore, the decentralized guardian mechanism mitigates the risk of centralized custody of private keys.
+
 Additionally, in the event of a user's wallet-associated device being lost, the user can recover the wallet through social recovery. After completing the decentralized identity verification process mentioned above, users can choose to remove login permissions from old or suspicious devices, thereby mitigating risks and regaining control over their wallet.
+
 Overall, the Portkey AA wallet, through its core decentralized identity (DID) and social recovery features, offers the following advantages in terms of Web3 wallet security:
 
 <ol
