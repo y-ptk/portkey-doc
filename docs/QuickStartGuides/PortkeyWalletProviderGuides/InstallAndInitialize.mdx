@@ -10,13 +10,14 @@ title: Install and Initialize
 
 ## Installation
 
-```shell
-# for npm user
-npm install @portkey/detect-provider
-
-# for yarn user
-yarn add @portkey/detect-provider
-```
+<Tabs>
+  <TableItem value="npm" label="NPM">
+    <CodeBlock language="bash">npm install @portkey/detect-provider</CodeBlock>
+  </TableItem>
+  <TableItem value="yarn" label="YARN">
+    <CodeBlock language="bash">yarn add @portkey/detect-provider</CodeBlock>
+  </TableItem>
+</Tabs>
 
 ## Basic Usage
 
@@ -46,7 +47,7 @@ const provider = await detectProvider();
 
 if (provider) {
   // From now on, this should always be true:
-  startApp(provider); // initialize your app
+  startApp(provider); // initialize your app (startApp: This is a user-defined function.)
 } else {
   console.log('Please install Portkey!');
 }

@@ -12,11 +12,6 @@
       "document": "docs/APIReference/GraphQL.mdx",
       "label": "GraphQL",
       "_template": "doc"
-    },
-    {
-      "document": "docs/APIReference/RESTful.mdx",
-      "label": "RESTful",
-      "_template": "doc"
     }
   ],
   "_template": "category"

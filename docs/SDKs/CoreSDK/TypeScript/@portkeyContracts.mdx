@@ -13,13 +13,14 @@ Enable contract deployment.
 
 ## Installation
 
-```shell
-## use NPM
-npm install @portkey/contracts
-
-## use Yarn
-yarn add @portkey/contracts
-```
+<Tabs>
+  <TableItem value="npm" label="NPM">
+    <CodeBlock language="bash">npm install @portkey/contracts</CodeBlock>
+  </TableItem>
+  <TableItem value="yarn" label="YARN">
+    <CodeBlock language="bash">yarn add @portkey/contracts</CodeBlock>
+  </TableItem>
+</Tabs>
 
 ## Usage
 
@@ -66,7 +67,7 @@ const res: SendResult = await contract.callSendMethod({
 }
 ```
 
-You can request the result with transactionId in browser
+You can request the result with transactionId in [browser](https://explorer.aelf.io/)
 
 ### Supplemental Code
 

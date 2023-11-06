@@ -1,5 +1,6 @@
 ---
 title: What is Portkey?
+description: AA wallet that makes Web3 onboarding so easy
 ---
 
 # What is Portkey?
@@ -8,7 +9,7 @@ title: What is Portkey?
 
 Portkey is the first AA wallet from aelf's ecosystem, migrating users, developers and projects from Web2 to Web3 with DID solution.  
 
-Users can swiftly log into Portkey via their Web2 social info with no private keys or mnemonics required. Underpinned by social recovery and decentralized guardian design, Portkey safeguards users' assets from centralized control and theft. Portkey also generates nearly zero fees for account creation and user usage with a unique delegation mechanism.  
+Users can swiftly log into Portkey via their Web2 social info with no private keys or mnemonics required. Underpinned by social recovery and decentralized guardian design, Portkey safeguards users' assets from centralized control and theft. Portkey has a unique payment delegation mechanism which enables interested parties to function as delegatees to pay for user activities on users' behalf. This means that users can create accounts for free and fees for other usages may also be covered in Portkey.
 
 Portkey also provides crypto on/off-ramp services, allowing users to exchange fiat with crypto freely. It supports the storage and management of various digital assets such as tokens, NFTs, etc. The compatibility with multi-chains and seamless connection to all kinds of DApps makes Portkey a great way to enter the world of Web3.  
 
@@ -24,9 +25,11 @@ The identity verification process can be divided into two parts. First, the user
 
 ## What does Portkey SDK provide?
 
-With Portkey Core SDK at heart, Portkey SDK offeres a plethora of SDKs to meet the needs of developers onboarding their users to Web3 and integrate Web3 wallets instantly, enabling developers to create or issue digital assets, as well as providing them all-dimensional capabilities such as on-off ramp services, NFT check-out, cross-chain bridges, swap and so forth, to meet the all-around and tailored needs of the developers.  
+Portkey SDK offers a comprehensive array of kits designed to cater to the diverse requirements of developers transitioning to Web3 and seamlessly integrating Web3 wallets. These SDKs empower developers to effortlessly create or issue digital assets and equip them with a wide spectrum of capabilities, including on/off-ramp services, NFT check-out, cross-chain bridges, swaps, and more, ensuring they can tailor their solutions to meet specific demands.
 
-Portkey SDKs also covers a wide range of different languages and platforms, including TypeScript, Unity, COCOS, Android and iOS SDK to help developers with various conditions to execute basic or customizable functionalities.
+Broadly speaking, there are two types of SDKs: Portkey Core SDK and Portkey UI/UX SDK. Both support the same functionalities, but they cater to different development needs. Portkey Core SDK facilitates API calls, while Portkey UI/UX SDK allows for direct referencing.
+
+Portkey SDKs are also available in multiple programming languages and across various platforms, encompassing TypeScript, Unity, Android, and iOS. This diverse range of SDKs accommodates developers with different demands, offering them the tools to execute both fundamental and customizable functionalities.
 
 ### Portkey Core SDK:
 
@@ -50,7 +53,7 @@ Features of integrating Portkey SDKs:
 | :---------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |                Games                | Integrate a AA wallet at no cost <br/> Familiar web2 login for easy user onboarding <br/> Effortlessly take your game assets on-chain <br/> Fast and cheap in-game transactions <br/> Full control and ownership of players in-game assets <br/> Access to the user resources within aelf ecosystem |
 |       Swap and DEX Platforms        | Easy-to-use wallet simplifying operations <br/> Fast, cheap and secure transactions between users <br/> Cross-chain interoperability <br/> Safety ensured by standardized and audited code practices <br/> High-performance network aelf ensures scalability                                        |
-|          NFT Marketplaces           | Easy-to-use wallet, tailored to users' needs <br/> Facilitation of non-fungible token trading and presentation <br/> Remarkable reduction in development expenditures                                                                                                                               |
+|          NFT Marketplaces           | Easy-to-use wallet, tailored to users' needs <br/> Facilitation of non-fungible token trading and presentation <br/> Significant reduction in development expenditures                                                                                                                               |
 | Other types of Web3 tools and Dapps | Free exploration of any type of BUIDL with Portkey SDK and its functionalities <br/> Supported by high performance and low cost layer 1 network, aelf                                                                                                                                               |
 
 Whether it's a game studio or an independent developer, you can quickly build and deploy games. We've crafted comprehensible developer documentation, providing DEMOs for each crucial step to streamline your game development journey. You can focus on creating engaging gaming experiences, bring your games to the market as soon as possible.
@@ -77,7 +80,7 @@ Whether it's a game studio or an independent developer, you can quickly build an
 
 <tr >
   <td rowspan="4">Core SDK</td>
-  <td> Typescript </td>
+  <td> <a href="/docs/SDKs/CoreSDK/TypeScript/@portkeyServices">Typescript</a> </td>
   <td> ✅ </td>
 <td> ✅ </td>
 <td> ✅ </td>
@@ -86,11 +89,11 @@ Whether it's a game studio or an independent developer, you can quickly build an
 <td> ✅ </td>
 </tr>
 <tr>
-  <td> Unity </td>
+  <td> <a href="/docs/SDKs/CoreSDK/Unity/DID">Unity</a> </td>
   <td> ✅ </td>
 <td> ✅ </td>
 <td> ✅ </td>
-<td> 🚀  </td>
+<td> ✅  </td>
 <td> 🚀  </td>
 <td> 🚀  </td>
 
@@ -118,7 +121,7 @@ Whether it's a game studio or an independent developer, you can quickly build an
 
 <tr >
   <td rowspan="4">UI SDK</td>
-  <td> Typescript </td>
+  <td> <a href="/docs/SDKs/UISDK/TypeScript/GettingStarted">Typescript</a> </td>
   <td> ✅ </td>
 <td> ❌ </td>
 <td> ✅ </td>
@@ -127,7 +130,7 @@ Whether it's a game studio or an independent developer, you can quickly build an
 <td> ✅ </td>
 </tr>
 <tr>
-  <td> Unity </td>
+  <td> <a href="/docs/SDKs/UISDK/Unity/">Unity</a> </td>
   <td> ✅ </td>
 <td> ✅ </td>
 <td> ✅ </td>
@@ -163,18 +166,20 @@ Whether it's a game studio or an independent developer, you can quickly build an
 
 ## Why Portkey solution?
 
-### 1. Easy onboarding
+### Easy onboarding
 
 Portkey SDK helps developers, applications and projects onboard users as easily and fast as possible. It allows users to create and log into Web3 wallet accounts with just their Web2 existing accounts, without having to memorizing the complicated and easy-to-lose seed phrases.
 
-### 2. Free to use
+### Free to use
 
 Portkey SDK is totally open-sourced and free-to-use for developers.
 
-### 3. Enhanced Security
+### Enhanced Security
 
 Portkey DID SDK encompasses social recovery logic SDK which projects and developers can leverage to protect their users' Web3 assets. Social recovery decouples users accounts with their private keys to eliminate the risk of singular point. Under social recovery mechanism, user accounts are safeguarded by decentralized guardians imparting users' accounts with not only total self-custody but also upgraded security. On top of that, as indicated by its name, social recovery makes Web3 wallets recoverable and prevent users from losses when when they accidentally lose devices which have their accounts.
 
-### 4. Unlimited Scalability and Interoperability
+### Unlimited Scalability and Interoperability
 
 Backed by high performance layer 1 network, aelf, using Portkey SDK also comes with enjoying unlimited scalability. In the meantime, Portkey SDK will also support multiple chains in the future, providing interoperability to developers and applications.
+
+<img src='/img/docs/overview-portkey/sdk-login.png' style={{padding: 20, border: '1px solid #dee2e8'}} />

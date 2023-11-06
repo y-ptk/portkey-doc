@@ -260,9 +260,15 @@
         },
         {
           "title": "Unity",
-          "link": "doc",
-          "docLink": "docs/SDKs/UISDK/Unity/Unity.mdx",
-          "_template": "doc"
+          "link": "none",
+          "_template": "category",
+          "items": [
+            {
+              "document": "docs/SDKs/UISDK/Unity/Unity.mdx",
+              "label": "Unity",
+              "_template": "doc"
+            }
+          ]
         }
       ],
       "_template": "category"

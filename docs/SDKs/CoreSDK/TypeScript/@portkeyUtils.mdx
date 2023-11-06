@@ -11,13 +11,14 @@ title: portkey/utils
 
 ## Installation
 
-```shell
-## use NPM
-npm install @portkey/utils
-
-## use Yarn
-yarn add @portkey/utils
-```
+<Tabs>
+  <TableItem value="npm" label="NPM">
+    <CodeBlock language="bash">npm install @portkey/utils</CodeBlock>
+  </TableItem>
+  <TableItem value="yarn" label="YARN">
+    <CodeBlock language="bash">yarn add @portkey/utils</CodeBlock>
+  </TableItem>
+</Tabs>
 
 ## encodedTx
 
@@ -86,5 +87,16 @@ detail
   verificationTime, 
   verifierAddress, 
   salt,
+}
+```
+
+### Example response
+```typescript
+{ 
+  type: 'Email', 
+  guardianIdentifier: 'fsdf...grger', 
+  verificationTime: 'xxxx', 
+  verifierAddress: 'http://xxx.com', 
+  salt: "1c02...7631",
 }
 ```
