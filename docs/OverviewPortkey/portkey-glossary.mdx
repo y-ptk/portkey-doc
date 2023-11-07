@@ -1,5 +1,6 @@
 ---
 title: Portkey Glossary
+description: Learn the fancy concepts of Web3
 ---
 
 # Portkey Glossary
@@ -46,8 +47,15 @@ Portkey's social recovery relies on two key roles: guardians and verifiers. It i
 ## Guardian
 
 Guardians are essentially accounts socially associated with the wallet owner. They play the key roles in social recovery process of an AA wallet. They can belong to someone the user trusts or can be directly owned by the user themselves. Guardians can be of different types, such as email, phone number, other wallet accounts, and so forth.  
+
 Portkey's Guardians serve to secure the user's wallet and assist in the social recovery process by helping to collect identity verification results and complete the identity verification. Portkey allows various account types for guardians, including phone numbers, emails, Google Accounts and Apple IDs.
 
 ## Verifier
 
 In Portkey, verifiers are external verification service providers involved in the authentication process for social recovery. They offer verification options such as Email, SMS OTP, Google, or Apple verification. When users create an account, a verifier is randomly assigned to it. However, users have the flexibility to manually select verifiers for each guardian when adding more guardians to their accounts. This customisation strengthens the overall security of social recovery in Portkey and enables users to tailor the level of decentralisation for their wallet according to their preferences.
+
+## Delegatee
+
+Delegatees are third parties that voluntarily cover transaction fees for users, playing a crucial role in Portkey's unique delegation payment mechanism. This mechanism is essential for providing low-cost services and a user-friendly experience on Portkey.
+
+Projects integrating Portkey SDKs can also leverage this mechanism by inviting interested parties, whether they are companies or individuals, to become delegatees. Delegatees have the flexibility to choose the types of transaction fees they want to cover, whether it's fees associated with account sign-up, token transfers, or others. In return for their contributions, projects can collaborate with delegatees, creating a mutually beneficial delegation process that benefits users, projects, and the delegatees themselves.

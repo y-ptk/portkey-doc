@@ -13,19 +13,24 @@ Provide DID services
 
 ## Installation
 
-```shell
-## use NPM
-npm install @portkey/did
-
-## use Yarn
-yarn add @portkey/did
-```
+<Tabs>
+  <TableItem value="npm" label="NPM">
+    <CodeBlock language="bash">npm install @portkey/did</CodeBlock>
+  </TableItem>
+  <TableItem value="yarn" label="YARN">
+    <CodeBlock language="bash">yarn add @portkey/did</CodeBlock>
+  </TableItem>
+</Tabs>
 
 ## did.setConfig
 
 Where you configure did server node, graphQL node, storage suite.
 
-### Usage
+```typescript
+setConfig(options: IConfig): void;
+```
+
+#### Usage
 
 ```typescript
 did.setConfig({
@@ -71,6 +76,20 @@ did.login('loginAccount', {
 });
 ```
 
+#### Example response
+```typescript
+{
+  status: {
+    caAddress: 'xxxxxx',
+    caHash: 'xxxxx';
+    recoveryStatus: 'pending';
+    recoveryMessage: 'loading';
+  };
+  sessionId: 'xxxx';
+  error: undefined;
+}
+```
+
 ### type: scan
 
 Logged in management to add management.
@@ -98,7 +117,7 @@ did.login('scan',{
 getLoginStatus(params: { chainId: ChainId; sessionId: string }): Promise<RecoverStatusResult>;
 ```
 
-### Usage
+#### Usage
 
 ```typescript
 did.getLoginStatus({
@@ -107,13 +126,23 @@ did.getLoginStatus({
 });
 ```
 
+#### Example response
+```typescript
+{
+  caAddress: 'xxxxxx',
+  caHash: 'xxxxx';
+  recoveryStatus: 'pending';
+  recoveryMessage: 'loading';
+}
+```
+
 ## did.logout
 
 ```typescript
 logout(params: EditManagerParams): Promise<boolean>;
 ```
 
-### Usage
+#### Usage
 
 ```typescript
 did.logout({ chainId: 'chainId' });
@@ -125,7 +154,7 @@ did.logout({ chainId: 'chainId' });
 register(params: Omit<RegisterParams, 'manager'>): Promise<RegisterResult>;
 ```
 
-### Usage
+#### Usage
 
 ```typescript
 did.register({
@@ -143,19 +172,43 @@ did.register({
 });
 ```
 
+#### Example response
+```typescript
+{
+  status: {
+    caAddress: 'xxxxxx',
+    caHash: 'xxxxx';
+    recoveryStatus: 'pending';
+    recoveryMessage: 'loading';
+  };
+  sessionId: 'xxxx';
+  error: undefined;
+}
+```
+
 ## did.getRegisterStatus
 
 ```typescript
 getRegisterStatus(params: { chainId: ChainId; sessionId: string }): Promise<RegisterStatusResult>;
 ```
 
-### Usage
+#### Usage
 
 ```typescript
 did.getRegisterStatus({
   chainId: 'chainId',
   sessionId: 'sessionId',
 });
+```
+
+#### Example response
+```typescript
+{
+  caAddress: 'xxxxxx',
+  caHash: 'xxxxx';
+  recoveryStatus: 'pending';
+  recoveryMessage: 'loading';
+}
 ```
 
 ## did.getHolderInfo
@@ -175,13 +228,33 @@ did.getHolderInfo({
 });
 ```
 
+#### Example response
+```typescript
+{
+    id: "tDVV-...sWsX",
+    chainId: "tDVV",
+    caHash: "05da...850b",
+    caAddress: "nJ2K...sWsX",
+    managerInfos: [
+        {
+            address: "2HTm...4jy9",
+            extraData: "{\"transactionTime\":1697...4232,\"deviceInfo\":\"Ompd...mOJN\",\"version\":\"2.0.0\"}",
+            __typename: "ManagerInfo"
+        }
+    ],
+    originChainId: "tDVV",
+    __typename: "CAHolderManagerDto",
+    loginGuardianInfo: [],
+}
+```
+
 ### getHolderInfo by server
 
 ```typescript
 getHolderInfo(params: Omit<GetHolderInfoParams, 'manager'>): Promise<IHolderInfo>;
 ```
 
-### Usage
+#### Usage
 
 ```typescript
 did.getHolderInfo({
@@ -189,6 +262,29 @@ did.getHolderInfo({
   loginGuardianIdentifier: 'loginGuardianIdentifier', // loginGuardianIdentifier and caHash choose one
   chainId: 'chainId',
 });
+```
+
+#### Example response
+```typescript
+  caAddress: "nJ2K...sWsX",
+  caHash: "05da...850b",
+  guardianList: {
+      guardians: [{
+        guardianIdentifier: '182...8550@x.com',
+        identifierHash: 'c6f7...a9bb',
+        isLoginGuardian: true,
+        salt: "1c02...7631",
+        type: "Email",
+        verifierId: "3775e...5444f",
+      }];
+  };
+  managerInfos: [
+    {
+        address: "2HTm...4jy9",
+        extraData: "{\"transactionTime\":1697...4232,\"deviceInfo\":\"Ompd...mOJN\",\"version\":\"2.0.0\"}",
+        __typename: "ManagerInfo"
+    }
+  ],
 ```
 
 ## did.getVerifierServers
@@ -199,10 +295,25 @@ Get the VerifierServer information of the corresponding chain.
 getVerifierServers(chainId: ChainId): Promise<VerifierItem[]>;
 ```
 
-### Usage
+#### Usage
 
 ```typescript
 did.getVerifierServers({
   chainId: 'chainId',
 });
+```
+
+#### Example response
+```typescript
+{
+  data: [
+    {
+      id: 'fdse...twer',
+      name: 'verfier01',
+      imageUrl: 'http://xxx.com',
+      endPoints?: ['http://xxx.com'];
+      verifierAddresses?: ['http://xxx.com'];
+    }
+  ],
+}
 ```

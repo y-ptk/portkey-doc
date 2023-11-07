@@ -9,12 +9,19 @@ title: Contract API
 
 1. CAHolder: 
 CA address, each user corresponds to one CAHolder (the same user's different accounts, for example, his "Apple" and "Google" will correspond to 2 CAHolders).
+
 2. Guardian: 
 The method through which users authenticate, including email, phone number, or a specific verifier.
+
 3. Manager: 
 An externally owned account (EOA) address used by a wallet to initiate transactions (often referring to a device). A single CAHolder can correspond to multiple Managers.
+
 4. Strategy:
 An authentication strategy that considers conditions (e.g., the number of guardians) to determine if the authentication is successful.
+
+5. Protobuf:
+You can click [here](https://protobuf.dev/) to learn more about protobuf.  
+Version currently in use: proto3
 
 ## API documentation
 
@@ -76,11 +83,11 @@ message StrategyNode {
 
 -   **API function**
 
-  Create user's CA wallet
+    -   Create user's CA wallet
 
 -   **Time to call**
 
-  When user registers
+    -   When user registers
 
 -   **Conditions that need to be met**
 
@@ -105,11 +112,11 @@ message AddGuardianInput {
 
 -   **API function**
 
-    Add Guardian to the designated wallet address
+    -   Add Guardian to the designated wallet address
 
 -   **Time to call**
 
-    Omitted
+    -   Omitted
 
 -   **Conditions that need to be met**
 
@@ -134,11 +141,11 @@ message RemoveGuardianInput {
 
 -   **API function**
 
-    Guardian Delete Guardian
+    -   Guardian Delete Guardian
 
 -   **Time to call**
 
-    Omitted
+    -   Omitted
 
 -   **Conditions that need to be met**
 
@@ -164,11 +171,11 @@ message UpdateGuardianInput{
 
 -   **API function**
 
-    Update Guardian
+    -   Update Guardian
 
 -   **Time to call**
 
-    Omitted
+    -   Omitted
 
 -   **Conditions that need to be met**
 
@@ -192,11 +199,11 @@ message SetGuardianForLoginInput {
 
 -   **API function**
 
-    Set the Guardian for login
+    -   Set the Guardian for login
 
 -   **Time to call**
 
-    Before the user logs in
+    -   Before the user logs in
 
 -   **Conditions that need to be met**
 
@@ -288,7 +295,7 @@ message ManagerTransferFromInput{
 
 -   **API function**
 
-    Equivalent to Transfer and TransferFrom
+    -   Equivalent to Transfer and TransferFrom
 
 -   **Conditions that need to be met**
 
@@ -342,7 +349,7 @@ message AddManagerInfoInput {
 
 -   **API function**
 
-    Add Manager
+    -   Add Manager
 
 -   **Time to call**
 
@@ -366,7 +373,7 @@ message RemoveManagerInfoInput {
 
 -   **API function**
 
-    approve Remove the current Manager, not approval from Guardians needed
+    -   approve Remove the current Manager, not approval from Guardians needed
 
 -   **Conditions that need to be met**
 
@@ -388,7 +395,7 @@ message RemoveOtherManagerInfoInput {
 
 -   **API function**
 
-    Remove other Manager, approval from Guardians needed
+    -   Remove other Manager, approval from Guardians needed
 
 -   **Conditions that need to be met**
 
@@ -436,7 +443,7 @@ message AddVerifierServerEndPointsInput {
 
 -   **API function**
 
-    Add verifier node
+    -   Add verifier node
 
 -   **Conditions that need to be met**
 
@@ -483,7 +490,7 @@ message AddCAServerInput{
 
 -   **API function**
 
-    Add CA server
+    -   Add CA server
 
 -   **Conditions that need to be met**
 
@@ -505,7 +512,7 @@ message RemoveCAServerInput {
 
 -   **API function**
 
-    CA Delete CA
+    -   CA Delete CA
 
 -   **Conditions that need to be met**
 
@@ -534,7 +541,7 @@ message GetHolderInfoOutput{
 
 -   **API function**
 
-    Obtain account info
+    -   Obtain account info
 
 -   **Conditions that need to be met**
 
@@ -556,7 +563,7 @@ message GetCAServersOutput {
 
 -   **API function**
 
-    Servers Obtain verifier servers
+    -   Servers Obtain verifier servers
 
 -   **Conditions that need to be met**
 
@@ -632,11 +639,11 @@ message StrategyNode {
 
 -   **API function**
 
-    Call the Validate method in the contract to check if the strategy is legal
+    -   Call the Validate method in the contract to check if the strategy is legal
 
 -   **Conditions that need to be met**
 
-    None
+    -   None
 
 ### Set contract delegation fee
 
@@ -681,11 +688,11 @@ message ContractDelegationFee {
 
 -   **API function**
 
-    Get contract delegation fee
+    -   Get contract delegation fee
 
 -   **Conditions that need to be met**
 
-    None
+    -   None
 
 ### Add controller (controller can be used to create CAHolder)
 
@@ -721,7 +728,7 @@ message ControllerInput{
 
 -   **API function**
 
-    Remove controller
+    -   Remove controller
 
 -   **Conditions that need to be met**
 
@@ -741,7 +748,7 @@ message ControllerOutput{
 
 -   **API function**
 
-    Get controller
+    -   Get controller
 
 -   **Conditions that need to be met**
 

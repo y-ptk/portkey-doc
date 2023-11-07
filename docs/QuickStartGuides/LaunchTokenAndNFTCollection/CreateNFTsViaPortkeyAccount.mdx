@@ -12,7 +12,7 @@ Refer to [Obtain SEED](docs/QuickStartGuides/LaunchTokenAndNFTCollection/ObtainS
 
 ### 2. Create
 
-Create by using ManagerForwardCall in the **CA contract** and calling the CreateToken method in the **argent contract**.
+Create by using ManagerForwardCall in the [**CA contract**](/docs/APIReference/ContractAPI) and calling the CreateToken method in the [**agent contract**](/docs/APIReference/ContractAPI).
 
 Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or SideChains via the parameter **issue_chain_id.**
 
@@ -75,7 +75,7 @@ await Client.SendRawTransactionAsync(new AElf.Client.Dto.SendRawTransactionInput
 
 **Obtain the** **`ProxyAccountAddress`** **of the** **`Issuer`** **or** **`owner`** **:**
 
-Call the `GetTokenInfo` method in the `Token contract` to obtain details about the `collection`
+Call the `GetTokenInfo` method in the [`Token contract`](/docs/APIReference/ContractAPI) to obtain details about the `collection`
 
 ```typescript
 // Create AELF-client and obtain the current block info
@@ -154,7 +154,7 @@ var callResult = await Client.ExecuteRawTransactionAsync(new ExecuteRawTransacti
 
 ### 1. Create item
 
-Create by using ManagerForwardCall in the **CA contract,** calling the ForwardCall method in the **ProxyAccount contract**, and calling the **Token contract** via the ProxyAccount contract.
+Create by using ManagerForwardCall in the [**CA contract**](/docs/APIReference/ContractAPI), calling the ForwardCall method in the [**ProxyAccount contract**](/docs/APIReference/ContractAPI), and calling the [**Token contract**](/docs/APIReference/ContractAPI) via the ProxyAccount contract.
 
 Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or SideChains via the parameter **issue_chain_id.**
 
@@ -221,7 +221,7 @@ await Client.SendRawTransactionAsync(new AElf.Client.Dto.SendRawTransactionInput
 
 ### 2. Issue
 
-Issue by using ManagerForwardCall in the **CA contract,** calling the ForwardCall method in the **ProxyAccount contract**, and calling the **Token contract** via the ProxyAccount contract.
+Issue by using ManagerForwardCall in the [**CA contract**](/docs/APIReference/ContractAPI), calling the ForwardCall method in the [**ProxyAccount contract**](/docs/APIReference/ContractAPI), and calling the [**Token contract**](/docs/APIReference/ContractAPI) via the ProxyAccount contract.
 
 ```typescript
 var Client = new AElf.Client.AElfClient("http://node:port");

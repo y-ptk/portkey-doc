@@ -6,9 +6,9 @@ title: Create Tokens via EOA Address
 
 ## How to create tokens
 
-Regular users can only create tokens/NFT collections through the sales contract.
+Regular users can only create tokens/NFT collections through the [sales contract](/docs/EnvironmentalConfiguration).
 
-Users enter the desired symbol, and the sales contract first mints a 721-type NFT containing this symbol's information. Subsequently, the MultiToken contract is called through this NFT to create the symbol.
+Users enter the desired symbol, and the sales contract first mints a [721-type NFT](/docs/EnvironmentalConfiguration) containing this symbol's information. Subsequently, the [MultiToken](/docs/EnvironmentalConfiguration) contract is called through this NFT to create the symbol.
 
 ### 1. Obtain SEED
 
@@ -20,17 +20,21 @@ Users enter the desired symbol, and the sales contract first mints a 721-type NF
 
 #### Create Using aelf SDK
 
-Refer to contract documentation: https://docs.aelf.io/en/v1.5.0/reference/smart-contract-api/multi-token.html#token.CreateInput
+Refer to contract documentation: https://docs.aelf.io/en/latest/reference/smart-contract-api/multi-token.html
 
 For instance: The token corresponding to TEST-SEED is TEST TOKEN.
 
 1.  Initialize chain information
 
-`const aelf = new AElf(new AElf.providers.HttpProvider('``https://aelf-public-node.aelf.io``'));`
+```typescript
+const aelf = new AElf(new AElf.providers.HttpProvider('https://aelf-public-node.aelf.io'));
+```
 
 2.  Initialize wallet
 
-`const wallet = AElf.wallet.getWalletByPrivateKey('your privateKey');`
+```typescript
+const wallet = AElf.wallet.getWalletByPrivateKey('your privateKey');
+```
 
 3.  Initialize contract
 

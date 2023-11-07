@@ -7,11 +7,13 @@ title: About login through Apple authorization
 Option 1:
 
 If it's integrating into the Portkey project, then use the default SDK configurations and no custom configurations are required.<br/>
+
 If it's a standalone project not integrated with Portkey, configurarions of clientId and redirectURI are needed.
 
 Option 2:
 
 You can use `ConfigProvider.setGlobalConfig` to configure the `customLoginHandler` within `socialLogin`.<br/>
+
 This allows you to execute your own method to implement Apple authorization and obtain the idToken.
 
 ```typescript

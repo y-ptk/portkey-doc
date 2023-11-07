@@ -1,47 +1,49 @@
 ---
 title: Security Mechanism
+description: Safeguard accounts and assets via social recovery
 ---
 
 # Security Mechanism
 
+In the past, the primary security concerns of Web3 wallets focused on two aspects: the management of users' wallet private keys and the possibility of recovering a lost wallet. Smart contract wallets, or Account Abstraction (AA) wallets, have made significant breakthroughs in these areas. The core technologies behind them are the Virtual Address technology employed by the Portkey AA wallet and the decentralised identity (DID) solution developed based on this technology, along with the advanced social recovery mechanism. In other words, Portkey AA wallet allows users to ** own and manage accounts without using private keys and recover their accounts easily through social means **.
+
+- ** No need to manage private keys **
+
+Unlike exchange wallets where users' private keys are passively hosted on exchange platforms, or non-custodial EOA wallets where users' private keys are stored directly on their local devices and require complex  private keys or mnemonic phrases for access, the Portkey AA wallet decouples users' accounts and private keys through the Portkey DID design. After users undergo identity verification, they are assigned a Manager Address through the Portkey smart contract. This Manager Address is responsible for managing users' private keys. Additionally, user identity verification is conducted through decentralised guardians, who act as protectors of users' private keys.
+
 ![Security Mechanism](/img/security-mechanism.png)
 
-In the past, the primary security concerns of Web3 wallets focused on two aspects: the management of users' wallet private keys and the possibility of recovering a lost wallet. Smart contract wallets, or AA wallets, have made significant breakthroughs in these areas. The core technologies behind this breakthrough are the Virtual Address technology employed by the Portkey AA wallet and the decentralized identity (DID) solution developed based on this technology, along with the advanced social recovery mechanism.  
-Firstly, regarding the management of private keys, unlike exchange wallets where users' private keys are passively hosted on exchange platforms, or non-custodial EOA wallets like Metamask where users' private keys are stored directly on their local devices and require complex mnemonic phrases for memorization, the Portkey AA wallet decouples users' accounts and private keys through the Portkey DID design. After users undergo identity verification, they are assigned a Manager Address through the Portkey smart contract. This Manager Address is responsible for managing users' private keys. Additionally, user identity verification is conducted through decentralized guardians, which act as protectors of users' private keys.  
-After users register accounts using their mobile phones, email, or other social accounts, if they attempt to log into the wallet on a new device, they need to undergo identity verification by the pre-set guardians. The identity verification rules consist of two parts:
+After users register accounts using their mobile phones, email, or other social accounts, they must undergo identity verification by their pre-set guardians when attempting to log in to the wallet on a new device. The identity verification process consists of two key components:
 
-1. Users' creation or login of the Portkey AA wallet needs to be approved by guardians. When users request approval from guardians, they first send verification code requests to decentralized verifiers. After the verifiers successfully verify the user's verification code, they provide signatures to the guardians. Once a sufficient number of signatures have been collected, user's identity will be verified and their creation or login of the wallet will be approved.
-2. If the number of guardians does not exceed 3, all guardians' approvals are required for account login. When the number of guardians surpasses 3, it requires approvals from more than (3/5 \*N) guardians, rounded down and plus 1, to gain control over the wallet account.
+1. To create an account or log in to the Portkey AA wallet, users need approval from guardians. When users request this approval, they initiate a verification code request to decentralised verifiers. Once the verifiers successfully verify the user's code, they provide digital signatures to the guardians. Once a sufficient number of signatures have been collected, the user's identity will be verified, and they will gain approval for creating or logging in to the wallet.
+2. When the number of guardians is less than or equal to 3, all guardians' approvals are required for account login. However, when there are more than 3 guardians, it necessitates approvals from a majority of guardians, specifically more than (3/5 * N) guardians, rounded down, and adding 1 for account access.
 
-These steps allow users to log into the AA wallet without needing mnemonic phrases, using Web2 social information. This naturally eliminates the single point of failure associated with losing mnemonic phrases. Furthermore, the decentralized guardian mechanism mitigates the risk of centralized custody of private keys.
-Additionally, in the event of a user's wallet-associated device being lost, the user can recover the wallet through social recovery. After completing the decentralized identity verification process mentioned above, users can choose to remove login permissions from old or suspicious devices, thereby mitigating risks and regaining control over their wallet.
-Overall, the Portkey AA wallet, through its core decentralized identity (DID) and social recovery features, offers the following advantages in terms of Web3 wallet security:
+![Security Mechanism](/img/security-mechanism-guardian.png)
+
+As illustrated in the above diagram, the social recovery mechanism enables users to log in to the AA wallet without the need for mnemonic phrases, relying instead on Web2 social information. This eliminates the single point of failure associated with the loss of mnemonic phrases. Moreover, the decentralised guardian mechanism helps mitigate the risk of centralised custody of private keys.
+
+- ** Easy recovery of account **
+
+In the event of a user's wallet-associated device being lost, the user can recover the wallet through social recovery. After completing the decentralised identity verification process mentioned above, users can choose to remove login permissions from old or suspicious devices, thereby mitigating risks and regaining control over their wallet.
+
+
+Overall, the Portkey AA wallet, through its core decentralised identity (DID) and social recovery features, offers the following advantages in terms of Web3 wallet security:
 
 <ol
   class="security-mechanism"
 >
 
   <li>
-    1. Total self-custody <br /> Unlike crypto exchange wallet where users'
-    private keys are in the hands of the exchanges, with Portkey AA wallet, a
-    user's private key is  also stored in his or her local devices, however, it is linked with manager addresses which are custodied by decentralized guardians. 
-  </li>
+    1. Total self-custody <br /> Unlike crypto exchange wallet where users' private keys are in the hands of the exchanges, with Portkey AA wallet, a user's private key is also stored in his or her local devices, however, it is linked with manager addresses which are custodied by decentralised guardians.   </li>
   <li>
-    2. Socially recoverable <br /> Unlike non-custodial EOA wallets, where users
-    have to memorize their own private keys, and once they lose the keys, they
-    lose the wallets for good. Portkey AA wallet eliminates this risk of
-    singular point making the wallets recoverable resorting to guardians and
-    verifiers
+    2. Socially recoverable <br /> Unlike non-custodial EOA wallets, where users have to memorize their own private keys, and once they lose the keys, they lose the wallets for good. Portkey AA wallet eliminates this risk of singular point making the wallets recoverable resorting to guadians and verifiers.
   </li>
   <li>
     3. More immune to hacks <br />
-    Unlike non-custodial EOA wallets, where private keys lack extra protection and
-    are easy to be hacked, Portkey AA wallet safeguards users wallets with a number
-    of guardians making it much more immune to hacks
+    Unlike non-custodial EOA wallets, where private keys lack extra protection and are easy to be hacked, Portkey AA wallet safeguards users wallets with a number of guardians making it much more immune to hacks.
   </li>
   <li>
     4. Absolutely decentralised <br />
-    The guardians and verifiers playing important roles in social recovery process
-    of Portkey are decentralised, making the wallet completely decentralised as well.
+    The guardians and verifiers playing important roles in social recovery process of Portkey are decentralised, making the wallet completely decentralised as well. 
   </li>
 </ol>

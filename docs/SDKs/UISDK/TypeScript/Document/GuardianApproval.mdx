@@ -34,7 +34,9 @@ Usage scenario: social recovery during login where verification from other guard
 | Property             | Description                                                          | Type                                               | Default       | Version |
 | :------------------- | :------------------------------------------------------------------- | :------------------------------------------------- | :------------ | :------ |
 | className            | Customized class name                                                | string                                             | -             |         |
-| chainId              | Chain ID where user account is registered                            | ChainId                                            | AELF          |         |
+| ~~chainId~~          | ~~Chain ID where user account is registered~~                        | ~~ChainId~~                                        | ~~AELF~~      | V1.5.0  |
+| originChainId        | ID of the chain where user account is registered                     | ChainId                                            | -             | V1.5.0  |
+| targetChainId        | ID of the chain which the current operation targets                  | ChainId                                            | -             | V1.5.0  |
 | header               | Header of guardian list display                                      | ReactNode                                          | -             |         |
 | guardianList         | Identifier information (email, phone, Google ID, Apple ID)           | BaseGuardianItem[]                                 | -             |         |
 | isErrorTip           | Is error tip set as default                                          | boolean                                            | true          |         |

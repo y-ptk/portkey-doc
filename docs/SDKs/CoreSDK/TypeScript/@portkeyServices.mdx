@@ -13,13 +13,14 @@ Provide verification services
 
 ## Installation
 
-```bash
-## use NPM
-npm install @portkey/services
-
-## use Yarn
-yarn add @portkey/services
-```
+<Tabs>
+  <TableItem value="npm" label="NPM">
+    <CodeBlock language="bash">npm install @portkey/services</CodeBlock>
+  </TableItem>
+  <TableItem value="yarn" label="YARN">
+    <CodeBlock language="bash">yarn add @portkey/services</CodeBlock>
+  </TableItem>
+</Tabs>
 
 ### services.getVerificationCode
 
@@ -44,6 +45,14 @@ did.services.getVerificationCode({
 });
 ```
 
+#### Example response
+
+```typescript
+{
+  verifierSessionId: '7396518e-xxxx-xxxx-xxxx-65d5c14badca',
+}
+```
+
 ### services.verifyVerificationCode
 
 verify verification code.
@@ -64,6 +73,15 @@ did.services.verifyVerificationCode({
 });
 ```
 
+#### Example response
+
+```typescript
+{
+    verificationDoc: "0,9289...8ccd,3",
+    signature: "ad5cda...f8ec00"
+}
+```
+
 ### services.verifyGoogleToken
 verify Google token.
 
@@ -78,6 +96,15 @@ did.services.verifyVerificationCode({
   verifierId: 'verifierId',
   chainId: 'chainId',
 });
+```
+
+#### Example response
+
+```typescript
+{
+    verificationDoc: "0,9289...8ccd,3",
+    signature: "ad5cda...f8ec00"
+}
 ```
 
 ### services.verifyAppleToken
@@ -96,6 +123,15 @@ did.services.verifyAppleToken({
   verifierId: 'verifierId',
   chainId: 'chainId',
 });
+```
+
+#### Example response
+
+```typescript
+{
+    verificationDoc: "0,9289...8ccd,3",
+    signature: "ad5cda...f8ec00"
+}
 ```
 
 ### services.sendAppleUserExtraInfo
