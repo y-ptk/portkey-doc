@@ -24,8 +24,8 @@ Generate manager, set PIN, and add manager to the account
 
 ## API
 
-| Parameter            | Description                                                | Class                                              | Default Value    | Version |
-| :------------------- | :--------------------------------------------------------- | :------------------------------------------------- | :--------------- | :------ | --- |
+| Property             | Description                                                | Type                                               | Default          | Version |
+| :------------------- | :--------------------------------------------------------- | :------------------------------------------------- | :--------------- | :------ |
 | type                 | Judge if it's "register", "recovery", or "addManager"      | AddManagerType                                     | -                |         |
 | chainId              | Chain ID where user account is registered                  | ChainId                                            | AELF             |         |
 | className            | Customized class name                                      | string                                             | -                |         |
@@ -35,5 +35,5 @@ Generate manager, set PIN, and add manager to the account
 | guardianApprovedList | List of completed signature information                    | GuardiansApproved[]                                | -                |         |
 | isErrorTip           | Is error tip set as default                                | boolean                                            | true             |         |
 | onError              | Callback of error                                          | (error: {errorFields:string, error: any}) => void; | -                |         |
-| onFinish             | Callback when sign-up or login is completed                | (values: DIDWalletInfo                             | string) => void; | -       |     |
+| onFinish             | Callback when sign-up or login is completed                | (values: DIDWalletInfo                             | string) => void; | -       |
 | onCreatePending      | Triggered when the creation/login initiated succeeds       | (pendingInfo: CreatePendingInfo) => void;          | -                |         |
