@@ -17,6 +17,48 @@ Request
 await did.services.getChainsInfo();
 ```
 
+Response
+
+```JSON
+{
+    "totalCount": 2,
+    "items": [
+        {
+            "chainId": "AELF",
+            "chainName": "AELF",
+            "endPoint": "http://...8000",
+            "explorerUrl": "http://...8000",
+            "caContractAddress": "2imq...RWmR",
+            "defaultToken": {
+                "name": "AELF",
+                "address": "JRmB...voAaE",
+                "imageUrl": "https:...png",
+                "symbol": "ELF",
+                "decimals": "8"
+            },
+            "lastModifyTime": "2023-07-04T08:14:32.4893159Z",
+            "id": "AELF"
+        },
+        {
+            "chainId": "tDVV",
+            "chainName": "tDVV",
+            "endPoint": "https://...io",
+            "explorerUrl": "http://...8000",
+            "caContractAddress": "UYdd...9PYC",
+            "defaultToken": {
+                "name": "tDVV",
+                "address": "7RzV...XuGX",
+                "imageUrl": "https://...png",
+                "symbol": "ELF",
+                "decimals": "8"
+            },
+            "lastModifyTime": "2023-07-05T10:53:27.8331876Z",
+            "id": "tDVV"
+        }
+    ]
+}
+```
+
 ## RegisterInfo
 
 Get the originChainId of the account
@@ -27,13 +69,51 @@ Request
 await did.services.getRegisterInfo()
 ```
 
+Response
+
+```JSON
+{ "originChainId": "AELF" }
+```
+
 ## guardianIdentifiers
 
 Get holderInfo
+
 Request
 
 ```typescript
 await did.services.getHolderInfo();
+```
+
+Response
+
+```JSON
+{
+    "guardianList": {
+        "guardians": [
+            {
+                "thirdPartyEmail": null,
+                "isPrivate": null,
+                "firstName": null,
+                "lastName": null,
+                "identifierHash": "9289...fbd1",
+                "salt": "f184...675",
+                "guardianIdentifier": "pe....io",
+                "verifierId": "594e...b76b",
+                "isLoginGuardian": true,
+                "type": "Email"
+            }
+        ]
+    },
+    "managerInfos": [
+        {
+            "address": "QTSW...zQ1R",
+            "extraData": "{\"transactionTime\":1691031947147,\"deviceInfo\":\"8+t88qcnCFf...ib7phqb\",\"version\":\"2.0.0\"}"
+        }
+    ],
+    "caHash": "6c38...45e8",
+    "caAddress": "2Ppx...BPFex"
+}
 ```
 
 ## Assets
@@ -51,6 +131,36 @@ await did.services.assets.fetchAccountTokenList({
 })
 ```
 
+Response
+
+```JSON
+{
+    "data": [
+        {
+            "chainId": "AELF",
+            "symbol": "ELF",
+            "price": 0.279435,
+            "balance": "10075435000",
+            "decimals": 8,
+            "balanceInUsd": "28.15429179225",
+            "tokenContractAddress": "JRm...AaE",
+            "imageUrl": "https:...lf.png"
+        },
+        {
+            "chainId": "tDVV",
+            "symbol": "ELF",
+            "price": 0.279435,
+            "balance": "5000000000",
+            "decimals": 8,
+            "balanceInUsd": "13.97175",
+            "tokenContractAddress": "7RzV...XuGX",
+            "imageUrl": "https:..lf.png"
+        }
+    ],
+    "totalRecordCount": 2
+}
+```
+
 Request NFT CollectionList
 
 ```typescript
@@ -61,8 +171,26 @@ await did.services.assets.fetchAccountNftCollectionList({
     width: number;
     height: number;
 })
-
 ```
+
+Response
+
+```JSON
+{
+    "totalRecordCount": 2,
+    "data": [
+        {
+          "chainId": "AELF",
+          "collectionName": "AAA",
+          "imageUrl": "",
+          "itemCount": 1,
+          "symbol": "AAA",
+        },
+      // ...
+    ]
+}
+```
+
 
 Request NFT Collection item list
 
@@ -75,6 +203,27 @@ await did.services.assets.fetchAccountNftCollectionItemList({
     width: number;
     height: number;
 })
+```
+
+Response
+```JSON
+{
+    "totalRecordCount": 2,
+    "data": [
+        {
+          "alias": "WANGHUANTEST",
+          "balance": "1",
+          "chainId": "AELF",
+          "imageLargeUrl": "xxx",
+          "imageUrl": "xxx",
+          "symbol": "WANGHUANTEST-111",
+          "tokenContractAddress": "2UDM...DIEK",
+          "tokenId": "WANGHUANTEST-111",
+          "totalSupply": "2",
+        },
+      // ...
+    ]
+}
 ```
 
 ## Activities
@@ -97,4 +246,97 @@ await did.services.activity.getActivityList({
   width?: number;
   height?: number;
 })
+```
+
+Response
+
+```JSON
+{
+    "data": [
+        {
+            "nftInfo": null,
+            "listIcon": "data:image...DDKIY",
+            "transactionId": "781b...875b",
+            "blockHash": "f9b1...4c50",
+            "transactionType": "RemoveOtherManagerInfo",
+            "transactionName": "Remove device",
+            "amount": "",
+            "symbol": null,
+            "decimals": null,
+            "status": "MINED",
+            "timestamp": "1691380816",
+            "isReceived": false,
+            "from": null,
+            "to": null,
+            "fromAddress": "2Ppy...BPFex",
+            "toAddress": "",
+            "fromChainId": "AELF",
+            "toChainId": "",
+            "transactionFees": [
+                {
+                    "symbol": "ELF",
+                    "fee": 74260000,
+                    "feeInUsd": "0.207388620442387",
+                    "decimals": "8"
+                }
+            ],
+            "priceInUsd": null,
+            "isDelegated": false
+        },
+        {
+            "nftInfo": null,
+            "listIcon": "data:image/...fdidm",
+            "transactionId": "fd1d...7e4c",
+            "blockHash": "15dc...9478",
+            "transactionType": "RemoveOtherManagerInfo",
+            "transactionName": "Remove device",
+            "amount": "",
+            "symbol": null,
+            "decimals": null,
+            "status": "MINED",
+            "timestamp": "1691380561",
+            "isReceived": false,
+            "from": null,
+            "to": null,
+            "fromAddress": "2Ppx...PFex",
+            "toAddress": "",
+            "fromChainId": "AELF",
+            "toChainId": "",
+            "transactionFees": [
+                {
+                    "symbol": "ELF",
+                    "fee": 74260000,
+                    "feeInUsd": "0.207388620442387",
+                    "decimals": "8"
+                }
+            ],
+            "priceInUsd": null,
+            "isDelegated": false
+        },
+        {
+            "nftInfo": null,
+            "listIcon": "data:image...ifdsf",
+            "transactionId": "8b78...0084",
+            "blockHash": "e3fb...50e6",
+            "transactionType": "RemoveOtherManagerInfo",
+            "transactionName": "Remove device",
+            "amount": "",
+            "symbol": null,
+            "decimals": null,
+            "status": "MINED",
+            "timestamp": "1691380332",
+            "isReceived": false,
+            "from": null,
+            "to": null,
+            "fromAddress": "2Ppx...PFex",
+            "toAddress": "",
+            "fromChainId": "AELF",
+            "toChainId": "",
+            "transactionFees": [],
+            "priceInUsd": null,
+            "isDelegated": false
+        }
+    ],
+    "totalRecordCount": 74
+}
 ```

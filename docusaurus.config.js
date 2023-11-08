@@ -109,6 +109,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: docusaurusData.url + "/admin/#/collections/doc",
+          breadcrumbs: false,
         },
         // blog: false,
         blog: {
@@ -137,7 +138,7 @@ const config = {
           srcDark: docusaurusData?.logo?.srcDark
             ? docusaurusData?.logo?.srcDark
             : "img/portkey-logo-dark.png",
-          href: "/docs/OverviewPortkey/start-here",
+          href: "/docs/category/overview-of-portkey",
         },
         items: docusaurusData.navbar.map((item) => {
           return formatNavbarItem(item);

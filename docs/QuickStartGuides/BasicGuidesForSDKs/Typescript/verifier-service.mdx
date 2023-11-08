@@ -16,6 +16,8 @@ Verifier services encompass functions such as recording, sending, and verifying 
 
 ### Frontend - Proxy Guardian Verifier Service Relationships in Interface Calling
 
+![frontend proxy guardian verifier](/img/quick-start/frontend-proxy-guardian-verifier.jpg)
+
 1. Users initiate guardian account requests through the frontend to the proxy Guardian Verifier service, such as emails or phone numbers.
 2. The proxy Guardian Verifier service handles this request:
    - If the request is successfully sent, it returns to the frontend with a success confirmation and VerifierSessionId.
@@ -23,12 +25,16 @@ Verifier services encompass functions such as recording, sending, and verifying 
 
 ### Frontend - Backend Proxy Guardian Verifier Service Relationships in Interface Calling
 
+![backend proxy guardian verifier](/img/quick-start/backend-proxy-guardian-verifier.jpg)
+
 1.  Users send the received verification code to the backend proxy Guardian Verifier service through the frontend.
 2.  The backend proxy Guardian Verifier service forwards the verification code:
     - If the verification succeeds, it returns the verification file and signature file to the frontend.
     - If the verification fails, it returns an error code and error message to the frontend.
 
 ## Signing up Using Google Account
+
+![sign up using google account](/img/quick-start/sign-up-using-google-account.jpg)
 
 ### Obtain automatically assigned verifier service data
 
@@ -127,4 +133,67 @@ type VerifyVerificationCodeResult = {
 };
 
 verifyGoogleToken(params: VerifyGoogleTokenParams): Promise<VerifyVerificationCodeResult>;
+```
+
+## Sign up
+
+### Request
+
+```typescript
+const { verificationDoc, signature } = verifyRes;
+
+const requestId = randomId();
+
+const clientId = 'managerAddress'; // manager address
+
+const params: Omit<RegisterParams, 'manager'> = {
+    // Modify the value corresponding to the following fields
+    type: 'Email',
+    loginGuardianIdentifier: 'loginGuardianIdentifier',
+    extraData: 'extraData',
+    chainId: 'chainId',
+    verifierId: 'verifierId',
+    verificationDoc,
+    signature,
+    context: {
+      requestId: 'requestId',
+      clientId: 'clientId',
+    },
+}
+
+did.register(params);
+```
+
+### Supplemental Code
+
+```typescript
+enum AccountTypeEnum {
+  Email,
+  Phone,
+  Google,
+  Apple,
+}
+
+type AccountType = keyof typeof AccountTypeEnum;
+
+interface RegisterParams {
+  type: AccountType;
+  loginGuardianIdentifier: string;
+  manager: string;
+  extraData: string;
+  chainId: ChainId;
+  verifierId: string;
+  verificationDoc: string;
+  signature: string;
+  context: Context;
+}
+
+type ChainId = 'AELF' | 'tDVV' | 'tDVW';
+
+interface Context {
+  clientId: string;
+  requestId: string;
+}
+
+register(params: Omit<RegisterParams, 'manager'>): Promise<RegisterResult>
 ```

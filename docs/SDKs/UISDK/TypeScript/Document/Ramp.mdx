@@ -124,25 +124,95 @@ export default App;
 
 Page initialization data, you can define the default fiat currency and token information from here.
 
-| Interface      | Property                | Description                   | Type   | Required  |
-| :------------- | :---------------------- | :---------------------------- | :----- | :-------- |
-| IRampInitState | crypto                  | Crypto name, eg: ELF          | string | true      |
-| network        | Crypto network eg: AELF | string                        | true   |           |
-| fiat           | Fait code, eg: USD      | string                        | true   |           |
-| country        | Country code, eg: US    | string                        | true   |           |
-| amount         | Account number          | string                        | false  |           |
-| side           | Business type           | RampTypeEnum, "BUY" \| "SELL" | true   |           |
+<table>
+  <tr>
+    <th>Interface</th>
+    <th>Property</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Required</th>
+  </tr>
+  <tr>
+    <td rowspan="7">IRampInitState</td>
+  </tr>
+  <tr>
+    <td>crypto</td>
+    <td>Crypto name, eg: ELF</td>
+    <td>string</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>network</td>
+    <td>Crypto network eg: AELF</td>
+    <td>string</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>fiat</td>
+    <td>Fait code, eg: USD</td>
+    <td>string</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>country</td>
+    <td>Country code, eg: US</td>
+    <td>string</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>amount</td>
+    <td>Account number</td>
+    <td>string</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>side</td>
+    <td>Business type</td>
+    <td>strRampTypeEnum: "BUY" | "SELL"</td>
+    <td>true</td>
+  </tr>
+</table>
 
 #### ITokenInfo
 
 Current chain information for the operation, defaulting to aelf
 
-| Interface            | Property                  | Description     | Type             | Required  |
-| :------------------- | :------------------------ | :-------------- | :--------------- | :-------- |
-| ITokenInfo           | decimals                  | Decimals, eg: 8 | number \| string | true      |
-| chainId              | Chain ID code, eg: 'AELF' | ChainId         | true             |           |
-| symbol               | Symbol code, eg: 'ELF'    | string          | true             |           |
-| tokenContractAddress | Token contract address    | string          | true             |           |
+<table>
+  <tr>
+    <th>Interface</th>
+    <th>Property</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Required</th>
+  </tr>
+  <tr>
+    <td rowspan="5">ITokenInfo</td>
+  </tr>
+  <tr>
+    <td>decimals</td>
+    <td>Decimals, eg: 8</td>
+    <td>number | string</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>chainId</td>
+    <td>Chain ID code, eg: 'AELF'</td>
+    <td>ChainId</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>symbol</td>
+    <td>Symbol code, eg: 'ELF'</td>
+    <td>string</td>
+    <td>true</td>
+  </tr>
+  <tr>
+    <td>tokenContractAddress</td>
+    <td>Token contract address</td>
+    <td>string</td>
+    <td>true</td>
+  </tr>
+</table>
 
 #### IRampPreviewInitState
 
