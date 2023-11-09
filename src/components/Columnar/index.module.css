@@ -1,0 +1,17 @@
+.column-show-header,
+.column-show-container  {
+  display: flex;
+  gap: 2px;
+}
+
+.column-show-header h3 {
+  flex: 1;
+  align-self: stretch;
+  font-size: 20px;
+  text-align: center;
+}
+
+.column-show-container img {
+  padding: 20px;
+  border: 1px solid var(--ifm-table-border-color);
+}

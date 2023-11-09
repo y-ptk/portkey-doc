@@ -145,15 +145,7 @@ const config = {
         }),
         hideOnScroll: true,
       },
-      footer: {
-        links: docusaurusData.footer?.links.map((item) => {
-          return formatFooterItem(item);
-        }),
-        // copyright:
-        //   `Copyright © ${new Date().getFullYear()} ` +
-        //   (docusaurusData.footer?.copyright || docusaurusData.title),
-        copyright: docusaurusData.footer?.copyright,
-      },
+      footer: {},
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
