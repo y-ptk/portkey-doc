@@ -1,0 +1,86 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.portkey-footer {
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px 180px 0;
+  background-color: var(--ifm-footer-background-color);
+}
+
+.footer-logo img {
+  width: 142px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0 78px;
+}
+
+.medium-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.medium {
+  display: flex;
+  gap: 24px;
+}
+
+.medium img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.finance {
+  display: flex;
+  gap: 4px;
+}
+
+.finance-text {
+  font-size: 16px;
+  color: var(--ifm-footer-link-color);
+}
+
+.footer-copyright {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid var(--ifm-table-border-color);
+  font-size: 14px;
+  color: var(--ifm-footer-copy-right-color);
+}
+
+@media screen and (max-width: 768px) {
+  .portkey-footer {
+    padding: 60px 60px 0;
+  }
+  .footer-container {
+    margin: 40px 0;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .portkey-footer {
+    padding: 60px 30px 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .portkey-footer {
+    padding: 60px 20px 0;
+  }
+  .medium-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 24px;
+  }
+}
