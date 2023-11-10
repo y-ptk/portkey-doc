@@ -41,12 +41,30 @@
 
 .finance {
   display: flex;
-  gap: 4px;
+  gap: 4px; 
+}
+
+a.finance {
+  text-decoration: none;
 }
 
 .finance-text {
   font-size: 16px;
   color: var(--ifm-footer-link-color);
+}
+
+.fingerprint {
+  width: 24px;
+  height: 24px;
+  background: url('/img/footer/fingerprint.svg') no-repeat;
+}
+
+.finance:hover .finance-text {
+  color: var(--ifm-color-primary);
+}
+
+.finance:hover .fingerprint {
+  background: url('/img/footer/fingerprint-hover.svg') no-repeat;
 }
 
 .footer-copyright {
