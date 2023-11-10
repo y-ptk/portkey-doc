@@ -13,10 +13,10 @@ const Footer = () => {
         <div className={styles.medium}>
           {mediumArr.map(item => <a key={item.title} href={item.href} target="_blank" rel="noopener noreferrer"><img src={item.icon} alt={item.title} /></a>)}
         </div>
-        <div className={styles.finance} >
+        <a href={financeUrl} target="_blank" rel="noopener noreferrer" className={styles.finance} >
           <span className={styles['finance-text']}>Portkey.finance</span>
-          <a href={financeUrl} target="_blank" rel="noopener noreferrer"><img src="/img/footer/fingerprint.svg" alt="fingerprint" /></a>
-        </div>
+          <span className={styles.fingerprint}></span>
+        </a>
        </div>
     </div>
     <div className={styles['footer-copyright']}>Portkey@2023</div>
