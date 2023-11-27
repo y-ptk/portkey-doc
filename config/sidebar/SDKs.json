@@ -74,8 +74,23 @@
           "_template": "category",
           "items": [
             {
-              "document": "docs/SDKs/CoreSDK/Unity/DID.mdx",
-              "label": "DID",
+              "document": "docs/SDKs/CoreSDK/Unity/PortkeySDK.mdx",
+              "label": "PortkeySDK",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/SDKs/CoreSDK/Unity/AuthService.mdx",
+              "label": "AuthService",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/SDKs/CoreSDK/Unity/AuthMessage.mdx",
+              "label": "AuthMessage",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/SDKs/CoreSDK/Unity/DIDAccountInfo.mdx",
+              "label": "DIDAccountInfo",
               "_template": "doc"
             },
             {
