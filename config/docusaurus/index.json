@@ -10,7 +10,7 @@
     {
       "label": "Portkey GitHub",
       "link": "external",
-      "externalLink": "https://github.com/baijianxiong15966620168/tina-docs",
+      "externalLink": "https://github.com/Portkey-Wallet",
       "position": "right"
     }
   ],
@@ -20,5 +20,5 @@
     "darkSrc": "/img/portkey-logo-dark.png"
   },
   "title": "Portkey Docs",
-  "url": "https://tinasaurus.vercel.app/"
+  "url": "https://doc.portkey.finance/"
 }
