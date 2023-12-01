@@ -45,12 +45,12 @@ export default App;
 
 | **Property** | **Description**                                       | **Type**                             | **Required**  | **Default** | **Version** |
 | :----------- | :---------------------------------------------------- | :----------------------------------- | :------------ | :---------- | :---------- |
-| wrapperStyle | Customise inline style                                | `React.CSSProperties`                | `false`       | -           | 1.5.0       |
-| className    | Customise class name                                  | `string`                             | `false`       | -           | 1.5.0       |
-| networkType  | Network type                                          | NetworkType: `'MAIN'` \| `'TESTNET'`     | `true`        | -           | 1.5.0       |
-| caHash       | Portkey account's caHash                              | `stirng`                             | `true`        | -           | 1.5.0       |
-| onBack       | Callback when the "Back" button on the top is clicked | `() => void`                         | `false`       | -           | 1.5.0       |
-| onClickItem  | Callback when an item is clicked                      | `(data: ITransferLimitItem) => void` | `false`       | -           | 1.5.0       |
+| wrapperStyle | Customise inline style                                | `React.CSSProperties`                | `false`       | -           | V1.5.1       |
+| className    | Customise class name                                  | `string`                             | `false`       | -           | V1.5.1       |
+| networkType  | Network type                                          | NetworkType: `'MAIN'` \| `'TESTNET'`     | `true`        | -           | V1.5.1       |
+| caHash       | Portkey account's caHash                              | `stirng`                             | `true`        | -           | V1.5.1       |
+| onBack       | Callback when the "Back" button on the top is clicked | `() => void`                         | `false`       | -           | V1.5.1       |
+| onClickItem  | Callback when an item is clicked                      | `(data: ITransferLimitItem) => void` | `false`       | -           | V1.5.1       |
 
 
 ## TransferSettings
@@ -93,12 +93,12 @@ export default App;
 
 | **Property**     | **Description**                                       | **Type**              | **Required** | **Default** | **Version** |
 | :--------------- | :---------------------------------------------------- | :-------------------- | :----------- | :---------- | :---------- |
-| wrapperStyle     | Customise inline style                                | `React.CSSProperties` | `false`      | -           | 1.5.0       |
-| className        | Customise class name                                  | `string`              | `false`      | -           | 1.5.0       |
-| initData         | Initialise displayed data                             | `ITransferLimitItem`  | `true`       | -           | 1.5.0       |
-| isShowEditButton | If the "Edit" button on the bottom is shown           | `boolean`             | `false`      | `true`      | 1.5.0       |
-| onEdit           | Callback when the "Edit" button is clicked            | `() => void`          | `false`      | -           | 1.5.0       |
-| onBack           | Callback when the "Back" button on the top is clicked | `() => void`          | `false`      | -           | 1.5.0       |
+| wrapperStyle     | Customise inline style                                | `React.CSSProperties` | `false`      | -           | V1.5.1       |
+| className        | Customise class name                                  | `string`              | `false`      | -           | V1.5.1       |
+| initData         | Initialise displayed data                             | `ITransferLimitItem`  | `true`       | -           | V1.5.1       |
+| isShowEditButton | If the "Edit" button on the bottom is shown           | `boolean`             | `false`      | `true`      | V1.5.1       |
+| onEdit           | Callback when the "Edit" button is clicked            | `() => void`          | `false`      | -           | V1.5.1       |
+| onBack           | Callback when the "Back" button on the top is clicked | `() => void`          | `false`      | -           | V1.5.1       |
 
 ### Detailed explanation
 
@@ -106,14 +106,14 @@ export default App;
 
 | **Name**           | **Description**               | **Type**             | **Required** | **Default** | **Version** |
 | :----------------- | :---------------------------- | :------------------- | :----------- | :---------- | :---------- |
-| chainId            | Chain ID code, eg: 'AELF'     | `ChainId`            | `true`       | -           | 1.5.0       |
-| symbol             | Symbol code, eg: 'ELF'        | `string`             | `true`       | -           | 1.5.0       |
-| restricted         | Is the transaction restricted | `boolean`            | `true`       | -           | 1.5.0       |
-| singleLimit        | Limit per transaction         | `string`             | `true`       | -           | 1.5.0       |
-| dailyLimit         | Daily limit                   | `string`             | `true`       | -           | 1.5.0       |
-| decimals           | Decimals, eg: 8               | `number` \| `string` | `true`       | -           | 1.5.0       |
-| defaultSingleLimit | Default limit per transaction | `string`             | `false`      | -           | 1.5.0       |
-| defaultDailyLimit  | Default daily limit           | `string`             | `false`      | -           | 1.5.0       |
+| chainId            | Chain ID code, eg: 'AELF'     | `ChainId`            | `true`       | -           | V1.5.1       |
+| symbol             | Symbol code, eg: 'ELF'        | `string`             | `true`       | -           | V1.5.1       |
+| restricted         | Is the transaction restricted | `boolean`            | `true`       | -           | V1.5.1       |
+| singleLimit        | Limit per transaction         | `string`             | `true`       | -           | V1.5.1       |
+| dailyLimit         | Daily limit                   | `string`             | `true`       | -           | V1.5.1       |
+| decimals           | Decimals, eg: 8               | `number` \| `string` | `true`       | -           | V1.5.1       |
+| defaultSingleLimit | Default limit per transaction | `string`             | `false`      | -           | V1.5.1       |
+| defaultDailyLimit  | Default daily limit           | `string`             | `false`      | -           | V1.5.1       |
 
 
 ## TransferSettingsEdit
@@ -166,16 +166,16 @@ export default App;
 
 | **Property**            | **Description**                                              | **Type**                                      | **Required** | **Default** | **Version** |
 | :---------------------- | :----------------------------------------------------------- | :-------------------------------------------- | :----------- | :---------- | :---------- |
-| wrapperStyle            | Customise inline style                                       | `React.CSSProperties`                         | `false`      | -           | 1.5.0       |
-| className               | Customise class name                                         | `string`                                      | `false`      | -           | 1.5.0       |
-| caHash                  | Portkey account's caHash                                     | `string`                                      | `true`       | -           | 1.5.0       |
-| originChainId           | ID of the chain where the account is registered              | `ChainId`                                     | `true`       | -           | 1.5.0       |
-| initData                | Data displayed                                               | `ITransferLimitItemWithRoute`                 | `true`       | -           | 1.5.0       |
-| isErrorTip              | If error message is displayed                                | `boolean`                                     | `false`      | `true`      | 1.5.0       |
-| sandboxId               | Need to upload the sandbox ID when running Chrome extensions | `string`                                      | `false`      | `''`        | 1.5.0       |
-| onBack                  | Callback when the "Back" button on the top is clicked        | `() => void`                                  | `false`      | -           | 1.5.0       |
-| onSuccess               | Callback when the token's transfer limit is updated          | `(data: ITransferLimitItemWithRoute) => void` | `false`      | -           | 1.5.0       |
-| onGuardiansApproveError | Callback when guardian approval fails                        | `OnErrorFunc`                                 | `false`      | -           | 1.5.0       |
+| wrapperStyle            | Customise inline style                                       | `React.CSSProperties`                         | `false`      | -           | V1.5.1       |
+| className               | Customise class name                                         | `string`                                      | `false`      | -           | V1.5.1       |
+| caHash                  | Portkey account's caHash                                     | `string`                                      | `true`       | -           | V1.5.1       |
+| originChainId           | ID of the chain where the account is registered              | `ChainId`                                     | `true`       | -           | V1.5.1       |
+| initData                | Data displayed                                               | `ITransferLimitItemWithRoute`                 | `true`       | -           | V1.5.1       |
+| isErrorTip              | If error message is displayed                                | `boolean`                                     | `false`      | `true`      | V1.5.1       |
+| sandboxId               | Need to upload the sandbox ID when running Chrome extensions | `string`                                      | `false`      | `''`        | V1.5.1       |
+| onBack                  | Callback when the "Back" button on the top is clicked        | `() => void`                                  | `false`      | -           | V1.5.1       |
+| onSuccess               | Callback when the token's transfer limit is updated          | `(data: ITransferLimitItemWithRoute) => void` | `false`      | -           | V1.5.1       |
+| onGuardiansApproveError | Callback when guardian approval fails                        | `OnErrorFunc`                                 | `false`      | -           | V1.5.1       |
 
 ### Detailed explanation
 
@@ -186,4 +186,4 @@ extends `ITransferLimitItem`
 | **Name**                     | **Description**                   | **Type**                                 | **Required** | **Default** | **Version** |
 | :--------------------------- | :-------------------------------- | :--------------------------------------- | :----------- | :---------- | :---------- |
 | extends `ITransferLimitItem` |                                   |                                          |              |             |             |
-| businessFrom                 | Tag of where the business is from | IBusinessFrom: `'ramp-sell'` \| `'send'` | `false`      | -           | 1.5.0
+| businessFrom                 | Tag of where the business is from | IBusinessFrom: `'ramp-sell'` \| `'send'` | `false`      | -           | V1.5.1
