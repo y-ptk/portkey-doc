@@ -15,3 +15,7 @@
   padding: 20px;
   border: 1px solid var(--ifm-table-border-color);
 }
+
+.column-show-container .column-item {
+  flex: 1;
+}
