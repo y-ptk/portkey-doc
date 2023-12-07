@@ -135,7 +135,7 @@ type DappEvents =
 
 Use `provider.on(event,callback)` to listen to those events.
 
-You can see the detailed type definition in `@portkey/provider-types__` project.
+You can see the detailed type definition in `@portkey/provider-types` project.
 
 ### IChain
 
@@ -280,7 +280,7 @@ provider
 
 Returns the current account addresses of the Portkey APP's wallet.
 
-\***\*NOTICE\*\*** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+**NOTICE** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
 
 ```typescript
 provider.request({ method: "accounts" }).then((accounts: Accounts) => {
@@ -292,7 +292,7 @@ provider.request({ method: "accounts" }).then((accounts: Accounts) => {
 
 Returns the current wallet state of the Portkey APP's wallet.
 
-\***\*NOTICE\*\*** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+**NOTICE** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
 
 ```typescript
 provider
@@ -306,7 +306,7 @@ provider
 
 Returns the current wallet name of the Portkey APP's wallet.
 
-\***\*NOTICE\*\*** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+**NOTICE** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
 
 ```typescript
 provider
@@ -320,7 +320,7 @@ provider
 
 Send a transaction to the Portkey APP's wallet.
 
-\***\*NOTICE\*\*** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+**NOTICE** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
 
 ```typescript
  const txParams: SendTransactionParams = {
@@ -341,7 +341,7 @@ Send a transaction to the Portkey APP's wallet.
 
 Get a signature from the Portkey APP's wallet.
 
-\***\*NOTICE\*\*** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+**NOTICE** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
 
 ```typescript
   const signatureParams: GetSignatureParams = {
