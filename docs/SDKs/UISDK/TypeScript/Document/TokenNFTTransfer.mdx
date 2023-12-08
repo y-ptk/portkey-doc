@@ -36,6 +36,16 @@ Usage scenario: transfer token/NFT.
 ---
 
 <Columnar data={[
+  {title: 'Security detection - synchronise guardian', icon: '/img/ui-sdk/send-check-sync.png', desc: [`While this account is recognised as secure on the registration chain, it is now in the process of synchronising its guardian to the current chain. Users can click "OK" to quickly add the guardian to the current chain, which is done by initiating a transaction.`]},
+  {title: 'Security detection - add guardian', icon: '/img/ui-sdk/send-check-security.png', desc: [`This account needs to add more guardians to enhance security before proceeding`]},
+  {title: 'Check if the transaction meets the rules', icon: '/img/ui-sdk/send-check-payment-security.png', desc: [`If the transaction exceeds the limit, prompt the user to modify it first`, `Click "Modify" to set limits`]},
+  {title: 'Set transfer limits', icon: '/img/ui-sdk/send-set-limit.png', desc: [`Set limit per transaction and daily limit for the token`, `Click "Send Request" and wait for enough approval from guardians to complete the settings`]},
+  ]} 
+/>
+
+---
+
+<Columnar data={[
   {title: 'Cross-chain ELF transfer', icon: '/img/ui-sdk/send-cross-chain-transfer-elf.png', desc: [`The token is ELF`, `Display transfer amount, transaction fee, cross-chain transaction fee, and estimated amount received`]},
   {title: 'ELF transfer', icon: '/img/ui-sdk/send-transfer-elf.png', desc: [`The token is ELF`, `Display transfer amount and transaction fee`]},
   {title: 'NFT transfer', icon: '/img/ui-sdk/send-transfer-nft.png', desc: [`The token is an NFT`, `Display transaction fee`]},
@@ -64,12 +74,14 @@ const assetItem = {
 
 ## API
 
-| Property     | Description                                                                                                   | Type                | Default       | Version |
-| :----------- | :------------------------------------------------------------------------------------------------------------ | :------------------ | :------------ | :------ |
-| assetItem    | Details of the token to be sent                                                                               | IAssetItemType      | -             |         |
-| closeIcon    | The close button element                                                                                      | ReactNode           | -             |         |
-| className    | Class name of the top level container                                                                         | string              | -             |         |
-| wrapperStyle | Style of the top level container                                                                              | React.CSSProperties | -             |         |
-| onCancel     | Callback of cancelling. When isClose is true, it's the callback for clicking the X on the right               | ()=>void;           | -             |         |
-| onClose      | Callback when the close button is clicked                                                                     | ()=>void;           | -             |         |
-| onSuccess    | Callback of success                                                                                           | ()=>void;           | -             |         |
+| Property          | Description                                                                                                   | Type                                        | Default       | Version |
+| :---------------- | :------------------------------------------------------------------------------------------------------------ | :------------------------------------------ | :------------ | :------ |
+| assetItem         | Details of the token to be sent                                                                               | IAssetItemType                              | -             |         |
+| closeIcon         | The close button element                                                                                      | ReactNode                                   | -             |         |
+| className         | Class name of the top level container                                                                         | string                                      | -             |         |
+| wrapperStyle      | Style of the top level container                                                                              | React.CSSProperties                         | -             |         |
+| onCancel          | Callback of cancelling. When isClose is true, it's the callback for clicking the X on the right               | ()=>void;                                   | -             |         |
+| onClose           | Callback when the close button is clicked                                                                     | ()=>void;                                   | -             |         |
+| onSuccess         | Callback of success                                                                                           | ()=>void;                                   | -             |         |
+| onModifyLimit     | Modify transfer limit                                                                                         | (data: ITransferLimitItemWithRoute) => void | -             | V1.5.1  |
+| onModifyGuardians | Callback of adding guardian when security detection is triggered.                                             | ()=>void;                                   | -             | V1.5.1  |

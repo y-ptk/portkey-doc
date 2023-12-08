@@ -1,0 +1,189 @@
+---
+title: Payment Security
+---
+
+import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
+
+# Payment Security
+
+These are the business components concerning payment security and comprises the following three parts:
+
+-   PaymentSecurity: display the list of tokens whose security settings can be managed.
+-   TransferSettings: display the specific transfer limit settings for a single token.
+-   TransferSettingsEdit: edit and update the transfer limits for a single token.
+
+## PaymentSecurity
+
+Display the list of tokens whose security settings can be managed, with 20 records per page.
+
+<HighlightBlock>
+Before using this component, please make sure you are <a href="/docs/SDKs/UISDK/TypeScript/Document/SignIn">logged-in</a>.
+<br/><br/>
+Before using this component, we assume that you are already familiar with the <a href="/docs/SDKs/UISDK/TypeScript/Document/Configuration">basic configuration</a> of Portkey.
+</HighlightBlock>
+
+### Functions and UI related are as follows
+<div style={{display: 'flex', justifyContent: 'center', alignItems: 'start', width: '100%'}}>
+  <img src='/img/ui-sdk/ui-for-payment-security-list.png' width={'30%'} style={{border: '1px solid #dee2e8'}} />
+</div>
+
+### Usage
+
+```ts
+import { PaymentSecurity } from '@portkey/did-ui-react';
+
+const App: React.FC = () => (
+  <PaymentSecurity
+    networkType="MAIN"
+    caHash="your ca hash"
+  />
+);
+export default App;
+```
+
+### API
+
+| **Property** | **Description**                                       | **Type**                             | **Required**  | **Default** | **Version** |
+| :----------- | :---------------------------------------------------- | :----------------------------------- | :------------ | :---------- | :---------- |
+| wrapperStyle | Customise inline style                                | `React.CSSProperties`                | `false`       | -           | V1.5.1       |
+| className    | Customise class name                                  | `string`                             | `false`       | -           | V1.5.1       |
+| networkType  | Network type                                          | NetworkType: `'MAIN'` \| `'TESTNET'`     | `true`        | -           | V1.5.1       |
+| caHash       | Portkey account's caHash                              | `stirng`                             | `true`        | -           | V1.5.1       |
+| onBack       | Callback when the "Back" button on the top is clicked | `() => void`                         | `false`       | -           | V1.5.1       |
+| onClickItem  | Callback when an item is clicked                      | `(data: ITransferLimitItem) => void` | `false`       | -           | V1.5.1       |
+
+
+## TransferSettings
+
+Display the specific transfer limit settings for a single token.
+
+### Functions and UI related are as follows
+<div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'start', width: '100%'}}>
+  <div  style={{width: '30%'}}> 
+    <div style={{textAlign: 'center', color: '#999'}}> UI, when no limit is applied </div>
+    <img src='/img/ui-sdk/ui-for-transfer-settings-no-limit.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  </div>
+  <div  style={{width: '30%'}}> 
+    <div style={{textAlign: 'center', color: '#999'}}> UI, when limits are applied </div>
+     <img src='/img/ui-sdk/ui-for-transfer-settings-limit.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  </div>
+</div>
+
+### Usage
+
+```ts
+import { TransferSettings } from '@portkey/did-ui-react';
+
+const App: React.FC = () => (
+  <TransferSettings
+    initData={{
+      chainId: 'AELF',
+      symbol: 'ELF',
+      singleLimit: '20000000000',
+      dailyLimit: '100000000000',
+      restricted: true,
+      decimals: 8,
+    }}
+  />
+);
+export default App;
+```
+
+### API
+
+| **Property**     | **Description**                                       | **Type**              | **Required** | **Default** | **Version** |
+| :--------------- | :---------------------------------------------------- | :-------------------- | :----------- | :---------- | :---------- |
+| wrapperStyle     | Customise inline style                                | `React.CSSProperties` | `false`      | -           | V1.5.1       |
+| className        | Customise class name                                  | `string`              | `false`      | -           | V1.5.1       |
+| initData         | Initialise displayed data                             | `ITransferLimitItem`  | `true`       | -           | V1.5.1       |
+| isShowEditButton | If the "Edit" button on the bottom is shown           | `boolean`             | `false`      | `true`      | V1.5.1       |
+| onEdit           | Callback when the "Edit" button is clicked            | `() => void`          | `false`      | -           | V1.5.1       |
+| onBack           | Callback when the "Back" button on the top is clicked | `() => void`          | `false`      | -           | V1.5.1       |
+
+### Detailed explanation
+
+#### `ITransferLimitItem`
+
+| **Name**           | **Description**               | **Type**             | **Required** | **Default** | **Version** |
+| :----------------- | :---------------------------- | :------------------- | :----------- | :---------- | :---------- |
+| chainId            | Chain ID code, eg: 'AELF'     | `ChainId`            | `true`       | -           | V1.5.1       |
+| symbol             | Symbol code, eg: 'ELF'        | `string`             | `true`       | -           | V1.5.1       |
+| restricted         | Is the transaction restricted | `boolean`            | `true`       | -           | V1.5.1       |
+| singleLimit        | Limit per transaction         | `string`             | `true`       | -           | V1.5.1       |
+| dailyLimit         | Daily limit                   | `string`             | `true`       | -           | V1.5.1       |
+| decimals           | Decimals, eg: 8               | `number` \| `string` | `true`       | -           | V1.5.1       |
+| defaultSingleLimit | Default limit per transaction | `string`             | `false`      | -           | V1.5.1       |
+| defaultDailyLimit  | Default daily limit           | `string`             | `false`      | -           | V1.5.1       |
+
+
+## TransferSettingsEdit
+
+Edit and update the transfer limits for a single token. After it's updated, transactions in **"transfer"** and **"off-ramp selling"** will be verified based on the settings here.
+
+
+### Functions and UI related are as follows
+
+You should first decide whether to apply the limit settings. If yes, you can set limits for a single transaction and for daily transactions respectively.
+
+
+Tip: the setting of the limits needs to be approved by guardians.
+
+
+<div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'start', width: '100%'}}>
+  <div  style={{width: '30%'}}> 
+    <div style={{textAlign: 'center', color: '#999'}}> UI, when no limit is applied </div>
+    <img src='/img/ui-sdk/ui-for-transfer-settings-edit-no-limit.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  </div>
+  <div  style={{width: '29%'}}> 
+    <div style={{textAlign: 'center', color: '#999'}}> UI, when limits are applied </div>
+     <img src='/img/ui-sdk/ui-for-transfer-settings-edit-limit.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  </div>
+</div>
+
+### Usage
+
+```ts
+import { TransferSettingsEdit } from '@portkey/did-ui-react';
+
+const App: React.FC = () => (
+  <TransferSettingsEdit
+    caHash="your ca hash"
+    originChainId="AELF"
+    initData={{
+      chainId: 'AELF',
+      symbol: 'ELF',
+      singleLimit: '20000000000',
+      dailyLimit: '100000000000',
+      restricted: true,
+      decimals: 8,
+    }}
+  />
+);
+export default App;
+```
+
+### API
+
+| **Property**            | **Description**                                              | **Type**                                      | **Required** | **Default** | **Version** |
+| :---------------------- | :----------------------------------------------------------- | :-------------------------------------------- | :----------- | :---------- | :---------- |
+| wrapperStyle            | Customise inline style                                       | `React.CSSProperties`                         | `false`      | -           | V1.5.1       |
+| className               | Customise class name                                         | `string`                                      | `false`      | -           | V1.5.1       |
+| caHash                  | Portkey account's caHash                                     | `string`                                      | `true`       | -           | V1.5.1       |
+| originChainId           | ID of the chain where the account is registered              | `ChainId`                                     | `true`       | -           | V1.5.1       |
+| initData                | Data displayed                                               | `ITransferLimitItemWithRoute`                 | `true`       | -           | V1.5.1       |
+| isErrorTip              | If error message is displayed                                | `boolean`                                     | `false`      | `true`      | V1.5.1       |
+| sandboxId               | Need to upload the sandbox ID when running Chrome extensions | `string`                                      | `false`      | `''`        | V1.5.1       |
+| onBack                  | Callback when the "Back" button on the top is clicked        | `() => void`                                  | `false`      | -           | V1.5.1       |
+| onSuccess               | Callback when the token's transfer limit is updated          | `(data: ITransferLimitItemWithRoute) => void` | `false`      | -           | V1.5.1       |
+| onGuardiansApproveError | Callback when guardian approval fails                        | `OnErrorFunc`                                 | `false`      | -           | V1.5.1       |
+
+### Detailed explanation
+
+#### `ITransferLimitItemWithRoute`
+
+extends `ITransferLimitItem`
+
+| **Name**                     | **Description**                   | **Type**                                 | **Required** | **Default** | **Version** |
+| :--------------------------- | :-------------------------------- | :--------------------------------------- | :----------- | :---------- | :---------- |
+| extends `ITransferLimitItem` |                                   |                                          |              |             |             |
+| businessFrom                 | Tag of where the business is from | IBusinessFrom: `'ramp-sell'` \| `'send'` | `false`      | -           | V1.5.1

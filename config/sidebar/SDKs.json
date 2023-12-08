@@ -169,6 +169,11 @@
                   "_template": "doc"
                 },
                 {
+                  "document": "docs/SDKs/UISDK/TypeScript/Document/Guardian.mdx",
+                  "label": "Guardian",
+                  "_template": "doc"
+                },
+                {
                   "document": "docs/SDKs/UISDK/TypeScript/Document/GuardianApproval.mdx",
                   "label": "GuardianApproval",
                   "_template": "doc"
@@ -241,6 +246,11 @@
                 {
                   "document": "docs/SDKs/UISDK/TypeScript/Document/TransactionDetail.mdx",
                   "label": "Transaction Detail",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/UISDK/TypeScript/Document/PaymentSecurity.mdx",
+                  "label": "PaymentSecurity",
                   "_template": "doc"
                 }
               ],
