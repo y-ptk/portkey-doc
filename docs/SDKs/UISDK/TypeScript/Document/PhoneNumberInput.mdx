@@ -9,17 +9,17 @@ Control for country code selection and phone number input
 ## Usage
 
 ```typescript
-import { PhoneNumberInput, CountryItem } from '@portkey/did-ui-react';
-import { useState } from 'react';
+import { PhoneNumberInput, CountryItem } from "@portkey/did-ui-react";
+import { useState } from "react";
 
 const App: React.FC = () => {
-  const [phoneNumber, setPhoneNumber] = useState<string>('');
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
   const [countryCode, setCountryCode] = useState<CountryItem | undefined>();
 
   return (
     <PhoneNumberInput
-      iso={'United Kingdom'}
-      countryList={[{ country: 'United Kingdom', code: '44', iso: 'GB' }]}
+      iso={"United Kingdom"}
+      countryList={[{ country: "United Kingdom", code: "44", iso: "GB" }]}
       phoneNumber={phoneNumber}
       onAreaChange={setCountryCode}
       onPhoneNumberChange={setPhoneNumber}
@@ -32,11 +32,12 @@ export default App;
 
 ## API
 
-| Property            | Description                             | Type                      | Default  | Version |
-| :------------------ | :-------------------------------------- | :------------------------ | :------- | :------ |
-| iso                 | Currently selected country code address | string                    | -        |         |
-| countryList         | List of country code                    | CountryItem[];            | -        |         |
-| phoneNumber         | Phone number entered                    | string                    | -        |         |
-| onAreaChange        | Callback of changing country code       | (v: CountryItem) => void; | -        |         |
-| onPhoneNumberChange | Callback of entering phone number       | (v: string) => void;      | -        |         |
-| onCancel            | Callback of cancelling                  | () => void                | -        |         |
+| Property            | Description                             | Type                      | Default | Version |
+| :------------------ | :-------------------------------------- | :------------------------ | :------ | :------ |
+| iso                 | Currently selected country code address | string                    | -       |         |
+| countryList         | List of country code                    | CountryItem[];            | -       |         |
+| phoneNumber         | Phone number entered                    | string                    | -       |         |
+| type                | The type of window popup                | 'modal' \| 'drawer';      | -       | 1.5.3+  |
+| onAreaChange        | Callback of changing country code       | (v: CountryItem) => void; | -       |         |
+| onPhoneNumberChange | Callback of entering phone number       | (v: string) => void;      | -       |         |
+| onCancel            | Callback of cancelling                  | () => void                | -       |         |

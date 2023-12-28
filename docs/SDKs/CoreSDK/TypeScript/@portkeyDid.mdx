@@ -6,8 +6,8 @@ title: portkey/did
 
 ## Introduction
 
--   [click here to view it in npm](https://www.npmjs.com/package/@portkey/did)
--   [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/did/README.md)
+- [click here to view it in npm](https://www.npmjs.com/package/@portkey/did)
+- [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/did/README.md)
 
 Provide DID services
 
@@ -35,11 +35,11 @@ setConfig(options: IConfig): void;
 ```typescript
 did.setConfig({
   requestDefaults: {
-    baseURL: 'your did server node',
-    timeout: 'timeout', // optional default 8000ms
+    baseURL: "your did server node",
+    timeout: "timeout", // optional default 8000ms
   },
-  graphQLUrl: 'your graphQL node',
-  storageMethod: 'your storage suite',
+  graphQLUrl: "your graphQL node",
+  storageMethod: "your storage suite",
 });
 ```
 
@@ -56,27 +56,28 @@ did.login(type: 'loginAccount', params: AccountLoginParams): Promise<LoginResult
 #### Usage
 
 ```typescript
-did.login('loginAccount', {
-  chainId: 'chainId',
-  loginGuardianIdentifier: 'loginGuardianIdentifier',
+did.login("loginAccount", {
+  chainId: "chainId",
+  loginGuardianIdentifier: "loginGuardianIdentifier",
   guardiansApproved: [
     {
-      type: 'Email',
-      identifier: 'identifier',
-      verifierId: 'verifierId',
-      verificationDoc: 'verificationDoc',
-      signature: 'signature',
+      type: "Email",
+      identifier: "identifier",
+      verifierId: "verifierId",
+      verificationDoc: "verificationDoc",
+      signature: "signature",
     },
   ],
-  extraData: 'extraData',
+  extraData: "extraData",
   context: {
-    requestId: 'requestId',
-    clientId: 'clientId',
+    requestId: "requestId",
+    clientId: "clientId",
   },
 });
 ```
 
 #### Example response
+
 ```typescript
 {
   status: {
@@ -121,12 +122,13 @@ getLoginStatus(params: { chainId: ChainId; sessionId: string }): Promise<Recover
 
 ```typescript
 did.getLoginStatus({
-  chainId: 'chainId',
-  sessionId: 'sessionId',
+  chainId: "chainId",
+  sessionId: "sessionId",
 });
 ```
 
 #### Example response
+
 ```typescript
 {
   caAddress: 'xxxxxx',
@@ -138,14 +140,16 @@ did.getLoginStatus({
 
 ## did.logout
 
+Log out. The default setting is to initiate a logout transaction and query the transaction result. When onMethod is the transactionHash, only the TXID will be returned after the transaction and the result will not be queried.
+
 ```typescript
-logout(params: EditManagerParams): Promise<boolean>;
+logout(params: EditManagerParams,  sendOption?: SendOptions): Promise<boolean>;
 ```
 
 #### Usage
 
 ```typescript
-did.logout({ chainId: 'chainId' });
+did.logout({ chainId: 'chainId' }, { onMethod: 'transactionHash' }});
 ```
 
 ## did.register
@@ -158,21 +162,22 @@ register(params: Omit<RegisterParams, 'manager'>): Promise<RegisterResult>;
 
 ```typescript
 did.register({
-  type: 'Email',
-  loginGuardianIdentifier: 'loginGuardianIdentifier',
-  extraData: 'extraData',
-  chainId: 'chainId',
-  verifierId: 'verifierId',
-  verificationDoc: 'verificationDoc',
-  signature: 'signature',
+  type: "Email",
+  loginGuardianIdentifier: "loginGuardianIdentifier",
+  extraData: "extraData",
+  chainId: "chainId",
+  verifierId: "verifierId",
+  verificationDoc: "verificationDoc",
+  signature: "signature",
   context: {
-    requestId: 'requestId',
-    clientId: 'clientId',
+    requestId: "requestId",
+    clientId: "clientId",
   },
 });
 ```
 
 #### Example response
+
 ```typescript
 {
   status: {
@@ -196,12 +201,13 @@ getRegisterStatus(params: { chainId: ChainId; sessionId: string }): Promise<Regi
 
 ```typescript
 did.getRegisterStatus({
-  chainId: 'chainId',
-  sessionId: 'sessionId',
+  chainId: "chainId",
+  sessionId: "sessionId",
 });
 ```
 
 #### Example response
+
 ```typescript
 {
   caAddress: 'xxxxxx',
@@ -223,12 +229,13 @@ getHolderInfo(params: Pick<GetHolderInfoParams, 'manager' | 'chainId'>): Promise
 
 ```typescript
 did.getHolderInfo({
-  manager: 'manager', // optional
-  chainId: 'chainId',
+  manager: "manager", // optional
+  chainId: "chainId",
 });
 ```
 
 #### Example response
+
 ```typescript
 {
     id: "tDVV-...sWsX",
@@ -258,13 +265,14 @@ getHolderInfo(params: Omit<GetHolderInfoParams, 'manager'>): Promise<IHolderInfo
 
 ```typescript
 did.getHolderInfo({
-  caHash: 'caHash', // loginGuardianIdentifier and caHash choose one
-  loginGuardianIdentifier: 'loginGuardianIdentifier', // loginGuardianIdentifier and caHash choose one
-  chainId: 'chainId',
+  caHash: "caHash", // loginGuardianIdentifier and caHash choose one
+  loginGuardianIdentifier: "loginGuardianIdentifier", // loginGuardianIdentifier and caHash choose one
+  chainId: "chainId",
 });
 ```
 
 #### Example response
+
 ```typescript
   caAddress: "nJ2K...sWsX",
   caHash: "05da...850b",
@@ -299,11 +307,12 @@ getVerifierServers(chainId: ChainId): Promise<VerifierItem[]>;
 
 ```typescript
 did.getVerifierServers({
-  chainId: 'chainId',
+  chainId: "chainId",
 });
 ```
 
 #### Example response
+
 ```typescript
 {
   data: [
@@ -316,4 +325,24 @@ did.getVerifierServers({
     }
   ],
 }
+```
+
+## did.checkManagerIsExist
+
+Check if the specified address is the manager of the wallet.
+When chainId is the registration chain of the caHash, check if the address is the manager or if it has been removed by other devices.
+When chainId isn't the registration chain of the caHash, check if the synchronisation of the manager is in progress.
+
+```typescript
+checkManagerIsExist(params: CheckManagerParams): Promise<boolean>;
+```
+
+#### Usage
+
+```typescript
+const isExist = await did.checkManagerIsExist({
+  chainId: "AELF",
+  caHash: "caHash",
+  managementAddress: "managementAddress",
+});
 ```
