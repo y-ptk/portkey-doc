@@ -122,7 +122,7 @@ const config = {
       }),
     ],
   ],
-
+  plugins: [require.resolve("docusaurus-lunr-search")],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -140,9 +140,11 @@ const config = {
             : "img/portkey-logo-dark.png",
           href: "/docs/category/overview-of-portkey",
         },
-        items: docusaurusData.navbar.map((item) => {
-          return formatNavbarItem(item);
-        }),
+        items: [
+          ...docusaurusData.navbar.map((item) => {
+            return formatNavbarItem(item);
+          })
+        ],
         hideOnScroll: true,
       },
       footer: {},
