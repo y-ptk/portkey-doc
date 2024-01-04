@@ -1,0 +1,28 @@
+{
+  "label": "HELP",
+  "title": "HELP",
+  "description": "HELP",
+  "helpCenterContainer": {
+    "items": [
+      {
+        "title": "User Guide",
+        "description": "user guide is dedicated to users not familiar with portkey aa wallet and new to web3. so if you want to know how to use or operate portkey, this section is for you\n",
+        "link": "/docs/OverviewPortkey/start-here"
+      },
+      {
+        "title": "More About Portkey",
+        "description": "user guide is dedicated to users not familiar with portkey aa wallet and new to web3. so if you want to know how to use or operate portkey, this section is for you\n",
+        "link": "/docs/OverviewPortkey/what-is-portkey"
+      },
+      {
+        "title": "Industry Knowledge",
+        "description": "user guide is dedicated to users not familiar with portkey aa wallet and new to web3. so if you want to know how to use or operate portkey, this section is for you\n",
+        "link": "/docs/OverviewPortkey/portkey-glossary"
+      }
+    ]
+  },
+  "helpCenterHeader": {
+    "title": "Portkey Help Center",
+    "subtitle": "Hello, how can we help you?"
+  }
+}
