@@ -26,8 +26,7 @@ const WarningIcon = (props) => {
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+      {...props}>
       <path d="M11.001 10h2v5h-2zM11 16h2v2h-2z"></path>
       <path d="M13.768 4.2C13.42 3.545 12.742 3.138 12 3.138s-1.42.407-1.768 1.063L2.894 18.064a1.986 1.986 0 0 0 .054 1.968A1.984 1.984 0 0 0 4.661 21h14.678c.708 0 1.349-.362 1.714-.968a1.989 1.989 0 0 0 .054-1.968L13.768 4.2zM4.661 19 12 5.137 19.344 19H4.661z"></path>
     </svg>
@@ -832,10 +831,15 @@ const PagesCollection = {
   ],
 };
 
+console.log(process.env.NEXT_PUBLIC_TINA_CLIENT_ID, branch,  process.env.NEXT_PUBLIC_TINA_TOKEN, "clientId==");
 export default defineConfig({
   branch,
-  clientId: "8bef6106-2e86-4e77-9b69-58e8032b4d84", // Get this from tina.io
-  token: "7c3ce7466d7d939653812a7f2b31cc90bb21ec1f", // Get this from tina.io
+  clientId:
+    process.env.NEXT_PUBLIC_TINA_CLIENT_ID ||
+    "8bef6106-2e86-4e77-9b69-58e8032b4d84", // Get this from tina.io
+  token:
+    process.env.NEXT_PUBLIC_TINA_TOKEN ||
+    "7c3ce7466d7d939653812a7f2b31cc90bb21ec1f", // Get this from tina.io
   build: {
     outputFolder: "admin",
     publicFolder: "static",
