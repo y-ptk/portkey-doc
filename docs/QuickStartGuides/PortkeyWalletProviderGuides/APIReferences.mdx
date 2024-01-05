@@ -193,7 +193,7 @@ try {
 }
 ```
 
-You can see detailed type definition in source code.
+You can see detailed type definition in [source code](https://github.com/Portkey-Wallet/portkey-providers/blob/master/packages/types/src/chain.ts).
 
 ## Request Method & Generic Types
 
@@ -217,7 +217,7 @@ You can see detailed type definition in source code.
   request<T extends MethodResponse = any>(params: RequestOption): Promise<T>;
 ```
 
-You can find the complete type definition like `Accounts` in source code.
+You can find the complete type definition like `Accounts` in [source code](https://github.com/Portkey-Wallet/portkey-providers/blob/master/packages/types/src/provider.ts).
 
 #### 1. method:'chainId' / method:'chainIds'
 
@@ -354,6 +354,52 @@ Get a signature from the Portkey APP's wallet.
     // User denied your request or other issues
   });
 ```
+
+#### 10. {method:'wallet_getCurrentManagerAddress'}
+
+Get the Manager Address of the Portkey wallet on the current device
+
+**NOTICE** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+
+```typescript
+try {
+  const managerAddress = await provider.request({
+    method: 'wallet_getCurrentManagerAddress',
+  });
+} catch (e) {
+// An error will be thrown if the user denies the permission request, or other issues.
+...
+}
+```
+
+`providerVersion: 0.0.2+`
+
+#### 11. {method:'wallet_getManagerSyncStatus', payload: GetManagerSyncStatusParams}
+
+Get the Manager synchronisation status of the Portkey wallet on the current device
+
+**NOTICE** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+
+```typescript
+try {
+  const status = await provider.request({
+    method: 'wallet_getManagerSyncStatus',
+    payload: {
+      chainId: chainId, // AELF, tDVV, tDVW
+    },
+  });
+  if(status){
+    // manager synchronization completed
+  } else {
+    // manager synchronizing
+  }
+} catch (e) {
+// An error will be thrown if the user denies the permission request, or other issues.
+...
+}
+```
+
+`providerVersion: 0.0.2+`
 
 ## Error Code Enumeration
 

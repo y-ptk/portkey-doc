@@ -91,7 +91,6 @@ const App: React.FC = () => (
     }}
     portkeyWebSocketUrl={'http://192.168.66.240:5577/ca'}
     isMainnet={true}
-    isShowSelectInModal={true}
     onBack={function (): void {
       // do something to show the last page
     }}
@@ -111,7 +110,6 @@ export default App;
 | initState           | Data that controls the initial page display                                | IRampInitState                                                                            | false     | —             |
 | isBuySectionShow    | Control if on-ramp is enabled                                              | boolean                                                                                   | false     | true          |
 | isSellSectionShow   | Control if off-ramp is enabled                                             | boolean                                                                                   | false     | true          |
-| isShowSelectInModal | Control the interaction type for switching between token and fiat currency | boolean                                                                                   | false     | true          |
 | isMainnet           | Is it Mainnet                                                              | boolean                                                                                   | false     | —             |
 | tokenInfo           | Token information                                                          | ITokenInfo                                                                                | false     | —             |
 | portkeyWebSocketUrl | WebSocket service address, requiring IP format                             | string                                                                                    | false     | —             |

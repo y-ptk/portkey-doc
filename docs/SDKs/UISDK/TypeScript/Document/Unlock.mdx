@@ -9,23 +9,24 @@ UI component that unlocks the page
 ## Usage
 
 ```javascript
-<UnLock 
+<UnLock
   isWrongPassword
-  value={'password'}
-  onChange={(value:string)=>{}}
-  onUnlock={()=>{}}
+  value={"password"}
+  onChange={(value: string) => {}}
+  onUnlock={() => {}}
 />
 ```
 
 ## API
 
-| Property        | Description                                               | Type                  | Default       | Version |
-| :-------------- | :-------------------------------------------------------- | :-------------------- | :------------ | :------ |
-| className       | Customized class name                                     | string                | -             |         |
-| isWrongPassword | Is the password entered wrong                             | boolean               | false         |         |
-| uiType          | Is UI displayed as Modal or as a page component           | 'Modal' \| 'Full'     | Modal         |         |
-| open            | Controls if it's displayed or hidden when uiType is Modal | boolean               | -             |         |
-| value           | Input field content                                       | string                | -             |         |
-| onCancel        | Callback of cancelling                                    | () => void;           | -             |         |
-| onChange        | Callback when the input field content changes             | (value:string) =>void | -             |         |
-| onUnlock        | Callback when onUnlock is clicked                         | () => void;           | -             |         |
+| Property        | Description                                                           | Type                   | Default | Version |
+| :-------------- | :-------------------------------------------------------------------- | :--------------------- | :------ | :------ |
+| className       | Customized class name                                                 | string                 | -       |         |
+| isWrongPassword | Is the password entered wrong                                         | boolean                | false   |         |
+| keyboard        | Is Portkey numeric keyboard used. Only takes effect on mobile devices | boolean                | -       | 1.5.3+  |
+| uiType          | Is UI displayed as Modal or as a page component                       | 'Modal' \| 'Full'      | Modal   |         |
+| open            | Controls if it's displayed or hidden when uiType is Modal             | boolean                | -       |         |
+| value           | Input field content                                                   | string                 | -       |         |
+| onCancel        | Callback of cancelling                                                | () => void;            | -       |         |
+| onChange        | Callback when the input field content changes                         | (value:string) =>void  | -       |         |
+| onUnlock        | Callback when onUnlock is clicked                                     | (pin: string) => void; | -       | 1.5.3+  |
