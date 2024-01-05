@@ -8,6 +8,11 @@
       "position": "left"
     },
     {
+      "label": "Blog",
+      "link": "blog",
+      "position": "left"
+    },
+    {
       "label": "Portkey GitHub",
       "link": "external",
       "externalLink": "https://github.com/Portkey-Wallet",
