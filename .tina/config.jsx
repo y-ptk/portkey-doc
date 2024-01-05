@@ -324,7 +324,23 @@ const CategoryTemplate = {
                     ...CategoryFields,
                     {
                       ...ItemsField,
-                      templates: [DocLinkTemplate, ExternalLinkTemplate],
+                      templates: [
+                        {
+                          ...CategoryTemplateProps,
+                          fields: [
+                            ...CategoryFields,
+                            {
+                              ...ItemsField,
+                              templates: [
+                                DocLinkTemplate,
+                                ExternalLinkTemplate,
+                              ],
+                            },
+                          ],
+                        },
+                        DocLinkTemplate,
+                        ExternalLinkTemplate,
+                      ],
                     },
                   ],
                 },
@@ -831,7 +847,6 @@ const PagesCollection = {
   ],
 };
 
-console.log(process.env.NEXT_PUBLIC_TINA_CLIENT_ID, branch,  process.env.NEXT_PUBLIC_TINA_TOKEN, "clientId==");
 export default defineConfig({
   branch,
   clientId:
