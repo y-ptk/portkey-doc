@@ -10,7 +10,7 @@
     {
       "label": "FAQ",
       "link": "doc",
-      "docLink": "blog/FAQ/test-FAQ.mdx",
+      "docLink": "docs/What-is-aelf.mdx",
       "position": "left"
     },
     {
@@ -27,8 +27,7 @@
   ],
   "logo": {
     "alt": "Portkey Docs",
-    "src": "/img/portkey-logo-light.png",
-    "darkSrc": "/img/portkey-logo-dark.png"
+    "src": "/img/portkey-logo-light.png"
   },
   "title": "Portkey Docs",
   "url": "https://doc.portkey.finance/"
