@@ -9,6 +9,11 @@
           "document": "docs/How-to-download-Portkey.mdx",
           "label": "1. How to download Portkey?",
           "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-get-a-Portkey-account.mdx",
+          "label": "2. How to get a Portkey account?",
+          "_template": "doc"
         }
       ],
       "_template": "category"
