@@ -8,6 +8,12 @@
       "position": "left"
     },
     {
+      "label": "FAQ",
+      "link": "doc",
+      "docLink": "blog/FAQ/test-FAQ.mdx",
+      "position": "left"
+    },
+    {
       "label": "Blog",
       "link": "blog",
       "position": "left"

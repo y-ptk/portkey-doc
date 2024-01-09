@@ -173,5 +173,5 @@ export const MDXTemplates = [
   DetailsTemplate,
   CodeBlockTemplate,
   TabsTemplate,
-  DocCardListTemplate,
+  DocCardListTemplate
 ];

@@ -1,4 +1,5 @@
 const sidebar = require("./config/sidebar/index.js");
+const FAQSidebar = require("./config/FAQSidebar/index.json");
 
 const getDocId = (doc) => {
   return doc
@@ -66,6 +67,9 @@ const getItem = (item) => {
 
 const sidebars = {
   tutorialSidebar: sidebar.items.flatMap((item) => {
+    return getItem(item);
+  }),
+  FAQSidebar: FAQSidebar.items.flatMap((item) => {
     return getItem(item);
   }),
 };
