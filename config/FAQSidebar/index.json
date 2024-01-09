@@ -50,7 +50,7 @@
       "link": "generated",
       "items": [
         {
-          "document": "docs/OverviewPortkey/what-is-portkey.mdx",
+          "document": "docs/What-is-aelf.mdx",
           "label": "1. What is aelf?",
           "_template": "doc"
         },
