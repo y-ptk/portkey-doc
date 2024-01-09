@@ -140,3 +140,8 @@ mark {
   background-color: transparent !important;
   color: #5B8EF4 !important;
 }
+
+
+iframe {
+  width: 100% !important;
+}

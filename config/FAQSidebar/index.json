@@ -1,0 +1,17 @@
+{
+  "label": "FAQ sidebar",
+  "items": [
+    {
+      "title": "testfaq1",
+      "link": "generated",
+      "items": [
+        {
+          "document": "docs/FAQ/test-FAQ.mdx",
+          "label": "test FAQ",
+          "_template": "doc"
+        }
+      ],
+      "_template": "category"
+    }
+  ]
+}
