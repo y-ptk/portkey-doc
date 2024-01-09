@@ -32,6 +32,18 @@
         }
       ],
       "_template": "category"
+    },
+    {
+      "title": "More About Portkey",
+      "link": "generated",
+      "items": [
+        {
+          "document": "docs/How-is-Portkey-different-from-ERC-4337-wallets.mdx",
+          "label": "3. How is Portkey different from ERC-4337 wallets?",
+          "_template": "doc"
+        }
+      ],
+      "_template": "category"
     }
   ]
 }
