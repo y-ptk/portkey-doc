@@ -16,13 +16,13 @@ date: '2024-01-09'
   * Portkey safeguards account security by employing the social recovery mechanism and enhances protection with verifiers. Users can designate a variety of entities, such as phone numbers and email addresses, as guardians who grant approval for user activities like logging in. Additionally, a verifier, functioning as a decentralised service provider, is linked to each of the guardians to reinforce the security and decentralisation of the approval process.
 
 |  |ERC-4337 (as on Ethereum)|VA (as on aelf and in Portkey)|
-|------|------|------|
-|\:Account Creation|\:Individual on-chain contract deployment for each user's account|\:Address is generated based on Portkey's smart contract address via algorithm, no need for individual contract deployment|
-|\:Cost of Account Creation|\:Comparatively high cost due to contract deployment fees|\:The cost is less, given each account does not need the deployment of a separate smart contract, and fees incurred for account creation can be covered for users via the payment delegation mechanism|
-|\:Transaction Fee|\:High gas fee on Ethereum|:0.003 ELF per transaction on aelf|
-|\:Third Parties Covering Transaction Fees|\:Can be done via Paymaster|\:Can be done via payment delegation mechanism|
-|\:Transaction Processing Process|\:Complex processing flow with various roles involved, such as UserOperation, bundler, EntryPoint, aggregator, and paymaster|\:Simpler approach by interacting only with Portkey's smart contract via manager address|
-|\:Account Recoverable|\:Yes|\:Yes|
-|\:Roles in Social Recovery|\:Guardians|\:Guardians + verifiers|
-|\:Private Key|\:Not needed|\:Not needed|
-|\:More Functions|\:Can be programmed|\:Can be programmed|
+|:------|:------:|------:|
+|Account Creation|Individual on-chain contract deployment for each user's account|Address is generated based on Portkey's smart contract address via algorithm, no need for individual contract deployment|
+|Cost of Account Creation|Comparatively high cost due to contract deployment fees|The cost is less, given each account does not need the deployment of a separate smart contract, and fees incurred for account creation can be covered for users via the payment delegation mechanism|
+|Transaction Fee|High gas fee on Ethereum|:0.003 ELF per transaction on aelf|
+|Third Parties Covering Transaction Fees|Can be done via Paymaster|Can be done via payment delegation mechanism|
+|Transaction Processing Process|Complex processing flow with various roles involved, such as UserOperation, bundler, EntryPoint, aggregator, and paymaster|Simpler approach by interacting only with Portkey's smart contract via manager address|
+|Account Recoverable|Yes|Yes|
+|Roles in Social Recovery|\:Guardians|Guardians + verifiers|
+|Private Key|Not needed|Not needed|
+|More Functions|Can be programmed|Can be programmed|
