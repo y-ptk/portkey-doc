@@ -6,8 +6,8 @@
       "link": "generated",
       "items": [
         {
-          "document": "docs/How-to-addremove-guardians.mdx",
-          "label": "3. How to add/remove guardians?",
+          "document": "docs/How-to-send-and-receive-assets.mdx",
+          "label": "4. How to send and receive assets?",
           "_template": "doc"
         },
         {
@@ -18,6 +18,11 @@
         {
           "document": "docs/How-to-get-a-Portkey-account.mdx",
           "label": "2. How to get a Portkey account?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-addremove-guardians.mdx",
+          "label": "3. How to add/remove guardians?",
           "_template": "doc"
         }
       ],
