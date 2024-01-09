@@ -2,12 +2,12 @@
   "label": "FAQ sidebar",
   "items": [
     {
-      "title": "testfaq1",
+      "title": "User Guide",
       "link": "generated",
       "items": [
         {
-          "document": "docs/FAQ/test-FAQ.mdx",
-          "label": "test FAQ",
+          "document": "docs/How-to-download-Portkey.mdx",
+          "label": "1. How to download Portkey?",
           "_template": "doc"
         }
       ],
