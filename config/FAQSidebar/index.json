@@ -6,6 +6,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-check-my-transaction-history.mdx",
+          "label": "5. How to check my transaction history?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-send-and-receive-assets.mdx",
           "label": "4. How to send and receive assets?",
           "_template": "doc"
