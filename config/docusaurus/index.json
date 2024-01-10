@@ -12,7 +12,7 @@
       "link": "external",
       "docLink": "docs/How-to-download-Portkey.mdx",
       "externalLink": "/docs/category/user-guide",
-      "position": "right"
+      "position": "left"
     },
     {
       "label": "Portkey GitHub",
@@ -23,8 +23,7 @@
   ],
   "logo": {
     "alt": "Portkey Docs",
-    "src": "/img/portkey-logo-light.svg",
-    "darkSrc": "/img/portkey-logo-dark.svg"
+    "src": "/img/portkey-logo-light.svg"
   },
   "title": "Portkey Docs",
   "url": "https://doc.portkey.finance/"
