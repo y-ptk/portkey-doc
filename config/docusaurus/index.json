@@ -2,7 +2,7 @@
   "label": "Settings",
   "navbar": [
     {
-      "label": "Guides",
+      "label": "Quick Start",
       "link": "doc",
       "docLink": "docs/OverviewPortkey/start-here.mdx",
       "position": "left"
