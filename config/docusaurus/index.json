@@ -23,7 +23,8 @@
   ],
   "logo": {
     "alt": "Portkey Docs",
-    "src": "/img/portkey-logo-light.png"
+    "src": "/img/portkey-logo-light.svg",
+    "darkSrc": "/img/portkey-logo-dark.svg"
   },
   "title": "Portkey Docs",
   "url": "https://doc.portkey.finance/"

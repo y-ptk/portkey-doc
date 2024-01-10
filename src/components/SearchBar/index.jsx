@@ -93,7 +93,7 @@ const Search = (props) => {
       ]).then(([searchDocFile, searchIndex, { default: DocSearch }]) => {
         const { searchDocs, options } = searchDocFile;
         if (!searchDocs || searchDocs.length === 0) {
-          return;
+          return
           // initAlgolia(mockDocsData, mockDocsIndex, DocSearch, options);
           // setIndexReady(true);
         } else {
@@ -140,7 +140,7 @@ const Search = (props) => {
       <input
         id="search_input_react_portkey"
         type="search"
-        placeholder={indexReady ? placeholder : "Loading..."}
+        placeholder="Search..."
         aria-label="Search"
         className={clsx(
           "navbar__search-input",

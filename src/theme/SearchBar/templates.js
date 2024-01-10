@@ -15,15 +15,11 @@ const templates = {
         <span class="${suggestionPrefix}--category-header-lvl0">{{{category}}}</span>
     </div>
     <div class="${suggestionPrefix}--wrapper">
-      <div class="${suggestionPrefix}--subcategory-column">
-        <span class="${suggestionPrefix}--subcategory-column-text">{{{subcategory}}}</span>
-      </div>
       {{#isTextOrSubcategoryNonEmpty}}
       <div class="${suggestionPrefix}--content">
         <div class="${suggestionPrefix}--subcategory-inline">{{{subcategory}}}</div>
         <div class="${suggestionPrefix}--title">{{{title}}}</div>
         {{#text}}<div class="${suggestionPrefix}--text">{{{text}}}</div>{{/text}}
-        {{#version}}<div class="${suggestionPrefix}--version">{{version}}</div>{{/version}}
       </div>
       {{/isTextOrSubcategoryNonEmpty}}
     </div>
@@ -66,10 +62,6 @@ const templates = {
       {{/text}}
     </div>
   </div>
-  `,
-  footer: `
-    <div class="${footerPrefix}">
-    </div>
   `,
   empty: `
   <div class="${suggestionPrefix}">

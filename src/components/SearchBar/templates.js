@@ -63,10 +63,6 @@ const templates = {
     </div>
   </div>
   `,
-  footer: `
-    <div class="${footerPrefix}">
-    </div>
-  `,
   empty: `
   <div class="${suggestionPrefix}">
     <div class="${suggestionPrefix}--wrapper">
