@@ -14,7 +14,7 @@ class DocSearch {
         baseUrl = '/',
         queryDataCallback = null,
         autocompleteOptions = {
-            debug: false,
+            debug: false, //  If true, the autocomplete will not close on blur. Defaults to false.
             hint: false,
             autoselect: true
         },
@@ -36,7 +36,7 @@ class DocSearch {
         this.autocompleteOptions.cssClasses =
             this.autocompleteOptions.cssClasses || {};
         this.autocompleteOptions.cssClasses.prefix =
-            this.autocompleteOptions.cssClasses.prefix || "ds";
+            this.autocompleteOptions.cssClasses.prefix || "ds-header";
         const inputAriaLabel =
             this.input &&
             typeof this.input.attr === "function" &&

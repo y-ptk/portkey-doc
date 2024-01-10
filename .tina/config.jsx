@@ -886,11 +886,9 @@ const PagesCollection = {
 export default defineConfig({
   branch,
   clientId:
-    process.env.NEXT_PUBLIC_TINA_CLIENT_ID ||
-    "8bef6106-2e86-4e77-9b69-58e8032b4d84", // Get this from tina.io
+    process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // Get this from tina.io
   token:
-    process.env.NEXT_PUBLIC_TINA_TOKEN ||
-    "7c3ce7466d7d939653812a7f2b31cc90bb21ec1f", // Get this from tina.io
+    process.env.NEXT_PUBLIC_TINA_TOKEN, // Get this from tina.io
   build: {
     outputFolder: "admin",
     publicFolder: "static",

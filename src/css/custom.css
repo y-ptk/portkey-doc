@@ -32,10 +32,10 @@
   --ifm-help-center-card-border-hover: #5b8ef4;
   --ifm-help-center-input-bg: #fff;
   --ifm-help-center-category-header-bg: #fff;
-  --ifm-help-center-category-tile: #B6BABF;
-  --ifm-help-center-category-suggestion-text: #515A62;
+  --ifm-help-center-category-tile: #b6babf;
+  --ifm-help-center-category-suggestion-text: #515a62;
   --ifm-help-center-category-container-bg: #fff;
-  --ifm-help-center-category-container-border: #E0E0E0;
+  --ifm-help-center-category-container-border: #e0e0e0;
   --ifm-navbar-search-input-icon: url("@site/static/img/help/help-search-icon-light.svg");
 }
 
@@ -62,8 +62,8 @@
   --ifm-help-center-card-border-hover: #5b8ef4;
   --ifm-help-center-input-bg: #000000;
   --ifm-help-center-category-header-bg: #151718;
-  --ifm-help-center-category-tile: #3D3D3D;
-  --ifm-help-center-category-suggestion-text: #8C8C8C;
+  --ifm-help-center-category-tile: #3d3d3d;
+  --ifm-help-center-category-suggestion-text: #8c8c8c;
   --ifm-help-center-category-container-bg: #131415;
   --ifm-help-center-category-container-border: #484848;
   --ifm-navbar-search-input-icon: url("@site/static/img/help/help-search-icon-dark.svg");
@@ -132,15 +132,24 @@ table thead tr {
   width: 100%;
 }
 
+.algolia-autocomplete .ds-header-dropdown-menu {
+  max-width: 100% !important;
+  width: 100%;
+  min-width: 300px;
+}
+
 .algolia-autocomplete .ds-dropdown-menu::before {
+  display: none !important;
+}
+
+.algolia-autocomplete .ds-header-dropdown-menu::before {
   display: none !important;
 }
 
 mark {
   background-color: transparent !important;
-  color: #5B8EF4 !important;
+  color: #5b8ef4 !important;
 }
-
 
 iframe {
   width: 100% !important;

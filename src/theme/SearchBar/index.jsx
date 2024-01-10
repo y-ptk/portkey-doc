@@ -5,9 +5,10 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import useIsBrowser from "@docusaurus/useIsBrowser";
 import { HighlightSearchResults } from "./HighlightSearchResults";
-import SettingsIcon from "@site/static/img/help/header-search-icon-light.svg";
-import "./styles.css";
+// import { docsData as mockDocsData, docsIndex as mockDocsIndex} from "./mock";
+import './styles.css'
 const Search = (props) => {
+  console.log(props, "props");
   const initialized = useRef(false);
   const searchBarRef = useRef(null);
   const [indexReady, setIndexReady] = useState(false);
@@ -68,8 +69,11 @@ const Search = (props) => {
   const pluginData = usePluginData("docusaurus-lunr-search");
   const getSearchDoc = () =>
     process.env.NODE_ENV === "production"
-      ? fetch(`${assetUrl}${pluginData.fileNames.searchDoc}`).then((content) =>
-          content.json()
+      ? fetch(`${assetUrl}${pluginData.fileNames.searchDoc}`).then(
+          (content) => {
+            console.log(assetUrl, pluginData.fileNames, "pluginData.fileNames");
+            return content.json();
+          }
         )
       : Promise.resolve({});
 
@@ -90,10 +94,13 @@ const Search = (props) => {
       ]).then(([searchDocFile, searchIndex, { default: DocSearch }]) => {
         const { searchDocs, options } = searchDocFile;
         if (!searchDocs || searchDocs.length === 0) {
-          return;
+          return
+          // initAlgolia(mockDocsData, mockDocsIndex, DocSearch, options);
+          // setIndexReady(true);
+        } else {
+          initAlgolia(searchDocs, searchIndex, DocSearch, options);
+          setIndexReady(true);
         }
-        initAlgolia(searchDocs, searchIndex, DocSearch, options);
-        setIndexReady(true);
       });
       initialized.current = true;
     }
@@ -118,11 +125,6 @@ const Search = (props) => {
       ? "Search ⌘+K"
       : "Search Ctrl+K";
   }
-  const jumpHelp = () => {
-    if (props?.position !== "page" && history.location.pathname !== "/help") {
-      history.push("/help");
-    }
-  };
 
   return (
     <div className="navbar__search" key="search-box">
@@ -136,24 +138,24 @@ const Search = (props) => {
         onKeyDown={toggleSearchIconClick}
         tabIndex={0}
       /> */}
-      {/* <input
+      <input
         id="search_input_react"
         type="search"
-        placeholder={indexReady ? placeholder : "Loading..."}
+        placeholder="Search..."
         aria-label="Search"
         className={clsx(
           "navbar__search-input",
           { "search-bar-expanded": props.isSearchBarExpanded },
           { "search-bar": !props.isSearchBarExpanded }
         )}
-        onClick={jumpHelp}
-        onFocus={jumpHelp}
-        onBlur={jumpHelp}
+        onClick={loadAlgolia}
+        onMouseOver={loadAlgolia}
+        onFocus={toggleSearchIconClick}
+        onBlur={toggleSearchIconClick}
         ref={searchBarRef}
-        readOnly
-      /> */}
-      <SettingsIcon className="header-search-icon" onClick={jumpHelp} />
-      {/* <HighlightSearchResults /> */}
+        disabled={!indexReady}
+      />
+      <HighlightSearchResults />
     </div>
   );
 };
