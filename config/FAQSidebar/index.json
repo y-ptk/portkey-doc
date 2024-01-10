@@ -38,6 +38,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/test-Wallet.mdx",
+          "label": "test Wallet",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-is-Portkey-different-from-ERC-4337-wallets.mdx",
           "label": "3. How is Portkey different from ERC-4337 wallets?",
           "_template": "doc"
