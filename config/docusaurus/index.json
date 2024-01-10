@@ -9,9 +9,10 @@
     },
     {
       "label": "FAQ",
-      "link": "doc",
+      "link": "external",
       "docLink": "docs/How-to-download-Portkey.mdx",
-      "position": "left"
+      "externalLink": "/docs/category/user-guide",
+      "position": "right"
     },
     {
       "label": "Portkey GitHub",
