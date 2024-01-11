@@ -6,6 +6,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-switch-networks.mdx",
+          "label": "10. How to switch networks?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-claim-Testnet-tokens.mdx",
           "label": "11. How to claim Testnet tokens?",
           "_template": "doc"
