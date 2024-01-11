@@ -88,6 +88,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/What-is-social-recovery.mdx",
+          "label": "13. What is social recovery?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/What-are-the-DAppsprojects-I-can-use-in-Portkey.mdx",
           "label": "12. What are the DApps/projects I can use in Portkey?",
           "_template": "doc"
