@@ -7,6 +7,7 @@
       "items": [
         {
           "document": "docs/How-to-access-DApps.mdx",
+          "label": "12. How to access DApps?",
           "_template": "doc"
         },
         {
