@@ -6,6 +6,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-addremove-login-accounts.mdx",
+          "label": "7. How to add/remove login accounts?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-log-in-to-my-Portkey-account.mdx",
           "label": "8. How to log in to my Portkey account?",
           "_template": "doc"
