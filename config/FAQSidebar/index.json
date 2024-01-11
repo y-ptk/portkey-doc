@@ -88,18 +88,8 @@
       "link": "generated",
       "items": [
         {
-          "document": "docs/How-much-does-Portkey-charge.mdx",
-          "label": "6. How much does Portkey charge?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/What-are-the-main-advantages-of-Portkey.mdx",
-          "label": "5. What are the main advantages of Portkey?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/What-can-I-use-Portkey-for.mdx",
-          "label": "4. What can I use Portkey for?",
+          "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
+          "label": "1. What is Account Abstraction (AA) wallet",
           "_template": "doc"
         },
         {
@@ -108,18 +98,28 @@
           "_template": "doc"
         },
         {
-          "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
-          "label": "1. What is Account Abstraction (AA) wallet",
+          "document": "docs/How-is-Portkey-different-from-ERC-4337-wallets.mdx",
+          "label": "3. How is Portkey different from ERC-4337 wallets?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-can-I-use-Portkey-for.mdx",
+          "label": "4. What can I use Portkey for?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-are-the-main-advantages-of-Portkey.mdx",
+          "label": "5. What are the main advantages of Portkey?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-much-does-Portkey-charge.mdx",
+          "label": "6. How much does Portkey charge?",
           "_template": "doc"
         },
         {
           "document": "docs/test-Wallet.mdx",
           "label": "test Wallet",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-is-Portkey-different-from-ERC-4337-wallets.mdx",
-          "label": "3. How is Portkey different from ERC-4337 wallets?",
           "_template": "doc"
         }
       ],
