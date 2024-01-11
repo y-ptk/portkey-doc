@@ -88,6 +88,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/What-are-guardians-and-verifiers.mdx",
+          "label": "14. What are guardians and verifiers?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
           "label": "1. What is Account Abstraction (AA) wallet",
           "_template": "doc"
