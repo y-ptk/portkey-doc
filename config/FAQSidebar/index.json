@@ -6,6 +6,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-buysell-cryptocurrencies-with-fiat-currencies.mdx",
+          "label": "6. How to buy/sell cryptocurrencies with fiat currencies?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-customise-transfer-limits.mdx",
           "label": "15. How to customise transfer limits?",
           "_template": "doc"
