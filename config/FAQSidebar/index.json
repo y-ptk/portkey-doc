@@ -88,6 +88,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/Can-I-send-assets-in-Portkey-to-exchanges-and-vice-versa.mdx",
+          "label": "11. Can I send assets in Portkey to exchanges, and vice versa?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/What-assets-can-I-manage-in-Portkey.mdx",
           "label": "10. What assets can I manage in Portkey?",
           "_template": "doc"
