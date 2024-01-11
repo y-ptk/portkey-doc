@@ -6,6 +6,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/8-How-to-log-in-to-my-Portkey-account.mdx",
+          "label": "8. How to log in to my Portkey account?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/6-How-to-buysell-cryptocurrencies-with-fiat-currencies.mdx",
           "label": "6. How to buy/sell cryptocurrencies with fiat currencies?",
           "_template": "doc"
