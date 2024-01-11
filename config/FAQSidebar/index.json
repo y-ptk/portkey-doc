@@ -88,6 +88,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/What-are-the-main-advantages-of-Portkey.mdx",
+          "label": "5. What are the main advantages of Portkey?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/What-can-I-use-Portkey-for.mdx",
           "label": "4. What can I use Portkey for?",
           "_template": "doc"
