@@ -51,21 +51,6 @@
           "_template": "doc"
         },
         {
-          "document": "docs/6-How-to-buysell-cryptocurrencies-with-fiat-currencies.mdx",
-          "label": "6. How to buy/sell cryptocurrencies with fiat currencies?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/7-How-to-addremove-login-accounts.mdx",
-          "label": "7. How to add/remove login accounts?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/8-How-to-log-in-to-my-Portkey-account.mdx",
-          "label": "8. How to log in to my Portkey account?",
-          "_template": "doc"
-        },
-        {
           "document": "docs/How-to-manage-login-devices.mdx",
           "label": "9. How to manage login devices?",
           "_template": "doc"
