@@ -88,6 +88,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/What-assets-can-I-manage-in-Portkey.mdx",
+          "label": "10. What assets can I manage in Portkey?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/What-networks-does-Portkey-support.mdx",
           "label": "9. What networks does Portkey support?",
           "_template": "doc"
