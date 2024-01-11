@@ -6,16 +6,6 @@
       "link": "generated",
       "items": [
         {
-          "document": "docs/How-to-addremove-login-accounts.mdx",
-          "label": "7. How to add/remove login accounts?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-log-in-to-my-Portkey-account.mdx",
-          "label": "8. How to log in to my Portkey account?",
-          "_template": "doc"
-        },
-        {
           "document": "docs/How-to-download-Portkey.mdx",
           "label": "1. How to download Portkey?",
           "_template": "doc"
@@ -43,6 +33,16 @@
         {
           "document": "docs/How-to-buysell-cryptocurrencies-with-fiat-currencies.mdx",
           "label": "6. How to buy/sell cryptocurrencies with fiat currencies?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-addremove-login-accounts.mdx",
+          "label": "7. How to add/remove login accounts?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-log-in-to-my-Portkey-account.mdx",
+          "label": "8. How to log in to my Portkey account?",
           "_template": "doc"
         },
         {
