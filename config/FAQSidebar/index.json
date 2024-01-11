@@ -88,6 +88,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
+          "label": "1. What is Account Abstraction (AA) wallet",
+          "_template": "doc"
+        },
+        {
           "document": "docs/test-Wallet.mdx",
           "label": "test Wallet",
           "_template": "doc"
