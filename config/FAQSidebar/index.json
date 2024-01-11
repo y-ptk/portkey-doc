@@ -6,6 +6,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-claim-Testnet-tokens.mdx",
+          "label": "11. How to claim Testnet tokens?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/8-How-to-log-in-to-my-Portkey-account.mdx",
           "label": "8. How to log in to my Portkey account?",
           "_template": "doc"
