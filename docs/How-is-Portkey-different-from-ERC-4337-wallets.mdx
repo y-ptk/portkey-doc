@@ -19,7 +19,7 @@ When implementing [Account Abstraction (AA)](/docs/What-is-Account-Abstraction-A
 |:------|:------|:------|
 |Account Creation|Individual on-chain contract deployment for each user's account|Address is generated based on Portkey's smart contract address via algorithm, no need for individual contract deployment|
 |Cost of Account Creation|Comparatively high cost due to contract deployment fees|The cost is less, given each account does not need the deployment of a separate smart contract, and fees incurred for account creation can be covered for users via the payment delegation mechanism|
-|Transaction Fee|High gas fee on Ethereum|:0.003 ELF per transaction on aelf|
+|Transaction Fee|High gas fee on Ethereum|0.003 ELF per transaction on aelf|
 |Third Parties Covering Transaction Fees|Can be done via Paymaster|Can be done via payment delegation mechanism|
 |Transaction Processing Process|Complex processing flow with various roles involved, such as UserOperation, bundler, EntryPoint, aggregator, and paymaster|Simpler approach by interacting only with Portkey's smart contract via manager address|
 |Account Recoverable|Yes|Yes|
