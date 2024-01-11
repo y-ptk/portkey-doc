@@ -6,6 +6,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-customise-transfer-limits.mdx",
+          "label": "15. How to customise transfer limits?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-start-a-group-chat.mdx",
           "label": "14. How to start a group chat?",
           "_template": "doc"
