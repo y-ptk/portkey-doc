@@ -88,21 +88,6 @@
       "link": "generated",
       "items": [
         {
-          "document": "docs/Where-can-I-access-direct-support.mdx",
-          "label": "18. Where can I access direct support?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/Does-Portkey-have-a-private-key.mdx",
-          "label": "17. Does Portkey have a private key?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/Do-I-need-to-go-through-social-recovery-every-time-I-open-my-Portkey-Appextension.mdx",
-          "label": "16. Do I need to go through social recovery every time I open my Portkey App/extension?",
-          "_template": "doc"
-        },
-        {
           "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
           "label": "1. What is Account Abstraction (AA) wallet",
           "_template": "doc"
@@ -175,6 +160,21 @@
         {
           "document": "docs/What-is-a-login-account.mdx",
           "label": "15. What is a login account?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Do-I-need-to-go-through-social-recovery-every-time-I-open-my-Portkey-Appextension.mdx",
+          "label": "16. Do I need to go through social recovery every time I open my Portkey App/extension?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Does-Portkey-have-a-private-key.mdx",
+          "label": "17. Does Portkey have a private key?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Where-can-I-access-direct-support.mdx",
+          "label": "18. Where can I access direct support?",
           "_template": "doc"
         },
         {
