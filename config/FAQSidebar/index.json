@@ -6,6 +6,10 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-access-DApps.mdx",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-download-Portkey.mdx",
           "label": "1. How to download Portkey?",
           "_template": "doc"
