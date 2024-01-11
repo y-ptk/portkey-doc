@@ -6,6 +6,10 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/6-How-to-buysell-cryptocurrencies-with-fiat-currencies.mdx",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-download-Portkey.mdx",
           "label": "1. How to download Portkey?",
           "_template": "doc"
