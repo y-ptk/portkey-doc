@@ -88,13 +88,8 @@
       "link": "generated",
       "items": [
         {
-          "document": "docs/What-is-a-login-account.mdx",
-          "label": "15. What is a login account?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/What-are-guardians-and-verifiers.mdx",
-          "label": "14. What are guardians and verifiers?",
+          "document": "docs/Do-I-need-to-go-through-social-recovery-every-time-I-open-my-Portkey-Appextension.mdx",
+          "label": "16. Do I need to go through social recovery every time I open my Portkey App/extension?",
           "_template": "doc"
         },
         {
@@ -160,6 +155,16 @@
         {
           "document": "docs/What-is-social-recovery.mdx",
           "label": "13. What is social recovery?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-are-guardians-and-verifiers.mdx",
+          "label": "14. What are guardians and verifiers?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-is-a-login-account.mdx",
+          "label": "15. What is a login account?",
           "_template": "doc"
         },
         {
