@@ -88,6 +88,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-does-Portkeys-payment-delegation-mechanism-work.mdx",
+          "label": "7. How does Portkey's payment delegation mechanism work?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
           "label": "1. What is Account Abstraction (AA) wallet",
           "_template": "doc"
