@@ -6,6 +6,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-manage-login-devices.mdx",
+          "label": "9. How to manage login devices?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-switch-networks.mdx",
           "label": "10. How to switch networks?",
           "_template": "doc"
