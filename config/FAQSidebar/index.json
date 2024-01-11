@@ -88,6 +88,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-much-does-Portkey-charge.mdx",
+          "label": "6. How much does Portkey charge?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/What-are-the-main-advantages-of-Portkey.mdx",
           "label": "5. What are the main advantages of Portkey?",
           "_template": "doc"
