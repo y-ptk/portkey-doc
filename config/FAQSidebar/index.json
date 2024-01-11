@@ -88,36 +88,6 @@
       "link": "generated",
       "items": [
         {
-          "document": "docs/What-is-social-recovery.mdx",
-          "label": "13. What is social recovery?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/What-are-the-DAppsprojects-I-can-use-in-Portkey.mdx",
-          "label": "12. What are the DApps/projects I can use in Portkey?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/Can-I-send-assets-in-Portkey-to-exchanges-and-vice-versa.mdx",
-          "label": "11. Can I send assets in Portkey to exchanges, and vice versa?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/What-assets-can-I-manage-in-Portkey.mdx",
-          "label": "10. What assets can I manage in Portkey?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/What-networks-does-Portkey-support.mdx",
-          "label": "9. What networks does Portkey support?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/Why-do-some-of-my-transaction-records-show-the-transaction-fee-is-zero.mdx",
-          "label": "8. Why do some of my transaction records show the transaction fee is zero?",
-          "_template": "doc"
-        },
-        {
           "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
           "label": "1. What is Account Abstraction (AA) wallet",
           "_template": "doc"
@@ -150,6 +120,36 @@
         {
           "document": "docs/How-does-Portkeys-payment-delegation-mechanism-work.mdx",
           "label": "7. How does Portkey's payment delegation mechanism work?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Why-do-some-of-my-transaction-records-show-the-transaction-fee-is-zero.mdx",
+          "label": "8. Why do some of my transaction records show the transaction fee is zero?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-networks-does-Portkey-support.mdx",
+          "label": "9. What networks does Portkey support?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-assets-can-I-manage-in-Portkey.mdx",
+          "label": "10. What assets can I manage in Portkey?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Can-I-send-assets-in-Portkey-to-exchanges-and-vice-versa.mdx",
+          "label": "11. Can I send assets in Portkey to exchanges, and vice versa?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-are-the-DAppsprojects-I-can-use-in-Portkey.mdx",
+          "label": "12. What are the DApps/projects I can use in Portkey?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-is-social-recovery.mdx",
+          "label": "13. What is social recovery?",
           "_template": "doc"
         },
         {
