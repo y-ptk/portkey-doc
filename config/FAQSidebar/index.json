@@ -88,6 +88,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/What-is-Portkeys-approach-to-realise-Account-Abstraction-AA.mdx",
+          "label": "2. What is Portkey's approach to realise Account Abstraction (AA)",
+          "_template": "doc"
+        },
+        {
           "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
           "label": "1. What is Account Abstraction (AA) wallet",
           "_template": "doc"
