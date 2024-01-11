@@ -88,6 +88,11 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/What-networks-does-Portkey-support.mdx",
+          "label": "9. What networks does Portkey support?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/Why-do-some-of-my-transaction-records-show-the-transaction-fee-is-zero.mdx",
           "label": "8. Why do some of my transaction records show the transaction fee is zero?",
           "_template": "doc"
