@@ -1,0 +1,201 @@
+{
+  "label": "FAQ sidebar",
+  "items": [
+    {
+      "title": "User Guide",
+      "link": "generated",
+      "items": [
+        {
+          "document": "docs/How-to-download-Portkey.mdx",
+          "label": "1. How to download Portkey?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-get-a-Portkey-account.mdx",
+          "label": "2. How to get a Portkey account?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-addremove-guardians.mdx",
+          "label": "3. How to add/remove guardians?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-send-and-receive-assets.mdx",
+          "label": "4. How to send and receive assets?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-check-my-transaction-history.mdx",
+          "label": "5. How to check my transaction history?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-buysell-cryptocurrencies-with-fiat-currencies.mdx",
+          "label": "6. How to buy/sell cryptocurrencies with fiat currencies?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-addremove-login-accounts.mdx",
+          "label": "7. How to add/remove login accounts?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-log-in-to-my-Portkey-account.mdx",
+          "label": "8. How to log in to my Portkey account?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-manage-login-devices.mdx",
+          "label": "9. How to manage login devices?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-switch-networks.mdx",
+          "label": "10. How to switch networks?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-claim-Testnet-tokens.mdx",
+          "label": "11. How to claim Testnet tokens?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-access-DApps.mdx",
+          "label": "12. How to access DApps?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-start-a-private-chat.mdx",
+          "label": "13. How to start a private chat?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-start-a-group-chat.mdx",
+          "label": "14. How to start a group chat?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-customise-transfer-limits.mdx",
+          "label": "15. How to customise transfer limits?",
+          "_template": "doc"
+        }
+      ],
+      "_template": "category"
+    },
+    {
+      "title": "More About Portkey",
+      "link": "generated",
+      "items": [
+        {
+          "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
+          "label": "1. What is Account Abstraction (AA) wallet",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-is-Portkeys-approach-to-realise-Account-Abstraction-AA.mdx",
+          "label": "2. What is Portkey's approach to realise Account Abstraction (AA)",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-is-Portkey-different-from-ERC-4337-wallets.mdx",
+          "label": "3. How is Portkey different from ERC-4337 wallets?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-can-I-use-Portkey-for.mdx",
+          "label": "4. What can I use Portkey for?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-are-the-main-advantages-of-Portkey.mdx",
+          "label": "5. What are the main advantages of Portkey?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-much-does-Portkey-charge.mdx",
+          "label": "6. How much does Portkey charge?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-does-Portkeys-payment-delegation-mechanism-work.mdx",
+          "label": "7. How does Portkey's payment delegation mechanism work?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Why-do-some-of-my-transaction-records-show-the-transaction-fee-is-zero.mdx",
+          "label": "8. Why do some of my transaction records show the transaction fee is zero?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-networks-does-Portkey-support.mdx",
+          "label": "9. What networks does Portkey support?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-assets-can-I-manage-in-Portkey.mdx",
+          "label": "10. What assets can I manage in Portkey?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Can-I-send-assets-in-Portkey-to-exchanges-and-vice-versa.mdx",
+          "label": "11. Can I send assets in Portkey to exchanges, and vice versa?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-are-the-DAppsprojects-I-can-use-in-Portkey.mdx",
+          "label": "12. What are the DApps/projects I can use in Portkey?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-is-social-recovery.mdx",
+          "label": "13. What is social recovery?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-are-guardians-and-verifiers.mdx",
+          "label": "14. What are guardians and verifiers?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-is-a-login-account.mdx",
+          "label": "15. What is a login account?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Do-I-need-to-go-through-social-recovery-every-time-I-open-my-Portkey-Appextension.mdx",
+          "label": "16. Do I need to go through social recovery every time I open my Portkey App/extension?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Does-Portkey-have-a-private-key.mdx",
+          "label": "17. Does Portkey have a private key?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Where-can-I-access-direct-support.mdx",
+          "label": "18. Where can I access direct support?",
+          "_template": "doc"
+        }
+      ],
+      "_template": "category"
+    },
+    {
+      "title": "Industry Knowledge",
+      "link": "generated",
+      "items": [
+        {
+          "document": "docs/What-is-aelf.mdx",
+          "label": "1. What is aelf?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/Whats-the-landscape-of-crypto-wallets-like-in-general.mdx",
+          "label": "2. What's the landscape of crypto wallets like in general?",
+          "_template": "doc"
+        }
+      ],
+      "_template": "category"
+    }
+  ]
+}

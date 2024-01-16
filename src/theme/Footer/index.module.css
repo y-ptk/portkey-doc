@@ -12,10 +12,16 @@
   background-color: var(--ifm-footer-background-color);
 }
 
-.footer-logo img {
-  width: 142px;
+.footer-logo .logo-img {
+  width: 114px;
   height: 32px;
   cursor: pointer;
+  background-image: url('/img/portkey-logo-light.svg');
+  background-size: contain;
+}
+
+html[data-theme='dark'] .footer-logo .logo-img {
+  background-image: url('/img/portkey-logo-dark.svg');
 }
 
 .footer-container {
