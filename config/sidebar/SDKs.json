@@ -267,6 +267,11 @@
           "document": "docs/SDKs/UISDK/Unity/Unity.mdx",
           "label": "Unity",
           "_template": "doc"
+        },
+        {
+          "document": "docs/SDKs/CoreSDK/ReactNative/usage.mdx",
+          "label": "ReactNative",
+          "_template": "doc"
         }
       ],
       "_template": "category"
