@@ -33,6 +33,7 @@ Before using this component, we assume that you are already familiar with the <a
         -   We will assist you in estimating the quantity to be received
         -   Exchange rates is renewed every 15 seconds with the estimated asset to be received also updated
     -   Provide manage information synchronization prompt, transactions can only occur when manage information is present.
+    -   Verify wallet security and transfer limits when users sell tokens
 
 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
   <div style={{width: '32%'}}> 
@@ -64,6 +65,17 @@ Before using this component, we assume that you are already familiar with the <a
   </div>
 </div>
 
+<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
+  <div style={{width: '49%'}}> 
+    <div style={{textAlign: 'center', color: '#999'}}> wallet security notice </div>
+    <img src='/img/ui-sdk/ui-for-wallet-security-modal.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  </div>
+  <div style={{width: '49%'}}> 
+    <div style={{textAlign: 'center', color: '#999'}}> transfer limit notice </div>
+    <img src='/img/ui-sdk/ui-for-limit-modal.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  </div>
+</div>
+
 ## Usage
 
 ```typescript
@@ -79,7 +91,6 @@ const App: React.FC = () => (
     }}
     portkeyWebSocketUrl={'http://192.168.66.240:5577/ca'}
     isMainnet={true}
-    isShowSelectInModal={true}
     onBack={function (): void {
       // do something to show the last page
     }}
@@ -99,7 +110,6 @@ export default App;
 | initState           | Data that controls the initial page display                                | IRampInitState                                                                            | false     | —             |
 | isBuySectionShow    | Control if on-ramp is enabled                                              | boolean                                                                                   | false     | true          |
 | isSellSectionShow   | Control if off-ramp is enabled                                             | boolean                                                                                   | false     | true          |
-| isShowSelectInModal | Control the interaction type for switching between token and fiat currency | boolean                                                                                   | false     | true          |
 | isMainnet           | Is it Mainnet                                                              | boolean                                                                                   | false     | —             |
 | tokenInfo           | Token information                                                          | ITokenInfo                                                                                | false     | —             |
 | portkeyWebSocketUrl | WebSocket service address, requiring IP format                             | string                                                                                    | false     | —             |

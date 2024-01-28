@@ -184,6 +184,11 @@
                   "_template": "doc"
                 },
                 {
+                  "document": "docs/SDKs/UISDK/TypeScript/Document/Guardian.mdx",
+                  "label": "Guardian",
+                  "_template": "doc"
+                },
+                {
                   "document": "docs/SDKs/UISDK/TypeScript/Document/GuardianApproval.mdx",
                   "label": "GuardianApproval",
                   "_template": "doc"
@@ -257,6 +262,11 @@
                   "document": "docs/SDKs/UISDK/TypeScript/Document/TransactionDetail.mdx",
                   "label": "Transaction Detail",
                   "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/UISDK/TypeScript/Document/PaymentSecurity.mdx",
+                  "label": "PaymentSecurity",
+                  "_template": "doc"
                 }
               ],
               "_template": "category"
@@ -271,6 +281,11 @@
         {
           "document": "docs/SDKs/UISDK/Unity/Unity.mdx",
           "label": "Unity",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/SDKs/CoreSDK/ReactNative/usage.mdx",
+          "label": "ReactNative",
           "_template": "doc"
         }
       ],

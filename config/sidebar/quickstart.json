@@ -110,6 +110,11 @@
               "_template": "doc"
             }
           ]
+        },
+        {
+          "document": "docs/SDKs/CoreSDK/ReactNative/usage.mdx",
+          "label": "ReactNative",
+          "_template": "doc"
         }
       ]
     },

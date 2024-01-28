@@ -9,20 +9,24 @@ One-click integration allows for a quick connection to Portkey with only basic c
 ## Usage
 
 ```typescript
-import { DIDWalletInfo, SignIn, ISignIn } from '@portkey/did-ui-react';
-import { useCallback, useState } from 'react';
+import { DIDWalletInfo, SignIn, ISignIn } from "@portkey/did-ui-react";
+import { useCallback, useState } from "react";
 
 const App: React.FC = () => {
   const ref = useRef<ISignIn>();
 
   const onFinish = useCallback((didWallet: DIDWalletInfo) => {
-    console.log('didWallet:', didWallet)
+    console.log("didWallet:", didWallet);
   }, []);
 
   return (
     <>
       <button onClick={() => ref.current?.setOpen(true)}>Sign In</button>
-      <SignIn uiType="Modal" onFinish={onFinish} onCancel={() =>  ref.current?.setOpen(false)} />
+      <SignIn
+        uiType="Modal"
+        onFinish={onFinish}
+        onCancel={() => ref.current?.setOpen(false)}
+      />
     </>
   );
 };
@@ -32,24 +36,26 @@ export default App;
 
 ## API
 
-| Property          | Description                                                                                              | Type                                                                                             | Default       | Version |
-| :---------------- | :------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- | :------------ | :------ |
-| design            | Login UI mode                                                                                            | "SocialDesign" \| "CryptoDesign" \| "Web2Design"                                                 | CryptoDesign  |         |
-| uiType            | Is UI displayed as Modal or as a page component                                                          | 'Modal' \| 'Full'                                                                                | Modal         |         |
-| getContainer      | Menu renders the parent node when uiType is Modal                                                        | HTMLElement \| () => HTMLElement \| Selectors \| false                                           | document.body |         |
-| className         | Class name of the top level container                                                                    | string                                                                                           | -             |         |
-| defaultChainId    | Default chain ID for login and sing-up                                                                   | ChainId                                                                                          | 'AELF'        |         |
-| defaultLifeCycle  | Default lifecycle of the ongoing login process                                                           | Partial<TStep1LifeCycle \| TStep2SignUpLifeCycle \| TStep2SignInLifeCycle \| TStep3LifeCycle\>   | -             |         |
-| isShowScan        | Is scan to log in shown                                                                                  | boolean                                                                                          | true          |         |
-| phoneCountry      | List of countries that support sending SMS verification codes                                            | IPhoneCountry                                                                                    | -             |         |
-| extraElement      | Customized content                                                                                       | ReactNode                                                                                        | -             |         |
-| termsOfService    | Address of the terms, won't be displayed if not configured. If it is a string, consider it as a link     | ReactNode                                                                                        | -             |         |
-| validateEmail     | Customized rules for email verification                                                                  | (v:string)=>Promise<any\>                                                                        | -             |         |
-| validatePhone     | Customized rules for phone number verification                                                           | (v:string)=>Promise<any\>                                                                        | -             |         |
-| isErrorTip        | Is error tip set as default                                                                              | boolean                                                                                          | true          |         |
-| onError           | Callback of error                                                                                        | (error: {errorFields:string, error: any}) => void;                                               | -             |         |
-| onChainIdChange   | Triggered when the chain where the user registers address does not match the default chain ID            | (chainId?: ChainId) => void;                                                                     | -             |         |
-| onLifeCycleChange | Triggered when certain cycle changes                                                                     | onLifeCycleChange?<T = any\>(liftCycle: LifeCycleType, nextLifeCycleProps: T): void;             | -             |         |
-| onCreatePending   | Triggered when the creation/login initiated succeeds                                                     | (info: CreatePendingInfo) => void;                                                               | -             |         |
-| onFinish          | Callback when creation/login is completed                                                                | (didWallet: DIDWalletInfo) => void;                                                              | -             |         |
-| onCancel          | Callback of cancelling when uiType is Modal                                                              | () => void;                                                                                      | -             |         |
+| Property          | Description                                                                                          | Type                                                                                           | Default       | Version |
+| :---------------- | :--------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------- | :------------ | :------ |
+| pin               | Default pin. When `typeof pin === 'string'`, the process of setting the pin will be skipped          | string \| undefined                                                                            | -             | 1.5.3+  |
+| keyboard          | Is Portkey numeric keyboard used. Only takes effect on mobile devices                                | boolean                                                                                        | -             | 1.5.3+  |
+| design            | Login UI mode                                                                                        | "SocialDesign" \| "CryptoDesign" \| "Web2Design"                                               | CryptoDesign  |         |
+| uiType            | Is UI displayed as Modal or as a page component                                                      | 'Modal' \| 'Full'                                                                              | Modal         |         |
+| getContainer      | Menu renders the parent node when uiType is Modal                                                    | HTMLElement \| () => HTMLElement \| Selectors \| false                                         | document.body |         |
+| className         | Class name of the top level container                                                                | string                                                                                         | -             |         |
+| defaultChainId    | Default chain ID for login and sing-up                                                               | ChainId                                                                                        | 'AELF'        |         |
+| defaultLifeCycle  | Default lifecycle of the ongoing login process                                                       | Partial<TStep1LifeCycle \| TStep2SignUpLifeCycle \| TStep2SignInLifeCycle \| TStep3LifeCycle\> | -             |         |
+| isShowScan        | Is scan to log in shown                                                                              | boolean                                                                                        | true          |         |
+| phoneCountry      | List of countries that support sending SMS verification codes                                        | IPhoneCountry                                                                                  | -             |         |
+| extraElement      | Customized content                                                                                   | ReactNode                                                                                      | -             |         |
+| termsOfService    | Address of the terms, won't be displayed if not configured. If it is a string, consider it as a link | ReactNode                                                                                      | -             |         |
+| validateEmail     | Customized rules for email verification                                                              | (v:string)=>Promise<any\>                                                                      | -             |         |
+| validatePhone     | Customized rules for phone number verification                                                       | (v:string)=>Promise<any\>                                                                      | -             |         |
+| isErrorTip        | Is error tip set as default                                                                          | boolean                                                                                        | true          |         |
+| onError           | Callback of error                                                                                    | (error: {errorFields:string, error: any}) => void;                                             | -             |         |
+| onChainIdChange   | Triggered when the chain where the user registers address does not match the default chain ID        | (chainId?: ChainId) => void;                                                                   | -             |         |
+| onLifeCycleChange | Triggered when certain cycle changes                                                                 | (liftCycle: LifeCycleType, nextLifeCycleProps: T): void;                                       | -             |         |
+| onCreatePending   | Triggered when the creation/login initiated succeeds                                                 | (info: CreatePendingInfo) => void;                                                             | -             |         |
+| onFinish          | Callback when creation/login is completed                                                            | (didWallet: DIDWalletInfo) => void;                                                            | -             |         |
+| onCancel          | Callback of cancelling when uiType is Modal                                                          | () => void;                                                                                    | -             |         |
