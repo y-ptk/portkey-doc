@@ -6,15 +6,33 @@ title: Contract Basic
 
 Developers can instantiate a new ContractBasic object to interface with any deployed contracts on-chain.
 
-## CallTransactionAsync<T\>(BlockchainWallet wallet, string methodName, IMessage param, SuccessCallback<T\> successCallback, ErrorCallback errorCallback)
-
-**Description:** *CallTransactionAsync is a generic method that can be used to call a contract Get method and execute the transaction.*
+## Constructor
 
 **Parameters:**
 
--   wallet (BlockchainWallet): *EOA Wallet to sign the transaction with.*
+-   *chain (IChain): The chain that the contract is deployed at.*
+-   *contractAddress (string): The contract address corresponding to this contract.*
+
+**Example:**
+
+```c#
+StartCoroutine(portkeySDK.ChainProvider.GetChain("AELF", chain =>
+{
+    //creating a new token contract object to interface with the deployed smart contract on chain.
+    var tokenContract = new ContractBasic(chain, tokenAddress);
+
+    //to stuff...
+}, OnError));
+```
+
+## CallAsync<T\>(string methodName, IMessage param, SuccessCallback<T\> successCallback, ErrorCallback errorCallback)
+
+**Description:** *CallAsync is a generic method that can be used to call a view contract method (Read-only operation).*
+
+**Parameters:**
+
 -   *methodName (string): Name of the method to call from the contract.*
--   *param (IMessage): Parameters for calling the method from the contract.*
+-   *param (IMessage): Protobuf message parameters for calling the method from the contract.*
 -   *successCallback (SuccessCallback<T\>): The callback function when user is successful in calling the method on the contract.*
 -   errorCallback (ErrorCallback): *The callback function when there is an error.*
 
@@ -26,29 +44,32 @@ Developers can instantiate a new ContractBasic object to interface with any depl
 
 ```c#
 //create a contract object referencing a contract deployed on AELF chain
-var tokenContract = new ContractBasic(did.GetChain("AELF"), tokenAddress);
+var tokenContract = new ContractBasic(chain, tokenAddress);
 
-var balanceInput = new GetBalanceInput()
+//creating a IMessage for parameters into the GetBalance method of the contract
+var param = new GetBalanceInput()
 {
     Owner = caAddress.ToAddress(), //contract address corresponding to the chain
     Symbol = "ELF"
 };
+
 //get balance on the contract
-StartCoroutine(tokenContract.CallTransactionAsync<GetBalanceOutput\>(wallet, "GetBalance", balanceInput, output =>
+StartCoroutine(tokenContract.CallTransactionAsync<GetBalanceOutput\>("GetBalance", param, output =>
 {
     var tokenBalance = output.Balance;
+    // do stuff...
 }, OnError););
 ```
 
-## SendTransactionAsync(BlockchainWallet wallet, string methodName, IMessage param, SuccessCallback<TransactionInfoDto\> successCallback, ErrorCallback errorCallback)
+## SendAsync(ISigningKey signingKey, string methodName, IMessage param, SuccessCallback<TransactionInfoDto\> successCallback, ErrorCallback errorCallback)
 
-**Description:** *SendTransactionAsync is a generic method that can be used to call a contract Set method and execute the transaction.*
+**Description:** *SendAsync is a generic method that can be used to call a contract method that changes states and execute the transaction.*
 
 **Parameters:**
 
--   wallet (BlockchainWallet): *EOA Wallet to sign the transaction with.*
+-   signingKey (ISigningKey): *EOA Wallet to sign the transaction with.*
 -   *methodName (string): Name of the method to call from the contract.*
--   *param (IMessage): Parameters for calling the method from the contract.*
+-   *param (IMessage): Protobuf message parameters for calling the method from the contract.*
 -   *successCallback (SuccessCallback<T\>): The callback function when user is successful in transaction for the method on the contract.*
 -   errorCallback (ErrorCallback): *The callback function when there is an error.*
 
@@ -59,15 +80,46 @@ StartCoroutine(tokenContract.CallTransactionAsync<GetBalanceOutput\>(wallet, "Ge
 **Example:**
 
 ```c#
-var addManagerInfoInput = new AddManagerInfoInput
+var tokenContract = new ContractBasic(chain, tokenAddress);
+
+//creating a IMessage for parameters into the Transfer method of the contract
+var param = new TransferInput
 {
-    ManagerInfo = editManagerParams.managerInfo,
-    CaHash = Hash.LoadFromHex(caHash)
+    Symbol = "ELF",
+    //...
 };
 
-StartCoroutine(contract.SendTransactionAsync(wallet, "AddManagerInfo", addManagerInfoInput, result =>
+StartCoroutine(contract.SendAsync(signingKey, "Transfer", param, result =>
 {
     //check if we have successfully add manager info on the contract
     var successful = result.transactionResult.Status == TransactionResultStatus.Mined.ToString();
+
+    //do stuff
 }, errorCallback));
+```
+
+## ContractAddress
+
+**Description:** *The address the contract is deployed at.*
+
+**Example:**
+
+```c#
+//create a contract object referencing a contract deployed on AELF chain
+var tokenContract = new ContractBasic(chain, tokenAddress);
+
+var contractAddress = tokenContract.ContractAddress; //this is equal to tokenAddress
+```
+
+## ChainId
+
+**Description:** *For getting the corresponding chain Id to the contract.*
+
+**Example:**
+
+```c#
+//create a contract object referencing a contract deployed on AELF chain
+var tokenContract = new ContractBasic(chain, tokenAddress);
+
+var chainId = tokenContract.ChainId;
 ```

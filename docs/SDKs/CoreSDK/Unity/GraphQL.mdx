@@ -1,12 +1,16 @@
 ---
-title: GraphQL
+title: GraphQL Config
 ---
 
-# GraphQL
+# GraphQLConfig
+
+GraphQLConfig is a ScriptableObject that stores the GraphQL API reference. It is the single point for user accessing GraphQL API in the form of a config file. You may create one through Create/Portkey/GraphQL/API Reference.
+
+You may learn more about GraphQL here: https://graphql.org/learn/
 
 ## GetQueryByName(string queryName)
 
-**Description:** *For getting a query by name.*
+**Description:** *For getting a GraphQL query by name.*
 
 **Parameters:**
 
@@ -18,27 +22,7 @@ title: GraphQL
 
 ```c#
 //getting the query object by name
-GraphQLQuery query = GetQueryByName("GetCAHolderInfo");
-```
-
-## Query<T\>(string query, SuccessCallback<T\> successCallback, ErrorCallback errorCallback)
-
-**Description:** *For making a GraphQL query.*
-
-**Parameters:**
-
--   *query* (string): *The query to call.*
--   *successCallback (SuccessCallback<T\>): Callback function when post of query is successful.*
--   errorCallback (ErrorCallback): *Callback function when error occurs.*
-
-**Generic:**
-
--   T: *The GraphQL return query type.*
-
-**Example:**
-
-```c#
-StartCoroutine(Query<GraphQLCodeGen.Types.Query\>("GetCAHolderInfo", SuccessCallback, ErrorCallback));
+GraphQLQuery query = graphQLConfig.GetQueryByName("MyGraphQLInfo");
 ```
 
 ## Query<T\>(GraphQLQuery query, SuccessCallback<T\> successCallback, ErrorCallback errorCallback)
@@ -58,7 +42,7 @@ StartCoroutine(Query<GraphQLCodeGen.Types.Query\>("GetCAHolderInfo", SuccessCall
 **Example:**
 
 ```c#
-var query = GetQueryByName("GetCAHolderInfo");
+var query = GetQueryByName("MyGraphQLInfo");
 
-StartCoroutine(Query<GraphQLCodeGen.Types.Query\>(query, SuccessCallback, ErrorCallback));
+StartCoroutine(graphQLConfig.Query<GraphQLCodeGen.Types.Query\>(query, SuccessCallback, ErrorCallback));
 ```

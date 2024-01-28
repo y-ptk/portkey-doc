@@ -1,0 +1,37 @@
+---
+title: Portkey Browser Extension Login
+---
+
+# Authenticate using Portkey Browser Extension
+
+You can let your users authenticate with Portkey using their Portkey Browser Extension by using the Portkey SDK for sign-in flow. All signing of transactions will be done through the Portkey Browser Extension.
+
+This is only available on WebGL.
+
+## Access the PortkeySDK.AuthService
+
+The AuthService class is the entry point for all authentication API calls. It is accessable through PortkeySDK.AuthService.
+
+```c#
+IAuthService auth = PortkeySDK.AuthService;
+```
+
+## Authenticate with PortkeySDK
+
+1. Log in the user directly through AuthService using LoginWithPortkeyExtension.
+
+```c#
+// mySuccessCallback will be called when the user successfully authenticated with Portkey Browser Extension.
+StartCoroutine(PortkeySDK.AuthService.LoginWithPortkeyExtension(mySuccessCallback));
+```
+
+## Next Steps
+
+After the user has signed up or logged in, a DIDAccountInfo will be returned that corresponds to the account within Portkey Browser Extension used to login. DIDAccountInfo contains signing key and account information that can be used to get a user's account balance and sign transactions.
+
+## Sign out
+
+To sign out a user, call Logout or disconnect from the Portkey Browser Extension.
+```c#
+StartCoroutine(PortkeySDK.AuthService.Logout());
+```

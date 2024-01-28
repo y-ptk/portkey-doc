@@ -13,7 +13,7 @@ Here is an example of getting balance:
 ### Usage
 
 ```typescript
-var tokenContract = new ContractBasic(did.GetChain("AELF"), tokenAddress);
+var tokenContract = new ContractBasic(PortkeySDK.GetChain("AELF"), tokenAddress);
 
 var balanceInput = new GetBalanceInput()
 {
@@ -21,7 +21,7 @@ var balanceInput = new GetBalanceInput()
     Symbol = "ELF"
 };
 
-yield return tokenContract.CallTransactionAsync<GetBalanceOutput>(DID.GetWallet(), "GetBalance", balanceInput, output =>
+yield return tokenContract.CallAsync<GetBalanceOutput>("GetBalance", balanceInput, output =>
 {
     //output.Balance
 }, OnError);

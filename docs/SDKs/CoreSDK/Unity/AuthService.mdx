@@ -1,0 +1,241 @@
+---
+title: AuthService
+---
+
+# AuthService
+
+The entry point for developers to access authentication methods for users including login, signup and logout.
+
+## GetRequiredApprovedGuardiansCount(int totalGuardians)
+
+**Description:** *The GetRequiredApprovedGuardiansCount function returns the number of guardians that must be approved to recover the user's Portkey DID Account. The function takes in an integer representing the total number of guardians, and returns an integer representing the minimum required approvals.*
+
+**Parameters:**
+
+-   *totalGuardians (int): The total number of guardians binded to the account.*
+
+**Returns:** *The number of approved guardians required to recover the user's Portkey DID Account.*
+
+**Example:**
+
+```c#
+var requiredApprovedGuardians = PortkeySDK.AuthService.GetRequiredApprovedGuardiansCount(10); // by default this returns 6. 3 out of 5 guardians need to be approved.
+```
+
+## GetGuardians(ICredential credential, SuccessCallback<List<Guardian\>> successCallback)
+
+**Description:** *The GetGuardians function retrieves a list of guardians for the specified user.*
+
+**Parameters:**
+
+-   credential (ICredential): *The credential of the user to get guardians for.*
+-   *successCallback (SuccessCallback<List<Guardian\>>): This is the callback that will be called when the request has been completed. It returns a list of guardian objects.*
+
+**Example:**
+
+```c#
+StartCoroutine(portkeySDK.AuthService.GetGuardians(credential, guardians =>
+{
+    var numberOfGuardians = guardians.Count;
+    //do stuff...
+}));
+```
+
+## GetGuardians(PhoneNumber phoneNumber, SuccessCallback<List<Guardian\>> successCallback)
+
+**Description:** *The GetGuardians function retrieves a list of guardians for the specified user using phone number.*
+
+**Parameters:**
+
+-   phoneNumber (PhoneNumber): *The phone number of the user to get guardians for.*
+-   *successCallback (SuccessCallback<List<Guardian\>>): This is the callback that will be called when the request has been completed. It returns a list of guardian objects.*
+
+**Example:**
+
+```c#
+PhoneNumber phoneNumber = PhoneNumber.Parse("12345678");
+
+StartCoroutine(portkeySDK.AuthService.GetGuardians(phoneNumber, guardians =>
+{
+    var numberOfGuardians = guardians.Count;
+    //do stuff...
+}));
+```
+
+## GetGuardians(EmailAddress emailAddress, SuccessCallback<List<Guardian\>> successCallback)
+
+**Description:** *The GetGuardians function retrieves a list of guardians for the specified user using email address.*
+
+**Parameters:**
+
+-   emailAddress (EmailAddress): *The email address of the user to get guardians for.*
+-   *successCallback (SuccessCallback<List<Guardian\>>): This is the callback that will be called when the request has been completed. It returns a list of guardian objects.*
+
+**Example:**
+
+```c#
+EmailAddress emailAddress = EmailAddress.Parse("test@portkey.finance");
+
+StartCoroutine(portkeySDK.AuthService.GetGuardians(emailAddress, guardians =>
+{
+    var numberOfGuardians = guardians.Count;
+    //do stuff...
+}));
+```
+
+## Verify(Guardian guardian, SuccessCallback<ApprovedGuardian\> successCallback, ICredential credential)
+
+**Description:** *The Verify function is used to verify a guardian's identity and returns an ApprovedGuardian. The function takes in a Guardian object and an optional ICredential object. If the ICredential is not provided, the function will attempt to retrieve it from the user.*
+
+**Parameters:**
+
+-   guardian (Guardian): *The guardian to be verified for approval.*
+-   *successCallback (SuccessCallback<ApprovedGuardian\>): The callback function that will be called when the guardian is approved.*
+-   *credential (ICredential): If the credential is not null, it will be used to verify the guardian.*
+
+**Returns:** *An approved guardian that has verified its credential.*
+
+**Example:**
+
+```c#
+StartCoroutine(portkeySDK.AuthService.Verify(guardian, approvedGuardian => {
+    //do stuff...
+}));
+```
+
+## SignUp(VerifiedCredential verifiedCredential, SuccessCallback<DIDAccountInfo\> successCallback)
+
+**Description:** *The SignUp function is used to register a new DID account on the blockchain. The SignUp function takes in a VerifiedCredential object, which contains information about the user's social media account and their verification document. The SignUp function also takes in a callback, which is called when the registration process has completed successfully.*
+
+**Parameters:**
+
+-   verifiedCredential (VerifiedCredential): *The verified credential of the user.*
+-   *successCallback (SuccessCallback<DIDAccountInfo\>): a callback function that is called when the operation succeeds. The output of this function is a DIDAccountInfo object containing information about the newly created wallet.*
+
+**Example:**
+
+```c#
+StartCoroutine(portkeySDK.AuthService.SignUp(verifiedCredential, accountInfo => {
+    var signingKey = accountInfo.signingKey;
+    //do stuff...
+}));
+```
+
+## Login(Guardian loginGuardian, List<ApprovedGuardian\> approvedGuardians, SuccessCallback<DIDAccountInfo\> successCallback)
+
+**Description:** *The Login function is used to log in a user with a list of approved guardians.*
+
+**Parameters:**
+
+-   user (Guardian): *The guardian that is used to login.*
+-   *approvedGuardians (List<ApprovedGuardian\>): List of approved guardians associated with the account to login.*
+-   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a DIDAccountInfo that contains the user's account info.*
+
+**Example:**
+
+```c#
+// approve some guardians prior
+
+StartCoroutine(portkeySDK.AuthService.Login(loginGuardian, approvedGuardians, accountInfo => {
+    var signingKey = accountInfo.signingKey;
+    //do stuff...
+}));
+```
+
+## LoginWithPortkeyExtension(SuccessCallback<DIDAccountInfo\> successCallback)
+
+**Description:** *The LoginWithPortkeyExtension function is used to login using Portkey Browser Extension. This is only supported on WebGL platform.*
+
+**Parameters:**
+
+-   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a DIDAccountInfo that contains the user's account info.*
+
+**Example:**
+
+```c#
+// in WebGL platform...
+
+StartCoroutine(portkeySDK.AuthService.LoginWithPortkeyExtension(accountInfo => {
+    var signingKey = accountInfo.signingKey;
+    //do stuff...
+}));
+```
+
+## LoginWithPortkeyApp(SuccessCallback<DIDAccountInfo\> successCallback)
+
+**Description:** *The LoginWithPortkeyApp function is used to login with the Portkey app on mobile devices. Supports iOS and Android.*
+
+**Parameters:**
+
+-   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a DIDAccountInfo that contains the user's account info.*
+
+**Example:**
+
+```c#
+// in iOS or Android platform...
+
+StartCoroutine(portkeySDK.AuthService.LoginWithPortkeyApp(accountInfo => {
+    var signingKey = accountInfo.signingKey;
+    //do stuff...
+}));
+```
+
+## LoginWithQRCode(SuccessCallback<Texture2D\> qrCodeCallback, SuccessCallback<DIDAccountInfo\> successCallback)
+
+**Description:** *The LoginWithQRCode function is used to login with a QR code.*
+
+**Parameters:**
+
+-   *qrCodeCallback (SuccessCallback<Texture2D\>): The qrCodeCallback function will be called when the QR code texture is ready. Texture is in Unity's Texture2D format.*
+-   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a DIDAccountInfo that contains the user's account info.*
+
+**Example:**
+
+```c#
+StartCoroutine(portkeySDK.AuthService.LoginWithQRCode(
+    qrCodeTexture => {
+        //render qr code texture
+    }
+    accountInfo => {
+        var signingKey = accountInfo.signingKey;
+        //do stuff...
+}));
+```
+
+## Logout()
+
+**Description:** *The Logout function logs out the user from their DID account.*
+
+**Example:**
+
+```c#
+portkeySDK.AuthService.Message.OnLogoutEvent += OnLogout;
+
+StartCoroutine(portkeySDK.AuthService.Logout());
+
+//upon the end of the Logout operation, OnLogout function will be called.
+```
+
+## AppleCredentialProvider
+
+**Description:** *For users to get their apple credential.*
+
+## GoogleCredentialProvider
+
+**Description:** *For users to get their google credential.*
+
+## PhoneCredentialProvider
+
+**Description:** *For users to get their phone credential.*
+
+## EmailCredentialProvider
+
+**Description:** *For users to get their email credential.*
+
+## Message
+
+**Description:** *Returns an IAuthMessage object used to register or invoke events for authentication.*
+
+## Message
+
+**Description:** *Returns an IAuthMessage object used to register or invoke events for authentication.*

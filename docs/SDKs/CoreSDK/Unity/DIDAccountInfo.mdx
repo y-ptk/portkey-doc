@@ -1,0 +1,66 @@
+---
+title: DIDAccountInfo
+---
+
+# DIDAccountInfo
+
+DIDAccountInfo contains account related information as well as the signing key. The signing key can be used to sign transactions for the user.
+
+## Members
+
+- caInfo (CAInfo): Information related to identifying the account.
+    - caAddress (string): The virtual account address corresponding to the account.
+    - caHash (string): The unique hash value used to identify the account.
+- chainId (string): The chain ID that the user signed in on.
+- signingKey (ISigningKey): The EOA signing key to be used to sign operations for the user.
+- managerInfo (ManagerInfoType): The management EOA account information.
+
+# CAInfo
+
+Contract Address Information containing the unique hash of the user's account used to identify the user's account and the corresponding virtual address.
+
+## Members
+
+- caHash (string): The unique hash of the user's account used to identify the user's account.
+- caAddress (string): The virtual address of the user's account used to receive funds etc.
+
+# ISigningKey
+
+The key pair used to sign transactions.
+
+## Address
+
+**Description:** *The address corresponding to the key pair in base 64.*
+
+## PublicKey
+
+**Description:** *The public key corresponding to the key pair in base 58.*
+
+## SignTransaction(Transaction transaction, SuccessCallback<Transaction\> successCallback, ErrorCallback errorCallback)
+
+**Description:** *Method used to sign a Transaction object and returns a transaction object with a valid signature through successCallback.*
+
+**Parameters:**
+
+-   *transaction (Transaction): Transaction object which has not been signed. i.e. signature is null.*
+-   *successCallback (SuccessCallback<Transaction\>): The successCallback that is called when the transaction is successfully signed. This takes in a Transaction object with a valid signature.*
+-   *errorCallback (ErrorCallback): The error callback when signing a transaction encounters an unexpected error.*
+
+## Sign(string data, SuccessCallback<byte[]\> successCallback, ErrorCallback errorCallback)
+
+**Description:** *Method used to sign a 32 byte message and returns an array of bytes representing a valid signature corresponding to the message through successCallback.*
+
+**Parameters:**
+
+-   *data (string): A 32 byte message in the form of a string to be signed.*
+-   *successCallback (SuccessCallback<byte[]\>): The successCallback that is called when the message is successfully signed. This takes in an array of bytes representing a valid signature corresponding to the message input.*
+-   *errorCallback (ErrorCallback): The error callback when signing a transaction encounters an unexpected error.*
+
+# ManagerInfoType
+
+The login guardian information for the DID account.
+
+## Members
+
+- guardianIdentifier (string): The ID of the guardian i.e. email address or social sub etc.
+- accountType (AccountType): The type of guardian. Can be of type Email, Phone, Google or Apple etc.
