@@ -4,11 +4,26 @@ title: Unity
 
 # Unity
 
-![ui sdk unity](/img/ui-sdk/ui-sdk-unity.jpeg)
+![ui sdk unity](/img/ui-sdk/ui-sdk-unity.jpeg "")
 
 You should see this screen after the following steps:
 
-1.  Follow through Installation section of https://github.com/Portkey-Wallet/portkey-unity-sdk
-1.  Open up `SampleScene`
+1. Follow through Installation section of https://github.com/Portkey-Wallet/portkey-unity-sdk
+2. Open up `SampleScene`
 
 The main UI you should look for is under `PortkeyUICanvas.prefab`. If you wish to alter its appearance, you may create a prefab variant and do the necessary.
+
+# IOS Account Deletion
+
+### Review Requirements
+
+When you attempt to publish an app onto the apple store, you will be required to provide a feature on your application to allow users to delete their apple account registered Portkey account. You may read more about this requirement here: https://developer.apple.com/support/offering-account-deletion-in-your-app/
+
+### Portkey SDK
+
+We have provided you with an UI SDK to include such a feature in your application so that you can easily meet Apple's requirements. Upon logging into an Apple account registered Portkey account, you would be able to see the following button available in the wallet view screen.
+
+![Unity iOS Account Deletion Button](/img/ui-sdk/ui-unity-account-deletion.jpg "iOS Account Deletion Button")
+
+You may change this button's appearance by altering the `DeleteAccountButton.prefab` prefab under Assets/Portkey/Prefabs folder.
+We recommend that you display this button in an implicit manner such that it only appears through an obsure gesture or button press. This is so that users do not delete their account by mistake.
