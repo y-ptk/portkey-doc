@@ -26,7 +26,7 @@ IAuthService auth = PortkeySDK.AuthService;
 StartCoroutine(PortkeySDK.AuthService.LoginWithQRCode(DisplayQRCode, mySuccessCallback));
 ```
 
-2. You may choose to cancel the QR code login anytime by calling CancelLoginWithQRCode from AuthMessage.
+2. You may choose to cancel the QR code login anytime by calling `CancelLoginWithQRCode` from `AuthMessage`.
 ```c#
 // this will cancel the login flow for logging in with QR code when it is still authenticating the user.
 PortkeySDK.AuthService.Message.CancelLoginWithQRCode();
