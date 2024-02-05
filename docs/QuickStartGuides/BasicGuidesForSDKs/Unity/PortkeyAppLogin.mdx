@@ -25,7 +25,7 @@ IAuthService auth = PortkeySDK.AuthService;
 StartCoroutine(PortkeySDK.AuthService.LoginWithPortkeyApp(mySuccessCallback));
 ```
 
-2. You may choose to cancel the Portkey App Login anytime by calling CancelLoginWithPortkeyApp from AuthMessage.
+2. You may choose to cancel the Portkey App Login anytime by calling `CancelLoginWithPortkeyApp` from `AuthMessage`.
 ```c#
 // this will cancel the login flow for logging in with Portkey App when it is still authenticating the user.
 PortkeySDK.AuthService.Message.CancelLoginWithPortkeyApp();
