@@ -23,7 +23,7 @@ IAuthService auth = PortkeySDK.AuthService;
 PortkeySDK.AuthService.AppleCredentialProvider.Get(mySuccessCallback);
 ```
 
-2. After getting Apple Credential, we will check if the user has already signed up with the corresponding Apple Credential before. A user who already has an account with Portkey should have one or more Guardians returned from the callback.
+2. After getting Apple Credential, we will check if the user has already signed up beforehand with the corresponding Apple Credential. A user who already has an account with Portkey should have one or more Guardians returned from the callback.
 
 ```c#
 StartCoroutine(PortkeySDK.AuthService.GetGuardians(appleCredential, guardians =>
