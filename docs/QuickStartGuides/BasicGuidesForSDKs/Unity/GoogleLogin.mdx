@@ -43,7 +43,7 @@ StartCoroutine(PortkeySDK.AuthService.GetGuardians(googleCredential, guardians =
 
     - Sign up flow
     
-        1. Sign in for the user through the SignUp function. A DIDAccountInfo will be returned after a successful sign up that contains the signing key and account information for the user.
+        1. Sign in for the user through the `SignUp` function. A `DIDAccountInfo` will be returned after a successful sign up that contains the signing key and account information for the user.
         ```c#
         StartCoroutine(PortkeySDK.AuthService.SignUp(googleCredential, didAccountInfo => 
         {
