@@ -85,7 +85,7 @@ StartCoroutine(portkeySDK.AuthService.GetGuardians(emailAddress, guardians =>
 
 ## Verify(Guardian guardian, SuccessCallback<ApprovedGuardian\> successCallback, ICredential credential)
 
-**Description:** *The Verify function is used to verify a guardian's identity and returns an ApprovedGuardian. The function takes in a Guardian object and an optional ICredential object. If the ICredential is not provided, the function will attempt to retrieve it from the user.*
+**Description:** *The Verify function is used to verify a guardian's identity and returns an `ApprovedGuardian`. The function takes in a Guardian object and an optional `ICredential` object. If the `ICredential` is not provided, the function will attempt to retrieve it from the user.*
 
 **Parameters:**
 
@@ -105,12 +105,12 @@ StartCoroutine(portkeySDK.AuthService.Verify(guardian, approvedGuardian => {
 
 ## SignUp(VerifiedCredential verifiedCredential, SuccessCallback<DIDAccountInfo\> successCallback)
 
-**Description:** *The SignUp function is used to register a new DID account on the blockchain. The SignUp function takes in a VerifiedCredential object, which contains information about the user's social media account and their verification document. The SignUp function also takes in a callback, which is called when the registration process has completed successfully.*
+**Description:** *The `SignUp` function is used to register a new DID account on the blockchain. The `SignUp` function takes in a `VerifiedCredential` object, which contains information about the user's social media account and their verification document. The `SignUp` function also takes in a callback, which is called when the registration process has completed successfully.*
 
 **Parameters:**
 
 -   verifiedCredential (VerifiedCredential): *The verified credential of the user.*
--   *successCallback (SuccessCallback<DIDAccountInfo\>): a callback function that is called when the operation succeeds. The output of this function is a DIDAccountInfo object containing information about the newly created wallet.*
+-   *successCallback (SuccessCallback<DIDAccountInfo\>): a callback function that is called when the operation succeeds. The output of this function is a `DIDAccountInfo` object containing information about the newly created wallet.*
 
 **Example:**
 
@@ -129,7 +129,7 @@ StartCoroutine(portkeySDK.AuthService.SignUp(verifiedCredential, accountInfo => 
 
 -   user (Guardian): *The guardian that is used to login.*
 -   *approvedGuardians (List<ApprovedGuardian\>): List of approved guardians associated with the account to login.*
--   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a DIDAccountInfo that contains the user's account info.*
+-   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a `DIDAccountInfo` that contains the user's account info.*
 
 **Example:**
 
@@ -148,7 +148,7 @@ StartCoroutine(portkeySDK.AuthService.Login(loginGuardian, approvedGuardians, ac
 
 **Parameters:**
 
--   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a DIDAccountInfo that contains the user's account info.*
+-   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a `DIDAccountInfo` that contains the user's account info.*
 
 **Example:**
 
@@ -163,11 +163,11 @@ StartCoroutine(portkeySDK.AuthService.LoginWithPortkeyExtension(accountInfo => {
 
 ## LoginWithPortkeyApp(SuccessCallback<DIDAccountInfo\> successCallback)
 
-**Description:** *The LoginWithPortkeyApp function is used to login with the Portkey app on mobile devices. Supports iOS and Android.*
+**Description:** *The `LoginWithPortkeyApp` function is used to login with the Portkey app on mobile devices. Supports iOS and Android.*
 
 **Parameters:**
 
--   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a DIDAccountInfo that contains the user's account info.*
+-   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a `DIDAccountInfo` that contains the user's account info.*
 
 **Example:**
 
@@ -182,12 +182,12 @@ StartCoroutine(portkeySDK.AuthService.LoginWithPortkeyApp(accountInfo => {
 
 ## LoginWithQRCode(SuccessCallback<Texture2D\> qrCodeCallback, SuccessCallback<DIDAccountInfo\> successCallback)
 
-**Description:** *The LoginWithQRCode function is used to login with a QR code.*
+**Description:** *The `LoginWithQRCode` function is used to login with a QR code.*
 
 **Parameters:**
 
--   *qrCodeCallback (SuccessCallback<Texture2D\>): The qrCodeCallback function will be called when the QR code texture is ready. Texture is in Unity's Texture2D format.*
--   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a DIDAccountInfo that contains the user's account info.*
+-   *qrCodeCallback (SuccessCallback<Texture2D\>): The `qrCodeCallback` function will be called when the QR code texture is ready. Texture is in Unity's Texture2D format.*
+-   *successCallback (SuccessCallback<DIDAccountInfo\>): The callback function that will be called when the login is successful. Returns a `DIDAccountInfo` that contains the user's account info.*
 
 **Example:**
 
@@ -204,7 +204,7 @@ StartCoroutine(portkeySDK.AuthService.LoginWithQRCode(
 
 ## Logout()
 
-**Description:** *The Logout function logs out the user from their DID account.*
+**Description:** *The `Logout` function logs out the user from their DID account.*
 
 **Example:**
 
@@ -213,7 +213,7 @@ portkeySDK.AuthService.Message.OnLogoutEvent += OnLogout;
 
 StartCoroutine(portkeySDK.AuthService.Logout());
 
-//upon the end of the Logout operation, OnLogout function will be called.
+//upon the end of the `Logout` operation, `OnLogout` function will be called.
 ```
 
 ## AppleCredentialProvider
@@ -234,8 +234,8 @@ StartCoroutine(portkeySDK.AuthService.Logout());
 
 ## Message
 
-**Description:** *Returns an IAuthMessage object used to register or invoke events for authentication.*
+**Description:** *Returns an `IAuthMessage` object used to register or invoke events for authentication.*
 
 ## Message
 
-**Description:** *Returns an IAuthMessage object used to register or invoke events for authentication.*
+**Description:** *Returns an `IAuthMessage` object used to register or invoke events for authentication.*

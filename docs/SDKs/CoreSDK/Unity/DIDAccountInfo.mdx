@@ -4,7 +4,7 @@ title: DIDAccountInfo
 
 # DIDAccountInfo
 
-DIDAccountInfo contains account related information as well as the signing key. The signing key can be used to sign transactions for the user.
+`DIDAccountInfo` contains account related information as well as the signing key. The signing key can be used to sign transactions for the user.
 
 ## Members
 
@@ -30,25 +30,25 @@ The key pair used to sign transactions.
 
 ## Address
 
-**Description:** *The address corresponding to the key pair in base 64.*
+**Description:** *The address corresponding to the key pair in Base64 format.*
 
 ## PublicKey
 
-**Description:** *The public key corresponding to the key pair in base 58.*
+**Description:** *The public key corresponding to the key pair in Base58 format.*
 
 ## SignTransaction(Transaction transaction, SuccessCallback<Transaction\> successCallback, ErrorCallback errorCallback)
 
-**Description:** *Method used to sign a Transaction object and returns a transaction object with a valid signature through successCallback.*
+**Description:** *Method used to sign a `Transaction` object and returns a transaction object with a valid signature through `successCallback`.*
 
 **Parameters:**
 
--   *transaction (Transaction): Transaction object which has not been signed. i.e. signature is null.*
--   *successCallback (SuccessCallback<Transaction\>): The successCallback that is called when the transaction is successfully signed. This takes in a Transaction object with a valid signature.*
+-   *transaction (Transaction): `Transaction` object which has not been signed. i.e. signature is null.*
+-   *successCallback (SuccessCallback<Transaction\>): The `successCallback` that is called when the transaction is successfully signed. This takes in a `Transaction` object with a valid signature.*
 -   *errorCallback (ErrorCallback): The error callback when signing a transaction encounters an unexpected error.*
 
 ## Sign(string data, SuccessCallback<byte[]\> successCallback, ErrorCallback errorCallback)
 
-**Description:** *Method used to sign a 32 byte message and returns an array of bytes representing a valid signature corresponding to the message through successCallback.*
+**Description:** *Method used to sign a 32 byte message and returns an array of bytes representing a valid signature corresponding to the message through `successCallback`.*
 
 **Parameters:**
 
