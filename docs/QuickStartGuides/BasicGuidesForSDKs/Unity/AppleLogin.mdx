@@ -58,7 +58,7 @@ StartCoroutine(PortkeySDK.AuthService.GetGuardians(appleCredential, guardians =>
         int requiredApprovedGuardians = PortkeySDK.AuthService.GetRequiredApprovedGuardiansCount(guardians.Count);
         ```
 
-        2. Verify the Guardians through AuthService to get ApprovedGuardians for the login.
+        2. Verify the Guardians through `AuthService` to get `ApprovedGuardians` for the login.
         ```c#
         List<ApprovedGuardian> approvedGuardians = new List<ApprovedGuardian>();
 
