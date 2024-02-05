@@ -71,7 +71,7 @@ StartCoroutine(PortkeySDK.AuthService.GetGuardians(appleCredential, guardians =>
         }
         ```
 
-        3. Use the ApprovedGuardians to login the user.
+        3. Use the `ApprovedGuardians` to login the user.
         ```c#
         StartCoroutine(PortkeySDK.AuthService.Login(guardians[0], approvedGuardians, didAccountInfo =>
         {
