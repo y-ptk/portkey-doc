@@ -75,23 +75,28 @@
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/GetData.mdx",
-              "label": "Get Data",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/GoogleLogin.mdx",
+              "label": "GoogleLogin",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/Register.mdx",
-              "label": "Register",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/AppleLogin.mdx",
+              "label": "AppleLogin",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/LoginSocialRecovery.mdx",
-              "label": "Login/Social Recovery",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/PortkeyBrowserExtensionLogin.mdx",
+              "label": "PortkeyBrowserExtensionLogin",
               "_template": "doc"
             },
             {
-              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/Logout.mdx",
-              "label": "Logout",
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/PortkeyAppLogin.mdx",
+              "label": "PortkeyAppLogin",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/PortkeyQRLogin.mdx",
+              "label": "PortkeyQRLogin",
               "_template": "doc"
             },
             {
