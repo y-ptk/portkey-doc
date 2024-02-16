@@ -1,0 +1,147 @@
+---
+title: Telegram Login
+---
+
+# Authenticate using Telegram
+
+You can let your users authenticate with Portkey using their Telegram ID by using the Portkey SDK for sign-in flow.
+
+## Access the PortkeySDK.AuthService
+
+The `AuthService` class is the entry point for all authentication API calls. It is accessible through `PortkeySDK.AuthService`.
+
+```c#
+IAuthService auth = PortkeySDK.AuthService;
+```
+
+## Authenticate with PortkeySDK
+
+1. User is to get a Telegram Credential by signing in to their Telegram ID through the `TelegramCredentialProvider`.
+
+```c#
+// mySuccessCallback will be called when a Credential is successfully returned by TelegramCredentialProvider.
+PortkeySDK.AuthService.TelegramCredentialProvider.Get(mySuccessCallback);
+```
+
+2. After getting Telegram Credential, we will check if the user has already signed up with the corresponding Telegram Credential before. A user who already has an account with Portkey should have one or more Guardians returned from the callback.
+
+```c#
+StartCoroutine(PortkeySDK.AuthService.GetGuardians(telegramCredential, guardians =>
+{
+    if(guardians.Count == 0)
+    {
+        // No guardians, have never signed up before...
+    }
+    else
+    {
+        // Has a Portkey account...
+    }
+}));
+```
+
+3. Depending if the user has a Portkey account, we can either sign up or login.
+
+ - Sign up flow
+
+  1. Sign in for the user through the `SignUp` function. A `DIDAccountInfo` will be returned after a successful sign up that contains the signing key and account information for the user.
+  ```c#
+  StartCoroutine(PortkeySDK.AuthService.SignUp(telegramCredential, didAccountInfo => 
+  {
+      // user has successfully signed up and his info can be found in DIDAccountInfo
+  }));
+        ````
+
+ - Login flow
+
+  1. Get the amount of approved Guardians that is required to login the user.
+  ```c#
+  int requiredApprovedGuardians = PortkeySDK.AuthService.GetRequiredApprovedGuardiansCount(guardians.Count);
+        ```
+
+  2. Verify the Guardians through `AuthService` to get `ApprovedGuardians` for the login.
+  ```c#
+  List<ApprovedGuardian> approvedGuardians = new List<ApprovedGuardian>();
+
+  for (int i = 0; i < requiredApprovedGuardians; ++i)
+  {
+      StartCoroutine(PortkeySDK.AuthService.Verify(guardians[i], approvedGuardian =>
+      {
+          approvedGuardians.Add(approvedGuardian);
+      }));
+  }
+        ```
+
+  3. Use the `ApprovedGuardians` to login the user.
+  ```c#
+  StartCoroutine(PortkeySDK.AuthService.Login(guardians[0], approvedGuardians, didAccountInfo =>
+  {
+      // user is logged in and his info and signing key can be found in DIDAccountInfo
+  }));
+        ```
+
+## Example
+
+The following is a sample code to authenticate a user through the whole sign up/login flow with their Telegram ID.
+
+```c#
+using Portkey.DID;
+
+public class TelegramLoginExample : MonoBehaviour
+{
+    [SerializeField] private PortkeySDK PortkeySDK;
+
+    public void SignInWithTelegram()
+    {
+        PortkeySDK.AuthService.TelegramCredentialProvider.Get(credential => 
+        {
+            StartCoroutine(PortkeySDK.AuthService.GetGuardians(credential, guardians =>
+            {
+                if(guardians.Count == 0)
+                {
+                    // No guardians, proceed to sign up
+                    StartCoroutine(PortkeySDK.AuthService.SignUp(credential, didAccountInfo => 
+                    {
+                        // user has successfully signed up and his info can be found in DIDAccountInfo
+                    }));
+                }
+                else
+                {
+                    int requiredApprovedGuardians = PortkeySDK.AuthService.GetRequiredApprovedGuardiansCount(guardians.Count);
+
+                    List<ApprovedGuardian> approvedGuardians = new List<ApprovedGuardian>();
+                    // Guardians exist, proceed to sign in
+                    for (int i = 0; i < requiredApprovedGuardians; ++i)
+                    {
+                        StartCoroutine(PortkeySDK.AuthService.Verify(guardians[i], approvedGuardian =>
+                        {
+                            approvedGuardians.Add(approvedGuardian);
+                        }));
+                    }
+                    
+                    while(approvedGuardians.Count < requiredApprovedGuardians)
+                    {
+                        // wait for guardians to be approved
+                    }
+
+                    // first element of the guardians array is the login guardian
+                    StartCoroutine(PortkeySDK.AuthService.Login(guardians[0], approvedGuardians, didAccountInfo =>
+                    {
+                        // user is logged in and his info can be found in DIDAccountInfo
+                    }));
+                }
+            }));
+        });
+    }
+}
+```
+
+## Next Steps
+
+After the user has signed up or logged in, a `DIDAccountInfo` will be returned that corresponds to the Telegram ID used to login. `DIDAccountInfo` contains signing key and account information that can be used to get a user's account balance and sign transactions.
+
+## Sign out
+
+To sign out a user, call `Logout`.
+```c#
+StartCoroutine(PortkeySDK.AuthService.Logout());
+```
