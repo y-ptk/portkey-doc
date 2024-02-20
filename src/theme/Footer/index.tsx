@@ -19,7 +19,7 @@ const Footer = () => {
         </a>
        </div>
     </div>
-    <div className={styles['footer-copyright']}>Portkey@2023</div>
+    <div className={styles['footer-copyright']}>Portkey@2024</div>
   </div>
 }
 

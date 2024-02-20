@@ -44,7 +44,7 @@ const App: React.FC = () => {
     <AssetCard
       isShowRamp={true}
       isShowFaucet={true}
-      networkType={'MAIN'}
+      networkType="MAINNET"
       backIcon={<></>} // bind react node
       nickName={'Wallet Name'}
       accountBalanceUSD={'$100.00'}
@@ -61,15 +61,15 @@ export default App;
 
 ## TypeScript
 
-| Property          | <div style={{width: 350}}>Description</div>          | <div style={{width: 100}}>Type</div>  | Required  | <div style={{width: 100}}>Default</div> |
-| :---------------- | :--------------------------------------------------- | :------------------------------------ | :-------- | :------------ |
-| backIcon          | Back button that controls the display of page header | ReactNode                             | false     | —             |
-| networkType       | Control network type                                 | NetworkType, 'MAIN' \| 'TESTNET'      | false     | —             |
-| nickName          | Display wallet name                                  | string                                | false     | —             |
-| accountBalanceUSD | Display asset quantity                               | string                                | false     | —             |
-| isShowRamp        | Is ramp shown                                        | boolean                               | false     | —             |
-| isShowFaucet      | Is faucet shown                                      | boolean                               | false     | —             |
-| onBuy             | The event of clicking the buy button                 | () => void                            | false     | —             |
-| onBack            | The event of clicking the back button on header      | () => void                            | false     | —             |
-| onFaucet          | The event of clicking the faucet button              | () => void                            | false     | —             |
-| onReceive         | The event of clicking the view address button        | () => void                            | false     | —             |
+| Property          | <div style={{width: 350}}>Description</div>          | <div style={{width: 100}}>Type</div>  | Required  | <div style={{width: 100}}>Default</div> | Version  |
+| :---------------- | :--------------------------------------------------- | :------------------------------------ | :-------- | :------------ | :--------- |
+| backIcon          | Back button that controls the display of page header | ReactNode                             | false     | —             |            |
+| networkType       | Control network type                                 | NetworkType, 'MAINNET' \| 'TESTNET'   | false     | —             | 2.0.0      |
+| nickName          | Display wallet name                                  | string                                | false     | —             |            |
+| accountBalanceUSD | Display asset quantity                               | string                                | false     | —             |            |
+| isShowRamp        | Is ramp shown                                        | boolean                               | false     | —             |            |
+| isShowFaucet      | Is faucet shown                                      | boolean                               | false     | —             |            |
+| onBuy             | The event of clicking the buy button                 | () => void                            | false     | —             |            |
+| onBack            | The event of clicking the back button on header      | () => void                            | false     | —             |            |
+| onFaucet          | The event of clicking the faucet button              | () => void                            | false     | —             |            |
+| onReceive         | The event of clicking the view address button        | () => void                            | false     | —             |            |

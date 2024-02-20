@@ -20,5 +20,5 @@ export default App;
 | Property       | Description                           | Type                        | Default       | Version |
 | :------------- | :------------------------------------ | :-------------------------- | :------------ | :------ |
 | className      | Class name of the top level container | string                      | -             |         |
-| onFinish       | Callback of finishing                 | (val: string) => void;      | -             |         |
+| onFinish       | Callback of finishing                 | (val: string) => Promise<void\>; | -        | V2.0.0  |
 | onFinishFailed | Callback when the form fails          | FormProps['onFinishFailed'] | -             |         |
