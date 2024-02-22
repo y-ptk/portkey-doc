@@ -1,0 +1,161 @@
+---
+title: PortkeySDK
+---
+
+# PortkeySDK
+
+This is the entry point to be used by all developers to access the Portkey SDK.
+
+## AuthService
+
+**Description:** *`AuthService` provides functions to login and logout.*
+
+**Returns:** *Returns an `IAuthService` object used for logging in and out a user.*
+
+**Example:**
+
+```c#
+var authService = PortkeySDK.AuthService;
+// authService.Login(...)
+```
+
+## ChainProvider
+
+**Description:** *Chain provider provides `IChain` objects which corresponds to chain deployed on the blockchain.*
+
+**Returns:** *Returns an `IChainProvider` object that users can use to obtain any chain.*
+
+**Example:**
+
+```c#
+var chainProvider = PortkeySDK.ChainProvider;
+
+chainProvider.GetChain("AELF", chain => {
+    // use chain to perform your required operation such as creating a new ContractBasic
+}, error => {
+    Debugger.LogError(error);
+});
+```
+
+## Biometric
+
+**Description:** *Biometric feature available on iOS and Android devices.*
+
+**Returns:** *Returns the `IBiometric` object that developers can use to trigger biometric verification from user.*
+
+**Example:**
+
+```c#
+var biometric = PortkeySDK.Biometric;
+
+biometric.CanAuthenticate(canAuth =>
+{
+    if (canAuth)
+    {
+        // biometric.Authenticate(...)
+    }
+});
+```
+
+## Save(string password, string keyName)
+
+**Description:** *The Save function saves the current logged in DID wallet to a file.*
+
+**Parameters:**
+
+-   *password* (string): *The password used to encrypt the wallet.*
+-   keyName (string): *The name of the key to be saved.*
+
+**Returns:** *A boolean value that indicates whether the operation was successful.*
+
+**Example:**
+
+```c#
+// save the Portkey DID account details with the password: "password" and key: "myKey"
+var successful = PortkeySDK.Save("password", "myKey");
+```
+
+## Load(string password, string keyName)
+
+**Description:** *The Load function loads a DID wallet from the file system.*
+
+**Parameters:**
+
+-   *password* (string): *The password that was used to encrypt the wallet.*
+-   keyName (string): *The name of the key to be loaded.*
+
+**Returns:** A boolean value that indicates whether the operation was successful.
+
+**Example:**
+
+```c#
+// load the Portkey DID account details with the password: "password" and key: "myKey"
+var successful = PortkeySDK.Load("password", "myKey");
+```
+
+## GetHolderInfo(GetHolderInfoByManagerParams param, SuccessCallback<CaHolderWithGuardian\> successCallback, ErrorCallback errorCallback)
+
+**Description:** *The GetHolderInfo function is used to get the holder information of a DID.*
+
+**Parameters:**
+
+-   *param* (GetHolderInfoByManagerParams): *Parameters for searching for the holder information through management account address and/or chain ID.*
+-   successCallback (SuccessCallback<CaHolderWithGuardian\>): *The success callback returning the holder information.*
+-   *errorCallback (ErrorCallback): The callback function when there is an error.*
+
+**Example:**
+
+```c#
+var param = new GetHolderInfoByManagerParams
+{
+    manager = _walletInfo.wallet.Address,
+    chainId = chain.ChainInfo.chainId
+};
+
+StartCoroutine(PortkeySDK.GetHolderInfo(param, (holderInfo) =>
+{
+    // do something with holderInfo...
+}, error => { /*print error*/ }));
+```
+
+## GetHolderInfoByContract(GetHolderInfoParams param, SuccessCallback<IHolderInfo\> successCallback, ErrorCallback errorCallback)
+
+**Description:** *Get holder info through contract using information such as contract address from account info.*
+
+**Parameters:**
+
+-   *param* (GetHolderInfoParams): *Account information such as caHash and chainId.*
+-   successCallback (SuccessCallback<bool\>): *The callback function when user is successful in getting back holder's info.*
+-   *errorCallback (ErrorCallback): The callback function when there is an error.*
+
+**Example:**
+
+```c#
+var param = new GetHolderInfoParams
+{
+    caHash = _walletInfo.caInfo.caHash,
+    chainId = "AELF"
+};
+
+StartCoroutine(PortkeySDK.GetHolderInfoByContract(param, (holderInfo) =>
+{
+    // do something with holderInfo...
+}, error => { /*print error*/ }));
+```
+
+## IsLoggedIn()
+
+**Description:** *The IsLoggedIn function checks to see if the user is logged in.*
+
+**Returns:** *A boolean value indication if the user is logged in.*
+
+**Example:**
+
+```c#
+var loggedIn = PortkeySDK.IsLoggedIn();
+
+if(loggedIn)
+{
+    //do stuff
+}
+```
