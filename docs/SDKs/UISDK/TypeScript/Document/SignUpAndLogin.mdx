@@ -21,7 +21,6 @@ Registration page corresponds to --> SDK.signup, login page --> SDK.socialRecove
 
 ```typescript
  <SignUpAndLogin
-  phoneCountry={{ country: 'any', countryList: [{ code: '65', country: 'any' }] }}
   termsOfServiceUrl={'your terms of servicer url'}
   onError={(error: any) => {
     console.log(error, 'onError');
@@ -44,11 +43,11 @@ Registration page corresponds to --> SDK.signup, login page --> SDK.socialRecove
 | isErrorTip              | Is the error prompt set default                                                                                            | boolean                                            | true          |         |
 | isShowScan              | Is scan code to log in shown                                                                                               | boolean                                            | true          |         |
 | termsOfService          | Address of the terms, won't be displayed if not configured                                                                 | ReactNode                                          | -             |         |
-| phoneCountry            | List of countries that support sending SMS verification codes                                                              | IPhoneCountry                                      | -             |         |
+| <del>phoneCountry</del> | <del>List of countries that support sending SMS verification codes</del>                                                   | <del>IPhoneCountry</del>                           | -             | 2.0.0   |
 | extraElement            | Customized content                                                                                                         | ReactNode                                          | -             |         |
 | onError                 | Callback of error                                                                                                          | (error: {errorFields:string, error: any}) => void; | -             |         |
 | validateEmail           | Customized rules for email verification                                                                                    | (v:string)=>Promise<any\>                          | -             |         |
-| validatePhone           | Customized rules for phone number verification                                                                             | (v:string)=>Promise<any\>                          | -             |         |
+| <del>validatePhone</del>| <del>Customized rules for phone number verification</del>                                                                  | <del>(v:string)=>Promise<any\></del>               | -             | 2.0.0   |
 | onSuccess               | Callback when data is entered and successfully verified                                                                    | (value: IGuardianIdentifierInfo) => void;          | -             |         |
 | onSuccess               | Callback when data is entered and successfully verified                                                                    | (value: SignInSuccess) => void;                    | -             |         |
 | onLoginFinishWithoutPin | Callback when login is completed yet PIN is not entered, triggered when scanning the code or when Portkey App is activated | LoginFinishWithoutPin                              | -             |         |
@@ -58,7 +57,7 @@ Registration page corresponds to --> SDK.signup, login page --> SDK.socialRecove
 
 | Property  | Description                  | Type                                                             | <div style={{width: 100}}>Default</div> | Version |
 | :-------- | :--------------------------- | :--------------------------------------------------------------- | :------------ | :------ |
-| type      | Default class for user login | "Email" \| "Phone" \| "Google" \| "Apple" \| "Scan" \| null      | null          |         |
+| type      | Default class for user login | "Email" \| "Telegram" \| "Google" \| "Apple" \| "Scan" \| null   | null          | V2.0.0  |
 
 ### CryptoDesignProps
 

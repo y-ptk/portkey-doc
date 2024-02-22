@@ -267,6 +267,11 @@
                   "document": "docs/SDKs/UISDK/TypeScript/Document/PaymentSecurity.mdx",
                   "label": "PaymentSecurity",
                   "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/UISDK/TypeScript/Document/Utils.mdx",
+                  "label": "Utils",
+                  "_template": "doc"
                 }
               ],
               "_template": "category"
