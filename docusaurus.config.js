@@ -108,7 +108,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: docusaurusData.url + "/admin/#/collections/doc",
+          // editUrl: docusaurusData.url + "/admin/#/collections/doc",
           breadcrumbs: false,
         },
         // blog: false,
@@ -122,7 +122,7 @@ const config = {
       }),
     ],
   ],
-
+  plugins: [require.resolve("docusaurus-lunr-search")],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -134,15 +134,17 @@ const config = {
             : "My Logo",
           src: docusaurusData?.logo?.src
             ? docusaurusData?.logo?.src
-            : "img/portkey-logo-light.png",
-          srcDark: docusaurusData?.logo?.srcDark
-            ? docusaurusData?.logo?.srcDark
-            : "img/portkey-logo-dark.png",
-          href: "/docs/category/overview-of-portkey",
+            : "img/portkey-logo-light.svg",
+          srcDark: docusaurusData?.logo?.darkSrc
+            ? docusaurusData?.logo?.darkSrc
+            : "img/portkey-logo-dark.svg",
+          href: "/help",
         },
-        items: docusaurusData.navbar.map((item) => {
-          return formatNavbarItem(item);
-        }),
+        items: [
+          ...docusaurusData.navbar.map((item) => {
+            return formatNavbarItem(item);
+          })
+        ],
         hideOnScroll: true,
       },
       footer: {},

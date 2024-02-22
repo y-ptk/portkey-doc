@@ -2,9 +2,16 @@
   "label": "Settings",
   "navbar": [
     {
-      "label": "Guides",
+      "label": "Quick Start",
       "link": "doc",
       "docLink": "docs/OverviewPortkey/start-here.mdx",
+      "position": "left"
+    },
+    {
+      "label": "FAQ",
+      "link": "external",
+      "docLink": "docs/How-to-download-Portkey.mdx",
+      "externalLink": "/docs/category/user-guide",
       "position": "left"
     },
     {
@@ -16,8 +23,7 @@
   ],
   "logo": {
     "alt": "Portkey Docs",
-    "src": "/img/portkey-logo-light.png",
-    "darkSrc": "/img/portkey-logo-dark.png"
+    "src": "/img/portkey-logo-light.svg"
   },
   "title": "Portkey Docs",
   "url": "https://doc.portkey.finance/"

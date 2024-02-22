@@ -1,0 +1,88 @@
+---
+title: AuthMessage
+---
+
+# AuthMessage
+
+An interface for the authentication message. This is used to communicate with the user during authentication through `AuthService`. Developers can listen to events during the authentication process. Some processes also requires active method invocation from `AuthMessage` to continue processing the authentication flow.
+
+# Events
+
+## OnPendingVerificationCodeInputEvent
+
+**Description:** *The `OnPendingVerificationCodeInputEvent` is invoked to notify the user that they have a pending verification request and would require user input of the verification code sent.*
+
+## OnResendVerificationCodeCompleteEvent
+
+**Description:** *The `OnResendVerificationCodeCompleteEvent` is invoked after the verification code is re-sent to the user by calling `ResendVerificationCode`.*
+
+## OnLoadingEvent
+
+**Description:** *Called when the application is loading its authentication operations.*
+
+## OnErrorEvent
+
+**Description:** *Called when an error occurs during authentication.*
+
+## OnChainIdChangedEvent
+
+**Description:** *Called when chain id changes.*
+
+## OnVerifierServerSelectedEvent
+
+**Description:** *Called when a verifier server has been selected to verify a credential.*
+
+## OnLogoutEvent
+
+**Description:** *Called when logout is requested by the user either from the application itself or from the browser extension.*
+
+# Methods
+
+## ChainId
+
+**Description:** *Gets or sets the chain id. The user will be logged in or signed up on the said chain id by default. This is a string.*
+
+## InputVerificationCode(string code)
+
+**Description:** *Used only for Phone/Email Credentials. Called when program has gotten a verification code from the user. This continues the process for verifying Phone/Email Credentials.*
+
+**Parameters:**
+
+-   *code (string): The code entered by the user for verification.*
+
+## ConfirmSendCode()
+
+**Description:** *Used only for Phone/Email Credentials. Confirm sending of verification code. This continues the process for verifying Phone/Email Credentials.*
+
+## CancelCodeVerification()
+
+**Description:** *Used only for Phone/Email Credentials. Cancels verification of code and stops verification process.*
+
+## ResendVerificationCode()
+
+**Description:** *Used only for Phone/Email Credentials. Resends the verification code.*
+
+## Loading(bool show, string message = null)
+
+**Description:** *Called when authentication operation is loading.*
+
+**Parameters:**
+
+-   *show (bool): Whether or not to show the loading.*
+-   *message (string): Message to show for loading (optional).*
+
+## Error(string error)
+
+**Description:** *Reports an authentication operation error to the user.*
+
+**Parameters:**
+
+-   *error (string): Describes the error that occurred.*
+
+## CancelLoginWithQRCode()
+
+**Description:** *Cancel logging flow when logging in with QR code.*
+
+## CancelLoginWithPortkeyApp()
+
+**Description:** *Cancel logging flow when logging in with portkey app.*

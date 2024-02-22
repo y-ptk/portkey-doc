@@ -25,7 +25,6 @@
           "label": "Payment Delegation Mechanism",
           "_template": "doc"
         },
-
         {
           "document": "docs/OverviewPortkey/portkey-glossary.mdx",
           "label": "Portkey Glossary",
@@ -37,8 +36,6 @@
     {
       "title": "Quickstart Guides",
       "link": "generated",
-      "_template": "category",
-      "document": "docs/QuickStartGuides/quick-start.mdx",
       "items": [
         {
           "title": "Basic Guides for SDKs",
@@ -47,27 +44,27 @@
             {
               "title": "TypeScript",
               "link": "generated",
-              "_template": "category",
               "items": [
                 {
                   "document": "docs/OverviewPortkey/start-here.mdx",
                   "label": "Start here",
                   "_template": "doc"
                 }
-              ]
+              ],
+              "_template": "category"
             },
             {
               "title": "Unity",
               "link": "generated",
-              "_template": "category",
-              "items": []
+              "items": [],
+              "_template": "category"
             }
           ],
           "_template": "category"
         }
-      ]
+      ],
+      "_template": "category"
     },
-
     {
       "title": "SDKs",
       "link": "generated",
@@ -79,7 +76,6 @@
             {
               "title": "TypeScript",
               "link": "none",
-              "_template": "category",
               "items": [
                 {
                   "document": "docs/SDKs/CoreSDK/TypeScript/@portkeyServices.mdx",
@@ -101,16 +97,31 @@
                   "label": "@portkey/request",
                   "_template": "doc"
                 }
-              ]
+              ],
+              "_template": "category"
             },
             {
               "title": "Unity",
               "link": "none",
-              "_template": "category",
               "items": [
                 {
-                  "document": "docs/SDKs/CoreSDK/Unity/DID.mdx",
-                  "label": "DID",
+                  "document": "docs/SDKs/CoreSDK/Unity/PortkeySDK.mdx",
+                  "label": "PortkeySDK",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/CoreSDK/Unity/AuthService.mdx",
+                  "label": "AuthService",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/CoreSDK/Unity/AuthMessage.mdx",
+                  "label": "AuthMessage",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/CoreSDK/Unity/DIDAccountInfo.mdx",
+                  "label": "DIDAccountInfo",
                   "_template": "doc"
                 },
                 {
@@ -128,7 +139,8 @@
                   "label": "PortkeyConfig",
                   "_template": "doc"
                 }
-              ]
+              ],
+              "_template": "category"
             }
           ],
           "_template": "category"
@@ -140,7 +152,6 @@
             {
               "title": "TypeScript",
               "link": "none",
-              "_template": "category",
               "items": [
                 {
                   "document": "docs/SDKs/UISDK/TypeScript/GettingStarted.mdx",
@@ -150,7 +161,6 @@
                 {
                   "title": "Document",
                   "link": "none",
-                  "_template": "category",
                   "items": [
                     {
                       "document": "docs/SDKs/UISDK/TypeScript/Document/Configuration.mdx",
@@ -167,9 +177,28 @@
                       "label": "Provider ( PortkeyProvider )",
                       "_template": "doc"
                     }
-                  ]
+                  ],
+                  "_template": "category"
                 }
-              ]
+              ],
+              "_template": "category"
+            },
+            {
+              "title": "Unity",
+              "link": "none",
+              "items": [
+                {
+                  "document": "docs/SDKs/UISDK/Unity/Unity-UI-SDK-Overview.mdx",
+                  "label": "Unity UI SDK Overview",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/UISDK/Unity/iOS-Account-Deletion.mdx",
+                  "label": "Unity iOS Account Deletion",
+                  "_template": "doc"
+                }
+              ],
+              "_template": "category"
             }
           ],
           "_template": "category"

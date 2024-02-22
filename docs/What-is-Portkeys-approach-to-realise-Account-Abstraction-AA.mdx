@@ -1,0 +1,17 @@
+---
+title: What is Portkey's approach to realise Account Abstraction (AA)?
+description: ''
+---
+
+Portkey, the first [Account Abstraction (AA)](/docs/What-is-Account-Abstraction-AA-wallet "") wallet in the [aelf](/docs/What-is-aelf "") ecosystem, employs aelf's Virtual Address (VA) design to implement AA. Instead of relying on private keys, user accounts, known as virtual addresses in Portkey, are managed by manager addresses stored on users' local devices. This innovative approach enables advanced features, such as social recovery, payment delegation, batched transactions, and more.
+
+When a user registers with Portkey, a unique virtual address is generated based on Portkey's smart contract address using algorithms. Simultaneously, a manager address is generated and stored on the user's device, granting it the authority to control the virtual address. If the user logs in on other devices, new manager addresses will be generated and assigned to those devices.
+
+* **Virtual address** functions as the actual on-chain account for the user. All transactions and on-chain records are associated with this address and are publicly viewable on the blockchain. It's important to note that a virtual address doesn't have a private key or seed phrases, and its management is conducted through manager addresses linked to it.
+* **Manager address** is device-specific and is generated for each device where the user's account is logged in. Each login device has its unique manager address, which operates as an Externally Owned Account (EOA). The private keys for these manager addresses are stored exclusively on login devices, eliminating the need for users to remember or manage these keys.
+
+It's crucial to understand that manager addresses are not visible to users. Users cannot directly access or utilise these addresses to trace on-chain records. All data related to manager addresses is exclusively stored on the login device. The only thing users need to do is to operate the device, where the manager address will function behind the scenes and control the on-chain account for various tasks.
+
+To log in to an account on a new device, users must successfully complete [social recovery](/docs/What-is-social-recovery ""). This process requires obtaining sufficient approvals from guardians. Only when the approval requirements are met can the user log in, which generates a new manager address on the target device, allowing control of their on-chain account.
+
+As long as you're logged in on a device, you have account management capabilities. If you lose the device or suspect it's compromised, you can revoke the login status on that device, thereby cutting off the management relationship between your account (virtual address) and the login device (manager address).

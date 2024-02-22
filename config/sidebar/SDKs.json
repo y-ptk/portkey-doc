@@ -74,8 +74,23 @@
           "_template": "category",
           "items": [
             {
-              "document": "docs/SDKs/CoreSDK/Unity/DID.mdx",
-              "label": "DID",
+              "document": "docs/SDKs/CoreSDK/Unity/PortkeySDK.mdx",
+              "label": "PortkeySDK",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/SDKs/CoreSDK/Unity/AuthService.mdx",
+              "label": "AuthService",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/SDKs/CoreSDK/Unity/AuthMessage.mdx",
+              "label": "AuthMessage",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/SDKs/CoreSDK/Unity/DIDAccountInfo.mdx",
+              "label": "DIDAccountInfo",
               "_template": "doc"
             },
             {
@@ -269,8 +284,25 @@
           ]
         },
         {
-          "document": "docs/SDKs/UISDK/Unity/Unity.mdx",
-          "label": "Unity",
+          "title": "Unity",
+          "link": "none",
+          "_template": "category",
+          "items": [
+            {
+              "document": "docs/SDKs/UISDK/Unity/Unity-UI-SDK-Overview.mdx",
+              "label": "UI SDK Overview",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/SDKs/UISDK/Unity/iOS-Account-Deletion.mdx",
+              "label": "iOS Account Deletion",
+              "_template": "doc"
+            }
+          ]
+        },
+        {
+          "document": "docs/SDKs/CoreSDK/ReactNative/usage.mdx",
+          "label": "ReactNative",
           "_template": "doc"
         }
       ],
