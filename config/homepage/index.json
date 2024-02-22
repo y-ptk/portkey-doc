@@ -7,5 +7,9 @@
       "items": [],
       "_template": "features"
     }
-  ]
+  ],
+  "helpCenterHeader": {
+    "title": "",
+    "subtitle": ""
+  }
 }

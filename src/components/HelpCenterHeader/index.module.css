@@ -1,0 +1,85 @@
+.help-center-header {
+  background: var(--ifm-help-center-bg);
+  padding-bottom: 80px;
+}
+.header-title {
+  padding-top: 80px;
+  padding-bottom: 24px;
+  text-align: center;
+  margin: 0;
+}
+.header-title-text {
+  color: var(--ifm-title-text-color);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48px;
+}
+.header-subtitle {
+  text-align: center;
+  color: var(--ifm-title-text-color);
+  padding-bottom: 48px;
+  margin-bottom: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+/** search bar */
+.search-bar-container {
+  width: 640px;
+  height: 56px;
+  margin: 0 auto;
+}
+.search-bar-container :global(.navbar__search) {
+  width: 100%;
+  height: 100%;
+}
+.search-bar-container :global(.algolia-autocomplete) {
+  width: 100%;
+  height: 100%;
+}
+
+.search-bar-container :global(.navbar__search-input) {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 6px;
+  border: 1px solid var(--ifm-help-center-card-border);
+  padding: 0 0.5rem 0 2.25rem !important;
+  background: var(--ifm-navbar-search-input-background-color) var(--ifm-navbar-search-input-icon) no-repeat 0.75rem center / 1rem 1rem !important;
+  background-color: var(--ifm-help-center-input-bg) !important;
+}
+
+.search-bar-container :global(.navbar__search-input:hover) {
+  border-color: var(--ifm-color-primary);
+}
+
+.search-bar-container :global(input[type="search"]::-webkit-search-cancel-button)  {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  background-repeat: no-repeat;
+  background-position: top left;
+  background: url("@site/static/img/help/search-icon.svg") no-repeat 50% 50%;
+}
+
+html[data-theme='dark'] .search-bar-container :global(input[type="search"]::-webkit-search-cancel-button)  {
+  background: url("@site/static/img/help/search-icon-dark.svg") no-repeat 50% 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .help-center-header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .header-title-text {
+    font-size: 30px;
+    line-height: 38px;
+  }
+  .header-subtitle {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .search-bar-container {
+    width: 100%;
+  }
+}

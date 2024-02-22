@@ -3,6 +3,8 @@ import { defineConfig, TextField } from "tinacms";
 import { ReferenceField } from "tinacms";
 import { FeaturesBlockTemplate } from "../src/components/Features/template";
 import { HeroBlockTemplate } from "../src/components/Hero/template";
+import { HelpCenterContainerTemplate } from "../src/components/HelpCenterContainer/template";
+import { HelpCenterHeaderTemplate } from "../src/components/HelpCenterHeader/template";
 import { MDXTemplates } from "../src/theme/template";
 import { docusaurusDate, titleFromSlug } from "../util";
 import title from "title";
@@ -323,7 +325,23 @@ const CategoryTemplate = {
                     ...CategoryFields,
                     {
                       ...ItemsField,
-                      templates: [DocLinkTemplate, ExternalLinkTemplate],
+                      templates: [
+                        {
+                          ...CategoryTemplateProps,
+                          fields: [
+                            ...CategoryFields,
+                            {
+                              ...ItemsField,
+                              templates: [
+                                DocLinkTemplate,
+                                ExternalLinkTemplate,
+                              ],
+                            },
+                          ],
+                        },
+                        DocLinkTemplate,
+                        ExternalLinkTemplate,
+                      ],
                     },
                   ],
                 },
@@ -349,6 +367,41 @@ const SidebarCollection = {
   name: "sidebar",
   label: "Docs Sidebar",
   path: "config/sidebar",
+  format: "json",
+  ui: {
+    global: true,
+    allowedActions: {
+      create: false,
+      delete: false,
+    },
+  },
+  fields: [
+    {
+      type: "string",
+      name: "_warning",
+      ui: {
+        component: () => {
+          return <RestartWarning />;
+        },
+      },
+    },
+    {
+      type: "string",
+      label: "Label",
+      name: "label",
+      required: true,
+      isTitle: true,
+      ui: {
+        component: "hidden",
+      },
+    },
+    SidebarItemsField,
+  ],
+};
+const FAQSidebarCollection = {
+  name: "FAQSidebar",
+  label: "FAQ Sidebar",
+  path: "config/FAQSidebar",
   format: "json",
   ui: {
     global: true,
@@ -787,6 +840,18 @@ const HomepageCollection = {
       label: "Blocks",
       templates: [HeroBlockTemplate, FeaturesBlockTemplate],
     },
+    {
+      type: "object",
+      name: "helpCenterContainer",
+      label: "HelpCenterContainer",
+      fields: HelpCenterContainerTemplate.fields,
+    },
+    {
+      type: "object",
+      name: "helpCenterHeader",
+      label: "HelpCenterHeader",
+      fields: HelpCenterHeaderTemplate.fields,
+    },
   ],
 };
 
@@ -820,8 +885,10 @@ const PagesCollection = {
 
 export default defineConfig({
   branch,
-  clientId: "8bef6106-2e86-4e77-9b69-58e8032b4d84", // Get this from tina.io
-  token: "7c3ce7466d7d939653812a7f2b31cc90bb21ec1f", // Get this from tina.io
+  clientId:
+    process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // Get this from tina.io
+  token:
+    process.env.NEXT_PUBLIC_TINA_TOKEN, // Get this from tina.io
   build: {
     outputFolder: "admin",
     publicFolder: "static",
@@ -839,6 +906,7 @@ export default defineConfig({
       HomepageCollection,
       PagesCollection,
       SidebarCollection,
+      FAQSidebarCollection,
       SettingsCollection,
     ],
   },
