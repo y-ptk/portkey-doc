@@ -47,7 +47,7 @@ did.setConfig({
 
 ### type: loginAccount
 
-Email or mobile phone number or Google or Apple login.
+Email, Google, Apple, or Telegram login.
 
 ```typescript
 did.login(type: 'loginAccount', params: AccountLoginParams): Promise<LoginResult>;
@@ -150,6 +150,53 @@ logout(params: EditManagerParams,  sendOption?: SendOptions): Promise<boolean>;
 
 ```typescript
 did.logout({ chainId: 'chainId' }, { onMethod: 'transactionHash' }});
+```
+
+## did.sign
+```typescript
+sign(data: string): Buffer
+```
+
+#### Usage
+```typescript
+const signStr = did.sign(hexStr).toString("hex");
+```
+
+#### Example: Verify signature
+```typescript
+import AElf from "aelf-sdk";
+import elliptic from "elliptic";
+const ec = new elliptic.ec("secp256k1");
+import { did } from "@portkey/did";
+function recoverAElfPubKey(hexStr: string, signStr: string) {
+  const signData = {
+    r: signStr.slice(0, 64),
+    s: signStr.slice(64, 128),
+    recoveryParam: Number(signStr.slice(signStr.length - 1, signStr.length)),
+  };
+  return ec.recoverPubKey(
+    Buffer.from(AElf.utils.sha256(Buffer.from(hexStr, "hex")), "hex"),
+    signData,
+    signData.recoveryParam
+  );
+}
+
+// did
+(async () => {
+  did.create();
+  const originAddress = did.didWallet.managementAccount.address;
+  const hexStr = Buffer.from("hello world!").toString("hex");
+  const signStr = did.sign(hexStr).toString("hex");
+  const publicKey = recoverAElfPubKey(hexStr, signStr);
+  const pubKey = ec.keyFromPublic(publicKey).getPublic("hex");
+  const recoverManagerAddress = AElf.wallet.getAddressFromPubKey(publicKey);
+  console.log(
+    pubKey,
+    // If recoverManagerAddress === originAddress, it means correct recovery
+    recoverManagerAddress === originAddress,
+    "recovery result"
+  );
+})();
 ```
 
 ## did.register
