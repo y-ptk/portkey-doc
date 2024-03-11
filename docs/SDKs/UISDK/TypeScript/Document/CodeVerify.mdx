@@ -11,7 +11,7 @@ Component for verifying codes when registering and logging in using phone number
 ```javascript
  <CodeVerify
   chainId="AELF"
-  accountType="Phone"
+  accountType="Email"
   verifier={{
     endPoints: ['your endPoints'],
     verifierAddresses: ['your verifierAddresses'],
@@ -20,7 +20,7 @@ Component for verifying codes when registering and logging in using phone number
     imageUrl: 'your verifier imageUrl',
   }}
   verifierSessionId={'080bbdcd-73f5-45a6-b65b-0d067474756f'}
-  guardianIdentifier={'+852 12233333'}
+  guardianIdentifier={'xxx@xxx.com'}
   operationType={OperationTypeEnum.addGuardian}
   onError={(error: any) => {
     console.log('onError', error);

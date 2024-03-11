@@ -12,7 +12,7 @@ Refer to [Obtain SEED](docs/QuickStartGuides/LaunchTokenAndNFTCollection/ObtainS
 
 ### 2. Create
 
-Create by using ManagerForwardCall in the [**CA contract**](/docs/APIReference/ContractAPI) and calling the CreateToken method in the [**agent contract**](/docs/APIReference/ContractAPI).
+Create by using ManagerForwardCall in the [**AA contract**](/docs/APIReference/ContractAPI) and calling the CreateToken method in the [**agent contract**](/docs/APIReference/ContractAPI).
 
 Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or SideChains via the parameter **issue_chain_id.**
 
@@ -38,7 +38,7 @@ var createTokenInput = new AElf.Contracts.AgentInterface.ManagerCreateTokenInput
     ExternalInfo = {  }
 };
 
-// Construct the ManagerForwardCall parameter of the CA contract
+// Construct the ManagerForwardCall parameter of the AA contract
 var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
 {
     CaHash = Hash.LoadFromHex(CA_HASH),
@@ -154,7 +154,7 @@ var callResult = await Client.ExecuteRawTransactionAsync(new ExecuteRawTransacti
 
 ### 1. Create item
 
-Create by using ManagerForwardCall in the [**CA contract**](/docs/APIReference/ContractAPI), calling the ForwardCall method in the [**ProxyAccount contract**](/docs/APIReference/ContractAPI), and calling the [**Token contract**](/docs/APIReference/ContractAPI) via the ProxyAccount contract.
+Create by using ManagerForwardCall in the [**AA contract**](/docs/APIReference/ContractAPI), calling the ForwardCall method in the [**ProxyAccount contract**](/docs/APIReference/ContractAPI), and calling the [**Token contract**](/docs/APIReference/ContractAPI) via the ProxyAccount contract.
 
 Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or SideChains via the parameter **issue_chain_id.**
 
@@ -186,7 +186,7 @@ var forwardCallParam = new AElf.Contracts.ProxyAccountContract.ForwardCallInput(
     Args = createInput.ToByteString()
 };
 
-// Construct the ManagerForwardCall parameter of the CA contract
+// Construct the ManagerForwardCall parameter of the AA contract
 var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
 {
     CaHash = Hash.LoadFromHex(CA_HASH),
@@ -221,7 +221,7 @@ await Client.SendRawTransactionAsync(new AElf.Client.Dto.SendRawTransactionInput
 
 ### 2. Issue
 
-Issue by using ManagerForwardCall in the [**CA contract**](/docs/APIReference/ContractAPI), calling the ForwardCall method in the [**ProxyAccount contract**](/docs/APIReference/ContractAPI), and calling the [**Token contract**](/docs/APIReference/ContractAPI) via the ProxyAccount contract.
+Issue by using ManagerForwardCall in the [**AA contract**](/docs/APIReference/ContractAPI), calling the ForwardCall method in the [**ProxyAccount contract**](/docs/APIReference/ContractAPI), and calling the [**Token contract**](/docs/APIReference/ContractAPI) via the ProxyAccount contract.
 
 ```typescript
 var Client = new AElf.Client.AElfClient("http://node:port");
@@ -246,7 +246,7 @@ var forwardCallParam = new AElf.Contracts.ProxyAccountContract.ForwardCallInput(
     Args = issueParam.ToByteString()
 };
 
-// Construct the ManagerForwardCall parameter of the CA contract
+// Construct the ManagerForwardCall parameter of the AA contract
 var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
 {
     CaHash = Hash.LoadFromHex(CA_HASH),
@@ -281,11 +281,11 @@ await Client.SendRawTransactionAsync(new AElf.Client.Dto.SendRawTransactionInput
 
 ## Process of Portkey account creating collections and NFTs
 
-### CA operation --- set MainChain as issue_chain_id
+### AA operation --- set MainChain as issue_chain_id
 
 ![create-collections-use-portkey-mainchain](/img/quick-start/create-collections-use-portkey-mainchain.jpg)
 
-### CA operation --- set SideChain as issue_chain_id
+### AA operation --- set SideChain as issue_chain_id
 
 Operations on the SideChain can only take effect when the MainChain and SideChain are synchronized.
 

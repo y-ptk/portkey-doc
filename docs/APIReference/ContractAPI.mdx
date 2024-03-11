@@ -11,7 +11,7 @@ title: Contract API
 CA address, each user corresponds to one CAHolder (the same user's different accounts, for example, his "Apple" and "Google" will correspond to 2 CAHolders).
 
 2. Guardian: 
-The method through which users authenticate, including email, phone number, or a specific verifier.
+The method through which users authenticate, including credentials like email or Apple ID, and a specific verifier.
 
 3. Manager: 
 An externally owned account (EOA) address used by a wallet to initiate transactions (often referring to a device). A single CAHolder can correspond to multiple Managers.
@@ -207,7 +207,7 @@ message SetGuardianForLoginInput {
 
 -   **Conditions that need to be met**
 
-    -   Guardian (email/phone numer)+verifier ID has not been used before
+    -   Guardian (email/Apple ID)+verifier ID has not been used before
     -   The caller is one of the Managers configured in the CAHolder
 
 ### Unset login Guardian
