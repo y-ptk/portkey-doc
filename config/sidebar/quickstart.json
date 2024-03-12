@@ -142,7 +142,7 @@
             },
             {
               "document": "docs/QuickStartGuides/LaunchTokenAndNFTCollection/CreateTokensViaPortkeyCAAddress.mdx",
-              "label": "Create Tokens via Portkey CA Address",
+              "label": "Create Tokens via Portkey AA Address",
               "_template": "doc"
             }
           ]

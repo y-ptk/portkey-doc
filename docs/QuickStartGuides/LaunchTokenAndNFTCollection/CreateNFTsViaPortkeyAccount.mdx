@@ -50,8 +50,8 @@ var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
 // Construct transaction
 var transaction = new AElf.Types.Transaction()
 {
-    From = Address.FromBase58(YOUR_CA_MANAGER_ADDRESS),
-    To = Address.FromBase58(PORTKEY_CA_CONTRACT_ADDRESS),
+    From = Address.FromBase58(YOUR_AA_MANAGER_ADDRESS),
+    To = Address.FromBase58(PORTKEY_AA_CONTRACT_ADDRESS),
     MethodName = "ManagerForwardCall",
     Params = managerForwardCallParam.ToByteString(),
     RefBlockNumber = height,
@@ -189,7 +189,7 @@ var forwardCallParam = new AElf.Contracts.ProxyAccountContract.ForwardCallInput(
 // Construct the ManagerForwardCall parameter of the AA contract
 var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
 {
-    CaHash = Hash.LoadFromHex(CA_HASH),
+    CaHash = Hash.LoadFromHex(AA_HASH),
     ContractAddress = Address.FromBase58(AGENT_INTERFACE_CONTRACT_ADDRESS),
     MethodName = "ForwardCall",
     Args = forwardCallParam.ToByteString()
@@ -198,8 +198,8 @@ var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
 // Construct transaction
 var transaction = new AElf.Types.Transaction()
 {
-    From = Address.FromBase58(YOUR_CA_MANAGER_ADDRESS),
-    To = Address.FromBase58(PORTKEY_CA_CONTRACT_ADDRESS),
+    From = Address.FromBase58(YOUR_AA_MANAGER_ADDRESS),
+    To = Address.FromBase58(PORTKEY_AA_CONTRACT_ADDRESS),
     MethodName = "ManagerForwardCall",
     Params = managerForwardCallParam.ToByteString(),
     RefBlockNumber = height,
@@ -249,7 +249,7 @@ var forwardCallParam = new AElf.Contracts.ProxyAccountContract.ForwardCallInput(
 // Construct the ManagerForwardCall parameter of the AA contract
 var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
 {
-    CaHash = Hash.LoadFromHex(CA_HASH),
+    CaHash = Hash.LoadFromHex(AA_HASH),
     ContractAddress = Address.FromBase58(AGENT_INTERFACE_CONTRACT_ADDRESS),
     MethodName = "ForwardCall",
     Args = forwardCallParam.ToByteString()
@@ -258,8 +258,8 @@ var managerForwardCallParam = new Portkey.Contracts.CA.ManagerForwardCallInput()
 // Construct transaction
 var transaction = new AElf.Types.Transaction()
 {
-    From = Address.FromBase58(YOUR_CA_MANAGER_ADDRESS),
-    To = Address.FromBase58(PORTKEY_CA_CONTRACT_ADDRESS),
+    From = Address.FromBase58(YOUR_AA_MANAGER_ADDRESS),
+    To = Address.FromBase58(PORTKEY_AA_CONTRACT_ADDRESS),
     MethodName = "ManagerForwardCall",
     Params = managerForwardCallParam.ToByteString(),
     RefBlockNumber = height,
