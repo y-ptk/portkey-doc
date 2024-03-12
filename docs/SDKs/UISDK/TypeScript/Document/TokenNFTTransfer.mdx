@@ -68,8 +68,29 @@ const assetItem = {
         tokenContractAddress : 'JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE' ,
     }
 }
-    
-<Send assetItem={assetItem} onSuccess={()=>{ console.log('success') }} />
+const App = () => (
+   <Send
+      assetItem={sendToken}
+      onSuccess={() => {
+        // success callback
+        }
+      }
+      onClose={() => {
+        // close callback
+        }
+      }
+      onModifyLimit={async (data) => {
+          // check transaction limit
+        }
+      }
+      onModifyGuardians={() => {
+          // to add guardian
+        }
+      }
+    />
+);
+
+export default App;
 ```
 
 ## API
