@@ -171,9 +171,10 @@ export default App;
 | caHash                  | Portkey account's caHash                                     | `string`                                      | `true`       | -           | V1.5.1       |
 | originChainId           | ID of the chain where the account is registered              | `ChainId`                                     | `true`       | -           | V1.5.1       |
 | initData                | Data displayed                                               | `ITransferLimitItemWithRoute`                 | `true`       | -           | V1.5.1       |
+| networkType             | Network type                                                 | MAINNET \| TESTNET                            | `true`       | -           | V2.0.0       |
 | isErrorTip              | If error message is displayed                                | `boolean`                                     | `false`      | `true`      | V1.5.1       |
 | sandboxId               | Need to upload the sandbox ID when running Chrome extensions | `string`                                      | `false`      | `''`        | V1.5.1       |
-| onBack                  | Callback when the "Back" button on the top is clicked        | `() => void`                                  | `false`      | -           | V1.5.1       |
+| onBack                  | Callback when the "Back" button on the top is clicked        | `(data: ITransferLimitItemWithRoute) => void` | `false`      | -           | V2.0.0       |
 | onSuccess               | Callback when the token's transfer limit is updated          | `(data: ITransferLimitItemWithRoute) => void` | `false`      | -           | V1.5.1       |
 | onGuardiansApproveError | Callback when guardian approval fails                        | `OnErrorFunc`                                 | `false`      | -           | V1.5.1       |
 

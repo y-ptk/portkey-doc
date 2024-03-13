@@ -13,7 +13,7 @@ Unlike exchange wallets where users' private keys are passively hosted on exchan
 
 ![Security Mechanism](/img/security-mechanism.png)
 
-After users register accounts using their mobile phones, email, or other social accounts, they must undergo identity verification by their pre-set guardians when attempting to log in to the wallet on a new device. The identity verification process consists of two key components:
+After users register accounts using their emails, Apple IDs, Google accounts, Telegram accounts, or some other social accounts, they must undergo identity verification by their pre-set guardians when attempting to log in to the wallet on a new device. The identity verification process consists of two key components:
 
 1. To create an account or log in to the Portkey AA wallet, users need approval from guardians. When users request this approval, they initiate a verification code request to decentralised verifiers. Once the verifiers successfully verify the user's code, they provide digital signatures to the guardians. Once a sufficient number of signatures have been collected, the user's identity will be verified, and they will gain approval for creating or logging in to the wallet.
 2. When the number of guardians is less than or equal to 3, all guardians' approvals are required for account login. However, when there are more than 3 guardians, it necessitates approvals from a majority of guardians, specifically more than (3/5 * N) guardians, rounded down, and adding 1 for account access.

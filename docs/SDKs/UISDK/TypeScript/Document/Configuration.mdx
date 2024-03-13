@@ -19,7 +19,7 @@ If you wish to support Apple and Google authorization, you'll need to configure 
 import {ConfigProvider} from '@portkey/did-ui-react';
 
 ConfigProvider.setGlobalConfig({
-    graphQLUrl: 'https://dapp-portkey-test.portkey.finance/Portkey_DID/PortKeyIndexerCASchema/graphql',
+    graphQLUrl: 'https://dapp-aa-portkey-test.portkey.finance/Portkey_V2_DID/PortKeyIndexerCASchema/graphql',
     requestDefaults: {
         baseUrl: '/portkey'
     },
@@ -35,4 +35,4 @@ ConfigProvider.setGlobalConfig({
 | graphQLUrl | Indexer address. Cross-origin issues need to be handled separately. | string | - |
 | storageMethod | Storage method. You can configure where data should be stored yourself, and the default setting is in localstorage. | IStorageSuite | - |
 | reCaptchaConfig | Human-computer interaction configuration. The default setting is to use Portkey's reCaptcha configuration. | BaseReCaptcha | Portkey config |
-| serviceUrl | You must configure this if you want to enable on/off ramp services. | string | [https://did-portkey.portkey.finance](https://did-portkey.portkey.finance) |
+| serviceUrl | You must configure this if you want to enable on/off ramp services. | string | [https://aa-portkey.portkey.finance](https://aa-portkey.portkey.finance) |

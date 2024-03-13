@@ -8,10 +8,10 @@ title: Contract API
 ## Terms
 
 1. CAHolder: 
-CA address, each user corresponds to one CAHolder (the same user's different accounts, for example, his "Apple" and "Google" will correspond to 2 CAHolders).
+AA address, each user corresponds to one CAHolder (the same user's different accounts, for example, his "Apple" and "Google" will correspond to 2 CAHolders).
 
 2. Guardian: 
-The method through which users authenticate, including email, phone number, or a specific verifier.
+The method through which users authenticate, including credentials like email or Apple ID, and a specific verifier.
 
 3. Manager: 
 An externally owned account (EOA) address used by a wallet to initiate transactions (often referring to a device). A single CAHolder can correspond to multiple Managers.
@@ -39,7 +39,7 @@ message InitializeInput{
 
 -   **API function**
 
-    -   Initialize the CA contract
+    -   Initialize the AA contract
 
 -   **Time to call**
 
@@ -83,7 +83,7 @@ message StrategyNode {
 
 -   **API function**
 
-    -   Create user's CA wallet
+    -   Create user's AA wallet
 
 -   **Time to call**
 
@@ -207,7 +207,7 @@ message SetGuardianForLoginInput {
 
 -   **Conditions that need to be met**
 
-    -   Guardian (email/phone numer)+verifier ID has not been used before
+    -   Guardian (email/Apple ID)+verifier ID has not been used before
     -   The caller is one of the Managers configured in the CAHolder
 
 ### Unset login Guardian
@@ -232,7 +232,7 @@ message UnsetGuardianForLoginInput {
     -   The caller is one of the Managers configured in the CAHolder
     -   The Guardian was set by calling SetGuardianForLogin
 
-### Manager excecutes the CA contract
+### Manager excecutes the AA contract
 
 -   **API definition**
 
@@ -249,7 +249,7 @@ message ManagerForwardCallInput {
 
 -   **API function**
 
-    -   Execute CA contract method and send an inline transaction to the contract address
+    -   Execute AA contract method and send an inline transaction to the contract address
 
 -   **Conditions that need to be met**
 
@@ -826,7 +826,7 @@ enum OperationType {
     -   The caller is the contract admin
     -   The current status should not be the same as the updated status
 
-### Set CA contract addresses
+### Set AA contract addresses
 
 -   **API definition**
 
@@ -844,7 +844,7 @@ message CAContractAddress {
 
 -   **API function**
 
-    -   Change the CA contract address of the corresponding chain
+    -   Change the AA contract address of the corresponding chain
 
 -   **Conditions that need to be met**
 

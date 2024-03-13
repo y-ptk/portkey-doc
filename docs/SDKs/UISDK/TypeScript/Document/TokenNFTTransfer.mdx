@@ -68,8 +68,29 @@ const assetItem = {
         tokenContractAddress : 'JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE' ,
     }
 }
-    
-<Send assetItem={assetItem} onSuccess={()=>{ console.log('success') }} />
+const App = () => (
+   <Send
+      assetItem={sendToken}
+      onSuccess={() => {
+        // success callback
+        }
+      }
+      onClose={() => {
+        // close callback
+        }
+      }
+      onModifyLimit={async (data) => {
+          // check transaction limit
+        }
+      }
+      onModifyGuardians={() => {
+          // to add guardian
+        }
+      }
+    />
+);
+
+export default App;
 ```
 
 ## API
@@ -77,9 +98,11 @@ const assetItem = {
 | Property          | Description                                                                                                   | Type                                        | Default       | Version |
 | :---------------- | :------------------------------------------------------------------------------------------------------------ | :------------------------------------------ | :------------ | :------ |
 | assetItem         | Details of the token to be sent                                                                               | IAssetItemType                              | -             |         |
+| extraConfig       | Extra transaction information associated with the transfer                                                    | SendExtraConfig                             | -             | V2.0.0  |
 | closeIcon         | The close button element                                                                                      | ReactNode                                   | -             |         |
 | className         | Class name of the top level container                                                                         | string                                      | -             |         |
 | wrapperStyle      | Style of the top level container                                                                              | React.CSSProperties                         | -             |         |
+| isErrorTip        | Is error tip set as default                                                                                   | boolean                                     | true          | V2.0.0  |
 | onCancel          | Callback of cancelling. When isClose is true, it's the callback for clicking the X on the right               | ()=>void;                                   | -             |         |
 | onClose           | Callback when the close button is clicked                                                                     | ()=>void;                                   | -             |         |
 | onSuccess         | Callback of success                                                                                           | ()=>void;                                   | -             |         |

@@ -1,8 +1,8 @@
 ---
-title: Create Tokens via Portkey CA Address
+title: Create Tokens via Portkey AA Address
 ---
 
-# Create Tokens via Portkey CA Address
+# Create Tokens via Portkey AA Address
 
 ## 1. Obtain SEED
 
@@ -10,13 +10,13 @@ Refer to [Obtain SEED](docs/QuickStartGuides/LaunchTokenAndNFTCollection/ObtainS
 
 ## 2. Create token
 
-Create by using ManagerForwardCall in the **CA contract** and calling the **Token contract**.
+Create by using ManagerForwardCall in the **AA contract** and calling the **Token contract**.
 
 Please note: the contract called is on the MainChain but you can decide to create tokens whether on the MainChain or SideChains via the parameter **issue_chain_id (issueChainId in the below demo).**
 
 ### Obtain chain information
 
-You can use the methods below to query each chain's info and the info about the CA contract or Token contract. Select MainChain AELF as the token creation chain.
+You can use the methods below to query each chain's info and the info about the AA contract or Token contract. Select MainChain AELF as the token creation chain.
 
 ```typescript
 import { did } from '@portkey/did';
@@ -41,8 +41,8 @@ import { getContractBasic } from '@portkey/contracts';
 const contract = await getContractBasic({
   contractAddress: TOKEN_CONTRACT_ADDRESS, // MultiToken contract address
   account: wallet, // Provide the wallet info from the last step
-  callType: 'ca', // Set the initialising contract type as CA contract
-  caContractAddress: 'CA contract address',
+  callType: 'ca', // Set the initialising contract type as AA contract
+  caContractAddress: 'AA contract address',
   caHash:  did.didWallet.caInfo.AELF.caHash, // CaHash of the account
   rpcUrl: 'aelf blockchain node address'
 });  
@@ -52,7 +52,7 @@ const contract = await getContractBasic({
 
 For parameter details, refer to contract documentation: https://docs.aelf.io/en/latest/reference/smart-contract-api/multi-token.html
 
-Create by using the `callSendMethod` method in the **CA contract** and calling the **Token contract**.
+Create by using the `callSendMethod` method in the **AA contract** and calling the **Token contract**.
 
 ```typescript
 const { data: { TransactionId } } = await contract.callSendMethod('Create', wallet.address, {
@@ -68,7 +68,7 @@ const { data: { TransactionId } } = await contract.callSendMethod('Create', wall
 
 ## 3. Issue
 
-Issue by using the `callSendMethod` method in the **CA contract** and calling the **Token contract**.
+Issue by using the `callSendMethod` method in the **AA contract** and calling the **Token contract**.
 
 ```typescript
 const result = await contract.callSendMethod('Issue', wallet.address, {
@@ -80,11 +80,11 @@ const result = await contract.callSendMethod('Issue', wallet.address, {
 
 ## Process of Portkey account creating tokens
 
-### CA operation --- set MainChain as issue_chain_id
+### AA operation --- set MainChain as issue_chain_id
 
 ![set-side-chain](/img/quick-start/ca-operation-set-main-chain-for-token.jpg)
 
-### CA operation --- set SideChain as issue_chain_id
+### AA operation --- set SideChain as issue_chain_id
 
 Operations on the SideChain can only take effect when the MainChain and SideChain are synchronized.
 

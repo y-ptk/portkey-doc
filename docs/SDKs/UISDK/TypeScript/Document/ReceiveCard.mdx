@@ -53,10 +53,11 @@ export default App;
 | ----------- | ------------------------------------- | ----------------------------------------------------------------------------------- | ------------- | ------- |
 | receiveInfo | Receiver's info                       | `{address:string; name?: string;}`                                                  | -             |         |
 | assetInfo   | The close button element              | `{symbol: string;tokenContractAddress: string; chainId: ChainId; decimals: number}` | -             |         |
-| networkType | The current network type              | 'TESTNET' | 'MAIN'                                                                  | -             |         |
+| networkType | The current network type              | 'TESTNET' \| 'MAINNET'                                                               | -             | V2.0.0  |
 | title       | Title name                            | string                                                                              | -             |         |
 | className   | Class name of the top level container | string                                                                              | -             |         |
 | closeIcon   | The close button                      | ReactNode                                                                           | -             |         |
+| symbolIcon  | Link to the current token icon        | string                                                                              | -             | V2.0.0  |
 | backIcon    | Icon of the back button               | ReactNode                                                                           | -             |         |
 | chainId     | The chain where the receiver is on    | ChainId                                                                             | -             |         |
 | onCancel    | Callback of cancelling                | () => void;                                                                         | -             |         |

@@ -104,17 +104,18 @@ export default App;
 
 ### API
 
-| Property            | Description                                                                | Type                                                                                      | Required   | Default       |
-| :------------------ | :------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------- | :-------- | :------------ |
-| className           | Class name of the top level container                                      | string                                                                                    | false     | —             |
-| initState           | Data that controls the initial page display                                | IRampInitState                                                                            | false     | —             |
-| isBuySectionShow    | Control if on-ramp is enabled                                              | boolean                                                                                   | false     | true          |
-| isSellSectionShow   | Control if off-ramp is enabled                                             | boolean                                                                                   | false     | true          |
-| isMainnet           | Is it Mainnet                                                              | boolean                                                                                   | false     | —             |
-| tokenInfo           | Token information                                                          | ITokenInfo                                                                                | false     | —             |
-| portkeyWebSocketUrl | WebSocket service address, requiring IP format                             | string                                                                                    | false     | —             |
-| onBack              | Control the event to go back to the previous route                         | () => void                                                                                | true      | —             |
-| onShowPreview       | Control the event to navigate to the preview                               | ({ initState, chainId }: { initState: IRampPreviewInitState; chainId: ChainId }) => void; | true      | —             |
+| Property            | Description                                                                | Type                                                                                      | Required   | Default       | Version |
+| :------------------ | :------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------- | :-------- | :------------ | :-------- |
+| className           | Class name of the top level container                                      | string                                                                                    | false     | —             |           |
+| initState           | Data that controls the initial page display                                | IRampInitState                                                                            | false     | —             |           |
+| isBuySectionShow    | Control if on-ramp is enabled                                              | boolean                                                                                   | false     | true          |           |
+| isSellSectionShow   | Control if off-ramp is enabled                                             | boolean                                                                                   | false     | true          |           |
+| isMainnet           | Is it Mainnet                                                              | boolean                                                                                   | false     | —             |           |
+| tokenInfo           | Token information                                                          | ITokenInfo                                                                                | false     | —             |           |
+| portkeyWebSocketUrl | WebSocket service address, requiring IP format                             | string                                                                                    | false     | —             |           |
+| isErrorTip          | Is error tip set as default                                                | boolean                                                                                   | false     | true          | V2.0.0    |
+| onBack              | Control the event to go back to the previous route                         | () => void                                                                                | true      | —             |           |
+| onShowPreview       | Control the event to navigate to the preview                               | ({ initState, chainId }: { initState: IRampPreviewInitState; chainId: ChainId }) => void; | true      | —             |           |
 
 ### Detailed explanation
 

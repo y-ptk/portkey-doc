@@ -248,7 +248,7 @@ provider.request({ method: "chainsInfo" }).then((chainsInfo: ChainsInfo) => {
 
 Returns the current network type of the Portkey APP's wallet.
 
-For now it's either `'MAIN'` or `'TESTNET'` .
+For now it's either `'MAINNET'` or `'TESTNET'` .
 
 ```typescript
 provider.request({ method: "network" }).then((network: NetworkType) => {
@@ -400,6 +400,46 @@ try {
 ```
 
 `providerVersion: 0.0.2+`
+
+#### 12. {method:'wallet_getTransactionSignature',payload:GetSignatureParams}
+
+Get a signature from the Portkey App's wallet. Compared with wallet_getSignature, wallet_getTransactionSignature is an upgraded version which will perform SHA256 before signing.
+
+**NOTICE** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+
+```typescript
+try {
+// provider.providerVersion
+// providerVersion >= 2.1.0
+  const signature = await provider.request({
+    method: 'wallet_getTransactionSignature',
+    payload: {
+      hexData: '0x...',
+    },
+  });
+  if (!signature) throw new Error('sign failed!');
+  console.log('sign success! signature:', signature);
+} catch (e) {
+// An error will be thrown if the user denies the permission request, or other issues.
+...
+}
+```
+
+`providerVersion: 2.1.0+`
+
+#### 13. method:'caHash'
+
+Returns the current account caHash of the Portkey APP's wallet.  
+
+**NOTICE** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
+
+```typescript
+provider.request({ method: "caHash" }).then((caHash: string) => {
+  console.log('the aelf mainchain account:',caHash);
+});
+```
+
+`providerVersion: 2.1.0+`
 
 ## Error Code Enumeration
 

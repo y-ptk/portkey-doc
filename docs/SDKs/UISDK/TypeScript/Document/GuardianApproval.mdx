@@ -11,6 +11,7 @@ Usage scenario: social recovery during login where verification from other guard
 ```javascript
  <GuardianApproval
   chainId="AELF"
+  networkType="MAINNET"
   guardianList={[
     {
       isLoginAccount: true,
@@ -45,3 +46,4 @@ Usage scenario: social recovery during login where verification from other guard
 | onError              | Callback of error                                                    | (error: {errorFields:string, error: any}) => void; | -             |         |
 | onConfirm            | Callback when guardian approval is completed                         | (guardianList: GuardiansApproved[]) => void;       | -             |         |
 | onGuardianListChange | Callback when guardian verification starts and guardian list changes | (guardianList: GuardiansApproved[]) => void;       | -             |         |
+| networkType          | Network type                                                         | MAINNET \| TESTNET                                 | -             | V2.0.0  |
