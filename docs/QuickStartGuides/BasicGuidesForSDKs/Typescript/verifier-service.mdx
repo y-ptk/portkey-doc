@@ -18,7 +18,7 @@ Verifier services encompass functions such as recording, sending, and verifying 
 
 ![frontend proxy guardian verifier](/img/quick-start/frontend-proxy-guardian-verifier.jpg)
 
-1. Users initiate guardian account requests through the frontend to the proxy Guardian Verifier service, such as emails or phone numbers.
+1. Users initiate guardian account requests through the frontend to the proxy Guardian Verifier service, such as emails.
 2. The proxy Guardian Verifier service handles this request:
    - If the request is successfully sent, it returns to the frontend with a success confirmation and VerifierSessionId.
    - If the request fails, it returns with an error code and error message.
@@ -169,7 +169,6 @@ did.register(params);
 ```typescript
 enum AccountTypeEnum {
   Email,
-  Phone,
   Google,
   Apple,
 }

@@ -22,7 +22,7 @@ Usage scenario: social recovery during login where verification from other guard
         imageUrl: 'your verifier imageUrl',
       },
       identifier: 'identifier',
-      guardianType: 'Phone',
+      guardianType: 'Email',
       key: '',
     },
   ]}
@@ -38,7 +38,7 @@ Usage scenario: social recovery during login where verification from other guard
 | originChainId        | ID of the chain where user account is registered                     | ChainId                                            | -             | V1.5.1  |
 | targetChainId        | ID of the chain which the current operation targets                  | ChainId                                            | -             | V1.5.1  |
 | header               | Header of guardian list display                                      | ReactNode                                          | -             |         |
-| guardianList         | Identifier information (email, phone, Google ID, Apple ID)           | BaseGuardianItem[]                                 | -             |         |
+| guardianList         | Identifier information (email, Google ID, Apple ID)           | BaseGuardianItem[]                                 | -             |         |
 | isErrorTip           | Is error tip set as default                                          | boolean                                            | true          |         |
 | wrapperStyle         | Customized inline styles                                             | React.CSSProperties                                | -             |         |
 | operationType        | Operation type                                                       | OperationTypeEnum                                  | -             |         |

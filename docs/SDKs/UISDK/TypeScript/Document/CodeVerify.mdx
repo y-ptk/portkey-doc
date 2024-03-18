@@ -4,14 +4,14 @@ title: CodeVerify
 
 # CodeVerify
 
-Component for verifying codes when registering and logging in using phone number and email.
+Component for verifying codes when registering and logging in using email.
 
 ### Usage
 
 ```javascript
  <CodeVerify
   chainId="AELF"
-  accountType="Phone"
+  accountType="Email"
   verifier={{
     endPoints: ['your endPoints'],
     verifierAddresses: ['your verifierAddresses'],
@@ -20,7 +20,7 @@ Component for verifying codes when registering and logging in using phone number
     imageUrl: 'your verifier imageUrl',
   }}
   verifierSessionId={'080bbdcd-73f5-45a6-b65b-0d067474756f'}
-  guardianIdentifier={'+852 12233333'}
+  guardianIdentifier={'sample@sample.com'}
   operationType={OperationTypeEnum.addGuardian}
   onError={(error: any) => {
     console.log('onError', error);
@@ -43,7 +43,7 @@ Component for verifying codes when registering and logging in using phone number
 | accountType        | Identifier type                                            | AccountType                                                                            | Email         |         |
 | isCountdownNow     | Does the countdown start as soon as the page is rendered   | boolean                                                                                | -             |         |
 | isLoginGuardian    | Is it login identifier                                     | boolean                                                                                | -             |         |
-| guardianIdentifier | Identifier information (email, phone, Google ID, Apple ID) | string                                                                                 | -             |         |
+| guardianIdentifier | Identifier information (email, Google ID, Apple ID) | string                                                                                 | -             |         |
 | verifierSessionId  | verifierSessionId after verification code is sent          | string                                                                                 | -             |         |
 | isErrorTip         | Is error tip set as default                                | boolean                                                                                | true          |         |
 | operationType      | Operation type                                             | OperationTypeEnum                                                                      | -             |         |

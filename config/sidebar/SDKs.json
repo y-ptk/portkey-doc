@@ -219,11 +219,6 @@
                   "_template": "doc"
                 },
                 {
-                  "document": "docs/SDKs/UISDK/TypeScript/Document/PhoneNumberInput.mdx",
-                  "label": "PhoneNumberInput",
-                  "_template": "doc"
-                },
-                {
                   "document": "docs/SDKs/UISDK/TypeScript/Document/PortkeyUtils.mdx",
                   "label": "Portkey's utils",
                   "_template": "doc"

@@ -16,13 +16,13 @@ Usage scenario: guardian management
 
 ### Display the guardian list of the current account
 
-Example: a list that contains four types of guardians, i.e. email, phone, Google account, and Apple ID.
+Example: a list that contains four types of guardians, i.e. email, Google account, and Apple ID.
 
 <img src='/img/ui-sdk/guardian-list.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
 
 ### Add guardians
 
-- Select guarfian type: email, phone, Google account, or Apple ID
+- Select guarfian type: email, Google account, or Apple ID
 - Select verifier  
 
 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
@@ -104,7 +104,7 @@ const App = () => (
             imageUrl: 'your verifier imageUrl',
           },
           identifier: 'identifier',
-          guardianType: 'Phone',
+          guardianType: 'Email',
           key: '',
         },
       ]}
@@ -151,7 +151,7 @@ const guardianList = [
       imageUrl: 'your verifier imageUrl',
     },
     identifier: 'identifier',
-    guardianType: 'Phone',
+    guardianType: 'Email',
     key: '',
   },
 ];
@@ -178,7 +178,6 @@ export default App;
 | header            | Header UI component                              | ReactNode                                                                                 | -             | V1.5.1  |
 | className         | Customised class name                            | string                                                                                    | -             | V1.5.1  |
 | originChainId     | ID of the chain where user account is registered | ChainId                                                                                   | -             | V1.5.1  |
-| phoneCountry      | Country calling code                             | IPhoneCountry                                                                             | -             | V1.5.1  |
 | guardianList      | Guardian list of the current account             | UserGuardianStatus[]                                                                      | -             | V1.5.1  |
 | verifierList      | List of verifiers supported                      | VerifierItem[]                                                                            | -             | V1.5.1  |
 | isErrorTip        | Is error tip set as default                      | boolean                                                                                   | true          | V1.5.1  |
@@ -204,7 +203,7 @@ const currentGuardian = {
       imageUrl: 'your verifier imageUrl',
     },
     identifier: 'identifier',
-    guardianType: 'Phone',
+    guardianType: 'Email',
     key: '',
 };
 const guardianList = [
@@ -218,7 +217,7 @@ const guardianList = [
         imageUrl: 'your verifier imageUrl',
       },
       identifier: 'identifier',
-      guardianType: 'Phone',
+      guardianType: 'Email',
       key: '',
     },
 ];
@@ -275,7 +274,7 @@ const currentGuardian = {
     imageUrl: 'your verifier imageUrl',
     },
     identifier: 'identifier',
-    guardianType: 'Phone',
+    guardianType: 'Email',
     key: '',
 };
 const guardianList = [
@@ -289,7 +288,7 @@ const guardianList = [
         imageUrl: 'your verifier imageUrl',
       },
       identifier: 'identifier',
-      guardianType: 'Phone',
+      guardianType: 'Email',
       key: '',
     },
 ];
@@ -303,7 +302,7 @@ const preGuardian = {
     imageUrl: 'your verifier imageUrl',
     },
     identifier: 'identifier',
-    guardianType: 'Phone',
+    guardianType: 'Email',
     key: '',
 };
 

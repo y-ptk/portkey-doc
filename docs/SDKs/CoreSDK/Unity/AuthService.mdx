@@ -41,27 +41,6 @@ StartCoroutine(portkeySDK.AuthService.GetGuardians(credential, guardians =>
 }));
 ```
 
-## GetGuardians(PhoneNumber phoneNumber, SuccessCallback<List<Guardian\>> successCallback)
-
-**Description:** *The GetGuardians function retrieves a list of guardians for the specified user using phone number.*
-
-**Parameters:**
-
--   phoneNumber (PhoneNumber): *The phone number of the user to get guardians for.*
--   *successCallback (SuccessCallback<List<Guardian\>>): This is the callback that will be called when the request has been completed. It returns a list of guardian objects.*
-
-**Example:**
-
-```c#
-PhoneNumber phoneNumber = PhoneNumber.Parse("12345678");
-
-StartCoroutine(portkeySDK.AuthService.GetGuardians(phoneNumber, guardians =>
-{
-    var numberOfGuardians = guardians.Count;
-    //do stuff...
-}));
-```
-
 ## GetGuardians(EmailAddress emailAddress, SuccessCallback<List<Guardian\>> successCallback)
 
 **Description:** *The GetGuardians function retrieves a list of guardians for the specified user using email address.*
@@ -227,10 +206,6 @@ StartCoroutine(portkeySDK.AuthService.Logout());
 ## TelegramCredentialProvider
 
 **Description:** *For users to get their telegram credential.*
-
-## PhoneCredentialProvider
-
-**Description:** *For users to get their phone credential.*
 
 ## EmailCredentialProvider
 
