@@ -85,6 +85,11 @@
               "_template": "doc"
             },
             {
+              "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/TelegramLogin.mdx",
+              "label": "TelegramLogin",
+              "_template": "doc"
+            },
+            {
               "document": "docs/QuickStartGuides/BasicGuidesForSDKs/Unity/PortkeyBrowserExtensionLogin.mdx",
               "label": "PortkeyBrowserExtensionLogin",
               "_template": "doc"

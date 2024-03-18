@@ -149,6 +149,7 @@ const config = {
       },
       footer: {},
       prism: {
+        additionalLanguages: ["csharp", "protobuf"],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },

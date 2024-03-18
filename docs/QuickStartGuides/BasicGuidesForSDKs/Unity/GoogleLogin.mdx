@@ -10,7 +10,7 @@ You can let your users authenticate with Portkey using their Google ID by using 
 
 The `AuthService` class is the entry point for all authentication API calls. It is accessible through `PortkeySDK.AuthService`.
 
-```c#
+```csharp
 IAuthService auth = PortkeySDK.AuthService;
 ```
 
@@ -18,14 +18,14 @@ IAuthService auth = PortkeySDK.AuthService;
 
 1. User is to get a Google Credential by signing in to their Google ID through the `GoogleCredentialProvider`.
 
-```c#
+```csharp
 // mySuccessCallback will be called when a Credential is successfully returned by GoogleCredentialProvider.
 PortkeySDK.AuthService.GoogleCredentialProvider.Get(mySuccessCallback);
 ```
 
 2. After getting Google Credential, we will check if the user has already signed up with the corresponding Google Credential before. A user who already has an account with Portkey should have one or more Guardians returned from the callback.
 
-```c#
+```csharp
 StartCoroutine(PortkeySDK.AuthService.GetGuardians(googleCredential, guardians =>
 {
     if(guardians.Count == 0)
@@ -44,7 +44,7 @@ StartCoroutine(PortkeySDK.AuthService.GetGuardians(googleCredential, guardians =
     - Sign up flow
     
         1. Sign in for the user through the `SignUp` function. A `DIDAccountInfo` will be returned after a successful sign up that contains the signing key and account information for the user.
-        ```c#
+        ```csharp
         StartCoroutine(PortkeySDK.AuthService.SignUp(googleCredential, didAccountInfo => 
         {
             // user has successfully signed up and his info can be found in DIDAccountInfo
@@ -54,12 +54,12 @@ StartCoroutine(PortkeySDK.AuthService.GetGuardians(googleCredential, guardians =
     - Login flow
 
         1. Get the amount of approved Guardians that is required to login the user.
-        ```c#
+        ```csharp
         int requiredApprovedGuardians = PortkeySDK.AuthService.GetRequiredApprovedGuardiansCount(guardians.Count);
         ```
 
         2. Verify the Guardians through `AuthService` to get `ApprovedGuardians` for the login.
-        ```c#
+        ```csharp
         List<ApprovedGuardian> approvedGuardians = new List<ApprovedGuardian>();
 
         for (int i = 0; i < requiredApprovedGuardians; ++i)
@@ -72,7 +72,7 @@ StartCoroutine(PortkeySDK.AuthService.GetGuardians(googleCredential, guardians =
         ```
 
         3. Use the `ApprovedGuardians` to login the user.
-        ```c#
+        ```csharp
         StartCoroutine(PortkeySDK.AuthService.Login(guardians[0], approvedGuardians, didAccountInfo =>
         {
             // user is logged in and his info and signing key can be found in DIDAccountInfo
@@ -83,7 +83,7 @@ StartCoroutine(PortkeySDK.AuthService.GetGuardians(googleCredential, guardians =
 
 The following is a sample code to authenticate a user through the whole sign up/login flow with their Google ID.
 
-```c#
+```csharp
 using Portkey.DID;
 
 public class GoogleLoginExample : MonoBehaviour
@@ -142,6 +142,6 @@ After the user has signed up or logged in, a `DIDAccountInfo` will be returned t
 ## Sign out
 
 To sign out a user, call `Logout`.
-```c#
+```csharp
 StartCoroutine(PortkeySDK.AuthService.Logout());
 ```
