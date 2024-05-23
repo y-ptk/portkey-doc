@@ -24,7 +24,8 @@ Provide DID services
 
 ## did.setConfig
 
-Where you configure did server node, graphQL node, storage suite.
+Where you configure did server node, graphQL node, storage suite.  
+[Environmental configuration](../../../EnvironmentalConfiguration.mdx)
 
 ```typescript
 setConfig(options: IConfig): void;
@@ -153,16 +154,19 @@ did.logout({ chainId: 'chainId' }, { onMethod: 'transactionHash' }});
 ```
 
 ## did.sign
+
 ```typescript
 sign(data: string): Buffer
 ```
 
 #### Usage
+
 ```typescript
 const signStr = did.sign(hexStr).toString("hex");
 ```
 
 #### Example: Verify signature
+
 ```typescript
 import AElf from "aelf-sdk";
 import elliptic from "elliptic";

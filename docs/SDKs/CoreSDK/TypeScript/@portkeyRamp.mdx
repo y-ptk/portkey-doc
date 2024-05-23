@@ -1,0 +1,59 @@
+---
+title: portkey/ramp
+---
+
+# @portkey/ramp
+
+## Introduction
+
+@portkey/ramp is a basic TypeScript library that integrates multiple on/off-ramp services.
+This package provides interfaces and basic methods related to the buying and selling services of cryptocurrencies like USDT, allowing for easy integration of on/off-ramp services into your application.  
+Currently integrated on/off-ramp service providers include Alchemy Pay and Transak.
+
+## Installation
+
+<Tabs>
+  <TableItem value="npm" label="NPM">
+    <CodeBlock language="bash">npm install @portkey/ramp</CodeBlock>
+  </TableItem>
+  <TableItem value="yarn" label="YARN">
+    <CodeBlock language="bash">yarn add @portkey/ramp</CodeBlock>
+  </TableItem>
+</Tabs>
+
+## initialization
+
+```typescript
+ramp.init({
+  requestConfig: {
+    baseURL: "https://....",
+    socketUrl: "https://....",
+    headers: {
+      "Client-Type": "ThirdParty",
+      Authorization: token,
+    },
+  },
+});
+```
+
+## API
+
+You can call the interface request method in the ramp instance to obtain relevant data:
+
+| Instance method                  | Use case                                                                                                                                                                              |
+| :------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ramp.service.getRampInfo         | Obtain basic information of on/off-ramp service providers, such as name, appId, availability of buy/sell services, service provider callback URL, icon of the supported payment, etc. |
+| ramp.service.getBuyCryptoData    | Obtain information about the cryptocurrencies supported by the on-ramp service.                                                                                                       |
+| ramp.service.getBuyFiatData      | Obtain information about the fiat currencies supported by the on-ramp service.                                                                                                        |
+| ramp.service.getBuyLimit         | Obtain the minimum purchase limit.                                                                                                                                                    |
+| ramp.service.getBuyExchange      | Obtain the exchange rate between cryptocurrencies and fiat currencies.                                                                                                                |
+| ramp.service.getBuyPrice         | Estimate the quantity of cryptocurrencies to be received after purchase, which may slightly differ from the actual received amount.                                                   |
+| ramp.service.getBuyDetail        | Obtain information about on-ramp service providers.                                                                                                                                   |
+| ramp.service.getSellCryptoData   | Obtain information about the cryptocurrencies supported by the off-ramp service.                                                                                                      |
+| ramp.service.getSellFiatData     | Obtain information about the fiat currencies supported by the off-ramp service.                                                                                                       |
+| ramp.service.getSellLimit        | Obtain the minimum selling limit.                                                                                                                                                     |
+| ramp.service.getSellExchange     | Obtain the exchange rate between cryptocurrencies and fiat currencies.                                                                                                                |
+| ramp.service.getSellPrice        | Estimate the quantity of fiat currencies to be received after selling, which may slightly differ from the actual received amount.                                                     |
+| ramp.service.getSellDetail       | Obtain information about off-ramp service providers.                                                                                                                                  |
+| ramp.service.getOrderNo          | Obtain the order ID.                                                                                                                                                                  |
+| ramp.service.sendSellTransaction | Execute the sell transaction.                                                                                                                                                         |

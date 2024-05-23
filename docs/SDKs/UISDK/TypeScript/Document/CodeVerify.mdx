@@ -9,44 +9,44 @@ Component for verifying codes when registering and logging in using phone number
 ### Usage
 
 ```javascript
- <CodeVerify
+<CodeVerify
   chainId="AELF"
   accountType="Email"
   verifier={{
-    endPoints: ['your endPoints'],
-    verifierAddresses: ['your verifierAddresses'],
-    id: 'your verifier id',
-    name: 'your verifier name',
-    imageUrl: 'your verifier imageUrl',
+    endPoints: ["your endPoints"],
+    verifierAddresses: ["your verifierAddresses"],
+    id: "your verifier id",
+    name: "your verifier name",
+    imageUrl: "your verifier imageUrl",
   }}
-  verifierSessionId={'080bbdcd-73f5-45a6-b65b-0d067474756f'}
-  guardianIdentifier={'xxx@xxx.com'}
+  verifierSessionId={"080bbdcd-73f5-45a6-b65b-0d067474756f"}
+  guardianIdentifier={"xxx@xxx.com"}
   operationType={OperationTypeEnum.addGuardian}
   onError={(error: any) => {
-    console.log('onError', error);
+    console.log("onError", error);
   }}
-  onSuccess={result => {
-    console.log('onConfirm', result);
+  onSuccess={(result) => {
+    console.log("onConfirm", result);
   }}
 />
 ```
 
 ### API
 
-| Property           | Description                                                | Type                                                                                   | Default       | Version |
-| :----------------- | :--------------------------------------------------------- | :------------------------------------------------------------------------------------- | :------------ | :------ |
-| ~~chainId~~        | ~~Chain ID where user account is registered~~              | ~~ChainId~~                                                                            | -             | V1.5.1  |
-| originChainId      | ID of the chain where user account is registered           | ChainId                                                                                | AELF          | V1.5.1  |
-| targetChainId      | ID of the chain which the current operation targets        | ChainId                                                                                | -             | V1.5.1  |
-| verifier           | Verifier service                                           | VerifierItem                                                                           | -             |         |
-| className          | Customized class name                                      | string                                                                                 | -             |         |
-| accountType        | Identifier type                                            | AccountType                                                                            | Email         |         |
-| isCountdownNow     | Does the countdown start as soon as the page is rendered   | boolean                                                                                | -             |         |
-| isLoginGuardian    | Is it login identifier                                     | boolean                                                                                | -             |         |
-| guardianIdentifier | Identifier information (email, phone, Google ID, Apple ID) | string                                                                                 | -             |         |
-| verifierSessionId  | verifierSessionId after verification code is sent          | string                                                                                 | -             |         |
-| isErrorTip         | Is error tip set as default                                | boolean                                                                                | true          |         |
-| operationType      | Operation type                                             | OperationTypeEnum                                                                      | -             |         |
-| onError            | Callback of error                                          | (error: {errorFields:string, error: any}) => void;                                     | -             |         |
-| onSuccess          | Callback of finishing                                      | (result: { verificationDoc: string; signature: string; verifierId: string; }) => void; | -             |         |
-| onReSend           | Callback when the resend button is clicked                 | (result: {verifier: VerifierItem; verifierSessionId:string;) => void                   | -             |         |
+| Property           | Description                                                | Type                                                                                    | Default | Version |
+| :----------------- | :--------------------------------------------------------- | :-------------------------------------------------------------------------------------- | :------ | :------ |
+| originChainId      | ID of the chain where user account is registered           | ChainId                                                                                 | AELF    | V1.5.1  |
+| targetChainId      | ID of the chain which the current operation targets        | ChainId                                                                                 | -       | V1.5.1  |
+| verifier           | Verifier service                                           | VerifierItem                                                                            | -       |         |
+| operationDetails   | Sign and verify additional information                     | [TStringJSON](./Interface)                               | -       |         |
+| className          | Customized class name                                      | string                                                                                  | -       |         |
+| accountType        | Identifier type                                            | AccountType                                                                             | Email   |         |
+| isCountdownNow     | Does the countdown start as soon as the page is rendered   | boolean                                                                                 | -       |         |
+| isLoginGuardian    | Is it login identifier                                     | boolean                                                                                 | -       |         |
+| guardianIdentifier | Identifier information (email, phone, Google ID, Apple ID) | string                                                                                  | -       |         |
+| verifierSessionId  | verifierSessionId after verification code is sent          | string                                                                                  | -       |         |
+| isErrorTip         | Is error tip set as default                                | boolean                                                                                 | true    |         |
+| operationType      | Operation type                                             | OperationTypeEnum                                                                       | -       |         |
+| onError            | Callback of error                                          | (error: \{errorFields: string, error: any \}) => void;                                  | -       |         |
+| onSuccess          | Callback of finishing                                      | (result: \{verificationDoc: string; signature: string; verifierId: string; \}) => void; | -       |         |
+| onReSend           | Callback when the resend button is clicked                 | (result: \{verifier: VerifierItem; verifierSessionId:string; \}) => void                | -       |         |

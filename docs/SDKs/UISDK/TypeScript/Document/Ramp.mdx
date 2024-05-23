@@ -9,87 +9,152 @@ import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
 Provide the Ramp functionality, including on-ramp and off-ramp, enabling buying and selling operations for ELF with fiat currencies.
 
 <HighlightBlock>
-Before using this component, please make sure you are <a href="/docs/SDKs/UISDK/TypeScript/Document/SignIn">logged-in</a>.
-<br/><br/>
-Before using this component, we assume that you are already familiar with the <a href="/docs/SDKs/UISDK/TypeScript/Document/Configuration">basic configuration</a> of Portkey.
+  Before using this component, please make sure you are
+  <a href="/docs/SDKs/UISDK/TypeScript/Document/SignIn"> logged-in</a>.
+  <br />
+  <br />
+  Before using this component, we assume that you are already familiar with the
+  <a href="/docs/SDKs/UISDK/TypeScript/Document/Configuration">
+    &nbsp;basic configuration&nbsp;
+  </a>
+  of Portkey.
 </HighlightBlock>
 
 ## Feature
 
 ### Ramp's functions and UIs are as follows:
 
--   Buy
-    -   Select the type and quantity of fiat currency for payment.
-    -   Select the type of token to be received.
-        -   Currently only supports ELF
-        -   We will assist you in estimating the quantity to be received
-        -   Exchange rates is renewed every 15 seconds with the estimated asset to be received also updated
-    -   Provide limit amount prompts, allowing payment only in the specified range of fiat currency for token exchange.
+- Buy
 
--   Sell
-    -   Select the type and quantity of tokens for payment.
-        -   Currently only supports ELF.
-    -   Select the type of fiat currency to be received
-        -   We will assist you in estimating the quantity to be received
-        -   Exchange rates is renewed every 15 seconds with the estimated asset to be received also updated
-    -   Provide manage information synchronization prompt, transactions can only occur when manage information is present.
-    -   Verify wallet security and transfer limits when users sell tokens
+  - Select the type and quantity of fiat currency for payment.
+  - Select the type of token to be received.
+    - Currently only supports ELF
+    - We will assist you in estimating the quantity to be received
+    - Exchange rates is renewed every 15 seconds with the estimated asset to be received also updated
+  - Provide limit amount prompts, allowing payment only in the specified range of fiat currency for token exchange.
 
-<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
-  <div style={{width: '32%'}}> 
-    <div style={{textAlign: 'center', color: '#999'}}> buying </div>
-    <img src='/img/ui-sdk/ui-for-buying.png'  width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+- Sell
+  - Select the type and quantity of tokens for payment.
+    - Currently only supports ELF.
+  - Select the type of fiat currency to be received
+    - We will assist you in estimating the quantity to be received
+    - Exchange rates is renewed every 15 seconds with the estimated asset to be received also updated
+  - Provide manage information synchronization prompt, transactions can only occur when manage information is present.
+  - Verify wallet security and transfer limits when users sell tokens
+
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "start",
+    width: "100%",
+  }}>
+  <div style={{ width: "32%" }}>
+    <div style={{ textAlign: "center", color: "#999" }}> buying </div>
+    <img
+      src="/img/ui-sdk/ui-for-buying.png"
+      width={"99.5%"}
+      style={{ border: "1px solid #dee2e8" }}
+    />
   </div>
-  <div  style={{width: '32%'}}> 
-    <div style={{textAlign: 'center', color: '#999'}}> fiat currency selecting </div>
-    <img src='/img/ui-sdk/ui-for-fiat-currency-selecting.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  <div style={{ width: "32%" }}>
+    <div style={{ textAlign: "center", color: "#999" }}>
+      fiat currency selecting
+    </div>
+    <img
+      src="/img/ui-sdk/ui-for-fiat-currency-selecting.png"
+      width={"99.5%"}
+      style={{ border: "1px solid #dee2e8" }}
+    />
   </div>
-  <div  style={{width: '32%'}}> 
-    <div style={{textAlign: 'center', color: '#999'}}> token selecting </div>
-     <img src='/img/ui-sdk/ui-for-token-selecting.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  <div style={{ width: "32%" }}>
+    <div style={{ textAlign: "center", color: "#999" }}> token selecting </div>
+    <img
+      src="/img/ui-sdk/ui-for-token-selecting.png"
+      width={"99.5%"}
+      style={{ border: "1px solid #dee2e8" }}
+    />
   </div>
 </div>
 
-<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
-  <div style={{width: '32%'}}> 
-    <div style={{textAlign: 'center', color: '#999'}}> limit amount </div>
-    <img src='/img/ui-sdk/ui-for-limit-amount.png'  width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "start",
+    width: "100%",
+  }}>
+  <div style={{ width: "32%" }}>
+    <div style={{ textAlign: "center", color: "#999" }}> limit amount </div>
+    <img
+      src="/img/ui-sdk/ui-for-limit-amount.png"
+      width={"99.5%"}
+      style={{ border: "1px solid #dee2e8" }}
+    />
   </div>
-  <div style={{width: '32%'}}> 
-    <div style={{textAlign: 'center', color: '#999'}}> selling </div>
-    <img src='/img/ui-sdk/ui-for-selling.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  <div style={{ width: "32%" }}>
+    <div style={{ textAlign: "center", color: "#999" }}> selling </div>
+    <img
+      src="/img/ui-sdk/ui-for-selling.png"
+      width={"99.5%"}
+      style={{ border: "1px solid #dee2e8" }}
+    />
   </div>
-  <div style={{width: '32%'}}> 
-    <div style={{textAlign: 'center', color: '#999'}}> manage information synchronization </div>
-    <img src='/img/ui-sdk/ui-for-manage-information-synchronization.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  <div style={{ width: "32%" }}>
+    <div style={{ textAlign: "center", color: "#999" }}>
+      manage information synchronization
+    </div>
+    <img
+      src="/img/ui-sdk/ui-for-manage-information-synchronization.png"
+      width={"99.5%"}
+      style={{ border: "1px solid #dee2e8" }}
+    />
   </div>
 </div>
 
-<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
-  <div style={{width: '49%'}}> 
-    <div style={{textAlign: 'center', color: '#999'}}> wallet security notice </div>
-    <img src='/img/ui-sdk/ui-for-wallet-security-modal.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "start",
+    width: "100%",
+  }}>
+  <div style={{ width: "49%" }}>
+    <div style={{ textAlign: "center", color: "#999" }}>
+      wallet security notice
+    </div>
+    <img
+      src="/img/ui-sdk/ui-for-wallet-security-modal.png"
+      width={"99.5%"}
+      style={{ border: "1px solid #dee2e8" }}
+    />
   </div>
-  <div style={{width: '49%'}}> 
-    <div style={{textAlign: 'center', color: '#999'}}> transfer limit notice </div>
-    <img src='/img/ui-sdk/ui-for-limit-modal.png' width={'99.5%'} style={{border: '1px solid #dee2e8'}} />
+  <div style={{ width: "49%" }}>
+    <div style={{ textAlign: "center", color: "#999" }}>
+      transfer limit notice
+    </div>
+    <img
+      src="/img/ui-sdk/ui-for-limit-modal.png"
+      width={"99.5%"}
+      style={{ border: "1px solid #dee2e8" }}
+    />
   </div>
 </div>
 
 ## Usage
 
 ```typescript
-import { Ramp } from '@portkey/did-ui-react';
+import { Ramp } from "@portkey/did-ui-react";
 
 const App: React.FC = () => (
   <Ramp
     tokenInfo={{
       decimals: 8,
-      chainId: 'AELF',
-      symbol: 'ELF',
-      tokenContractAddress: 'JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE',
+      chainId: "AELF",
+      symbol: "ELF",
+      tokenContractAddress: "JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE",
     }}
-    portkeyWebSocketUrl={'http://192.168.66.240:5577/ca'}
+    portkeyWebSocketUrl={"http://192.168.66.240:5577/ca"}
     isMainnet={true}
     onBack={function (): void {
       // do something to show the last page
@@ -104,18 +169,18 @@ export default App;
 
 ### API
 
-| Property            | Description                                                                | Type                                                                                      | Required   | Default       | Version |
-| :------------------ | :------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------- | :-------- | :------------ | :-------- |
-| className           | Class name of the top level container                                      | string                                                                                    | false     | —             |           |
-| initState           | Data that controls the initial page display                                | IRampInitState                                                                            | false     | —             |           |
-| isBuySectionShow    | Control if on-ramp is enabled                                              | boolean                                                                                   | false     | true          |           |
-| isSellSectionShow   | Control if off-ramp is enabled                                             | boolean                                                                                   | false     | true          |           |
-| isMainnet           | Is it Mainnet                                                              | boolean                                                                                   | false     | —             |           |
-| tokenInfo           | Token information                                                          | ITokenInfo                                                                                | false     | —             |           |
-| portkeyWebSocketUrl | WebSocket service address, requiring IP format                             | string                                                                                    | false     | —             |           |
-| isErrorTip          | Is error tip set as default                                                | boolean                                                                                   | false     | true          | V2.0.0    |
-| onBack              | Control the event to go back to the previous route                         | () => void                                                                                | true      | —             |           |
-| onShowPreview       | Control the event to navigate to the preview                               | ({ initState, chainId }: { initState: IRampPreviewInitState; chainId: ChainId }) => void; | true      | —             |           |
+| Property            | Description                                        | Type                                                                                        | Required | Default | Version |
+| :------------------ | :------------------------------------------------- | :------------------------------------------------------------------------------------------ | :------- | :------ | :------ |
+| className           | Class name of the top level container              | string                                                                                      | false    | —       |         |
+| initState           | Data that controls the initial page display        | IRampInitState                                                                              | false    | —       |         |
+| isBuySectionShow    | Control if on-ramp is enabled                      | boolean                                                                                     | false    | true    |         |
+| isSellSectionShow   | Control if off-ramp is enabled                     | boolean                                                                                     | false    | true    |         |
+| isMainnet           | Is it Mainnet                                      | boolean                                                                                     | false    | —       |         |
+| tokenInfo           | Token information                                  | ITokenInfo                                                                                  | false    | —       |         |
+| portkeyWebSocketUrl | WebSocket service address, requiring IP format     | string                                                                                      | false    | —       |         |
+| isErrorTip          | Is error tip set as default                        | boolean                                                                                     | false    | true    | V2.0.0  |
+| onBack              | Control the event to go back to the previous route | () => void                                                                                  | true     | —       |         |
+| onShowPreview       | Control the event to navigate to the preview       | (\{ initState, chainId }: \{ initState: IRampPreviewInitState; chainId: ChainId }) => void; | true     | —       |         |
 
 ### Detailed explanation
 

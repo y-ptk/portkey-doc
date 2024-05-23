@@ -1,0 +1,65 @@
+---
+title: portkey/onboarding
+---
+
+# @portkey/onboarding
+
+## Introduction
+
+This is used to activate the app, opening the invitation link and initiating app login.
+
+## Installation
+
+<Tabs>
+  <TableItem value="npm" label="NPM">
+    <CodeBlock language="bash">npm install @portkey/onboarding</CodeBlock>
+  </TableItem>
+  <TableItem value="yarn" label="YARN">
+    <CodeBlock language="bash">yarn add @portkey/onboarding</CodeBlock>
+  </TableItem>
+</Tabs>
+
+## How to use
+
+### evokePortkey.app
+
+```typescript
+import { evokePortkey } from "@portkey/onboarding";
+
+evokePortkey.app({
+  action: "login",
+  custom: { data: dataStr, extraData },
+  onStatusChange: (status) => {
+    if (status === "failure") {
+      setLoading(false);
+      singleMessage.error("Evoke portkey app timeout");
+    }
+  },
+});
+```
+
+| Property              | Description                                                                                                               | Type                                                  | Default         | Version |
+| :-------------------- | :------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------- | :-------------- | :------ |
+| domain                | Address displayed upon app activation.                                                                                    | string                                                | `location.host` | -       |
+| action                | Operation needed for app activation.                                                                                      | `linkDapp` \| `login` \| `addContact` \| `addGroup`   | -               | -       |
+| custom                | Parameters for app activation operations: `linkDapp: {url: 'https://xxxxxx'}`, `login: any`,`addContact addGroup: string` | -                                                     | -               | -       |
+| timeout               | Timeout, the amount of time exceeded. A prompt for failed app activation will be displayed.                               | number (ms)                                           | 4000            | -       |
+| customFailureCallback | Customed callback failure.                                                                                                | ()=>void;                                             | -               | -       |
+| onStatusChange        | Status of activation.                                                                                                     | (status: 'pending' \| 'failure' \| 'success') => void | -               | -       |
+
+### evokePortkey.extension
+
+Checking whether the user has installed the "Portkey" extension. If verified that the user has not installed this extension, proceed to the appropriate store or official channel for download and installation.
+
+| Property   | Description       | Type                | Default  | Version |
+| :--------- | :---------------- | :------------------ | :------- | :------ |
+| openTarget | Type of openning. | `_self` \| `_blank` | `_blank` | -       |
+
+### evokePortkey.thirdParty
+
+Open the third-party doanload page.
+
+| Property | Description                                                                   | Type                  | Default | Version |
+| :------- | :---------------------------------------------------------------------------- | :-------------------- | :------ | :------ |
+| action   | Operation needed for app activation.                                          | `linkDapp` \| `login` | -       | -       |
+| custom   | Parameters for app activation operations: `linkDapp: {url: 'https://xxxxxx'}` | -                     | -       | -       |

@@ -8,9 +8,9 @@ Usage scenario: guardian management
 
 ## Detailed functions
 
-  -   View guardian list
-  -   Set or remove login guardian
-  -   Add, edit, or remove guardian
+- View guardian list
+- Set or remove login guardian
+- Add, edit, or remove guardian
 
 ## UI
 
@@ -18,31 +18,56 @@ Usage scenario: guardian management
 
 Example: a list that contains four types of guardians, i.e. Google account, Telegram, Apple ID, and email.
 
-<img src='/img/ui-sdk/guardian-list.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+<img
+  src="/img/ui-sdk/guardian-list.png"
+  width={"49%"}
+  style={{ padding: 20, border: "1px solid #dee2e8" }}
+/>
 
 ### Add guardians
 
 - Select guarfian type: Google account, Telegram, Apple ID, and email
-- Select verifier  
+- Select verifier
 
-<div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', width: '100%'}}>
-  <img src='/img/ui-sdk/guardian-add.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
-  <img src='/img/ui-sdk/guardian-add-verifier.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "start",
+    width: "100%",
+  }}>
+  <img
+    src="/img/ui-sdk/guardian-add.png"
+    width={"49%"}
+    style={{ padding: 20, border: "1px solid #dee2e8" }}
+  />
+  <img
+    src="/img/ui-sdk/guardian-add-verifier.png"
+    width={"49%"}
+    style={{ padding: 20, border: "1px solid #dee2e8" }}
+  />
 </div>
 
 ### Guardian details
 
 Set the current guardian as a login guardian or remove it
 
-<img src='/img/ui-sdk/guardian-view.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
+<img
+  src="/img/ui-sdk/guardian-view.png"
+  width={"49%"}
+  style={{ padding: 20, border: "1px solid #dee2e8" }}
+/>
 
 ### Edit Guardians
 
 - Can only change the verifier of the guardian
 - Remove the guardian
 
-<img src='/img/ui-sdk/guardian-edit.png' width={'49%'} style={{padding: 20, border: '1px solid #dee2e8'}} />
-
+<img
+  src="/img/ui-sdk/guardian-edit.png"
+  width={"49%"}
+  style={{ padding: 20, border: "1px solid #dee2e8" }}
+/>
 
 ## Guardian
 
@@ -51,18 +76,18 @@ Manage the current account's guardians, integrating GuardianPageList, GuardianAd
 ### Usage
 
 ```typescript
-import { Guardian } from '@portkey/did-ui-react';
+import { Guardian } from "@portkey/did-ui-react";
 
 const App = () => (
-   <Guardian
-       caHash={'xxxxxxx'}
-       originChainId={'AELF'}
-       accelerateChainId={'tDVV'}
-       onBack={() => {
-           // back callback
-       }}
-       networkType="MAINNET"
-   />
+  <Guardian
+    caHash={"xxxxxxx"}
+    originChainId={"AELF"}
+    accelerateChainId={"tDVV"}
+    onBack={() => {
+      // back callback
+    }}
+    networkType="MAINNET"
+  />
 );
 
 export default App;
@@ -70,18 +95,17 @@ export default App;
 
 ### API
 
-| Property      | Description                                      | Type                                              | Default       | Version |
-| :------------ | :----------------------------------------------- | :------------------------------------------------ | :------------ | :------ |
-| caHash        | caHash of the Portkey account                    | string                                            | -             | V1.5.1  |
-| className     | Customised class name                            | string                                            | -             | V1.5.1  |
-| originChainId | ID of the chain where user account is registered | ChainId                                           | -             | V1.5.1  |
-| accelerateChainId | ID of the chain where synchronisation of guardian is accelerated, done by initiating a transaction to quickly add the guardian | ChainId | - | V1.5.1 |
-| chainType     |                                                  | ChainType                                         | aelf          | V1.5.1  |
-| isErrorTip    | Is error tip set as default                      | boolean                                           | true          | V1.5.1  |
-| onError       | Callback of error                                | (error: {errorFields:string, error: any}) => void | -             | V1.5.1  |
-| onBack        | Callback of back                                 | () => void                                        | -             | V1.5.1  |
-| networkType   | Network type                                     | MAINNET \| TESTNET                                | -             | V2.0.0  |
-
+| Property          | Description                                                                                                                    | Type                                               | Default | Version |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------- | :------ | :------ |
+| caHash            | caHash of the Portkey account                                                                                                  | string                                             | -       | V1.5.1  |
+| className         | Customised class name                                                                                                          | string                                             | -       | V1.5.1  |
+| originChainId     | ID of the chain where user account is registered                                                                               | ChainId                                            | -       | V1.5.1  |
+| accelerateChainId | ID of the chain where synchronisation of guardian is accelerated, done by initiating a transaction to quickly add the guardian | ChainId                                            | -       | V1.5.1  |
+| chainType         |                                                                                                                                | ChainType                                          | aelf    | V1.5.1  |
+| isErrorTip        | Is error tip set as default                                                                                                    | boolean                                            | true    | V1.5.1  |
+| onError           | Callback of error                                                                                                              | (error: \{errorFields:string, error: any}) => void | -       | V1.5.1  |
+| onBack            | Callback of back                                                                                                               | () => void                                         | -       | V1.5.1  |
+| networkType       | Network type                                                                                                                   | MAINNET \| TESTNET                                 | -       | V2.0.0  |
 
 ## Guardian Page List
 
@@ -90,30 +114,30 @@ Dsiplay the guardian list of the current account
 ### Usage
 
 ```typescript
-import { GuardianPageList } from '@portkey/did-ui-react';
+import { GuardianPageList } from "@portkey/did-ui-react";
 
 const App = () => (
-   <GuardianPageList
-      header={<div>Guardian List Header</div>}
-      guardianList={[
-        {
-          isLoginGuardian: true,
-          verifier: {
-            endPoints: ['your endPoints'],
-            verifierAddresses: ['your verifierAddresses'],
-            id: 'your verifier id',
-            name: 'your verifier name',
-            imageUrl: 'your verifier imageUrl',
-          },
-          identifier: 'identifier',
-          guardianType: 'Phone',
-          key: '',
+  <GuardianPageList
+    header={<div>Guardian List Header</div>}
+    guardianList={[
+      {
+        isLoginGuardian: true,
+        verifier: {
+          endPoints: ["your endPoints"],
+          verifierAddresses: ["your verifierAddresses"],
+          id: "your verifier id",
+          name: "your verifier name",
+          imageUrl: "your verifier imageUrl",
         },
-      ]}
-      onViewGuardian={(item: UserGuardianStatus) => {
-          // view guardian item 
-      }}
-   />
+        identifier: "identifier",
+        guardianType: "Phone",
+        key: "",
+      },
+    ]}
+    onViewGuardian={(item: UserGuardianStatus) => {
+      // view guardian item
+    }}
+  />
 );
 
 export default App;
@@ -121,13 +145,13 @@ export default App;
 
 ### API
 
-| Property       | Description                            | Type                               | Default       | Version |
-| :------------- | :------------------------------------- | :--------------------------------- | :------------ | :------ |
-| header         | Header UI component                    | ReactNode                          | -             | V1.5.1  |
-| className      | Customised class name                  | string                             | -             | V1.5.1  |
-| guardianList   | Guardian list of the current account   | UserGuardianStatus[]               | -             | V1.5.1  |
-| tipContainer   | Customized content                     | ReactNode                          | -             | V2.0.0  |
-| onViewGuardian | Callback when guardian item is clicked | (item: UserGuardianStatus) => void | -             | V1.5.1  |
+| Property       | Description                            | Type                               | Default | Version |
+| :------------- | :------------------------------------- | :--------------------------------- | :------ | :------ |
+| header         | Header UI component                    | ReactNode                          | -       | V1.5.1  |
+| className      | Customised class name                  | string                             | -       | V1.5.1  |
+| guardianList   | Guardian list of the current account   | UserGuardianStatus[]               | -       | V1.5.1  |
+| tipContainer   | Customized content                     | ReactNode                          | -       | V2.0.0  |
+| onViewGuardian | Callback when guardian item is clicked | (item: UserGuardianStatus) => void | -       | V1.5.1  |
 
 ## Guardian Add
 
@@ -176,21 +200,21 @@ export default App;
 
 ### API
 
-| Property          | Description                                      | Type                                                                                      | Default       | Version |
-| :---------------- | :----------------------------------------------- | :---------------------------------------------------------------------------------------- | :------------ | :------ |
-| header            | Header UI component                              | ReactNode                                                                                 | -             | V1.5.1  |
-| className         | Customised class name                            | string                                                                                    | -             | V1.5.1  |
-| caHash            | caHash of the Portkey account                    | string                                                                                    | -             | V2.0.0  |
-| originChainId     | ID of the chain where user account is registered | ChainId                                                                                   | -             | V1.5.1  |
-| chainType         |                                                  | ChainType                                                                                 | -             | V2.0.0  |
-| phoneCountry      | Country calling code                             | IPhoneCountry                                                                             | -             | V1.5.1  |
-| guardianList      | Guardian list of the current account             | UserGuardianStatus[]                                                                      | -             | V1.5.1  |
-| verifierList      | List of verifiers supported                      | VerifierItem[]                                                                            | -             | V1.5.1  |
-| networkType       | Network type                                     | MAINNET \| TESTNET                                                                        | -             | V2.0.0  |
-| sandboxId         |                                                  | string                                                                                    | -             | V2.0.0  |
-| isErrorTip        | Is error tip set as default                      | boolean                                                                                   | true          | V1.5.1  |
-| onError           | Callback of error                                | (error: {errorFields:string, error: any}) => void                                         | -             | V1.5.1  |
-| handleAddGuardian | Execute contract method that adds guardian       | (currentGuardian: UserGuardianStatus, approvalInfo: GuardiansApproved[]) => Promise<any\> | -             | V1.5.1  |
+| Property          | Description                                      | Type                                                                                       | Default | Version |
+| :---------------- | :----------------------------------------------- | :----------------------------------------------------------------------------------------- | :------ | :------ |
+| header            | Header UI component                              | ReactNode                                                                                  | -       | V1.5.1  |
+| className         | Customised class name                            | string                                                                                     | -       | V1.5.1  |
+| caHash            | caHash of the Portkey account                    | string                                                                                     | -       | V2.0.0  |
+| originChainId     | ID of the chain where user account is registered | ChainId                                                                                    | -       | V1.5.1  |
+| chainType         |                                                  | ChainType                                                                                  | -       | V2.0.0  |
+| phoneCountry      | Country calling code                             | IPhoneCountry                                                                              | -       | V1.5.1  |
+| guardianList      | Guardian list of the current account             | UserGuardianStatus[]                                                                       | -       | V1.5.1  |
+| verifierList      | List of verifiers supported                      | VerifierItem[]                                                                             | -       | V1.5.1  |
+| networkType       | Network type                                     | MAINNET \| TESTNET                                                                         | -       | V2.0.0  |
+| sandboxId         |                                                  | string                                                                                     | -       | V2.0.0  |
+| isErrorTip        | Is error tip set as default                      | boolean                                                                                    | true    | V1.5.1  |
+| onError           | Callback of error                                | (error: \{errorFields:string, error: any}) => void                                         | -       | V1.5.1  |
+| handleAddGuardian | Execute contract method that adds guardian       | (currentGuardian: UserGuardianStatus, approvalInfo: GuardiansApproved[]) => Promise\<any\> | -       | V1.5.1  |
 
 ## Guardian View
 
@@ -199,47 +223,50 @@ View guardian item
 ### Usage
 
 ```typescript
-import { GuardianView } from '@portkey/did-ui-react';
+import { GuardianView } from "@portkey/did-ui-react";
 
 const currentGuardian = {
-    isLoginGuardian: true,
-    verifier: {
-      endPoints: ['your endPoints'],
-      verifierAddresses: ['your verifierAddresses'],
-      id: 'your verifier id',
-      name: 'your verifier name',
-      imageUrl: 'your verifier imageUrl',
-    },
-    identifier: 'identifier',
-    guardianType: 'Phone',
-    key: '',
+  isLoginGuardian: true,
+  verifier: {
+    endPoints: ["your endPoints"],
+    verifierAddresses: ["your verifierAddresses"],
+    id: "your verifier id",
+    name: "your verifier name",
+    imageUrl: "your verifier imageUrl",
+  },
+  identifier: "identifier",
+  guardianType: "Phone",
+  key: "",
 };
 const guardianList = [
-    {
-      isLoginGuardian: true,
-      verifier: {
-        endPoints: ['your endPoints'],
-        verifierAddresses: ['your verifierAddresses'],
-        id: 'your verifier id',
-        name: 'your verifier name',
-        imageUrl: 'your verifier imageUrl',
-      },
-      identifier: 'identifier',
-      guardianType: 'Phone',
-      key: '',
+  {
+    isLoginGuardian: true,
+    verifier: {
+      endPoints: ["your endPoints"],
+      verifierAddresses: ["your verifierAddresses"],
+      id: "your verifier id",
+      name: "your verifier name",
+      imageUrl: "your verifier imageUrl",
     },
+    identifier: "identifier",
+    guardianType: "Phone",
+    key: "",
+  },
 ];
 
 const App = () => (
-   <GuardianView
-      networkType="MAINNET"
-      header={<div>Guardian View Header</div>}
-      currentGuardian={currentGuardian}
-      handleSetLoginGuardian={async (currentGuardian: UserGuardianStatus, approvalInfo: GuardiansApproved[]) => {
-          // operate set login guardian
-      }}
-      guardianList={guardianList}
-    />
+  <GuardianView
+    networkType="MAINNET"
+    header={<div>Guardian View Header</div>}
+    currentGuardian={currentGuardian}
+    handleSetLoginGuardian={async (
+      currentGuardian: UserGuardianStatus,
+      approvalInfo: GuardiansApproved[]
+    ) => {
+      // operate set login guardian
+    }}
+    guardianList={guardianList}
+  />
 );
 
 export default App;
@@ -247,18 +274,18 @@ export default App;
 
 ### API
 
-| Property               | Description                                           | Type                                              | Default       | Version |
-| :--------------------- | :---------------------------------------------------- | :------------------------------------------------ | :------------ | :------ |
-| header                 | Header UI component                                   | ReactNode                                         | -             | V1.5.1  |
-| className              | Customised class name                                 | string                                            | -             | V1.5.1  |
-| originChainId          | ID of the chain where user account is registered      | ChainId                                           | -             | V1.5.1  |
-| currentGuardian        | Current guardian item                                 | UserGuardianStatus                                | -             | V1.5.1  |
-| guardianList           | Guardian list of the current account                  | UserGuardianStatus[]                              | -             | V1.5.1  |
-| networkType            | Network type                                          | MAINNET \| TESTNET                                | -             | V2.0.0  |
-| isErrorTip             | Is error tip set as default                           | boolean                                           | true          | V1.5.1  |
-| onError                | Callback of error                                     | (error: {errorFields:string, error: any}) => void | -             | V1.5.1  |
-| onEditGuardian         | Execute contract method that edits guardian           | () => void                                        | -             | V1.5.1  |
-| handleSetLoginGuardian | Execute contract method that sets or removes guardian | (currentGuardian: UserGuardianStatus, approvalInfo: GuardiansApproved[]) => Promise<any\>  | -             | V2.0.0  |
+| Property               | Description                                           | Type                                                                                       | Default | Version |
+| :--------------------- | :---------------------------------------------------- | :----------------------------------------------------------------------------------------- | :------ | :------ |
+| header                 | Header UI component                                   | ReactNode                                                                                  | -       | V1.5.1  |
+| className              | Customised class name                                 | string                                                                                     | -       | V1.5.1  |
+| originChainId          | ID of the chain where user account is registered      | ChainId                                                                                    | -       | V1.5.1  |
+| currentGuardian        | Current guardian item                                 | UserGuardianStatus                                                                         | -       | V1.5.1  |
+| guardianList           | Guardian list of the current account                  | UserGuardianStatus[]                                                                       | -       | V1.5.1  |
+| networkType            | Network type                                          | MAINNET \| TESTNET                                                                         | -       | V2.0.0  |
+| isErrorTip             | Is error tip set as default                           | boolean                                                                                    | true    | V1.5.1  |
+| onError                | Callback of error                                     | (error: \{errorFields:string, error: any}) => void                                         | -       | V1.5.1  |
+| onEditGuardian         | Execute contract method that edits guardian           | () => void                                                                                 | -       | V1.5.1  |
+| handleSetLoginGuardian | Execute contract method that sets or removes guardian | (currentGuardian: UserGuardianStatus, approvalInfo: GuardiansApproved[]) => Promise\<any\> | -       | V2.0.0  |
 
 ## Guardian Edit
 
@@ -342,21 +369,21 @@ export default App;
 
 ### API
 
-| Property               | Description                                           | Type                                                                                      | Default       | Version |
-| :--------------------- | :---------------------------------------------------- | :---------------------------------------------------------------------------------------- | :------------ | :------ |
-| header                 | Header UI component                                   | ReactNode                                                                                 | -             | V1.5.1  |
-| className              | Customised class name                                 | string                                                                                    | -             | V1.5.1  |
-| originChainId          | ID of the chain where user account is registered      | ChainId                                                                                   | -             | V1.5.1  |
-| caHash                 | caHash of the Portkey account                         | string                                                                                    | -             | V2.0.0  |
-| chainType              |                                                       | ChainType                                                                                 | aelf          | V2.0.0  |
-| sandboxId              |                                                       | string                                                                                    | -             | V2.0.0  |
-| networkType            | Network type                                          | MAINNET \| TESTNET                                                                        | -             | V2.0.0  |
-| currentGuardian        | Guardian item after the edit                          | UserGuardianStatus                                                                        | -             | V1.5.1  |
-| preGuardian            | Current guardian item                                 | UserGuardianStatus                                                                        | -             | V1.5.1  |
-| guardianList           | Guardian list of the current account                  | UserGuardianStatus[]                                                                      | -             | V1.5.1  |
-| verifierList           | List of verifiers supported                           | VerifierItem[]                                                                            | -             | V1.5.1  |
-| isErrorTip             | Is error tip set as default                           | boolean                                                                                   | true          | V1.5.1  |
-| onError                | Callback of error                                     | (error: {errorFields:string, error: any}) => void                                         | -             | V1.5.1  |
-| handleEditGuardian     | Execute contract method that edits guardian           | (currentGuardian: UserGuardianStatus, approvalInfo: GuardiansApproved[]) => Promise<any\> | -             | V1.5.1  |
-| handleRemoveGuardian   | Execute contract method that removes guardian         | (approvalInfo: GuardiansApproved[]) => Promise<any\>                                      | -             | V1.5.1  |
-| handleSetLoginGuardian | Execute contract method that sets or cancels guardian | (currentGuardian: UserGuardianStatus, approvalInfo: GuardiansApproved[]) => Promise<any\>;| -             | V2.0.0  |
+| Property               | Description                                           | Type                                                                                        | Default | Version |
+| :--------------------- | :---------------------------------------------------- | :------------------------------------------------------------------------------------------ | :------ | :------ |
+| header                 | Header UI component                                   | ReactNode                                                                                   | -       | V1.5.1  |
+| className              | Customised class name                                 | string                                                                                      | -       | V1.5.1  |
+| originChainId          | ID of the chain where user account is registered      | ChainId                                                                                     | -       | V1.5.1  |
+| caHash                 | caHash of the Portkey account                         | string                                                                                      | -       | V2.0.0  |
+| chainType              |                                                       | ChainType                                                                                   | aelf    | V2.0.0  |
+| sandboxId              |                                                       | string                                                                                      | -       | V2.0.0  |
+| networkType            | Network type                                          | MAINNET \| TESTNET                                                                          | -       | V2.0.0  |
+| currentGuardian        | Guardian item after the edit                          | UserGuardianStatus                                                                          | -       | V1.5.1  |
+| preGuardian            | Current guardian item                                 | UserGuardianStatus                                                                          | -       | V1.5.1  |
+| guardianList           | Guardian list of the current account                  | UserGuardianStatus[]                                                                        | -       | V1.5.1  |
+| verifierList           | List of verifiers supported                           | VerifierItem[]                                                                              | -       | V1.5.1  |
+| isErrorTip             | Is error tip set as default                           | boolean                                                                                     | true    | V1.5.1  |
+| onError                | Callback of error                                     | (error: \{errorFields:string, error: any}) => void                                          | -       | V1.5.1  |
+| handleEditGuardian     | Execute contract method that edits guardian           | (currentGuardian: UserGuardianStatus, approvalInfo: GuardiansApproved[]) => Promise\<any\>  | -       | V1.5.1  |
+| handleRemoveGuardian   | Execute contract method that removes guardian         | (approvalInfo: GuardiansApproved[]) => Promise\<any\>                                       | -       | V1.5.1  |
+| handleSetLoginGuardian | Execute contract method that sets or cancels guardian | (currentGuardian: UserGuardianStatus, approvalInfo: GuardiansApproved[]) => Promise\<any\>; | -       | V2.0.0  |

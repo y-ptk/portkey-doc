@@ -51,6 +51,7 @@
               "label": "@portkey/accounts",
               "_template": "doc"
             },
+
             {
               "document": "docs/SDKs/CoreSDK/TypeScript/@portkeyTypes.mdx",
               "label": "@portkey/types",
@@ -64,6 +65,16 @@
             {
               "document": "docs/SDKs/CoreSDK/TypeScript/@portkeyValidator.mdx",
               "label": "@portkey/validator",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/SDKs/CoreSDK/TypeScript/@portkeyRamp.mdx",
+              "label": "@portkey/ramp",
+              "_template": "doc"
+            },
+            {
+              "document": "docs/SDKs/CoreSDK/TypeScript/@portkeyOnboarding.mdx",
+              "label": "@portkey/onboarding",
               "_template": "doc"
             }
           ]
@@ -214,23 +225,13 @@
                   "_template": "doc"
                 },
                 {
-                  "document": "docs/SDKs/UISDK/TypeScript/Document/AreaCode.mdx",
-                  "label": "AreaCode",
-                  "_template": "doc"
-                },
-                {
-                  "document": "docs/SDKs/UISDK/TypeScript/Document/PhoneNumberInput.mdx",
-                  "label": "PhoneNumberInput",
-                  "_template": "doc"
-                },
-                {
                   "document": "docs/SDKs/UISDK/TypeScript/Document/PortkeyUtils.mdx",
                   "label": "Portkey's utils",
                   "_template": "doc"
                 },
                 {
                   "document": "docs/SDKs/UISDK/TypeScript/Document/AppleAuthLogin.mdx",
-                  "label": "About login through Apple authorization",
+                  "label": "Login via Apple Authorisation",
                   "_template": "doc"
                 },
                 {
@@ -271,6 +272,16 @@
                 {
                   "document": "docs/SDKs/UISDK/TypeScript/Document/Utils.mdx",
                   "label": "Utils",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/UISDK/TypeScript/Document/Interface.mdx",
+                  "label": "Interface",
+                  "_template": "doc"
+                },
+                {
+                  "document": "docs/SDKs/UISDK/TypeScript/Document/RunInTelegramWebapp.mdx",
+                  "label": "Run in Telegram WebApp",
                   "_template": "doc"
                 }
               ],
