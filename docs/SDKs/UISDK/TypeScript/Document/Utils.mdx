@@ -13,31 +13,31 @@ Get info about guardian approval from the approval process, then proceed with th
 ### Usage
 
 ```typescript
-import { managerApprove } from '@portkey/did-ui-react';
+import { managerApprove } from "@portkey/did-ui-react";
 
-const { amount, guardiansApproved } = await managerApprove({
-  originChainId: 'AELF',
-  symbol: 'ELF',
-  caHash: 'caHash',
-  amount: 'recommendedAmount',
-  targetChainId: 'AELF',
-  networkType: 'MAINNET',
+const { amount, guardiansApproved, symbol } = await managerApprove({
+  originChainId: "AELF",
+  symbol: "ELF",
+  caHash: "caHash",
+  amount: "recommendedAmount",
+  targetChainId: "AELF",
+  networkType: "MAINNET",
 });
 ```
 
 ## checkWalletSecurity
 
-Verify the security status of the current user's wallet. If it is found to be insecure, prompt the user to add guardians to enhance security. 
+Verify the security status of the current user's wallet. If it is found to be insecure, prompt the user to add guardians to enhance security.
 If the security condition is not met, the user will be unable to proceed with the transaction.
 
 ### Usage
 
 ```typescript
-import { checkWalletSecurity } from '@portkey/did-ui-react';
+import { checkWalletSecurity } from "@portkey/did-ui-react";
 
 const { status, message } = await checkWalletSecurity({
-  originChainId: 'AELF',
-  targetChainId: 'tDVV',
-  caHash: 'caHash',
+  originChainId: "AELF",
+  targetChainId: "tDVV",
+  caHash: "caHash",
 });
 ```

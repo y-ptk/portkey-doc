@@ -9,22 +9,22 @@ Usage scenario: social recovery during login where verification from other guard
 ### Usage
 
 ```javascript
- <GuardianApproval
+<GuardianApproval
   chainId="AELF"
   networkType="MAINNET"
   guardianList={[
     {
       isLoginAccount: true,
       verifier: {
-        endPoints: ['your endPoints'],
-        verifierAddresses: ['your verifierAddresses'],
-        id: 'your verifier id',
-        name: 'your verifier name',
-        imageUrl: 'your verifier imageUrl',
+        endPoints: ["your endPoints"],
+        verifierAddresses: ["your verifierAddresses"],
+        id: "your verifier id",
+        name: "your verifier name",
+        imageUrl: "your verifier imageUrl",
       },
-      identifier: 'identifier',
-      guardianType: 'Phone',
-      key: '',
+      identifier: "identifier",
+      guardianType: "Phone",
+      key: "",
     },
   ]}
 />
@@ -32,18 +32,17 @@ Usage scenario: social recovery during login where verification from other guard
 
 ### API
 
-| Property             | Description                                                          | Type                                               | Default       | Version |
-| :------------------- | :------------------------------------------------------------------- | :------------------------------------------------- | :------------ | :------ |
-| className            | Customized class name                                                | string                                             | -             |         |
-| ~~chainId~~          | ~~Chain ID where user account is registered~~                        | ~~ChainId~~                                        | ~~AELF~~      | V1.5.1  |
-| originChainId        | ID of the chain where user account is registered                     | ChainId                                            | -             | V1.5.1  |
-| targetChainId        | ID of the chain which the current operation targets                  | ChainId                                            | -             | V1.5.1  |
-| header               | Header of guardian list display                                      | ReactNode                                          | -             |         |
-| guardianList         | Identifier information (email, phone, Google ID, Apple ID)           | BaseGuardianItem[]                                 | -             |         |
-| isErrorTip           | Is error tip set as default                                          | boolean                                            | true          |         |
-| wrapperStyle         | Customized inline styles                                             | React.CSSProperties                                | -             |         |
-| operationType        | Operation type                                                       | OperationTypeEnum                                  | -             |         |
-| onError              | Callback of error                                                    | (error: {errorFields:string, error: any}) => void; | -             |         |
-| onConfirm            | Callback when guardian approval is completed                         | (guardianList: GuardiansApproved[]) => void;       | -             |         |
-| onGuardianListChange | Callback when guardian verification starts and guardian list changes | (guardianList: GuardiansApproved[]) => void;       | -             |         |
-| networkType          | Network type                                                         | MAINNET \| TESTNET                                 | -             | V2.0.0  |
+| Property             | Description                                                          | Type                                                | Default  | Version |
+| :------------------- | :------------------------------------------------------------------- | :-------------------------------------------------- | :------- | :------ |
+| className            | Customized class name                                                | string                                              | -        |         |
+| originChainId        | ID of the chain where user account is registered                     | ChainId                                             | -        | V1.5.1  |
+| targetChainId        | ID of the chain which the current operation targets                  | ChainId                                             | -        | V1.5.1  |
+| header               | Header of guardian list display                                      | ReactNode                                           | -        |         |
+| guardianList         | Identifier information (email, phone, Google ID, Apple ID)           | BaseGuardianItem[]                                  | -        |         |
+| isErrorTip           | Is error tip set as default                                          | boolean                                             | true     |         |
+| wrapperStyle         | Customized inline styles                                             | React.CSSProperties                                 | -        |         |
+| operationType        | Operation type                                                       | OperationTypeEnum                                   | -        |         |
+| onError              | Callback of error                                                    | (error: \{errorFields:string, error: any}) => void; | -        |         |
+| onConfirm            | Callback when guardian approval is completed                         | (guardianList: GuardiansApproved[]) => void;        | -        |         |
+| onGuardianListChange | Callback when guardian verification starts and guardian list changes | (guardianList: GuardiansApproved[]) => void;        | -        |         |
+| networkType          | Network type                                                         | MAINNET \| TESTNET                                  | -        | V2.0.0  |

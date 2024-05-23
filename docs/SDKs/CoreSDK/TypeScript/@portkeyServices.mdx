@@ -22,136 +22,152 @@ Provide verification services
   </TableItem>
 </Tabs>
 
-### services.getVerificationCode
-
-send verification code.
+## How to user
 
 ```typescript
-getVerificationCode(params: SendVerificationCodeRequestParams): Promise<SendVerificationCodeResult>;
+import { FetchRequest } from "@portkey/request";
+import { DIDGraphQL } from "@portkey/graphql";
+
+const fetchRequest = new FetchRequest("...");
+const didGraphQL = new DIDGraphQL({ config: "..." });
+const services = new Services(fetchRequest, didGraphQL, "referralConfig....");
 ```
 
-#### Usage
+### services.communityRecovery
+
+Interface that might be needed for social recovery and registration.  
+Example:
+
 ```typescript
-did.services.getVerificationCode({
-  params:{
-    chainId: 'chainId',
-    guardianIdentifier: 'guardianIdentifier',
-    type: 'Email',
-    verifierId: 'verifierId',
-  },
-  headers: {
-    reCaptchaToken: 'reCaptchaToken'
-  }
+services.communityRecovery.register({
+  chainId: "AELF",
+  guardianIdentifier: "xxxx@gmail.com",
 });
 ```
 
-#### Example response
+[ICommunityRecoveryService](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/services/src/types/communityRecovery.ts#L130)
+
+| Function                | Description                                                                                                   | Version |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------ | :------ |
+| register                | When obtaining the user's guardian verification information, call this interface to complete registration.    | -       |
+| recovery                | When obtaining the user's guardian verification information, call this interface to complete social recovery. | -       |
+| getHolderInfo           | Get account information.                                                                                      | -       |
+| getHolderInfoByManager  | Query account information via managerAddress.                                                                 | -       |
+| getRegisterInfo         | Check if the account is registered and on which chain.                                                        | -       |
+| checkGoogleRecaptcha    | Check if Google Recaptcha is required.                                                                        | -       |
+| getShowDeletionEntrance | Check if account deletion functionality is displayed.                                                         | -       |
+| checkDeletion           | Check account assets, devices, and guardians to determine if account deletion is possible.                    | -       |
+| deletionAccount         | Used for account deletion.                                                                                    | -       |
+
+[IVerificationService](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/services/src/types/search.ts#L42)
+
+| Function                  | Description                                                                                                                                   | Version |
+| :------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------- | :------ |
+| getRecommendationVerifier | When registering, the system will assign a verifier. Calling this method will get the recommended verifier services.                          | -       |
+| getVerificationCode       | When using an email, call this interface to send a verification code to the email through the verifier.                                       | -       |
+| verifyVerificationCode    | Verify if the verification code is correct.                                                                                                   | -       |
+| sendAppleUserExtraInfo    | Send authorisation information for Apple users, such as username, etc. This is necessary if the user is authorising login for the first time. | -       |
+| getAppleUserExtraInfo     | Get authorisation information for Apple users.                                                                                                | -       |
+| verifyGoogleToken         | Verify the token for Google users, while generating `verificationDoc` and `signature`.                                                        | -       |
+| verifyAppleToken          | Verify the token for Apple users, while generating `verificationDoc` and `signature`.                                                         | -       |
+| verifyTelegramToken       | Verify the token for Telegram users, while generating `verificationDoc` and `signature`.                                                      | -       |
+| verifyTwitterToken        | Verify the token for Twitter users, while generating `verificationDoc` and `signature`.                                                       | -       |
+| verifyFacebookToken       | Verify the token for Facebook users, while generating `verificationDoc` and `signature`.                                                      | -       |
+| getTelegramAuthToken      | Generate `verificationDoc` and `signature` when the application calls this interface in Telegram bot.                                         | v2.7.+  |
+
+[ISearchService](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/services/src/types/search.ts#L42)
+
+| Function          | Description                                                                                                                                                        | Version |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------ |
+| getRegisterStatus | Retrieve the registration result, and determine whether the registration was successful based on the return value, as well as the user's `caHash` and `caAddress`. | -       |
+| getRecoverStatus  | Retrieve the social recovery result, and determine whether it was successful based on the return value, as well as the user's `caHash` and `caAddress`.            | -       |
+| getChainsInfo     | Retrieve information about the currently supported chains, including `chainId`, `endPoint`, `contractAddress`, etc.                                                | -       |
+| getCAHolderInfo   | Retrieve information such as the user's caHash, caAddress, nickName, etc.                                                                                          | -       |
+
+### services.assets
+
+Interface that might be needed for retrieving user assets.  
+Example:
 
 ```typescript
-{
-  verifierSessionId: '7396518e-xxxx-xxxx-xxxx-65d5c14badca',
-}
+services.assets.fetchTokenPrice({ symbols: ["ELF", "ETH"] });
 ```
 
-### services.verifyVerificationCode
+[IAssetsService](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/services/src/types/assets.ts#L124)
 
-verify verification code.
+| Function                          | Description                                                 | Version |
+| :-------------------------------- | :---------------------------------------------------------- | :------ |
+| fetchAccountTokenList             | Retrieve the list of user's tokens.                         | -       |
+| getSymbolImages                   | Retrieve the token icon.                                    | -       |
+| fetchAccountNftCollectionList     | Retrieve the collection list of NFTs owned by the user.     | -       |
+| fetchAccountNftCollectionItemList | Retrieve the NFTs owned by the user through NFT collection. | -       |
+| fetchAccountNftItem               | Retrieve details of the NFTs owned by the user.             | -       |
+| fetchTokenPrice                   | Retrieve the price of the token.                            | -       |
+| getAccountAssetsByKeywords        | Used for getting user assets via keywords.                  | -       |
+
+### services.token
+
+Example: Retrieve the default transaction fee
 
 ```typescript
-verifyVerificationCode(params: VerifyVerificationCodeParams): Promise<VerifyVerificationCodeResult>;
+services.token.fetchTxFee({ chainIds: ["AELF", "tDVV"] });
 ```
 
-#### Usage
+[ITokenService](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/services/src/types/token.ts#L17)
+
+| Function   | Description                           | Version |
+| :--------- | :------------------------------------ | :------ |
+| fetchTxFee | Retrieve the default transaction fee. | -       |
+
+### services.transaction
+
+Example: Retrieve information of users who transact recently
 
 ```typescript
-did.services.verifyVerificationCode({
-  verifierSessionId: 'verifierSessionId',
-  chainId: 'chainId',
-  guardianIdentifier: 'guardianIdentifier',
-  verifierId: 'verifierId',
-  verificationCode: 'verificationCode',
+services.transaction.getRecentTransactionUsers({ chainIds: ["AELF", "tDVV"] });
+```
+
+### services.activity
+
+An interface of user's recent transaction records.
+
+Example:
+
+```typescript
+services.transaction.getActivityList({
+  width: 294,
+  height: -1,
+  maxResultCount: 10,
+  skipCount: 0,
+  caAddressInfos: [{ chainId: "AELF", caAddress: "xxxxxx" }],
+  chainId: "AELF",
+  symbol: "ELF",
 });
 ```
 
-#### Example response
+[IActivityService](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/services/src/types/activity.ts#L39)
+
+| Function                   | Description                                   | Version |
+| :------------------------- | :-------------------------------------------- | :------ |
+| getActivityList            | Query the activity list of user transactions. | -       |
+| getActivityDetail          | Query the activity details of transactions.   | -       |
+| getRecentContactActivities | Query the transaction records with contacts.  | -       |
+
+### services.security
+
+It's regarding user account security.  
+Example:
 
 ```typescript
-{
-    verificationDoc: "0,9289...8ccd,3",
-    signature: "ad5cda...f8ec00"
-}
-```
-
-### services.verifyGoogleToken
-verify Google token.
-
-```typescript
-verifyGoogleToken(params: VerifyGoogleTokenParams): Promise<VerifyVerificationCodeResult>;
-```
-
-#### Usage
-```typescript
-did.services.verifyVerificationCode({
-  accessToken: 'accessToken',
-  verifierId: 'verifierId',
-  chainId: 'chainId',
+sservices.security.getWalletBalanceCheck({
+  caHash: "xxxxx",
+  checkTransferSafeChainId: "AELF",
 });
 ```
 
-#### Example response
+[ISecurityService](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/services/src/types/security.ts#L24)
 
-```typescript
-{
-    verificationDoc: "0,9289...8ccd,3",
-    signature: "ad5cda...f8ec00"
-}
-```
-
-### services.verifyAppleToken
-
-verify Apple token.
-
-```typescript
-verifyAppleToken(params: VerifyAppleTokenParams): Promise<VerifyVerificationCodeResult>;
-```
-
-#### Usage
-
-```typescript
-did.services.verifyAppleToken({
-  identityToken: 'identityToken',
-  verifierId: 'verifierId',
-  chainId: 'chainId',
-});
-```
-
-#### Example response
-
-```typescript
-{
-    verificationDoc: "0,9289...8ccd,3",
-    signature: "ad5cda...f8ec00"
-}
-```
-
-### services.sendAppleUserExtraInfo
-
-send Apple user extra info.
-
-```typescript
-sendAppleUserExtraInfo(params: SendAppleUserExtraInfoParams): Promise<SendAppleUserExtraInfoResult>;
-```
-
-#### Usage
-```typescript
-did.services.sendAppleUserExtraInfo({
-  identityToken: 'identityToken',
-  userInfo: {
-    name: {
-      firstName: 'firstName',
-      lastName: 'lastName',
-    },
-    email: 'email',
-  },
-});
-```
+| Function               | Description                                                                                                                                                                            | Version |
+| :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------ |
+| getWalletBalanceCheck  | Detect account security through user balance, supporting features such as cross-chain transfers and prohibiting transfers in the event of low security level (insufficient guardians). | -       |
+| getPaymentSecurityList | Retrieve the user's token transfer limit.                                                                                                                                              | -       |

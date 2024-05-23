@@ -6,8 +6,8 @@ title: portkey/utils
 
 ## Introduction
 
--   [click here to view it in npm](https://www.npmjs.com/package/@portkey/utils)
--   [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/utils/README.md)
+- [click here to view it in npm](https://www.npmjs.com/package/@portkey/utils)
+- [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/utils/README.md)
 
 ## Installation
 
@@ -27,9 +27,9 @@ Get transaction raw
 ### Usage
 
 ```typescript
-import { aelf } from '@portkey/utils';
+import { aelf } from "@portkey/utils";
 
-const raw = await aelf.encodedTx(params as EncodedParams)
+const raw = await aelf.encodedTx(params as EncodedParams);
 ```
 
 ### Supplemental Code
@@ -50,19 +50,17 @@ Get elf contract
 ### Usage
 
 ```typescript
-import { aelf } from '@portkey/utils';
+import { aelf } from "@portkey/utils";
+/**
+* rpcUrl: string; 
+* contractAddress: string;
+* privateKey: string;
+* {refBlockNumberStrategy: number} // When initialising the contract, set the indexing block height strategy by default
 
-const contract = await aelf.getELFContract(rpcUrl, tokenAddress, privateKey)
-```
-
-### Supplemental Code
-
-```typescript
-parmas: {
-  rpcUrl: string; 
-  tokenAddress: string;
-  privateKey: string;
-}
+*/
+const contract = await aelf.getELFContract(rpcUrl, tokenAddress, privateKey, {
+  refBlockNumberStrategy: -8,
+});
 ```
 
 ## handleVerificationDoc
@@ -72,9 +70,9 @@ Get guardian detail by verificationDoc
 ### Usage
 
 ```typescript
-import { aelf } from '@portkey/utils';
+import { aelf } from "@portkey/utils";
 
-const detail = await aelf.handleVerificationDoc(verificationDoc)
+const detail = await aelf.handleVerificationDoc(verificationDoc);
 ```
 
 ### Supplemental Code
@@ -83,20 +81,21 @@ const detail = await aelf.handleVerificationDoc(verificationDoc)
 detail
 {
   type, // guardian type
-  guardianIdentifier, 
-  verificationTime, 
-  verifierAddress, 
+  guardianIdentifier,
+  verificationTime,
+  verifierAddress,
   salt,
 }
 ```
 
 ### Example response
+
 ```typescript
-{ 
-  type: 'Email', 
-  guardianIdentifier: 'fsdf...grger', 
-  verificationTime: 'xxxx', 
-  verifierAddress: 'http://xxx.com', 
+{
+  type: 'Email',
+  guardianIdentifier: 'fsdf...grger',
+  verificationTime: 'xxxx',
+  verifierAddress: 'http://xxx.com',
   salt: "1c02...7631",
 }
 ```

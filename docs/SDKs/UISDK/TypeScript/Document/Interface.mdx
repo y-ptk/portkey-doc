@@ -1,0 +1,17 @@
+---
+title: Interface
+---
+
+# Interface
+
+## TStringJSON
+
+| operationType                                                   | operationDetails value                                                         |
+| :-------------------------------------------------------------- | :----------------------------------------------------------------------------- |
+| register、recovery                                              | JSON.stringify(\{manager: 'xxxxx'})                                            |
+| addGuardian、deleteGuardian、setLoginAccount、unsetLoginAccount | JSON.stringify(\{ identifierHash, guardianType, verifierId })                  |
+| editGuardian                                                    | SON.stringify(\{ identifierHash, guardianType:,preVerifierId, newVerifierId }) |
+| transferApprove                                                 | JSON.stringify(\{ symbol, amount, toAddress })                                 |
+| managerApprove                                                  | JSON.stringify(\{ spender, symbol, amount })                                   |
+| modifyTransferLimit                                             | JSON.stringify(\{ symbol, singleLimit, dailyLimit })                           |
+| default                                                         | "\{}"                                                                          |

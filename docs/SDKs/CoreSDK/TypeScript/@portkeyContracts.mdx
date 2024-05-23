@@ -6,8 +6,8 @@ title: portkey/contracts
 
 ## Introduction
 
--   [click here to view it in npm](https://www.npmjs.com/package/@portkey/contracts)
--   [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/contracts/README.md)
+- [click here to view it in npm](https://www.npmjs.com/package/@portkey/contracts)
+- [click here to view it on github](https://github.com/Portkey-Wallet/portkey-web/blob/master/packages/contracts/README.md)
 
 Enable contract deployment.
 
@@ -25,43 +25,43 @@ Enable contract deployment.
 ## Usage
 
 ```typescript
-import { getContractBasic } from '@portkey/contracts'
+import { getContractBasic } from "@portkey/contracts";
 
-// use ca contract 
+// use ca contract
 const contract = await getContractBasic({
-  chainType: 'aelf',
-  account: 'your account',
-  contractAddress: 'contractAddress',
-  caContractAddress: 'caContractAddress',
-  callType: 'ca',
-  caHash: 'caHash',
-  rpcUrl: 'rpcUrl',
+  chainType: "aelf",
+  account: "your account",
+  contractAddress: "contractAddress",
+  caContractAddress: "caContractAddress",
+  callType: "ca",
+  caHash: "caHash",
+  rpcUrl: "rpcUrl",
 });
 
-// use base contract 
+// use base contract
 const contract = await getContractBasic({
-  account: 'your account',
-  contractAddress: 'contractAddress',
-  chainType: 'aelf',
-  rpcUrl: 'rpcUrl',
-})
+  account: "your account",
+  contractAddress: "contractAddress",
+  chainType: "aelf",
+  rpcUrl: "rpcUrl",
+});
 
 // use portkey provider
-import detectProvider from '@portkey/detect-provider';
+import detectProvider from "@portkey/detect-provider";
 // detect provider
 const provider = await detectProvider();
 // get chain provider
-const chainProvider = await provider.getChain('AELF');
+const chainProvider = await provider.getChain("AELF");
 
 const contract = await getContractBasic({
   chainProvider,
-  contractAddress: 'contractAddress',
+  contractAddress: "contractAddress",
 });
 
 // call view
-contract.callViewMethod('your method', paramsOption);
+contract.callViewMethod("your method", paramsOption);
 // call send
-contract.callSendMethod('your method', 'your address', paramsOption);
+contract.callSendMethod("your method", "your address", paramsOption);
 ```
 
 ## Initiate a transaction and send one ELF to the target account
@@ -69,10 +69,10 @@ contract.callSendMethod('your method', 'your address', paramsOption);
 ### request
 
 ```typescript
-const res = await contract.callSendMethod('Transfer', 'your address', {
-  symbol: 'ELF', 
-  to: 'to address',
-  amount: '100000000',
+const res = await contract.callSendMethod("Transfer", "your address", {
+  symbol: "ELF",
+  to: "to address",
+  amount: "100000000",
 });
 ```
 
@@ -81,7 +81,7 @@ const res = await contract.callSendMethod('Transfer', 'your address', {
 ```typescript
 {
   data: {
-    transactionId: 'transactionId'
+    transactionId: "transactionId";
   }
 }
 ```
@@ -124,6 +124,7 @@ type SendOptions = {
   gas?: number;
   value?: number | string;
   nonce?: number;
+  refBlockNumberStrategy?: number;
   onMethod: 'transactionHash' | 'receipt' | 'confirmation';
 };
 
@@ -145,17 +146,17 @@ callSendMethod<T = any>(
 
 ```typescript
 const tokenContract = await getContractBasic({
-  contractAddress: 'tokenContractAddress',
+  contractAddress: "tokenContractAddress",
   account: aelf.getWallet(privateKey),
-  rpcUrl: 'rpcUrl',
+  rpcUrl: "rpcUrl",
 });
 
-const SendResult = await tokenContract.callViewMethod('GetBalance', {
-  owner: 'fromAccount.address',
-  symbol: 'ELF',
+const SendResult = await tokenContract.callViewMethod("GetBalance", {
+  owner: "fromAccount.address",
+  symbol: "ELF",
 });
 
-type ChainType = 'ethereum' | 'aelf';
+type ChainType = "ethereum" | "aelf";
 ```
 
 ### Example response

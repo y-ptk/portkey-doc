@@ -8,7 +8,6 @@ import { HighlightSearchResults } from "./HighlightSearchResults";
 // import { docsData as mockDocsData, docsIndex as mockDocsIndex} from "./mock";
 import './styles.css'
 const Search = (props) => {
-  console.log(props, "props");
   const initialized = useRef(false);
   const searchBarRef = useRef(null);
   const [indexReady, setIndexReady] = useState(false);
@@ -71,7 +70,6 @@ const Search = (props) => {
     process.env.NODE_ENV === "production"
       ? fetch(`${assetUrl}${pluginData.fileNames.searchDoc}`).then(
           (content) => {
-            console.log(assetUrl, pluginData.fileNames, "pluginData.fileNames");
             return content.json();
           }
         )

@@ -1,0 +1,54 @@
+---
+title: Run in Telegram WebApp
+---
+
+import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
+
+# Run in Telegram WebApp
+
+Enable dApps to use SDK in the Telegram webapp.
+
+<HighlightBlock>
+
+<span>
+  Contact the <a href="https://t.me/Portkey_assistant"> Portkey team </a>
+  to configure your telegram bot token.
+</span>
+
+</HighlightBlock>
+
+## Usage
+
+- Insert script
+
+```typescript
+<script src="https://telegram.org/js/telegram-web-app.js" />
+```
+
+- Add configuration: Telegram botId
+
+```typescript
+import { ConfigProvider } from "@portkey/did-ui-react";
+
+ConfigProvider.setGlobalConfig({
+  socialLogin: {
+    Telegram: {
+      botId: TELEGRAM_BOT_ID,
+    },
+  },
+  // ...
+});
+```
+
+- Telegram initialisation: callback of logout (required)
+
+```typescript
+import { TelegramPlatform, did } from "@portkey/did-ui-react";
+
+const handleLogout = () => {
+  // logout
+  did.logout();
+};
+
+TelegramPlatform.initializeTelegramWebApp({ handleLogout });
+```
