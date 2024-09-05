@@ -342,7 +342,7 @@ Send a transaction to the Portkey APP's wallet.
 Get a signature from the Portkey APP's wallet.
 
 **NOTICE** : You should use `request({ method: 'requestAccounts' })` first for the permission to access.
-
+The information you need to sign is in readable plaintext, otherwise, a warning message will appear during the signing process. If you need to sign transaction parameters, please use `wallet_getTransactionSignature`.
 ```typescript
   const signatureParams: GetSignatureParams = {
     ...
