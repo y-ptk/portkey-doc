@@ -1,0 +1,19 @@
+# Email Notifications
+
+When sending email notifications, we are committed to ensuring that every transaction record is accurately delivered to the user's inbox. This provides an essential layer of protection, helping to prevent unauthorised access or misuse of the user's account by malicious actors or websites conducting illegal transactions without their awareness.
+
+## Target Email for Notifications:
+
+1. **Default mailbox**: If the system can access the user's email address through their guardian, all notifications will be sent to this default mailbox.
+2. **Backup mailbox (Priority delivery)**: To improve user experience and enhance account security, after registering and logging in, users can add a backup mailbox to their account via the "Settings Menu" (**My -> Wallet Security -> Set up Backup Mailbox**). Once configured, the system will prioritise sending all important notifications and transaction records to the designated backup email, ensuring timely delivery and security.
+
+## Implementation:
+
+1. When the transaction uses guardian approval, it is required to carry the `operationDetails` information during the guardian's signature verification process. `operationDetails` include specific details about the approval transaction.
+2. If the necessary signature information is missing in `operationDetails`, a prompt will appear when authorising through `openlogin.portkey.finance`.
+
+## Implementation Details:
+
+1. **Information carried in guardian signature verification process**: When using guardian approve for transactions, to ensure security and traceability, each round of guardian signature verification must include the `operationDetails` information. This is a crucial parameter that outlines the specific content and context of the approve transaction, ensuring accuracy and transparency.
+2. **User prompt when operation details are missing**: If transaction authorisation is conducted via `openlogin.portkey.finance` and the `operationDetails` information is missing, the system will provide a clear prompt to the user. This serves to notify the user about the completeness of the transaction information, ensuring the authorisation is made with full awareness, thereby enhancing security and the overall user experience.
+3. **Guardian verification and notification mechanism after authorisation confirmation**: Once the user explicitly agrees to proceed with the authorisation, the system will immediately trigger the Guardian verification process. During this, an email will be sent to the user containing a summary of the transaction, allowing them to further confirm their intent to authorise. This establishes a more robust and secure transaction validation process.
