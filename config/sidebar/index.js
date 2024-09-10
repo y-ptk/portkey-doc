@@ -3,6 +3,7 @@ const quickstart = require("./quickstart.json");
 const SDKs = require("./SDKs.json");
 const APIReference = require("./APIReference.json");
 const Environmental = require("./Environmental.json");
+const Security = require("./Security.json");
 
 module.exports = {
   label: "Docs Sidebar",
@@ -12,5 +13,6 @@ module.exports = {
     SDKs,
     APIReference,
     Environmental,
+    Security,
   ],
 };
