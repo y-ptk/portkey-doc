@@ -270,6 +270,11 @@
                   "_template": "doc"
                 },
                 {
+                  "document": "docs/SDKs/UISDK/TypeScript/Document/Swap.mdx",
+                  "label": "Swap",
+                  "_template": "doc"
+                },
+                {
                   "document": "docs/SDKs/UISDK/TypeScript/Document/Utils.mdx",
                   "label": "Utils",
                   "_template": "doc"
