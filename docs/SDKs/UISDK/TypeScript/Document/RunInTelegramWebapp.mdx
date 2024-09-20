@@ -2,20 +2,9 @@
 title: Run in Telegram WebApp
 ---
 
-import { HighlightBlock } from "/src/components/HighlightBlock/index.tsx";
-
 # Run in Telegram WebApp
 
 Enable dApps to use SDK in the Telegram webapp.
-
-<HighlightBlock>
-
-<span>
-  Contact the <a href="https://t.me/Portkey_assistant"> Portkey team </a>
-  to configure your telegram bot token.
-</span>
-
-</HighlightBlock>
 
 ## Usage
 
@@ -52,3 +41,9 @@ const handleLogout = () => {
 
 TelegramPlatform.initializeTelegramWebApp({ handleLogout });
 ```
+
+- Configure the bot token in Portkey service
+
+| interface | environment | params |
+| --- | --- | --- |
+| **API**：api/app/telegramAuth/bot/register <br/> **method**： POST | TESTNET<br/>https://aa-portkey-test.portkey.finance<br/>MAINNET<br/>https://aa-portkey.portkey.finance | Body<br/><pre><code>{ "secret": "xxxxxx" }</code></pre> |

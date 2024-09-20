@@ -1,0 +1,107 @@
+---
+title: Swap
+---
+
+import Columnar from "/src/components/Columnar/index.tsx";
+
+# Swap
+
+To make it more convenient for users of various projects to manage their funds, Portkey provides the Swap SDK module for integration. Once it's integrated, users can seamlessly complete token swaps within the project without needing to exit, allowing them to quickly acquire the assets in need.
+
+## Functions and UI related are as follows
+
+<Columnar data={[
+  {title: 'Swap homepage', icon: '/img/ui-sdk/swap-1.png',},
+  {title: 'Select the pair of tokens for swapping', icon: '/img/ui-sdk/swap-2.png',},
+  {title: 'Customise slippage', icon: '/img/ui-sdk/swap-3.png',},
+  {title: 'Confirm Swap', icon: '/img/ui-sdk/swap-4.png',},
+  ]} 
+/>
+
+## Installation
+
+<Tabs>
+  <TabItem value="npm" label="NPM" default>
+    <CodeBlock language="bash">
+      npm install @portkey/trader-react-ui@latest <br/>
+      npm install @portkey/trader-core@latest
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="yarn" label="YARN">
+    <CodeBlock language="bash">
+      yarn add @portkey/trader-react-ui@latest <br/>
+      yarn add @portkey/trader-core@latest
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```typescript
+import { ComponentType, Swap, ISwapProps } from '@portkey/trader-react-ui';
+import { AwakenSwapper, IPortkeySwapperAdapter, TTokenApproveHandler } from '@portkey/trader-core';
+
+const App = () => {
+
+  const instance = new AwakenSwapper({
+    contractConfig: {
+      swapContractAddress: 'awakenSwapContractAddress',
+      rpcUrl: 'rpcUrl',
+    },
+  });
+
+  const tokenApprove: TTokenApproveHandler = () => {
+    // manager Approve action
+  }
+
+  const getOptions = async () => {
+    // some action
+    return {
+       contractOptions: {
+           // options
+       },
+       address: 'caAddress', 
+    }
+  }
+
+  return 
+    <Swap
+      selectTokenInSymbol={'ELF'}
+      selectTokenOutSymbol={'USDT'}
+      containerClassName='containerClassName'
+      componentUiType={ComponentType.Mobile}
+      onConfirmSwap={() => {
+          // after confirm action
+      }}
+      chainId={'tDVV'}
+      awaken={{
+        instance,
+        tokenApprove: isDiscover ? undefined : tokenApprove,
+        getOptions,
+      }}
+    />
+};
+
+export default App;
+
+```
+
+## API
+
+| Property          | Description                                | Type           | Default            | Version          |
+| :------------------ | :--------------------------------------- | :------------- | :----------------- | :--------------- |
+| containerClassName  | Class name of the top level container    | string         | -                  | 0.0.1-alpha.17   |
+| componentUiType     | The display of the component UI          | ComponentType  | ComponentType.web  | 0.0.1-alpha.17   |
+| awaken              | The data required for performing a swap  | IAwakenConfig  | -                  | 0.0.1-alpha.17   |
+| selectTokenInSymbol | Default token to be swapped from         | string         | -                  | 0.0.1-alpha.17   |
+| selectTokenOutSymbol| Default token to be swapped to           | string         | -                  | 0.0.1-alpha.17   |
+| chainId             | The ID of the chain the user operates on | Chain          | -                  | 0.0.1-alpha.17   |
+| onConfirmSwap       | Callback when swap is successful         | ()=>void;      | -                  | 0.0.1-alpha.17   |
+
+### IAwakenConfig
+
+| Property       | Description                                                                                         | Type                                                                                     | Default             | Version         |
+| :------------- | :-------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------- | :------------------ | :-------------- |
+| instance       | An instance of AwakenSwapper that is called when retrieving the tokenList and performing a swap.    | IPortkeySwapperAdapter                                                                   | -                   | 0.0.1-alpha.17  |
+| tokenApprove   | Used during managerApprove. When logging in via SDK, this parameter is required.                    | TTokenApproveHandler                                                                     | -                   | 0.0.1-alpha.17  |
+| getOptions     | Asynchronous method which needs to return: Contract options required for the swap and caAddress     | () => Promise<{ contractOptions: TContractOption; address: string } \| undefined \| void> | -                  | 0.0.1-alpha.17  |
