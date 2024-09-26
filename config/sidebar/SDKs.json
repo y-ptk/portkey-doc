@@ -323,6 +323,11 @@
         }
       ],
       "_template": "category"
+    },
+    {
+      "document": "docs/SDKs/UISDK/TypeScript/Document/RunInTelegramWebapp.mdx",
+      "label": "Run in Telegram WebApp",
+      "_template": "doc"
     }
   ],
   "_template": "category"
