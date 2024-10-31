@@ -12,7 +12,7 @@ Refer to [Obtain SEED](docs/QuickStartGuides/LaunchTokenAndNFTCollection/ObtainS
 
 Create by using ManagerForwardCall in the **AA contract** and calling the **Token contract**.
 
-Please note: the contract called is on the MainChain but you can decide to create tokens whether on the MainChain or SideChains via the parameter **issue_chain_id (issueChainId in the below demo).**
+Please note: the contract called is on the MainChain but you can decide to create tokens whether on the MainChain or dAppChains via the parameter **issue_chain_id (issueChainId in the below demo).**
 
 ### Obtain chain information
 
@@ -84,8 +84,8 @@ const result = await contract.callSendMethod('Issue', wallet.address, {
 
 ![set-side-chain](/img/quick-start/ca-operation-set-main-chain-for-token.jpg)
 
-### AA operation --- set SideChain as issue_chain_id
+### AA operation --- set dAppChain as issue_chain_id
 
-Operations on the SideChain can only take effect when the MainChain and SideChain are synchronized.
+Operations on the dAppChain can only take effect when the MainChain and dAppChain are synchronized.
 
 ![set-side-chain](/img/quick-start/ca-operation-set-side-chain-for-token.jpg)

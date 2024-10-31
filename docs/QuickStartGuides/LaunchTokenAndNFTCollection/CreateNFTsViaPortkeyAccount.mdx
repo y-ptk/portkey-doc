@@ -14,7 +14,7 @@ Refer to [Obtain SEED](docs/QuickStartGuides/LaunchTokenAndNFTCollection/ObtainS
 
 Create by using ManagerForwardCall in the [**AA contract**](/docs/APIReference/ContractAPI) and calling the CreateToken method in the [**agent contract**](/docs/APIReference/ContractAPI).
 
-Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or SideChains via the parameter **issue_chain_id.**
+Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or dAppChains via the parameter **issue_chain_id.**
 
 ```typescript
 var Client = new AElf.Client.AElfClient("http://node:port");
@@ -156,7 +156,7 @@ var callResult = await Client.ExecuteRawTransactionAsync(new ExecuteRawTransacti
 
 Create by using ManagerForwardCall in the [**AA contract**](/docs/APIReference/ContractAPI), calling the ForwardCall method in the [**ProxyAccount contract**](/docs/APIReference/ContractAPI), and calling the [**Token contract**](/docs/APIReference/ContractAPI) via the ProxyAccount contract.
 
-Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or SideChains via the parameter **issue_chain_id.**
+Please note: the contract called is on the MainChain but you can decide to create NFTs whether on the MainChain or dAppChains via the parameter **issue_chain_id.**
 
 ```typescript
 var Client = new AElf.Client.AElfClient("http://node:port");
@@ -283,10 +283,10 @@ await Client.SendRawTransactionAsync(new AElf.Client.Dto.SendRawTransactionInput
 
 ### AA operation --- set MainChain as issue_chain_id
 
-![create-collections-use-portkey-mainchain](/img/quick-start/create-collections-use-portkey-mainchain.jpg)
+![create-collections-use-portkey-mainchain](/img/quick-start/create-collections-use-portkey-mainchain-v2.png)
 
-### AA operation --- set SideChain as issue_chain_id
+### AA operation --- set dAppChain as issue_chain_id
 
-Operations on the SideChain can only take effect when the MainChain and SideChain are synchronized.
+Operations on the dAppChain can only take effect when the MainChain and dAppChain are synchronized.
 
 ![create-collections-use-portkey-sidechain](/img/quick-start/create-collections-use-portkey-sidechain.jpg)
