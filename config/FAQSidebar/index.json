@@ -86,7 +86,7 @@
         },
         {
           "document": "docs/How-to-switch-networks.mdx",
-          "label": "10. How to switch networks?",
+          "label": "How to switch networks?",
           "_template": "doc"
         },
         {
@@ -97,21 +97,6 @@
         {
           "document": "docs/How-to-access-DApps.mdx",
           "label": "How to access dApps?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-start-a-private-chat.mdx",
-          "label": "13. How to start a private chat?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-start-a-group-chat.mdx",
-          "label": "14. How to start a group chat?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-customise-transfer-limits.mdx",
-          "label": "15. How to customise transfer limits?",
           "_template": "doc"
         }
       ],
