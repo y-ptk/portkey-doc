@@ -93,26 +93,6 @@
       "link": "generated",
       "items": [
         {
-          "document": "docs/What-is-zkLogin.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/What-is-security-detection.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/What-is-eBridge-and-how-does-it-facilitate-cross-chain-transfers-in-Portkey.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/What-is-AwakenSwap-and-how-does-it-facilitate-token-trading-in-Portkey.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/What-is-ETransfer-and-how-does-it-facilitate-cross-chain-transfers-in-Portkey.mdx",
-          "_template": "doc"
-        },
-        {
           "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
           "label": "What is Account Abstraction (AA) wallet",
           "_template": "doc"
@@ -135,6 +115,14 @@
         {
           "document": "docs/What-are-the-main-advantages-of-Portkey.mdx",
           "label": "What are the main advantages of Portkey?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-is-security-detection.mdx",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-is-zkLogin.mdx",
           "_template": "doc"
         },
         {
@@ -195,6 +183,18 @@
         {
           "document": "docs/Does-Portkey-have-a-private-key.mdx",
           "label": "17. Does Portkey have a private key?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-is-ETransfer-and-how-does-it-facilitate-cross-chain-transfers-in-Portkey.mdx",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-is-eBridge-and-how-does-it-facilitate-cross-chain-transfers-in-Portkey.mdx",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/What-is-AwakenSwap-and-how-does-it-facilitate-token-trading-in-Portkey.mdx",
           "_template": "doc"
         },
         {
