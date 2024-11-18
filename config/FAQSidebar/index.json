@@ -6,6 +6,10 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-add-or-remove-guardians.mdx",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-download-Portkey.mdx",
           "label": "How to download Portkey?",
           "_template": "doc"
