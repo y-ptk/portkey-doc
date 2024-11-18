@@ -6,6 +6,10 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-send-assets.mdx",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-add-or-remove-guardians.mdx",
           "_template": "doc"
         },
