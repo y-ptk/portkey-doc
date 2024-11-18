@@ -94,7 +94,7 @@
       "items": [
         {
           "document": "docs/What-is-Account-Abstraction-AA-wallet.mdx",
-          "label": "1. What is Account Abstraction (AA) wallet",
+          "label": "What is Account Abstraction (AA) wallet",
           "_template": "doc"
         },
         {
