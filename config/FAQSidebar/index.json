@@ -60,16 +60,6 @@
           "_template": "doc"
         },
         {
-          "document": "docs/How-to-addremove-guardians.mdx",
-          "label": "3. How to add/remove guardians?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-send-and-receive-assets.mdx",
-          "label": "4. How to send and receive assets?",
-          "_template": "doc"
-        },
-        {
           "document": "docs/How-to-check-my-transaction-history.mdx",
           "label": "5. How to check my transaction history?",
           "_template": "doc"
@@ -106,7 +96,7 @@
         },
         {
           "document": "docs/How-to-access-DApps.mdx",
-          "label": "12. How to access DApps?",
+          "label": "How to access dApps?",
           "_template": "doc"
         },
         {
