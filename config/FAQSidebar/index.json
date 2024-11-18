@@ -6,6 +6,36 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-download-Portkey.mdx",
+          "label": "How to download Portkey?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-get-a-Portkey-account.mdx",
+          "label": "How to get a Portkey account?",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-send-assets.mdx",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-receive-assets.mdx",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-trade-assets.mdx",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-buy-or-sell-cryptocurrencies-with-fiat-currency.mdx",
+          "_template": "doc"
+        },
+        {
+          "document": "docs/How-to-add-or-remove-guardians.mdx",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-add-a-backup-email.mdx",
           "_template": "doc"
         },
@@ -27,36 +57,6 @@
         },
         {
           "document": "docs/How-to-add-or-remove-guardians.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-buy-or-sell-cryptocurrencies-with-fiat-currency.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-trade-assets.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-receive-assets.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-send-assets.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-add-or-remove-guardians.mdx",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-download-Portkey.mdx",
-          "label": "How to download Portkey?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-get-a-Portkey-account.mdx",
-          "label": "How to get a Portkey account?",
           "_template": "doc"
         },
         {
