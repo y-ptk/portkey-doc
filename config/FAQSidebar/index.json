@@ -6,6 +6,10 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-trade-assets.mdx",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-receive-assets.mdx",
           "_template": "doc"
         },
