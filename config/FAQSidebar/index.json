@@ -6,6 +6,10 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/How-to-send-or-claim-crypto-gifts.mdx",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-set-transaction-limits.mdx",
           "_template": "doc"
         },
