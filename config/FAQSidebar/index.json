@@ -211,7 +211,7 @@
       "items": [
         {
           "document": "docs/What-is-aelf.mdx",
-          "label": "1. What is aelf?",
+          "label": "What is aelf?",
           "_template": "doc"
         },
         {
