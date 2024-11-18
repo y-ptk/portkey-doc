@@ -93,6 +93,10 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/What-is-AwakenSwap-and-how-does-it-facilitate-token-trading-in-Portkey.mdx",
+          "_template": "doc"
+        },
+        {
           "document": "docs/What-is-ETransfer-and-how-does-it-facilitate-cross-chain-transfers-in-Portkey.mdx",
           "_template": "doc"
         },
