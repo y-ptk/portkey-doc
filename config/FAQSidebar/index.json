@@ -16,6 +16,11 @@
           "_template": "doc"
         },
         {
+          "document": "docs/How-to-log-in-to-my-Portkey-account.mdx",
+          "label": "How to log in to my Portkey account?",
+          "_template": "doc"
+        },
+        {
           "document": "docs/How-to-send-assets.mdx",
           "_template": "doc"
         },
@@ -36,11 +41,12 @@
           "_template": "doc"
         },
         {
-          "document": "docs/How-to-add-a-backup-email.mdx",
+          "document": "docs/How-to-add-or-remove-login-accounts.mdx",
           "_template": "doc"
         },
         {
-          "document": "docs/How-to-send-or-claim-crypto-gifts.mdx",
+          "document": "docs/How-to-manage-login-devices.mdx",
+          "label": "How to manage login devices?",
           "_template": "doc"
         },
         {
@@ -52,11 +58,12 @@
           "_template": "doc"
         },
         {
-          "document": "docs/How-to-add-or-remove-login-accounts.mdx",
+          "document": "docs/How-to-send-or-claim-crypto-gifts.mdx",
           "_template": "doc"
         },
         {
-          "document": "docs/How-to-add-or-remove-guardians.mdx",
+          "document": "docs/How-to-access-DApps.mdx",
+          "label": "How to access dApps?",
           "_template": "doc"
         },
         {
@@ -65,13 +72,7 @@
           "_template": "doc"
         },
         {
-          "document": "docs/How-to-log-in-to-my-Portkey-account.mdx",
-          "label": "How to log in to my Portkey account?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-manage-login-devices.mdx",
-          "label": "How to manage login devices?",
+          "document": "docs/How-to-add-a-backup-email.mdx",
           "_template": "doc"
         },
         {
@@ -82,11 +83,6 @@
         {
           "document": "docs/How-to-claim-Testnet-tokens.mdx",
           "label": "How to claim Testnet tokens?",
-          "_template": "doc"
-        },
-        {
-          "document": "docs/How-to-access-DApps.mdx",
-          "label": "How to access dApps?",
           "_template": "doc"
         }
       ],
