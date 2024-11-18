@@ -93,6 +93,10 @@
       "link": "generated",
       "items": [
         {
+          "document": "docs/What-is-zkLogin.mdx",
+          "_template": "doc"
+        },
+        {
           "document": "docs/What-is-security-detection.mdx",
           "_template": "doc"
         },
