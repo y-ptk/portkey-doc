@@ -16,10 +16,6 @@ const mediumArr = [
     icon: '/img/footer/icon_twitter.svg',
     href: 'https://twitter.com/Portkey_DID'
   },{
-    title: 'discord',
-    icon: '/img/footer/icon_discord.svg',
-    href: 'https://discord.com/invite/EUBq3rHQhr'
-  },{
     title: 'github',
     icon: '/img/footer/icon_github.svg',
     href: 'https://github.com/Portkey-Wallet/portkey-web'
