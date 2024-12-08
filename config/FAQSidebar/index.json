@@ -6,12 +6,12 @@
       "link": "generated",
       "items": [
         {
-          "document": "docs/How-to-create-a-Portkey-account.mdx",
+          "document": "docs/How-to-download-Portkey.mdx",
+          "label": "How to download Portkey?",
           "_template": "doc"
         },
         {
-          "document": "docs/How-to-download-Portkey.mdx",
-          "label": "How to download Portkey?",
+          "document": "docs/How-to-create-a-Portkey-account.mdx",
           "_template": "doc"
         },
         {
